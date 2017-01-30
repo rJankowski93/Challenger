@@ -13,7 +13,7 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'eclipse-wtp'
+apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'war'
 
@@ -71,8 +71,11 @@ configurations {
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compileOnly('org.projectlombok:lombok')
+	compile('org.springframework.boot:spring-boot-starter-data-jpa')
+	compile('org.projectlombok:lombok')
 	compile('org.springframework.boot:spring-boot-starter-tomcat')
+	compile("org.springframework:spring-jdbc")
+	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
 }
