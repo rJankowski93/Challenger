@@ -9,7 +9,21 @@ import java.util.List;
 @Repository
 public interface UserDAO extends JpaRepository<User, Long> {
 
+    //CRUD
+    User createUser(User user);
+
     User findUserById(Long id);
 
+    User save(User user);
+
+    void delete(Long id);
+
+    //FIND
     List<User> findAll();
+
+    List<User> findUsersByLogin(String login);
+
+    List<User> findUsersByFirstnameAndLastname(String firstname, String lastname);
+
+    long count();
 }
