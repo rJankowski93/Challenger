@@ -23,7 +23,7 @@ sourceSets {
 			exclude 'static/node_modules/@types/**'
 			exclude 'static/node_modules/concurrently/**'
 			exclude 'static/node_modules/typescript/**'
-			exclude 'static/*.json'
+			exclude 'static/*.json' 
 		}
 	}
 }

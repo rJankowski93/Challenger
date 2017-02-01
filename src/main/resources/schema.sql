@@ -1,5 +1,5 @@
 create table USER (
-  ID_USER NUMBER,
+  ID_USER NUMBER auto_increment,
   LOGIN varchar(256),
   FIRSTNAME varchar(256),
   LASTNAME varchar(256),
