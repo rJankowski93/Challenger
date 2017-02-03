@@ -6,12 +6,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
+@RequestMapping("/api")
 public class ChallengesResources {
 
     @Autowired
     UserDAO userDAO;
 
-    @RequestMapping("/api/challenges")
+    @RequestMapping("/challenges")
     public String getAllChallenges(){
         return userDAO.findAll().toString();
     }
