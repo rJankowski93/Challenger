@@ -9,18 +9,18 @@ create table USER (
   POINTS NUMBER
 );
 
-create table USERS_USERS(
+create table USERS_USERS (
   ID_USER NUMBER,
   ID_FRIEND NUMBER
 );
 
-create table USER_ROLE(
+create table USER_ROLE (
   ID_ROLE NUMBER auto_increment,
   ID_USER NUMBER,
   ROLE varchar(255)
 );
 
-create table USER_HAS_GROUP(
+create table USER_HAS_GROUP (
   ID_USER NUMBER,
   ID_GROUP NUMBER
 );
@@ -31,20 +31,22 @@ create table CHALLENGE (
   DESCRIPTION varchar(255),
   STATUS varchar(255),
   CATEGORY varchar(255),
-  POINTS varchar(255),
+  POINTS NUMBER,
   REWARD_TYPE varchar(255),
   REWARD_QUANTITY varchar(255),
-  CREATOR_ID NUMBER
+  ID_CREATOR NUMBER
 );
 
-create table CHALLENGES_USERS(
+create table "GROUP" (
+  ID_GROUP NUMBER,
+  NAME varchar(45)
+);
+
+create table CHALLENGES_USERS (
   ID_CHALLENGE NUMBER,
   ID_USER NUMBER
 );
 
-create table GROUP(
-  ID_GROUP NUMBER auto_increment,
-  NAME varchar(45)
-);
+
 
 
