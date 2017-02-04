@@ -7,12 +7,14 @@ public class UserRole {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_ROLE")
-    Long idRole;
+    private Long idRole;
 
-    @ForeignKey
     @Column(name = "ID_USER")
-    String idUser;
+    private String idUser;
 
     @Column(name = "ROLE")
-    String role;
+    private String role;
+
+    @OneToOne
+    private User user;
 }

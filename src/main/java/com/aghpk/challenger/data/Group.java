@@ -7,8 +7,11 @@ public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_GROUP")
-    Long id;
+    private Long idGroup;
 
     @Column(name = "NAME")
-    String name;
+    private String name;
+
+    @OneToMany
+    private UserGroupsMembership userGroupsMembership;
 }

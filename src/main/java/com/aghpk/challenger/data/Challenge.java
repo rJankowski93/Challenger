@@ -8,29 +8,36 @@ public class Challenge {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_CHALLENGE")
-    Long id;
+    private Long idChallenge;
 
     @Column(name = "NAME")
-    String name;
+    private String name;
 
     @Column(name = "DESCRIPTION")
-    String description;
+    private String description;
 
     @Column(name = "STATUS")
-    String status;
+    private String status;
 
     @Column(name = "CATEGORY")
-    String catgory;
+    private String catgory;
 
     @Column(name = "POINTS")
-    int points;
+    private int points;
 
     @Column(name = "REWARD_TYPE")
-    String rewardType;
+    private String rewardType;
 
-    @Column(name="REWARD_QUANTITY")
-    String rewardQuantity;
+    @Column(name = "REWARD_QUANTITY")
+    private String rewardQuantity;
 
-    @Column(name="ID_CREATOR")
-    Long idCreator;
+    @Column(name = "ID_CREATOR")
+    private Long idCreator;
+
+    @OneToMany
+    private ChallengesUsers challengesUsers;
+
+    @ManyToOne
+    private User user;
+
 }

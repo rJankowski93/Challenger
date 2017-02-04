@@ -9,7 +9,7 @@ create table USER (
   POINTS NUMBER
 );
 
-create table USERS_USERS (
+create table FRIENDSHIP (
   ID_USER NUMBER,
   ID_FRIEND NUMBER
 );
@@ -17,10 +17,11 @@ create table USERS_USERS (
 create table USER_ROLE (
   ID_ROLE NUMBER auto_increment,
   ID_USER NUMBER,
-  ROLE varchar(255)
+  ROLE varchar(255),
+  FOREIGN KEY (ID_USER) REFERENCES USER(ID_USER)
 );
 
-create table USER_HAS_GROUP (
+create table USER_GROUPS_MEMBERSHIP (
   ID_USER NUMBER,
   ID_GROUP NUMBER
 );

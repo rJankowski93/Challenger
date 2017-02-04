@@ -15,26 +15,44 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_USER")
-    Long id;
+    private Long idUser;
 
     @Column(name = "LOGIN")
-    String login;
+    private String login;
 
     @Column(name = "FIRSTNAME")
-    String firstname;
+    private String firstname;
 
     @Column(name = "LASTNAME")
-    String lastname;
+    private String lastname;
 
     @Column(name = "PASSWORD")
-    String password;
+    private String password;
 
     @Column(name = "EMAIL")
-    String email;
+    private String email;
 
     @Column(name = "ENABLED")
-    boolean enabled;
+    private boolean enabled;
 
     @Column(name = "POINTS")
-    Long points;
+    private Long points;
+
+    @OneToOne
+    private UserRole userRole;
+
+    @OneToMany
+    private Friendship usersFriends;
+
+    @OneToMany
+    private Friendship friendOfUsers;
+
+    @OneToMany
+    private Challenge challenge;
+
+    @OneToMany
+    private ChallengesUsers challengeUser;
+
+    @OneToMany
+    private UserGroupsMembership usersGroupsMembership;
 }
