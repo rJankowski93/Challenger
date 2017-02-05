@@ -41,11 +41,6 @@ public class User implements Serializable {
     @Column(name = "POINTS")
     Long points;
 
-    public User(User user) {
-    }
-
-    //****************************** temporary, because "super" from CustomUserDetails
-    // doesn't see  LOMBOK getters
     public Long getId() {
         return id;
     }

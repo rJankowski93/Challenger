@@ -13,7 +13,12 @@ public class ChallengesResources {
     UserDAO userDAO;
 
     @RequestMapping("/challenges")
-    public String getAllChallenges(){
-        return userDAO.findAll().toString();
+    public String getAllChallenges() {
+        return "All challenges";
+    }
+
+    @RequestMapping("/challenger")
+    public String getChallenger() {
+        return "One challenger";
     }
 }

@@ -7,12 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class BasicController {
 
     @RequestMapping(value = "/login")
-    public String home(){
+    public String home() {
         return "index.html";
     }
-
-//    @RequestMapping("/")
-//    public String home(){
-//        return "index.html";
-//    }
 }

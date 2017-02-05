@@ -11,24 +11,19 @@ import java.util.List;
 
 public class CustomUserDetails extends User implements UserDetails {
 
-    private static final long serialVersionUID=1L;
+    private static final long serialVersionUID = 1L;
     private List<String> userRoles;
 
     public CustomUserDetails(User user, List<String> userRoles) {
-        super(user);
+        this.setId(user.getId());
+        this.setLogin(user.getLogin());
+        this.setPassword(user.getPassword());
         this.userRoles = userRoles;
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-//        List<String> userRolesTemporary=new ArrayList<>();
-//        userRolesTemporary.add("USER");
-//        userRolesTemporary.add("ADMIN");
-
-        String roles= StringUtils.collectionToCommaDelimitedString(userRoles);
-        //TODO add real data as above
-//        String roles=StringUtils.collectionToCommaDelimitedString(userRolesTemporary);
-
+        String roles = StringUtils.collectionToCommaDelimitedString(userRoles);
         return AuthorityUtils.commaSeparatedStringToAuthorityList(roles);
     }
 
@@ -39,8 +34,7 @@ public class CustomUserDetails extends User implements UserDetails {
 
     @Override
     public String getUsername() {
-        //TODO should we change it to firstname+lastname?
-        return super.getFirstname();
+        return super.getLogin();
     }
 
     @Override

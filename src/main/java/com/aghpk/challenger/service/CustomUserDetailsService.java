@@ -1,7 +1,7 @@
 package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.dao.UserDAO;
-import com.aghpk.challenger.dao.UserRolesDAO;
+import com.aghpk.challenger.dao.UserRoleDAO;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.model.CustomUserDetails;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,34 +10,27 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service
-public class CustomUserDetailsService implements UserDetailsService{
+public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserDAO userDAO;
-    private final UserRolesDAO userRolesDAO;
+    private final UserRoleDAO userRoleDAO;
 
     @Autowired
-    public CustomUserDetailsService(UserDAO userDAO, UserRolesDAO userRolesDAO) {
+    public CustomUserDetailsService(UserDAO userDAO, UserRoleDAO userRoleDAO) {
         this.userDAO = userDAO;
-        this.userRolesDAO = userRolesDAO;
+        this.userRoleDAO = userRoleDAO;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user=userDAO.findUserByFirstname(username);
-
-        if(user==null){
-            throw new UsernameNotFoundException("No user present with username: "+username);
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        User user = userDAO.findUserByLogin(login);
+        if (user == null) {
+            throw new UsernameNotFoundException("No user present with login: " + login);
         }
-
-//        List<String> userRoles=userRolesDAO.findRoleByIdUser(user.getId());
-//        //TODO use method above
-        List<String> userRoles=new ArrayList<>();
-        userRoles.add("USER");
-        userRoles.add("ADMIN");
+        List<String> userRoles = userRoleDAO.findRolesByIdUser(user.getId());
         return new CustomUserDetails(user, userRoles);
     }
 }

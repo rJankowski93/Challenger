@@ -10,4 +10,5 @@ import {LoginPanelComponent} from "./login-panel.component";
         LoginPanelComponent
     ]
 })
-export class LoginPanelModule { }
+export class LoginPanelModule {
+}
