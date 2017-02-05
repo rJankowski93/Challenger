@@ -1,10 +1,20 @@
 package com.aghpk.challenger.data;
 
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
+import javax.persistence.*;
+import java.io.Serializable;
+
+@Getter
+@Setter
+@ToString
+@NoArgsConstructor
 @Entity(name = "USER")
-public class User {
+public class User implements Serializable {
     @Id
     @Column(name = "ID_USER")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,6 +41,11 @@ public class User {
     @Column(name = "POINTS")
     Long points;
 
+    public User(User user) {
+    }
+
+    //****************************** temporary, because "super" from CustomUserDetails
+    // doesn't see  LOMBOK getters
     public Long getId() {
         return id;
     }
@@ -93,19 +108,5 @@ public class User {
 
     public void setPoints(Long points) {
         this.points = points;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", login='" + login + '\'' +
-                ", firstname='" + firstname + '\'' +
-                ", lastname='" + lastname + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", enabled=" + enabled +
-                ", points=" + points +
-                '}';
     }
 }
