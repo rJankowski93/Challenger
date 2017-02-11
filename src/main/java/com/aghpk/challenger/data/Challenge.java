@@ -2,6 +2,7 @@ package com.aghpk.challenger.data;
 
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "CHALLENGE")
 public class Challenge {
@@ -34,10 +35,13 @@ public class Challenge {
     @Column(name = "ID_CREATOR")
     private Long idCreator;
 
-    @OneToMany
-    private ChallengesUsers challengesUsers;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="ID_CREATOR")
     private User user;
+
+    @ManyToMany(mappedBy = "challengesUsers")
+    private List<User> users;
+
 
 }

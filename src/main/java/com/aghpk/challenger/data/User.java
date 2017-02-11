@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -38,21 +39,33 @@ public class User {
     @Column(name = "POINTS")
     private Long points;
 
-    @OneToOne
+    @OneToOne(fetch=FetchType.LAZY)
+    @JoinColumn(name="ID_ROLE")
     private UserRole userRole;
 
-    @OneToMany
-    private Friendship usersFriends;
+    @OneToMany(mappedBy = "user")
+    private List<Challenge> challenges;
 
-    @OneToMany
-    private Friendship friendOfUsers;
+    @ManyToMany
+    @JoinTable(
+            name="FRIENDSHIP",
+            joinColumns = @JoinColumn(name = "ID_USER",referencedColumnName = "ID_USER"),
+            inverseJoinColumns = @JoinColumn(name ="ID_USER",referencedColumnName = "ID_FRIEND"))
+            private List<User> users;
 
-    @OneToMany
-    private Challenge challenge;
+    @ManyToMany
+    @JoinTable(
+            name="CHALLENGES_USERS",
+            joinColumns = @JoinColumn(name = "ID_USER",referencedColumnName = "ID_USER"),
+            inverseJoinColumns = @JoinColumn(name ="ID_CHALLENGE",referencedColumnName = "ID_CHALLENGE"))
+    private List<Challenge> challengesUsers ;
 
-    @OneToMany
-    private ChallengesUsers challengeUser;
+    @ManyToMany
+    @JoinTable(
+            name="USER_GROUPS_MEMBERSHIP",
+            joinColumns = @JoinColumn(name = "ID_USER",referencedColumnName = "ID_USER"),
+            inverseJoinColumns = @JoinColumn(name ="ID_GROUP",referencedColumnName = "ID_GROUP"))
+    private List<Group> groups ;
 
-    @OneToMany
-    private UserGroupsMembership usersGroupsMembership;
+
 }

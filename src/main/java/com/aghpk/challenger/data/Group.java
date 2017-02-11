@@ -1,6 +1,7 @@
 package com.aghpk.challenger.data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity(name = "GROUP")
 public class Group {
@@ -12,6 +13,6 @@ public class Group {
     @Column(name = "NAME")
     private String name;
 
-    @OneToMany
-    private UserGroupsMembership userGroupsMembership;
+    @ManyToMany(mappedBy = "groups")
+    private List<User> users;
 }

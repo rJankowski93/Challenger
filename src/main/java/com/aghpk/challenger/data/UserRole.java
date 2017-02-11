@@ -15,6 +15,6 @@ public class UserRole {
     @Column(name = "ROLE")
     private String role;
 
-    @OneToOne
+    @OneToOne(fetch=FetchType.LAZY, mappedBy="userRole")
     private User user;
 }
