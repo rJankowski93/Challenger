@@ -39,33 +39,33 @@ public class User {
     @Column(name = "POINTS")
     private Long points;
 
-    @OneToOne(fetch=FetchType.LAZY)
+    @OneToOne(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name="ID_ROLE")
     private UserRole userRole;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<Challenge> challenges;
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name="FRIENDSHIP",
             joinColumns = @JoinColumn(name = "ID_USER",referencedColumnName = "ID_USER"),
             inverseJoinColumns = @JoinColumn(name ="ID_USER",referencedColumnName = "ID_FRIEND"))
             private List<User> users;
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name="CHALLENGES_USERS",
             joinColumns = @JoinColumn(name = "ID_USER",referencedColumnName = "ID_USER"),
             inverseJoinColumns = @JoinColumn(name ="ID_CHALLENGE",referencedColumnName = "ID_CHALLENGE"))
-    private List<Challenge> challengesUsers ;
+            private List<Challenge> challengesUsers ;
 
-    @ManyToMany
+    @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
             name="USER_GROUPS_MEMBERSHIP",
             joinColumns = @JoinColumn(name = "ID_USER",referencedColumnName = "ID_USER"),
             inverseJoinColumns = @JoinColumn(name ="ID_GROUP",referencedColumnName = "ID_GROUP"))
-    private List<Group> groups ;
+            private List<Group> groups ;
 
 
 }

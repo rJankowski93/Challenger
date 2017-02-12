@@ -13,6 +13,6 @@ public class Group {
     @Column(name = "NAME")
     private String name;
 
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany(mappedBy = "groups", cascade = CascadeType.ALL)
     private List<User> users;
 }

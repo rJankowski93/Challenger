@@ -36,7 +36,7 @@ public class Challenge {
     private Long idCreator;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="ID_CREATOR")
     private User user;
 
