@@ -3,3 +3,5 @@
 *build
 *classes
 *src/.idea
+*js
+*js.map
