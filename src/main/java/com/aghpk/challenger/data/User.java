@@ -13,8 +13,8 @@ import javax.persistence.*;
 @Entity(name = "USER")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_USER")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
 
     @Column(name = "LOGIN")
