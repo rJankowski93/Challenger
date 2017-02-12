@@ -1,7 +1,14 @@
 package com.aghpk.challenger.data;
 
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+
 import javax.persistence.*;
 
+@Getter
+@Setter
+@ToString
 @Entity(name = "CHALLENGE")
 public class Challenge {
     @Id
@@ -29,68 +36,4 @@ public class Challenge {
 
     @Column(name = "REWARD_QUANTITY")
     String rewardQunatity;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
-    }
-
-    public Long getPoints() {
-        return points;
-    }
-
-    public void setPoints(Long points) {
-        this.points = points;
-    }
-
-    public String getRewardType() {
-        return rewardType;
-    }
-
-    public void setRewardType(String rewardType) {
-        this.rewardType = rewardType;
-    }
-
-    public String getRewardQunatity() {
-        return rewardQunatity;
-    }
-
-    public void setRewardQunatity(String rewardQunatity) {
-        this.rewardQunatity = rewardQunatity;
-    }
 }
