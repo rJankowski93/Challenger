@@ -13,7 +13,7 @@ import java.util.List;
 @Entity(name = "GROUP")
 public class Group {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_GROUP")
     private Long id;
 
