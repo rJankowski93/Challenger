@@ -13,7 +13,7 @@ public class ChallengeDAOImpl {
     private EntityManager entityManager;
 
     public Challenge createChallenge(Challenge challenge) {
-        //TODO create field registraionDate
+        //TODO create field creationDate
         // challenge.setCreationDate(new Date());
         entityManager.persist(challenge);
         return challenge;
