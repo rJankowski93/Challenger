@@ -16,7 +16,7 @@ public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "ID_USER")
-    private Long idUser;
+    private Long id;
 
     @Column(name = "LOGIN")
     private String login;
@@ -50,8 +50,8 @@ public class User {
     @JoinTable(
             name="FRIENDSHIP",
             joinColumns = @JoinColumn(name = "ID_USER",referencedColumnName = "ID_USER"),
-            inverseJoinColumns = @JoinColumn(name ="ID_USER",referencedColumnName = "ID_FRIEND"))
-            private List<User> users;
+            inverseJoinColumns = @JoinColumn(name ="ID_FRIEND",referencedColumnName = "ID_USER"))
+            private List<User> friends;
 
     @ManyToMany(cascade=CascadeType.ALL)
     @JoinTable(
