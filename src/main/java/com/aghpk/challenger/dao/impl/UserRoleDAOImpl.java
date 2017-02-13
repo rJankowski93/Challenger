@@ -14,12 +14,12 @@ public class UserRoleDAOImpl {
     @PersistenceContext
     private EntityManager entityManager;
 
-    List<String> findRolesByIdUser(Long idUser) {
+    List<String> findRolesByUserId(Long userId) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<String> cq = cb.createQuery(String.class);
         Root<UserRole> item = cq.from(UserRole.class);
-        Expression<String> name = item.get("idUser");
-        Predicate eq1 = cb.equal(name, idUser);
+        Expression<String> name = item.get("userId");
+        Predicate eq1 = cb.equal(name, userId);
         cq.multiselect(item.get("role")).where(eq1);
         return entityManager.createQuery(cq).getResultList();
     }

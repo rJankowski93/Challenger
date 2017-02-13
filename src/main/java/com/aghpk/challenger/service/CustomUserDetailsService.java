@@ -30,7 +30,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No user present with login: " + login);
         }
-        List<String> userRoles = userRoleDAO.findRolesByIdUser(user.getId());
+        List<String> userRoles = userRoleDAO.findRolesByUserId(user.getId());
         return new CustomUserDetails(user, userRoles);
     }
 }

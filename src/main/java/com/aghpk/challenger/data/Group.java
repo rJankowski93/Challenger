@@ -9,12 +9,11 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @Entity(name = "GROUP")
 public class Group {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_GROUP")
+    @Column(name = "GROUP_ID")
     private Long id;
 
     @Column(name = "NAME")

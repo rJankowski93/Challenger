@@ -9,15 +9,14 @@ import org.springframework.util.StringUtils;
 import java.util.Collection;
 import java.util.List;
 
-public class CustomUserDetails extends User implements UserDetails {
+public class CustomUserDetails implements UserDetails {
 
     private static final long serialVersionUID = 1L;
     private List<String> userRoles;
+    private User user;
 
     public CustomUserDetails(User user, List<String> userRoles) {
-        this.setId(user.getId());
-        this.setLogin(user.getLogin());
-        this.setPassword(user.getPassword());
+        this.user=user;
         this.userRoles = userRoles;
     }
 
@@ -29,12 +28,12 @@ public class CustomUserDetails extends User implements UserDetails {
 
     @Override
     public String getPassword() {
-        return super.getPassword();
+        return user.getPassword();
     }
 
     @Override
     public String getUsername() {
-        return super.getLogin();
+        return user.getLogin();
     }
 
     @Override

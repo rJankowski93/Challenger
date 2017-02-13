@@ -10,12 +10,11 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @Entity(name = "CHALLENGE")
 public class Challenge {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_CHALLENGE")
+    @Column(name = "CHALLENGE_ID")
     private Long id;
 
     @Column(name = "NAME")
@@ -39,11 +38,11 @@ public class Challenge {
     @Column(name = "REWARD_QUANTITY")
     private String rewardQuantity;
 
-    @Column(name = "ID_CREATOR", insertable = false, updatable = false)
+    @Column(name = "CREATOR_ID", insertable = false, updatable = false)
     private Long idCreator;
 
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="ID_CREATOR")
+    @JoinColumn(name="CREATOR_ID")
     private User user;
 
     @ManyToMany(mappedBy = "challengesUsers")

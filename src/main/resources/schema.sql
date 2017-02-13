@@ -1,5 +1,5 @@
 create table USER (
-  ID_USER NUMBER auto_increment,
+  USER_ID NUMBER auto_increment,
   LOGIN varchar(256),
   FIRSTNAME varchar(256),
   LASTNAME varchar(256),
@@ -10,24 +10,24 @@ create table USER (
 );
 
 create table FRIENDSHIP (
-  ID_USER NUMBER,
-  ID_FRIEND NUMBER
+  USER_ID NUMBER,
+  FRIEND_ID NUMBER
 );
 
 create table USER_ROLE (
-  ID_ROLE NUMBER auto_increment,
-  ID_USER NUMBER,
+  ROLE_ID NUMBER auto_increment,
+  USER_ID NUMBER,
   ROLE varchar(255),
-  FOREIGN KEY (ID_USER) REFERENCES USER(ID_USER)
+  FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID)
 );
 
 create table USER_GROUPS_MEMBERSHIP (
-  ID_USER NUMBER,
-  ID_GROUP NUMBER
+  USER_ID NUMBER,
+  GROUP_ID NUMBER
 );
 
 create table CHALLENGE (
-  ID_CHALLENGE NUMBER auto_increment,
+  CHALLENGE_ID NUMBER auto_increment,
   NAME varchar(255),
   DESCRIPTION varchar(255),
   STATUS varchar(255),
@@ -35,17 +35,17 @@ create table CHALLENGE (
   POINTS NUMBER,
   REWARD_TYPE varchar(255),
   REWARD_QUANTITY varchar(255),
-  ID_CREATOR NUMBER
+  CREATOR_ID NUMBER
 );
 
 create table "GROUP" (
-  ID_GROUP NUMBER,
+  GROUP_ID NUMBER,
   NAME varchar(45)
 );
 
 create table CHALLENGES_USERS (
-  ID_CHALLENGE NUMBER,
-  ID_USER NUMBER
+  CHALLENGE_ID NUMBER,
+  USER_ID NUMBER
 );
 
 
