@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -13,28 +14,58 @@ import javax.persistence.*;
 @Entity(name = "USER")
 public class User {
     @Id
-    @Column(name = "ID_USER")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    @Column(name = "ID_USER")
+    private Long id;
 
     @Column(name = "LOGIN")
-    String login;
+    private String login;
 
     @Column(name = "FIRSTNAME")
-    String firstname;
+    private String firstname;
 
     @Column(name = "LASTNAME")
-    String lastname;
+    private String lastname;
 
     @Column(name = "PASSWORD")
-    String password;
+    private String password;
 
     @Column(name = "EMAIL")
-    String email;
+    private String email;
 
     @Column(name = "ENABLED")
-    boolean enabled;
+    private boolean enabled;
 
     @Column(name = "POINTS")
-    Long points;
+    private Long points;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "ID_ROLE")
+    private UserRole userRole;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Challenge> challenges;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "FRIENDSHIP",
+            joinColumns = @JoinColumn(name = "ID_USER", referencedColumnName = "ID_USER"),
+            inverseJoinColumns = @JoinColumn(name = "ID_FRIEND", referencedColumnName = "ID_USER"))
+    private List<User> friends;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "CHALLENGES_USERS",
+            joinColumns = @JoinColumn(name = "ID_USER", referencedColumnName = "ID_USER"),
+            inverseJoinColumns = @JoinColumn(name = "ID_CHALLENGE", referencedColumnName = "ID_CHALLENGE"))
+    private List<Challenge> challengesUsers;
+
+    @ManyToMany(cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "USER_GROUPS_MEMBERSHIP",
+            joinColumns = @JoinColumn(name = "ID_USER", referencedColumnName = "ID_USER"),
+            inverseJoinColumns = @JoinColumn(name = "ID_GROUP", referencedColumnName = "ID_GROUP"))
+    private List<Group> groups;
+
+
 }

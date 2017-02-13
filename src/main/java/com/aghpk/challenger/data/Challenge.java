@@ -1,10 +1,12 @@
 package com.aghpk.challenger.data;
 
+
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,28 +14,38 @@ import javax.persistence.*;
 @Entity(name = "CHALLENGE")
 public class Challenge {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_CHALLENGE")
-    Long id;
+    private Long id;
 
     @Column(name = "NAME")
-    String name;
+    private String name;
 
     @Column(name = "DESCRIPTION")
-    String description;
+    private String description;
 
     @Column(name = "STATUS")
-    String status;
+    private String status;
 
     @Column(name = "CATEGORY")
-    String category;
+    private String catgory;
 
     @Column(name = "POINTS")
-    Long points;
+    private Long points;
 
     @Column(name = "REWARD_TYPE")
-    String rewardType;
+    private String rewardType;
 
     @Column(name = "REWARD_QUANTITY")
-    String rewardQunatity;
+    private String rewardQuantity;
+
+    @Column(name = "ID_CREATOR", insertable = false, updatable = false)
+    private Long idCreator;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name="ID_CREATOR")
+    private User user;
+
+    @ManyToMany(mappedBy = "challengesUsers")
+    private List<User> users;
 }
