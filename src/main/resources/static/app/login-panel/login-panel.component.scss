@@ -1,0 +1,33 @@
+@import "../../../sass/variables";
+
+#login-container {
+  background: $main-color;
+  height: 610px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 10px 15px 10px 15px;
+}
+
+#user-icon {
+  max-width: 150px;
+}
+
+#login-page {
+  background-color: $login-page-color;
+}
+
+.login-form {
+  background-color: $login-page-color;
+}
+
+input::-moz-placeholder {
+  color: $login-placeholder-color;
+}
+
+input::-webkit-input-placeholder {
+  color: $login-placeholder-color;
+}
+
+input:-ms-input-placeholder {
+  color: $login-placeholder-color;
+}
