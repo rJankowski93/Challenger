@@ -9,6 +9,5 @@ export class LoginPanelComponent {
 
     constructor() {
 
-        console.log("login constructor");
     }
 }

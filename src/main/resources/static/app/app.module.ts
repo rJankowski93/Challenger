@@ -4,13 +4,17 @@ import {AppComponent} from "./app.component";
 import {LoginPanelModule} from "./login-panel/login-panel.module";
 import {UserPanelModule} from "./user-panel/user-panel.module"
 import {CommonModule} from "@angular/common";
+import {SharedModule} from "./shared/shared.module";
+import {HttpModule} from "@angular/http";
 
 @NgModule({
     imports: [
         BrowserModule,
         CommonModule,
+        HttpModule,
         LoginPanelModule,
-        UserPanelModule
+        UserPanelModule,
+        SharedModule
     ],
     declarations: [
         AppComponent

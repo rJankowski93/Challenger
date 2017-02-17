@@ -1,2 +1,3 @@
-<!--<login-panel></login-panel>-->
-<user-panel></user-panel>
+<login-panel *ngIf="!isAuthenticated"></login-panel>
+
+<user-panel *ngIf="isAuthenticated"></user-panel>
