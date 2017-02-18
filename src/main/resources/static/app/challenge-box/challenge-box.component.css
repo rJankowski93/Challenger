@@ -1,5 +1,6 @@
 #challenge-box {
-  background-color: #0E566C; }
+  background-color: #F2F2F2;
+  border-radius: 10px; }
 
 #chalenge-name {
   font-weight: bold;
