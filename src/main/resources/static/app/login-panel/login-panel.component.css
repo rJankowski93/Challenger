@@ -1,0 +1,26 @@
+#login-container {
+  background: #dddfd4;
+  height: 610px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  padding: 10px 15px 10px 15px; }
+
+#user-icon {
+  max-width: 150px; }
+
+#login-page {
+  background-color: #DDDDDD; }
+
+.login-form {
+  background-color: #DDDDDD; }
+
+input::-moz-placeholder {
+  color: #000000; }
+
+input::-webkit-input-placeholder {
+  color: #000000; }
+
+input:-ms-input-placeholder {
+  color: #000000; }
+
+/*# sourceMappingURL=login-panel.component.css.map */
