@@ -34,6 +34,9 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //TODO csrf configuration
 //                .and().csrf().csrfTokenRepository(csrfTokenRepository()). //csrf token for angular
 //                and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class); //filter to store csrf in cookie named 'XSRF-TOKEN' for angular
+
+        //        Enable h2 console with Spring security
+        http.headers().frameOptions().disable();
     }
 
 //    private Filter csrfHeaderFilter() {
