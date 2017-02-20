@@ -6,7 +6,7 @@ import 'rxjs/add/operator/first';
 @Injectable()
 export class AuthService {
 
-    private userUrl = "api/user";
+    private userUrl = "api/users";
 
     constructor(private http:Http) {
     }

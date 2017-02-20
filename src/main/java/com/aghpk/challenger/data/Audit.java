@@ -23,7 +23,7 @@ public abstract class Audit implements Serializable, Auditable{
     private Date auditMD;
 
     @Temporal(TemporalType.TIMESTAMP)
-    @Column(name = "AUDIT_MU")
+    @Column(name = "AUDIT_RD")
     private Date auditRD;
 
     @Override

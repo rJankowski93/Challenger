@@ -68,9 +68,9 @@ configurations {
 	providedRuntime
 }
 
-bootRun {
-	addResources = true
-}
+//bootRun {
+//	addResources = true
+//}
 
 dependencies {
 	compile('org.springframework.boot:spring-boot-starter-security')
@@ -79,7 +79,7 @@ dependencies {
 	compile('org.projectlombok:lombok')
 	compile('org.springframework.boot:spring-boot-starter-tomcat')
 	compile("org.springframework:spring-jdbc")
-	compile("org.springframework.boot:spring-boot-devtools")
+//	compile("org.springframework.boot:spring-boot-devtools")
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')
