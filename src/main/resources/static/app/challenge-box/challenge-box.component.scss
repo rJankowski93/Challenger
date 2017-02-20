@@ -1,5 +1,5 @@
 #challenge-box{
-  background-color: #F2F2F2 ;
+  background-color: $main-color;
   border-radius: 10px;
 }
 
@@ -8,7 +8,7 @@
   font-size: large;
   border-width: 1px;
   border-bottom: solid;
-  border-color: #55ACEE;
+  border-color: $borders-color;
 }
 
 #challenge-options{
@@ -17,7 +17,7 @@
   margin:0;
   border-width: 1px;
   border-top: solid;
-  border-color: #55ACEE;
+  border-color: $borders-color;
 
   #challenge-options-wrapper{
     margin: auto;
