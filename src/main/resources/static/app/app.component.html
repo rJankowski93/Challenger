@@ -1,3 +1,11 @@
 <login-panel *ngIf="!isAuthenticated"></login-panel>
 
-<user-panel *ngIf="isAuthenticated"></user-panel>
+<div id="user-panel-wrapper" *ngIf="isAuthenticated">
+    <user-panel ></user-panel>
+
+    <challenge-box></challenge-box>
+
+</div>
+
+
+

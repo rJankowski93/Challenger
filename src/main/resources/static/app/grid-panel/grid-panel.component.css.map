@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,WAAW;EACT,gBAAgB,EAAE,OAAO;EACzB,MAAM,EAAE,IAAI",
+"sources": ["grid-panel.component.scss"],
+"names": [],
+"file": "grid-panel.component.css"
+}

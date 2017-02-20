@@ -1,0 +1,64 @@
+#challenge-box{
+  background-color: $main-color;
+  border-radius: 10px;
+}
+
+#chalenge-name{
+  font-weight: bold;
+  font-size: large;
+  border-width: 1px;
+  border-bottom: solid;
+  border-color: $borders-color;
+}
+
+#challenge-options{
+  clear:both;
+  padding:0;
+  margin:0;
+  border-width: 1px;
+  border-top: solid;
+  border-color: $borders-color;
+
+  #challenge-options-wrapper{
+    margin: auto;
+    width: 50%;
+    padding: 10px;
+
+    #challenge-accept-button{
+      position: absolute;
+      margin-left: 150px;
+    }
+    #challenge-decline-button{
+      position: absolute;
+    }
+  }
+
+}
+
+
+#challenge-info{
+  text-align: center;
+  p{
+    font-weight: bold;
+  }
+  #challenge-status{
+    float: left;
+    padding-left: 5%;
+  }
+
+  #challenge-points{
+    float:left;
+    padding-left: 5%;
+  }
+
+  #challenge-reward{
+    float:left;
+    padding-left: 5%;
+  }
+
+  #challenge-quantity{
+    float:left;
+  }
+}
+
+
