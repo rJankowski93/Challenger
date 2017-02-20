@@ -1,7 +1,7 @@
 -- I generated all the data by using this site - http://www.mockaroo.com/
 -- USERs important to application develop admins and users with normal passwords
-insert into USER (user_id,firstname,lastname,login,password,email,enabled,points) values (1,'Admin', 'Admin', 'admin', 'admin','admin@admin.com',true,10);
-insert into USER (user_id,firstname,lastname,login,password,email,enabled,points) values (2,'USER', 'USER', 'user', 'user','user@user.com',true,10);
+insert into USER (user_id,firstname,lastname,login,password,email,enabled,points) values (1,'Admin', 'Admin', 'admin', '$2a$10$4vCT6g143m0X7n3LG5ifWeFHVCh.KB1JYJOJmvFLZNS26Alob8vRu','admin@admin.com',true,10);
+insert into USER (user_id,firstname,lastname,login,password,email,enabled,points) values (2,'USER', 'USER', 'user', '$2a$10$Q21eCZAOyvpu0xzV48OqUucac6dnJZICQTxtprgBn.EQygCN3exZa','user@user.com',true,10);
 insert into USER (user_id,firstname,lastname,login,password,email,enabled,points) values (3,'Admin2', 'Admin2', 'admin2', 'admin','admin2@admin.com',false,10);
 insert into USER (user_id,firstname,lastname,login,password,email,enabled,points) values (4,'USER2', 'USER2', 'user2', 'user','user@user.com',false,10);
 -- Other users
