@@ -9,8 +9,14 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity(name = "GROUP")
-public class Group {
+@Entity
+@Table(name = "GROUP")
+@AttributeOverrides({
+        @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
+        @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
+        @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
+})
+public class Group extends Audit{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GROUP_ID")

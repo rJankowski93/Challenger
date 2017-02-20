@@ -2,12 +2,15 @@ security:
   user:
     name: admin
     password: aghpk
-
+#SHOW SQL
+#spring.jpa:
+#  show_sql: true
+#  format_sql: true
 spring:
   jpa:
     hibernate:
       ddl-auto: none
-    database-platform: org.hibernate.dialect.H2Dialect
+      database-platform: org.hibernate.dialect.H2Dialect
   h2:
     console:
       enabled: true
@@ -16,3 +19,6 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
+
+
+
