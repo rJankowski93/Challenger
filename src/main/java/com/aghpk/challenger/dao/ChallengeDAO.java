@@ -1,6 +1,7 @@
 package com.aghpk.challenger.dao;
 
 import com.aghpk.challenger.data.Challenge;
+import com.aghpk.challenger.data.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -8,17 +9,16 @@ import java.util.List;
 
 @Repository
 public interface ChallengeDAO extends JpaRepository<Challenge, Long> {
-    //CRUD
-    Challenge createChallenge(Challenge challenge);
 
     Challenge findChallengeById(Long id);
 
-    Challenge save(Challenge challenge);
+    User createChallenge(Challenge challenge);
 
-    void delete(Long id);
+    void removeChallenge(Challenge challenge);
 
-    //FIND
-    List<Challenge> findAll();
+    void removeChallenge(Long id);
+
+    List<Challenge> getAll();
 
     List<Challenge> findChallengesByName(String name);
 

@@ -14,4 +14,12 @@ public interface UserDAO extends JpaRepository<User, Long> {
     User findUserById(Long id);
 
     List<User> findAll();
+
+    User createUser(User user);
+
+    void removeUser(User user);
+
+    void removeUser(Long id);
+
+    List<User> getAll();
 }
