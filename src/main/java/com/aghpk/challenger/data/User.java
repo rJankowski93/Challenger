@@ -177,4 +177,9 @@ public class User extends Audit implements Serializable {
     public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
+
+    @Override
+    public String toString() {
+        return ("Login: " + login + " Password: " + password);
+    }
 }
