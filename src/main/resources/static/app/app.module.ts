@@ -6,6 +6,10 @@ import {UserPanelModule} from "./user-panel/user-panel.module";
 import {GridPanelModule} from "./grid-panel/grid-panel.module";
 import {ChallengeBoxModule} from "./challenge-box/challenge-box.module";
 import {CommonModule} from "@angular/common";
+import {SharedModule} from "./shared/shared.module";
+import {HttpModule} from "@angular/http";
+
+
 
 @NgModule({
     imports: [
@@ -14,6 +18,7 @@ import {CommonModule} from "@angular/common";
         LoginPanelModule,
         UserPanelModule,
         GridPanelModule,
+        SharedModule,
         ChallengeBoxModule
 
     ],
