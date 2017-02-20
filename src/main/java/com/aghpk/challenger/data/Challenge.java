@@ -10,8 +10,14 @@ import java.util.List;
 
 @Getter
 @Setter
-@Entity(name = "CHALLENGE")
-public class Challenge {
+@Entity
+@Table(name = "CHALLENGE")
+@AttributeOverrides({
+        @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
+        @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
+        @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
+})
+public class Challenge extends Audit{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_ID")

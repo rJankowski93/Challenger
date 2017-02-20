@@ -1,15 +1,15 @@
 package com.aghpk.challenger.config;
 
-import com.aghpk.challenger.service.CustomUserDetailsService;
-import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
-@ComponentScan(basePackageClasses = CustomUserDetailsService.class)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
@@ -17,13 +17,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()
-//                .antMatchers("/api/**")
-//                .access("hasRole('ROLE_ADMIN')")
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .usernameParameter("username")
-//                .passwordParameter("password")
+                .antMatchers("/api/**")
+                .access("hasRole('ROLE_ADMIN')")
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .usernameParameter("username")
+                .passwordParameter("password")
 //                .and()
 //                .logout()
 //                .logoutSuccessUrl("/login?logout")
@@ -31,9 +31,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //                .exceptionHandling()
 //                .accessDeniedPage("/403")
                 .and().csrf().disable();
+
+
         //TODO csrf configuration
 //                .and().csrf().csrfTokenRepository(csrfTokenRepository()). //csrf token for angular
 //                and().addFilterAfter(csrfHeaderFilter(), CsrfFilter.class); //filter to store csrf in cookie named 'XSRF-TOKEN' for angular
+
+//        Enable h2 console with Spring security
+        http.headers().frameOptions().disable();
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        PasswordEncoder encoder = new BCryptPasswordEncoder();
+        return encoder;
     }
 
 //    private Filter csrfHeaderFilter() {

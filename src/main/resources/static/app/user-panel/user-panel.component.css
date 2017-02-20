@@ -14,7 +14,7 @@
   width: 100%;
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
-  background-image: url("https://cdn.pixabay.com/photo/2015/07/31/20/38/background-869586_960_720.png");
+  background-image: url("http://devfloat.net/wp-content/uploads/2016/01/Unique-Facebook-Background.jpg");
   background-size: 100% 100%; }
 
 #user-profile-image {
@@ -32,7 +32,8 @@
 
 #user-searches {
   padding-top: 10px;
-  padding-left: 115px; }
+  padding-left: 115px;
+  padding-right: 10px; }
 
 #search-challenge, #search-friends {
   clear: both; }

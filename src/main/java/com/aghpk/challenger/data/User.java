@@ -13,8 +13,14 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity(name = "USER")
-public class User implements Serializable {
+@Entity
+@Table(name = "USER")
+@AttributeOverrides({
+        @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
+        @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
+        @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
+})
+public class User extends Audit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
@@ -170,5 +176,10 @@ public class User implements Serializable {
 
     public void setGroups(List<Group> groups) {
         this.groups = groups;
+    }
+
+    @Override
+    public String toString() {
+        return ("Login: " + login + " Password: " + password);
     }
 }

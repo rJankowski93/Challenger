@@ -15,13 +15,14 @@ import {HttpModule} from "@angular/http";
     imports: [
         BrowserModule,
         CommonModule,
+        HttpModule,
         LoginPanelModule,
         UserPanelModule,
         GridPanelModule,
         SharedModule,
         ChallengeBoxModule
-
     ],
+
     declarations: [
         AppComponent
     ],
