@@ -9,6 +9,5 @@ import {Component} from "@angular/core";
 export class UserPanelComponent {
 
     constructor() {
-        console.log("user constructor");
     }
 }

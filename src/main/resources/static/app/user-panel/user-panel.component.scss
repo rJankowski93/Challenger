@@ -1,13 +1,17 @@
+@import "../../../sass/variables";
+
 #user-panel {
   height: 100%;
   margin-left: 10px;
   padding: 0;
   border-radius: 25px;
-  background-color: #173e43; }
+  background-color: $notifications-dark-color;
+}
 
 #user-images {
   height: 150px;
-  width: 100%; }
+  width: 100%;
+}
 
 #user-background {
   height: 100%;
@@ -15,27 +19,34 @@
   border-top-left-radius: 25px;
   border-top-right-radius: 25px;
   background-image: url("http://devfloat.net/wp-content/uploads/2016/01/Unique-Facebook-Background.jpg");
-  background-size: 100% 100%; }
+  background-size: 100% 100%;
+}
 
 #user-profile-image {
-  border: 5px solid #3fb0ac;
+  border: 5px solid $notifications-color;
   border-radius: 10px;
   position: relative;
   top: 100px;
   width: 90px;
   height: 90px;
   background-image: url("http://stardesign.com.pl/images/member1.jpg");
-  background-size: 100% 100%; }
+  background-size: 100% 100%;
+}
 
 #user-panel-content {
-  height: 600px; }
+  height: 600px;
+}
 
 #user-searches {
   padding-top: 10px;
   padding-left: 115px;
-  padding-right: 10px; }
+  padding-right: 10px;
+}
 
-#search-challenge, #search-friends {
-  clear: both; }
+#search-challenge {
+  clear: both;
+}
 
-/*# sourceMappingURL=user-panel.component.css.map */
+#search-friends {
+  @extend #search-challenge;
+}
