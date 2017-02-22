@@ -30,9 +30,16 @@
 #user-panel-content {
   height: 600px; }
 
+#user-name {
+  position: relative;
+  left: 115px;
+  color: white;
+  font-weight: bold;
+  font-size: 30px; }
+
 #user-searches {
   padding-top: 10px;
-  padding-left: 115px;
+  padding-left: 20px;
   padding-right: 10px; }
 
 #search-challenge, #search-friends {

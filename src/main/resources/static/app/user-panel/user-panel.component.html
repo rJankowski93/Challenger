@@ -1,4 +1,4 @@
-<div id="user-panel" class="col-md-3">
+<div *ngIf="!isLoading" id="user-panel" class="col-md-3">
 
     <div id="user-images">
         <div id="user-background" class="col-md-3">
@@ -11,6 +11,10 @@
 
 
         <div id="user-data">
+            <div id="user-name">
+                {{userDetails.firstName}}
+                {{userDetails.lastName}}
+            </div>
 
             <div id="user-searches">
                 <div id="search-challenge">

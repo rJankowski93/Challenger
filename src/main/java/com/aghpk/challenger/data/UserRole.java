@@ -28,9 +28,9 @@ public class UserRole {
     @Column(name = "USER_ID", insertable = false, updatable = false)
     private Long userId;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "USER_ID")
-    private User user;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "USER_ID")
+//    private User user;
 
     public UserRole() {
     }
@@ -63,13 +63,5 @@ public class UserRole {
 
     public void setUserId(Long userId) {
         this.userId = userId;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
     }
 }

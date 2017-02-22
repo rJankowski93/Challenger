@@ -7,6 +7,7 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -35,7 +36,7 @@ public class User extends Audit implements Serializable {
 
     @Column(name = "FIRSTNAME")
     @JsonView(Views.Public.class)
-    private String firstname;
+    private String firstame;
 
     @Column(name = "LASTNAME")
     @JsonView(Views.Public.class)

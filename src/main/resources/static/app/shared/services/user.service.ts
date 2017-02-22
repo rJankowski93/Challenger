@@ -12,8 +12,8 @@ export class UserService{
     constructor(private http:Http){
     }
 
-    // getLoggedInUserData(): Observable<User> {
-    //     // return this.http.get(`${this.userUrl}/authentication`).map(res => res.json(),
-    //     //         error=> console.log(error));
-    // }
+    getLoggedInUserData(): Observable<User>{
+        return this.http.get(`${this.userUrl}/logged/details`).map(res => res.json(),
+                error=> console.log(error));
+    }
 }

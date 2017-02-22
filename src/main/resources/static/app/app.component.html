@@ -1,11 +1,9 @@
-<!--<login-panel *ngIf="!isAuthenticated"></login-panel>-->
-<registration-panel *ngIf="!isAuthenticated"></registration-panel>
-<div id="user-panel-wrapper" *ngIf="isAuthenticated">
-    <user-panel ></user-panel>
-
-    <challenge-box></challenge-box>
-
+<div *ngIf="!isAuthenticated">
+    <login-panel *ngIf="!isAuthenticated"></login-panel>
+    <registration-panel *ngIf="!isAuthenticated"></registration-panel>
 </div>
 
-
-
+<div id="user-panel-wrapper" *ngIf="isAuthenticated">
+    <user-panel ></user-panel>
+    <challenge-box></challenge-box>
+</div>
