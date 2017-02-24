@@ -80,6 +80,7 @@ dependencies {
 	compile('org.springframework.boot:spring-boot-starter-tomcat')
 	compile("org.springframework:spring-jdbc")
 //	compile("org.springframework.boot:spring-boot-devtools")
+	compile group: 'javax.mail', name: 'mail', version: '1.4.7'
 	runtime('com.h2database:h2')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
 	testCompile('org.springframework.restdocs:spring-restdocs-mockmvc')

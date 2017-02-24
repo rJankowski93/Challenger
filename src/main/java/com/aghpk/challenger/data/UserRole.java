@@ -11,7 +11,14 @@ import javax.persistence.*;
 @Entity
 @Table(name = "USER_ROLE")
 public class UserRole {
-    @Id    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    public interface ROLE {
+        public static final String USER = "ROLE_USER";
+        public static final String ADMIN = "ROLE_ADMIN";
+    }
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ROLE_ID")
     private Long id;
 
@@ -24,6 +31,15 @@ public class UserRole {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private User user;
+
+    public UserRole() {
+    }
+
+
+    public UserRole(String role) {
+        this.role = role;
+    }
+
 
     public Long getId() {
         return id;

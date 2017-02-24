@@ -1,9 +1,12 @@
 package com.aghpk.challenger.dao.impl;
 
 import com.aghpk.challenger.data.User;
+import com.aghpk.challenger.exeption.ApplicationException;
+import com.aghpk.challenger.exeption.ErrorType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
+import javax.persistence.EntityExistsException;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -20,11 +23,11 @@ public class UserDAOImpl {
     @Autowired
     PasswordEncoder passwordEncoder;
 
-    public User createUser(User user) {
-        user.setAuditCD(new Date());
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        entityManager.persist(user);
-        return user;
+    public User createUser(User user) throws EntityExistsException{
+            user.setAuditCD(new Date());
+            user.setPassword(passwordEncoder.encode(user.getPassword()));
+            entityManager.persist(user);
+            return user;
     }
 
     public void removeUser(User user) {

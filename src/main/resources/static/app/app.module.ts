@@ -8,6 +8,7 @@ import {ChallengeBoxModule} from "./challenge-box/challenge-box.module";
 import {CommonModule} from "@angular/common";
 import {SharedModule} from "./shared/shared.module";
 import {HttpModule} from "@angular/http";
+import {RegistrationPanelModule} from "./registration-panel/registration-panel.module";
 
 
 
@@ -17,6 +18,7 @@ import {HttpModule} from "@angular/http";
         CommonModule,
         HttpModule,
         LoginPanelModule,
+        RegistrationPanelModule,
         UserPanelModule,
         GridPanelModule,
         SharedModule,

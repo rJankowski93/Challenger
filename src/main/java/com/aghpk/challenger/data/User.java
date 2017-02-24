@@ -1,10 +1,12 @@
 package com.aghpk.challenger.data;
 
 
+import com.aghpk.challenger.model.JsonRegisterForm;
+import com.aghpk.challenger.model.Views;
+import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,18 +29,22 @@ public class User extends Audit implements Serializable {
     private Long id;
 
     @Column(name = "LOGIN")
+    @JsonView(Views.Public.class)
     private String login;
 
     @Column(name = "FIRSTNAME")
+    @JsonView(Views.Public.class)
     private String firstname;
 
     @Column(name = "LASTNAME")
+    @JsonView(Views.Public.class)
     private String lastname;
 
     @Column(name = "PASSWORD")
     private String password;
 
     @Column(name = "EMAIL")
+    @JsonView(Views.Public.class)
     private String email;
 
     @Column(name = "ENABLED")
@@ -73,6 +79,17 @@ public class User extends Audit implements Serializable {
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID"))
     private List<Group> groups;
+
+    public User() {
+    }
+
+    public User(JsonRegisterForm jsonRegisterForm) {
+        this.login = jsonRegisterForm.getLogin();
+        this.firstname = jsonRegisterForm.getFirstname();
+        this.lastname = jsonRegisterForm.getLastname();
+        this.password = jsonRegisterForm.getPassword();
+        this.email = jsonRegisterForm.getEmail();
+    }
 
     public String getLogin() {
         return login;
