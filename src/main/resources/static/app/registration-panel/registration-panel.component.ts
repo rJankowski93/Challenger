@@ -24,7 +24,7 @@ export class RegistrationPanelComponent {
             $.ajax({
                 method: "POST",
                 contentType: "application/json",
-                url: "/registration",
+                url: "/api/users/registration",
                 data: JSON.stringify(data),
                 dataType: 'json',
                 success: function (data) {

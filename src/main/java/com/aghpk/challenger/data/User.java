@@ -20,7 +20,7 @@ import java.util.List;
 @AttributeOverrides({
         @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
-       @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
+        @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
 public class User extends Audit implements Serializable {
     @Id
@@ -51,9 +51,9 @@ public class User extends Audit implements Serializable {
     private boolean enabled;
 
     @Column(name = "POINTS")
-    private Long points;
+    private Long points = 0L;
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private List<UserRole> roles;
 
@@ -97,8 +97,16 @@ public class User extends Audit implements Serializable {
         return login;
     }
 
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getPassword() {
         return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public Long getId() {
@@ -107,10 +115,6 @@ public class User extends Audit implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
     }
 
     public String getFirstname() {
@@ -127,10 +131,6 @@ public class User extends Audit implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
     }
 
     public String getEmail() {

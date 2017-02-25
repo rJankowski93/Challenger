@@ -5,7 +5,7 @@ insert into USER (user_id,firstname,lastname,login,password,email,enabled,points
 insert into USER (user_id,firstname,lastname,login,password,email,enabled,points) values (3,'Admin2', 'Admin2', 'admin2', 'admin','admin2@admin.com',false,10);
 insert into USER (user_id,firstname,lastname,login,password,email,enabled,points) values (4,'USER2', 'USER2', 'user2', 'user','user@user.com',false,10);
 -- Other users
-insert into USER (user_id, firstname, lastname, login, password, email, enabled, points) values (5, 'Mildred', 'Woods', 'John', 'B7Rx3Fd', 'jwoods0@cdc.gov', false, 24);
+insert into USER (user_id, firstname, lastname, login, password, email, enabled, points) values (5, 'Mildred', 'Woods', 'John', 'B7Rx3Fd', 'janiu25@gmail.com', false, 24);
 insert into USER (user_id, firstname, lastname, login, password, email, enabled, points) values (6, 'Margaret', 'Chavez', 'Rebecca', 'xBkxbL8', 'rchavez1@cnbc.com', true, 12);
 insert into USER (user_id, firstname, lastname, login, password, email, enabled, points) values (7, 'Maria', 'Owens', 'Janet', 'eoIfKuWk', 'jowens2@macromedia.com', true, 26);
 insert into USER (user_id, firstname, lastname, login, password, email, enabled, points) values (8, 'Timothy', 'Armstrong', 'Martin', '1093ZyY', 'marmstrong3@disqus.com', false, 24);

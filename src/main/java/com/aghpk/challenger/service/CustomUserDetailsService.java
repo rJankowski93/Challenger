@@ -15,6 +15,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+import javax.mail.MessagingException;
 import javax.persistence.EntityExistsException;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,11 +26,13 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserDAO userDAO;
     private final UserRoleDAO userRoleDAO;
+   public  SendMailSSL sendMailSSL;
 
     @Autowired
-    public CustomUserDetailsService(UserDAO userDAO, UserRoleDAO userRoleDAO) {
+    public CustomUserDetailsService(UserDAO userDAO, UserRoleDAO userRoleDAO, SendMailSSL sendMailSSL) {
         this.userDAO = userDAO;
         this.userRoleDAO = userRoleDAO;
+        this.sendMailSSL = sendMailSSL;
     }
 
     @Override
@@ -56,7 +59,20 @@ public class CustomUserDetailsService implements UserDetailsService {
         } catch (EntityExistsException e) {
             throw new ApplicationException(ErrorType.USER_EXIST, user.getLogin());
         }
-        //TODO send confirmation email
+        try {
+            sendMailSSL.sendConfirmingMail(user);
+        } catch (MessagingException e) {
+            throw new ApplicationException(ErrorType.ERROR_SEND_EMAIL);
+        }
         return user;
+    }
+
+    public void activateUser(Long userId, String login) {
+        User user = userDAO.findUserById(userId);
+        if (!user.getLogin().equals(login)) {
+            throw new ApplicationException(ErrorType.WRONG_CONFIRMATION_LINK);
+        }
+        user.setEnabled(Boolean.TRUE);
+        userDAO.flush();
     }
 }

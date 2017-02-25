@@ -19,6 +19,7 @@ spring:
     username: sa
     password:
     driver-class-name: org.h2.Driver
-
-
-
+mail:
+  username: challenger.application.aghpk@gmail.com
+  password: challenger123
+  confirmationLink: http://localhost:8080//api/users/confirmRegistration?id=
