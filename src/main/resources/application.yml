@@ -9,7 +9,7 @@ security:
 spring:
   jpa:
     hibernate:
-      ddl-auto: none
+      ddl-auto: validate
       database-platform: org.hibernate.dialect.H2Dialect
   h2:
     console:

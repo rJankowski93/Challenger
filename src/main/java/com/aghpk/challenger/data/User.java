@@ -20,7 +20,7 @@ import java.util.List;
 @AttributeOverrides({
         @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
-        @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
+       @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
 public class User extends Audit implements Serializable {
     @Id
@@ -53,10 +53,12 @@ public class User extends Audit implements Serializable {
     @Column(name = "POINTS")
     private Long points;
 
-    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private List<UserRole> roles;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name = "CREATOR_ID", referencedColumnName = "USER_ID")
     private List<Challenge> challenges;
 
     @ManyToMany(cascade = CascadeType.ALL)
