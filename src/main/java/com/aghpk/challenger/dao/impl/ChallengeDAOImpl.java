@@ -17,7 +17,6 @@ public class ChallengeDAOImpl {
     private EntityManager entityManager;
 
     public Challenge createChallenge(Challenge challenge) {
-        challenge.setAuditCD(new Date());
         entityManager.persist(challenge);
         return challenge;
     }

@@ -6,6 +6,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -53,4 +54,14 @@ public class Challenge extends Audit{
 
     @ManyToMany(mappedBy = "challengesUsers")
     private List<User> users;
+
+    @PrePersist
+    public void onPrePersist() {
+        setAuditCD(new Date());
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        setAuditMD(new Date());
+    }
 }

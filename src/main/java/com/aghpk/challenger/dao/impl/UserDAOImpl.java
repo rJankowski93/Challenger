@@ -24,7 +24,6 @@ public class UserDAOImpl {
     PasswordEncoder passwordEncoder;
 
     public User createUser(User user) throws EntityExistsException{
-            user.setAuditCD(new Date());
             user.setPassword(passwordEncoder.encode(user.getPassword()));
             entityManager.persist(user);
             return user;

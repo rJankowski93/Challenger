@@ -10,6 +10,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.List;
 
 @Getter
@@ -91,6 +92,16 @@ public class User extends Audit implements Serializable {
         this.lastname = jsonRegisterForm.getLastname();
         this.password = jsonRegisterForm.getPassword();
         this.email = jsonRegisterForm.getEmail();
+    }
+
+    @PrePersist
+    public void onPrePersist() {
+        setAuditCD(new Date());
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        setAuditMD(new Date());
     }
 
     public String getLogin() {
