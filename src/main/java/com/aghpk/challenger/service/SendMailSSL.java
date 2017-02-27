@@ -34,7 +34,7 @@ public class SendMailSSL {
         message.setFrom(new InternetAddress("challenger.application.aghpk@gmail.com"));
         message.setRecipients(Message.RecipientType.TO, InternetAddress.parse(user.getEmail()));
         message.setSubject("Confirmation registration");
-        String textMessage = "Dear " + user.getFirstname() + " if you want active your account, you have to click this link:" + "\n\n";
+        String textMessage = "Dear " + user.getFirstName() + " if you want active your account, you have to click this link:" + "\n\n";
         textMessage = textMessage + confirmationLink + user.getId().toString() + "&login=" + user.getLogin();
         message.setText(textMessage);
         Transport.send(message);

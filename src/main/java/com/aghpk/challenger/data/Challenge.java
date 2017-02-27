@@ -1,9 +1,9 @@
 package com.aghpk.challenger.data;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -48,10 +48,12 @@ public class Challenge extends Audit{
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
     private Long idCreator;
 
+    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="CREATOR_ID")
     private User user;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "challengesUsers")
     private List<User> users;
 

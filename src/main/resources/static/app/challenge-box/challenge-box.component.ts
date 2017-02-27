@@ -9,7 +9,5 @@ import {Component} from "@angular/core";
 export class ChallengeBoxComponent {
 
     constructor() {
-
-        console.log("challenge box constructor");
     }
 }

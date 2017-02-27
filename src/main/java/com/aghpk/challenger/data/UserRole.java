@@ -1,8 +1,8 @@
 package com.aghpk.challenger.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 
@@ -28,9 +28,10 @@ public class UserRole {
     @Column(name = "USER_ID", insertable = false, updatable = false)
     private Long userId;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "USER_ID")
-//    private User user;
+    @JsonIgnore
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "USER_ID")
+    private User user;
 
     public UserRole() {
     }

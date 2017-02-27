@@ -1,8 +1,8 @@
 package com.aghpk.challenger.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -26,6 +26,7 @@ public class Group extends Audit{
     @Column(name = "NAME")
     private String name;
 
+    @JsonIgnore
     @ManyToMany(mappedBy = "groups", cascade = CascadeType.ALL)
     private List<User> users;
 

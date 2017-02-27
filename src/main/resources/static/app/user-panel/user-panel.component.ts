@@ -26,6 +26,7 @@ export class UserPanelComponent implements OnInit{
                 },
                 error=>{
                     console.log("Cannot read User Details");
+                    console.log(error);
                 }
             );
     }

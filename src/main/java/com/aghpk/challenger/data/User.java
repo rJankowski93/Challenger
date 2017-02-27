@@ -3,11 +3,10 @@ package com.aghpk.challenger.data;
 
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.Views;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.Setter;
-import lombok.ToString;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -16,7 +15,6 @@ import java.util.List;
 
 @Getter
 @Setter
-@NoArgsConstructor
 @Entity
 @Table(name = "USER")
 @AttributeOverrides({
@@ -36,7 +34,7 @@ public class User extends Audit implements Serializable {
 
     @Column(name = "FIRSTNAME")
     @JsonView(Views.Public.class)
-    private String firstame;
+    private String firstName;
 
     @Column(name = "LASTNAME")
     @JsonView(Views.Public.class)
@@ -70,6 +68,7 @@ public class User extends Audit implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "FRIEND_ID", referencedColumnName = "USER_ID"))
     private List<User> friends;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "CHALLENGES_USERS",
@@ -77,6 +76,7 @@ public class User extends Audit implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID"))
     private List<Challenge> challengesUsers;
 
+    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "USER_GROUPS_MEMBERSHIP",
@@ -89,7 +89,7 @@ public class User extends Audit implements Serializable {
 
     public User(JsonRegisterForm jsonRegisterForm) {
         this.login = jsonRegisterForm.getLogin();
-        this.firstname = jsonRegisterForm.getFirstname();
+        this.firstName = jsonRegisterForm.getFirstname();
         this.lastname = jsonRegisterForm.getLastname();
         this.password = jsonRegisterForm.getPassword();
         this.email = jsonRegisterForm.getEmail();
@@ -129,12 +129,12 @@ public class User extends Audit implements Serializable {
         this.id = id;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setFirstName(String firstname) {
+        this.firstName = firstname;
     }
 
     public String getLastname() {

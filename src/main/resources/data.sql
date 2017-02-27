@@ -34,10 +34,10 @@ insert into USER (user_id, firstname, lastname, login, password, email, enabled,
 
 -- FRIENDSHIP RELATIONS USER WITH USER
 
-insert into FRIENDSHIP (user_id, friend_id) values (2, 5);
-insert into FRIENDSHIP (user_id, friend_id) values (2, 6);
-insert into FRIENDSHIP (user_id, friend_id) values (2, 7);
-insert into FRIENDSHIP (user_id, friend_id) values (2, 8);
+insert into FRIENDSHIP (user_id, friend_id) values (1, 5);
+insert into FRIENDSHIP (user_id, friend_id) values (1, 6);
+insert into FRIENDSHIP (user_id, friend_id) values (1, 7);
+insert into FRIENDSHIP (user_id, friend_id) values (1, 8);
 insert into FRIENDSHIP (user_id, friend_id) values (2, 9);
 
 insert into FRIENDSHIP (user_id, friend_id) values (4, 10);
