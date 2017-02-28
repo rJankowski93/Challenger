@@ -29,6 +29,17 @@ public class UsersResources {
         this.customUserDetailsService = customUserDetailsService;
     }
 
+    @RequestMapping(value = "/authentication")
+    public boolean getAuthentication() {
+        Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+        return (authentication!=null && !(authentication instanceof  AnonymousAuthenticationToken));
+    }
+
+    @RequestMapping(value="/logged/details", produces = "application/json")
+    public User getLoggedUserDetails(final Authentication authentication){
+        return userDAO.findUserByLogin(authentication.getName());
+    }
+
     @RequestMapping("/user")
     public String getUser() {
         User user = userDAO.findUserByLogin("user");
@@ -56,12 +67,6 @@ public class UsersResources {
     public String getUsers() {
         System.out.println(userDAO.getAll().size());
         return "all users";
-    }
-
-    @RequestMapping(value = "/authentication")
-    public boolean getAuthentication() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return (authentication != null && !(authentication instanceof AnonymousAuthenticationToken));
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
