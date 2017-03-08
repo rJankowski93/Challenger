@@ -1,6 +1,8 @@
 package com.aghpk.challenger.data;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -11,12 +13,16 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "GROUP")
+@Table(name = "FRIENDS_GROUP")
 @AttributeOverrides({
         @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        scope = Group.class
+)
 public class Group extends Audit{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -26,8 +32,7 @@ public class Group extends Audit{
     @Column(name = "NAME")
     private String name;
 
-    @JsonIgnore
-    @ManyToMany(mappedBy = "groups", cascade = CascadeType.ALL)
+    @ManyToMany(mappedBy = "groups")
     private List<User> users;
 
     @PrePersist

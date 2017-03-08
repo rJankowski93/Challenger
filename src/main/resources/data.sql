@@ -95,12 +95,13 @@ insert into USER_ROLE (role_id, user_id, role) values (29, 29, 'ROLE_USER');
 insert into USER_ROLE (role_id, user_id, role) values (30, 30, 'ROLE_USER');
 
 -- GROUPS
-insert into "GROUP" (group_id, name) values (1, 'ADMINS');
-insert into "GROUP" (group_id, name) values (2, 'USERS');
-insert into "GROUP" (group_id, name) values (3, 'AGHPKTEAM');
-insert into "GROUP" (group_id, name) values (4, 'HOMOSEXUALS');
-insert into "GROUP" (group_id, name) values (5, 'NIGGAS');
-insert into "GROUP" (group_id, name) values (6, 'WIKINGS');
+insert into FRIENDS_GROUP (group_id, name) values (1, 'ADMINS');
+insert into FRIENDS_GROUP (group_id, name) values (2, 'USERS');
+insert into FRIENDS_GROUP (group_id, name) values (3, 'AGHPKTEAM');
+insert into FRIENDS_GROUP (group_id, name) values (4, 'HOMOSEXUALS');
+insert into FRIENDS_GROUP (group_id, name) values (5, 'NIGGAS');
+insert into FRIENDS_GROUP (group_id, name) values (6, 'WIKINGS');
+
 
 -- USER HAS GROUP
 insert into USER_GROUPS_MEMBERSHIP (user_id, group_id) values (1, 1);

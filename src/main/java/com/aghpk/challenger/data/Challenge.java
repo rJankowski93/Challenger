@@ -1,7 +1,8 @@
 package com.aghpk.challenger.data;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -18,7 +19,12 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
-public class Challenge extends Audit{
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        scope = Challenge.class
+)
+public class Challenge extends Audit {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_ID")
@@ -48,12 +54,10 @@ public class Challenge extends Audit{
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
     private Long idCreator;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="CREATOR_ID")
+    @JoinColumn(name = "CREATOR_ID")
     private User user;
 
-    @JsonIgnore
     @ManyToMany(mappedBy = "challengesUsers")
     private List<User> users;
 

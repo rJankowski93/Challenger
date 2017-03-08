@@ -1,6 +1,8 @@
 package com.aghpk.challenger.data;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -10,11 +12,15 @@ import javax.persistence.*;
 @Setter
 @Entity
 @Table(name = "USER_ROLE")
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        scope = UserRole.class
+)
 public class UserRole {
 
     public interface ROLE {
-        public static final String USER = "ROLE_USER";
-        public static final String ADMIN = "ROLE_ADMIN";
+        String USER = "ROLE_USER";
+        String ADMIN = "ROLE_ADMIN";
     }
 
     @Id
@@ -28,7 +34,6 @@ public class UserRole {
     @Column(name = "USER_ID", insertable = false, updatable = false)
     private Long userId;
 
-    @JsonIgnore
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
     private User user;
@@ -36,11 +41,9 @@ public class UserRole {
     public UserRole() {
     }
 
-
     public UserRole(String role) {
         this.role = role;
     }
-
 
     public Long getId() {
         return id;

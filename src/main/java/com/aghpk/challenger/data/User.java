@@ -3,8 +3,9 @@ package com.aghpk.challenger.data;
 
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.Views;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonView;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -22,6 +23,10 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
+@JsonIdentityInfo(
+        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+        scope = User.class
+)
 public class User extends Audit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -68,7 +73,6 @@ public class User extends Audit implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "FRIEND_ID", referencedColumnName = "USER_ID"))
     private List<User> friends;
 
-    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "CHALLENGES_USERS",
@@ -76,7 +80,6 @@ public class User extends Audit implements Serializable {
             inverseJoinColumns = @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID"))
     private List<Challenge> challengesUsers;
 
-    @JsonIgnore
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "USER_GROUPS_MEMBERSHIP",
