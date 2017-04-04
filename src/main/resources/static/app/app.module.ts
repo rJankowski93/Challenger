@@ -9,6 +9,7 @@ import {CommonModule} from "@angular/common";
 import {SharedModule} from "./shared/shared.module";
 import {HttpModule} from "@angular/http";
 import {RegistrationPanelModule} from "./registration-panel/registration-panel.module";
+import {FileUploadPanelModule} from "./file-upload-panel/file-upload-panel.module";
 
 
 
@@ -22,7 +23,8 @@ import {RegistrationPanelModule} from "./registration-panel/registration-panel.m
         UserPanelModule,
         GridPanelModule,
         SharedModule,
-        ChallengeBoxModule
+        ChallengeBoxModule,
+        FileUploadPanelModule
     ],
 
     declarations: [

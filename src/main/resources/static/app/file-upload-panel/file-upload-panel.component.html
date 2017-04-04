@@ -1,7 +1,14 @@
 <form enctype="multipart/form-data" action="/api/users/uploadImage" method="post">
-    <input type="file" (change)="onFileChange($event)" name="file" placeholder="Upload image..." />
-    <img [src]="avatar" id="avatar-id" >
-    <button id="btnSubmit" class="btn waves-effect waves-light col s12">TEST</button>
+    <div class="row">
+        <input id="chooseFile" type="file" (change)="onFileChange($event)" name="file" placeholder="Upload image..."/>
+        <div id="img-container" class="col s12">
+        <img [src]="avatar" id="avatar-id" >
+        </div>
+        <div class="col s12">
+            <button id="btnSubmit" class="btn waves-effect waves-light col s2 offset-s5">Confirm</button>
+        </div>
+    </div>
 </form>
+
 
 

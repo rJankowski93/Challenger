@@ -19,8 +19,6 @@ export class FileUploadPanelComponent extends OnInit{
         reader.onload = (e: any) => {
             this.avatar = e.target.result;
         }
-        $("#avatar-id").height(150);
-        $("#avatar-id").width(150);
         reader.readAsDataURL(fileInput.target.files[0]);
     }
 }
