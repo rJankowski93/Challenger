@@ -59,4 +59,8 @@ public class CustomUserDetails implements UserDetails {
         //TODO implement this method
         return true;
     }
+
+    public User getUser() {
+        return user;
+    }
 }

@@ -1,0 +1,7 @@
+<form enctype="multipart/form-data" action="/api/users/uploadImage" method="post">
+    <input type="file" (change)="onFileChange($event)" name="file" placeholder="Upload image..." />
+    <img [src]="avatar" id="avatar-id" >
+    <button id="btnSubmit" class="btn waves-effect waves-light col s12">TEST</button>
+</form>
+
+
