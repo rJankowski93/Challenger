@@ -1,8 +1,6 @@
 package com.aghpk.challenger.dao.impl;
 
 import com.aghpk.challenger.data.User;
-import com.aghpk.challenger.exeption.ApplicationException;
-import com.aghpk.challenger.exeption.ErrorType;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
@@ -15,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 
 @Transactional
-public class UserDAOImpl {
+public class UserJpaRepositoryImpl {
 
     @PersistenceContext
     private EntityManager entityManager;

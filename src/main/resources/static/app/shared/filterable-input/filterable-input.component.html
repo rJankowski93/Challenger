@@ -1,0 +1,21 @@
+<div *ngIf="!isLoading" id="filterable">
+    <form>
+        <div class="input-group">
+            <input type="text" class="form-control" (click)="toggleVisibility()"
+                   (keyup)="filter=$event.target.value; getSearchResults();" placeholder="Search challenge">
+            <div class="input-group-btn">
+                <button class="btn btn-default"  (click)="toggleVisibility();">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-xs-10 col-md-8 filtered-list" *ngIf="isVisible" >
+            <ul>
+                <li *ngFor="let element of searchPage.content">
+                    <span> {{element.name}}</span>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>

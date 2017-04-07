@@ -1,6 +1,7 @@
 import {NgModule} from "@angular/core";
 import {UserPanelComponent} from "./user-panel.component";
 import {CommonModule} from "@angular/common";
+import {FilterableInputComponent} from "../shared/filterable-input/filterable-input.component";
 
 @NgModule({
     imports: [
@@ -11,8 +12,9 @@ import {CommonModule} from "@angular/common";
     ],
 
     declarations: [
-        UserPanelComponent
-    ]
+        UserPanelComponent,
+        FilterableInputComponent
+    ],
 })
 export class UserPanelModule {
 }

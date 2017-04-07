@@ -1,17 +1,20 @@
-import {Component, OnInit, OnChanges, Input} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user.model";
+import {FilterableInputComponent} from "../shared/filterable-input/filterable-input.component";
 
 @Component({
     moduleId: module.id,
     selector: 'user-panel',
     templateUrl: './user-panel.component.html',
-    styleUrls: ['user-panel.component.css']
+    styleUrls: ['user-panel.component.css'],
+    providers: [FilterableInputComponent]
 })
 export class UserPanelComponent implements OnInit{
 
     private userDetails: User;
     private isLoading:boolean;
+    private challengesSearch;
 
     constructor(private userService: UserService) {
     }
@@ -25,8 +28,7 @@ export class UserPanelComponent implements OnInit{
                     this.isLoading=false;
                 },
                 error=>{
-                    console.log("Cannot read User Details");
-                    console.log(error);
+                    console.log("Cannot read User Details", error);
                 }
             );
     }

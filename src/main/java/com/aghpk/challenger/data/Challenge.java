@@ -4,6 +4,7 @@ package com.aghpk.challenger.data;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -18,15 +19,28 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
+@Document(indexName = "challenge", type = "challenge" , shards = 1)
 public class Challenge extends Audit{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_ID")
     private Long id;
 
+//    @Field(
+//            type = FieldType.String,
+//            index = FieldIndex.analyzed,
+//            searchAnalyzer = "standard",
+//            store = true
+//    )
     @Column(name = "NAME")
     private String name;
 
+//    @Field(
+//            type = FieldType.String,
+//            index = FieldIndex.analyzed,
+//            searchAnalyzer = "standard",
+//            store = true
+//    )
     @Column(name = "DESCRIPTION")
     private String description;
 

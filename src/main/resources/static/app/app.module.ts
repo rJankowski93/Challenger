@@ -10,8 +10,6 @@ import {SharedModule} from "./shared/shared.module";
 import {HttpModule} from "@angular/http";
 import {RegistrationPanelModule} from "./registration-panel/registration-panel.module";
 
-
-
 @NgModule({
     imports: [
         BrowserModule,

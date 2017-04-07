@@ -1,20 +1,12 @@
 package com.aghpk.challenger.controllers;
 
-import com.aghpk.challenger.dao.UserDAO;
-import com.aghpk.challenger.data.User;
-import com.aghpk.challenger.model.JsonRegisterForm;
-import com.aghpk.challenger.model.JsonResponseBody;
-import com.aghpk.challenger.model.Views;
+import com.aghpk.challenger.dao.UserJpaRepository;
 import com.aghpk.challenger.service.CustomUserDetailsService;
-import com.aghpk.challenger.service.SendMailSSL;
-import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import javax.mail.MessagingException;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 @Controller
 public class BasicController {
@@ -23,7 +15,7 @@ public class BasicController {
     CustomUserDetailsService customUserDetailsService;
 
     @Autowired
-    UserDAO userDAO;
+    UserJpaRepository userJpaRepository;
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String home(@RequestParam(value = "error", required = false) String error,
