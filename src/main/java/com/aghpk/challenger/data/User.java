@@ -6,7 +6,11 @@ import com.aghpk.challenger.model.Views;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -15,6 +19,7 @@ import java.util.List;
 
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "USER")
 @AttributeOverrides({
@@ -22,6 +27,7 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
+@Document(indexName = "user", type = "user" , shards = 1)
 public class User extends Audit implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,10 +63,12 @@ public class User extends Audit implements Serializable {
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     private List<UserRole> roles;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "CREATOR_ID", referencedColumnName = "USER_ID")
     private List<Challenge> challenges;
 
+    @LazyCollection(LazyCollectionOption.FALSE)
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(
             name = "FRIENDSHIP",
@@ -83,9 +91,6 @@ public class User extends Audit implements Serializable {
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID"))
     private List<Group> groups;
-
-    public User() {
-    }
 
     public User(JsonRegisterForm jsonRegisterForm) {
         this.login = jsonRegisterForm.getLogin();

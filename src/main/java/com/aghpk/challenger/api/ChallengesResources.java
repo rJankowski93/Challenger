@@ -1,7 +1,6 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.dao.ChallengeDAO;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.aghpk.challenger.dao.ChallengeRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -9,8 +8,11 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/challenges")
 public class ChallengesResources {
 
-    @Autowired
-    ChallengeDAO challengeDAO;
+    private final ChallengeRepository challengeRepository;
+
+    public ChallengesResources(ChallengeRepository challengeRepository) {
+        this.challengeRepository = challengeRepository;
+    }
 
     @RequestMapping("/list")
     public String getChallenges() {

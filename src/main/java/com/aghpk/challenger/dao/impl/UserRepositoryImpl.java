@@ -1,7 +1,6 @@
 package com.aghpk.challenger.dao.impl;
 
 import com.aghpk.challenger.data.User;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityExistsException;
@@ -13,13 +12,16 @@ import java.util.Date;
 import java.util.List;
 
 @Transactional
-public class UserJpaRepositoryImpl {
+public class UserRepositoryImpl {
 
     @PersistenceContext
     private EntityManager entityManager;
 
-    @Autowired
-    PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
+
+    public UserRepositoryImpl(PasswordEncoder passwordEncoder) {
+        this.passwordEncoder = passwordEncoder;
+    }
 
     public User createUser(User user) throws EntityExistsException{
             user.setPassword(passwordEncoder.encode(user.getPassword()));

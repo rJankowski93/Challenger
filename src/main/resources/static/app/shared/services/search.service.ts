@@ -17,8 +17,17 @@ export class SearchService{
         let searchParams=new URLSearchParams();
         searchParams.set(this.FILTER_PARAM, filter);
 
-        return this.http.get(`${this.searchUsersUrl}/challenge`, { search: searchParams })
+        return this.http.get(`${this.searchUsersUrl}/shortlist/challenges`, { search: searchParams })
             .map(res => res.json(),
             error=> console.log(error));
+    }
+
+    searchUser(filter:string): Observable<User>{
+        let searchParams=new URLSearchParams();
+        searchParams.set(this.FILTER_PARAM, filter);
+
+        return this.http.get(`${this.searchUsersUrl}/shortlist/users`, { search: searchParams })
+            .map(res => res.json(),
+                error=> console.log(error));
     }
 }

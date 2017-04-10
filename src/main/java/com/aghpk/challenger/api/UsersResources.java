@@ -1,6 +1,6 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.dao.UserJpaRepository;
+import com.aghpk.challenger.dao.UserRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.JsonResponseBody;
@@ -20,12 +20,12 @@ import java.util.Arrays;
 @RequestMapping("/api/users")
 public class UsersResources {
 
-    private final UserJpaRepository userJpaRepository;
+    private final UserRepository userRepository;
     private final CustomUserDetailsService customUserDetailsService;
 
     @Autowired
-    public UsersResources(UserJpaRepository userJpaRepository, CustomUserDetailsService customUserDetailsService) {
-        this.userJpaRepository = userJpaRepository;
+    public UsersResources(UserRepository userRepository, CustomUserDetailsService customUserDetailsService) {
+        this.userRepository = userRepository;
         this.customUserDetailsService = customUserDetailsService;
     }
 
@@ -37,12 +37,12 @@ public class UsersResources {
 
     @RequestMapping(value="/logged/details", produces = "application/json")
     public User getLoggedUserDetails(final Authentication authentication){
-        return userJpaRepository.findUserByLogin(authentication.getName());
+        return userRepository.findUserByLogin(authentication.getName());
     }
 
     @RequestMapping("/user")
     public String getUser() {
-        User user = userJpaRepository.findUserByLogin("user");
+        User user = userRepository.findUserByLogin("user");
         return user.toString();
     }
 
@@ -51,21 +51,21 @@ public class UsersResources {
         User user = new User();
         user.setLogin("test");
         user.setPassword("test");
-        userJpaRepository.createUser(user);
+        userRepository.createUser(user);
         return "Create user";
     }
 
     @RequestMapping("/remove")
     public String removeUser() {
-        User user = userJpaRepository.findUserById(5L);
-        userJpaRepository.removeUser(user);
-        userJpaRepository.removeUser(6L);
+        User user = userRepository.findUserById(5L);
+        userRepository.removeUser(user);
+        userRepository.removeUser(6L);
         return "all users";
     }
 
     @RequestMapping("/list")
     public String getUsers() {
-        System.out.println(userJpaRepository.getAll().size());
+        System.out.println(userRepository.getAll().size());
         return "all users";
     }
 

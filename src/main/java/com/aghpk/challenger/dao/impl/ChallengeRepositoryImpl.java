@@ -1,7 +1,6 @@
 package com.aghpk.challenger.dao.impl;
 
 import com.aghpk.challenger.data.Challenge;
-import com.aghpk.challenger.data.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -11,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Transactional
-public class ChallengeDAOImpl {
+public class ChallengeRepositoryImpl {
 
     @PersistenceContext
     private EntityManager entityManager;

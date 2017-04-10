@@ -1,0 +1,26 @@
+@import "../../../../../sass/variables";
+
+.filtered-list{
+  z-index: 999;
+  position: absolute;
+  background-color: $login-page-color;
+  padding: 0;
+
+  ul li{
+    border-bottom: 3px solid $borders-color;
+    padding-top:10px;
+    padding-bottom: 5px;
+    border-left: 8px solid $login-page-color; //placeholder for hover border
+    min-width: 25px;
+
+    &:hover{
+      border-left: 8px solid $borders-color;
+      background-color: $accessories-color;
+      cursor: pointer;
+    }
+
+    span{
+      padding-left: 15px;
+    }
+  }
+}
