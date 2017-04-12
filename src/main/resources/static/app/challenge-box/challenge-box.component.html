@@ -1,5 +1,5 @@
 <div *ngIf="!isLoading">
-<div *ngFor="let challengeDetails of challengeList" id="challenge-box" class="col-md-6">
+<div *ngFor="let challengeDetails of challengeList" id="challenge-box" class="col-md-12">
 
     <div id="chalenge-name">
         <p>
@@ -14,10 +14,6 @@
     </div>
 
     <div id="challenge-info">
-        <!--<div id="challenge">-->
-            <!--<p>{{challengeDetails}}</p>-->
-        <!--</div>-->
-
         <div id="challenge-status">
             <p>Challenge status:</p>
             <div id="challenge-status-data">{{challengeDetails.status}}</div>

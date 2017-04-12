@@ -5,25 +5,21 @@ import 'rxjs/add/operator/map';
 import {Challenge} from "../models/challenges.model";
 
 @Injectable()
-export class ChallengesService{
+export class ChallengesService {
 
     private challengeUrl = "api/challenges";
 
-    constructor(private http:Http){
+    constructor(private http: Http) {
     }
 
-    getUserChallenges(): Observable<Challenge>{
+    getUserChallenges(): Observable<Challenge> {
         console.log("debug -> tuu");
-        // console.log(this.http.get(`${this.challengeUrl}/challenge`).map(res => res.json()));
         return this.http.get(`${this.challengeUrl}/challenge`).map(res => res.json(),
-            error=> console.log(error));
+            error => console.log(error));
     }
 
-    getAllChallenges(): Observable <Array<Challenge>>{
-        console.log("Przyjete w angularze");
-        console.log(this.http.get(`${this.challengeUrl}/list`).map(res => res.json()));
-        console.log("Po przyjeciu");
+    getAllChallenges(): Observable <Array<Challenge>> {
         return this.http.get(`${this.challengeUrl}/list`).map(res => res.json(),
-            error=> console.log(error));
+            error => console.log(error));
     }
 }

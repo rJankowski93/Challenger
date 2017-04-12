@@ -5,6 +5,8 @@ import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -54,11 +56,15 @@ public class Challenge extends Audit {
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
     private Long idCreator;
 
+
 //    @ManyToOne(fetch = FetchType.EAGER)
 //    @JoinColumn(name = "CREATOR_ID")
+//  // @LazyCollection(LazyCollectionOption.FALSE)
 //    private User user;
 //
+//
 //    @ManyToMany(mappedBy = "challengesUsers")
+//    //@LazyCollection(LazyCollectionOption.FALSE)
 //    private List<User> users;
 
     @PrePersist
