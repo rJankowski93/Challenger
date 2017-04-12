@@ -13,6 +13,8 @@ export class UserService{
     }
 
     getLoggedInUserData(): Observable<User>{
+        console.log("od usera");
+        console.log(this.http.get(`${this.userUrl}/logged/details`).map(res => res.json()));
         return this.http.get(`${this.userUrl}/logged/details`).map(res => res.json(),
                 error=> console.log(error));
     }

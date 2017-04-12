@@ -54,12 +54,12 @@ public class Challenge extends Audit {
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
     private Long idCreator;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "CREATOR_ID")
-    private User user;
-
-    @ManyToMany(mappedBy = "challengesUsers")
-    private List<User> users;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    @JoinColumn(name = "CREATOR_ID")
+//    private User user;
+//
+//    @ManyToMany(mappedBy = "challengesUsers")
+//    private List<User> users;
 
     @PrePersist
     public void onPrePersist() {

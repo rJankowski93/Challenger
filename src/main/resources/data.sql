@@ -156,6 +156,7 @@ insert into CHALLENGES_USERS (challenge_id, user_id) values (1, 4);
 insert into CHALLENGES_USERS (challenge_id, user_id) values (1, 5);
 
 insert into CHALLENGES_USERS (challenge_id, user_id) values (2, 5);
+insert into CHALLENGES_USERS (challenge_id, user_id) values (2, 1);
 insert into CHALLENGES_USERS (challenge_id, user_id) values (2, 6);
 insert into CHALLENGES_USERS (challenge_id, user_id) values (2, 7);
 insert into CHALLENGES_USERS (challenge_id, user_id) values (2, 8);

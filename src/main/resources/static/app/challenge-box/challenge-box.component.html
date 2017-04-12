@@ -1,35 +1,49 @@
-<div id="challenge-box" class="col-md-6">
+<div *ngIf="!isLoading">
+<div *ngFor="let challengeDetails of challengeList" id="challenge-box" class="col-md-6">
 
-    <div id="chalenge-name">Name from Database</div>
-    <div id="challenge-description">Lng description about challenge. Things and tghing. I though about drop-down description but we will see.</div>
+    <div id="chalenge-name">
+        <p>
+            {{challengeDetails.name}}
+        </p>
+    </div>
+
+    <div id="challenge-description">
+        <p>
+            {{challengeDetails.description}}
+        </p>
+    </div>
 
     <div id="challenge-info">
+        <!--<div id="challenge">-->
+            <!--<p>{{challengeDetails}}</p>-->
+        <!--</div>-->
 
         <div id="challenge-status">
             <p>Challenge status:</p>
-            <div id="challenge-status-data">NEW-CHALLENGE!</div>
+            <div id="challenge-status-data">{{challengeDetails.status}}</div>
         </div>
 
         <div id="challenge-points">
             <p>Points value:</p>
-            <div id ="challenge-points-data">150</div>
+            <div id="challenge-points-data">{{challengeDetails.points}}</div>
         </div>
 
         <div id="challenge-reward">
             <p>Reward type:</p>
-            <div id="challenge-reward-data">POINTS</div>
+            <div id="challenge-reward-data">{{challengeDetails.rewardType}}</div>
         </div>
 
         <div id="rewart-quantity">
             <p>Reward quantity:</p>
-            <div id="reward-quantity-data">CHUJ</div>
+            <div id="reward-quantity-data">{{challengeDetails.rewardQuantity}}</div>
         </div>
     </div>
 
     <div id="challenge-options">
         <div id="challenge-options-wrapper">
-            <input class="btn btn-primary" id ="challenge-accept-button" type="button" value ="Accept">
-            <input class="btn btn-primary" id ="challenge-decline-button" type="button" value ="Decline">
+            <input class="btn btn-primary" id="challenge-accept-button" type="button" value="Accept">
+            <input class="btn btn-primary" id="challenge-decline-button" type="button" value="Decline">
         </div>
     </div>
+</div>
 </div>

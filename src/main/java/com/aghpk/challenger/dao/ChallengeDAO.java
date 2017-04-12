@@ -20,7 +20,11 @@ public interface ChallengeDAO extends JpaRepository<Challenge, Long> {
 
     List<Challenge> getAll();
 
+    List<Challenge> getUserChallenges();
+
     List<Challenge> findChallengesByName(String name);
+
+    Challenge getSingleChallenge(Long id);
 
     long count();
 }

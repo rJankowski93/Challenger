@@ -1,8 +1,6 @@
 package com.aghpk.challenger.dao.impl;
 
 import com.aghpk.challenger.data.Challenge;
-import com.aghpk.challenger.data.User;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -37,4 +35,11 @@ public class ChallengeDAOImpl {
         TypedQuery<Challenge> query = entityManager.createQuery(queryTxt, Challenge.class);
         return query.getResultList();
     }
+
+    public Challenge getSingleChallenge(Long id){
+        Challenge challenge = entityManager.find(Challenge.class, id);
+        System.out.println("weszlo" + challenge);
+        return challenge;
+    }
+
 }
