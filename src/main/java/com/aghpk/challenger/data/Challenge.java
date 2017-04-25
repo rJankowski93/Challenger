@@ -1,12 +1,9 @@
 package com.aghpk.challenger.data;
 
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -21,10 +18,10 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.IntSequenceGenerator.class,
-        scope = Challenge.class
-)
+//@JsonIdentityInfo(
+//        generator = ObjectIdGenerators.IntSequenceGenerator.class,
+//        scope = Challenge.class
+//)
 public class Challenge extends Audit {
 
     @Id
@@ -57,15 +54,15 @@ public class Challenge extends Audit {
     private Long idCreator;
 
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "CREATOR_ID")
-//  // @LazyCollection(LazyCollectionOption.FALSE)
-//    private User user;
-//
-//
-//    @ManyToMany(mappedBy = "challengesUsers")
-//    //@LazyCollection(LazyCollectionOption.FALSE)
-//    private List<User> users;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CREATOR_ID")
+    @JsonManagedReference
+    private User user;
+
+
+    @ManyToMany(mappedBy = "challengesUsers")
+    @JsonManagedReference
+    private List<User> users;
 
     @PrePersist
     public void onPrePersist() {
@@ -76,4 +73,5 @@ public class Challenge extends Audit {
     public void onPreUpdate() {
         setAuditMD(new Date());
     }
+
 }

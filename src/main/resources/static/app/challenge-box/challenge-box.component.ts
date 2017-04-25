@@ -19,13 +19,9 @@ export class ChallengeBoxComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        console.log("wchodzi tu");
         this.challengesService.getAllChallenges()
             .subscribe(challenge => {
-                    console.log("challenge content chuuu")
                     this.challengeList = challenge;
-                    console.log(challenge);
-                    console.log(this.challengeList);
                     this.isLoading = false;
                 },
                 error => {
