@@ -1,6 +1,8 @@
 package com.aghpk.challenger.data;
 
 
+import com.aghpk.challenger.data.interfaces.Scoreable;
+import com.aghpk.challenger.data.point.Point;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -8,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -18,11 +21,7 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
-//@JsonIdentityInfo(
-//        generator = ObjectIdGenerators.IntSequenceGenerator.class,
-//        scope = Challenge.class
-//)
-public class Challenge extends Audit {
+public class Challenge extends Audit implements Scoreable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,9 +39,6 @@ public class Challenge extends Audit {
 
     @Column(name = "CATEGORY")
     private String catgory;
-
-    @Column(name = "POINTS")
-    private Long points;
 
     @Column(name = "REWARD_TYPE")
     private String rewardType;
@@ -64,6 +60,12 @@ public class Challenge extends Audit {
     @JsonManagedReference
     private List<User> users;
 
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
+    @JsonManagedReference
+    private Set<Point> points;
+
     @PrePersist
     public void onPrePersist() {
         setAuditCD(new Date());
@@ -74,4 +76,8 @@ public class Challenge extends Audit {
         setAuditMD(new Date());
     }
 
+    @Override
+    public Set<Point> getPoints() {
+        return points;
+    }
 }

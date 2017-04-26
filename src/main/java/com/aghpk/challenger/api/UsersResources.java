@@ -15,7 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -93,8 +92,8 @@ public class UsersResources {
     }
 
     @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
-    public String uploadImage( @RequestParam("file") MultipartFile file, final Authentication authentication) {
-        Long userId = ((CustomUserDetails)authentication.getPrincipal()).getUser().getId();
+    public String uploadImage(@RequestParam("file") MultipartFile file, final Authentication authentication) {
+        Long userId = ((CustomUserDetails) authentication.getPrincipal()).getUser().getId();
         uploadFileService.uploadImage(userId, file);
         return "SUCCESS UPLOAD YOUR AVATAR";
     }

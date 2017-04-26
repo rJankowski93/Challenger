@@ -8,8 +8,7 @@ create table USER (
   LASTNAME varchar(256),
   PASSWORD varchar(256),
   EMAIL varchar(256),
-  ENABLED boolean,
-  POINTS BIGINT(19)
+  ENABLED boolean
 );
 
 create table FRIENDSHIP (
@@ -38,7 +37,6 @@ create table CHALLENGE (
   DESCRIPTION varchar(255),
   STATUS varchar(255),
   CATEGORY varchar(255),
-  POINTS BIGINT(19),
   REWARD_TYPE varchar(255),
   REWARD_QUANTITY varchar(255),
   CREATOR_ID BIGINT(19)
@@ -58,5 +56,13 @@ create table CHALLENGES_USERS (
 );
 
 
-
+create table POINT (
+  POINT_ID BIGINT(19) auto_increment,
+  QUANTITY BIGINT(19),
+  POINT_TYPE varchar(45),
+  USER_ID BIGINT(19),
+  CHALLENGE_ID BIGINT(19),
+  FOREIGN KEY (USER_ID) REFERENCES USER(USER_ID),
+  FOREIGN KEY (CHALLENGE_ID) REFERENCES CHALLENGE(CHALLENGE_ID)
+);
 

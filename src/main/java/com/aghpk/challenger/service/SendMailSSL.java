@@ -2,14 +2,14 @@ package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.data.User;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.mail.*;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 import java.util.Properties;
 
-@Component
+@Service
 @ConfigurationProperties(prefix = "mail")
 public class SendMailSSL {
 
