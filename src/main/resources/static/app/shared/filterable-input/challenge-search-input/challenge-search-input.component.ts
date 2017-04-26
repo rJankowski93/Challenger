@@ -43,7 +43,7 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
                     this.isLoading=false;
                 },
                 error=>{
-                    console.log("Cannot read Challange", error);
+                    console.error("Cannot read Challenge", error);
                 })
     }
 }
