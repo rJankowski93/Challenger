@@ -10,6 +10,6 @@ import javax.persistence.InheritanceType;
 public class BasicPoint extends Point {
 
     public BasicPoint() {
-        setType(PointFactory.POINT_TYPE.BASIC);
+        setType(PointFactory.PointType.BASIC);
     }
 }

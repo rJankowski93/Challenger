@@ -11,6 +11,6 @@ import javax.persistence.InheritanceType;
 public class MainPoint extends Point{
 
     public MainPoint() {
-        setType(PointFactory.POINT_TYPE.MAIN);
+        setType(PointFactory.PointType.MAIN);
     }
 }

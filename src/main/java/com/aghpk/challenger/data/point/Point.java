@@ -13,7 +13,7 @@ import javax.xml.bind.annotation.XmlAccessorType;
 
 @Entity
 @Table(name = "POINT")
-@DiscriminatorColumn(name = "POINT_TYPE")
+@DiscriminatorColumn(name = "PointType")
 @XmlAccessorType(XmlAccessType.FIELD)
 public abstract class Point {
 
@@ -25,7 +25,7 @@ public abstract class Point {
     @Column(name = "QUANTITY")
     private Long quantity;
 
-    @Column(name = "POINT_TYPE", insertable = false, updatable = false)
+    @Column(name = "PointType", insertable = false, updatable = false)
     private String type;
 
     @Column(name = "USER_ID", insertable = false, updatable = false)

@@ -5,7 +5,7 @@ import com.aghpk.challenger.exeption.ErrorType;
 
 public class PointFactory {
 
-    public interface POINT_TYPE {
+    public interface PointType {
         String BASIC = "BASIC";
         String STAR = "STAR";
         String MAIN = "MAIN";
@@ -13,11 +13,11 @@ public class PointFactory {
 
     public static Point createPoint(String pointType) {
         switch (pointType) {
-            case POINT_TYPE.BASIC:
+            case PointType.BASIC:
                 return new BasicPoint();
-            case POINT_TYPE.MAIN:
+            case PointType.MAIN:
                 return new MainPoint();
-            case POINT_TYPE.STAR:
+            case PointType.STAR:
                 return new StarPoint();
         }
         throw new ApplicationException(ErrorType.WRONG_POINT_TYPE, pointType);

@@ -11,7 +11,7 @@ import javax.persistence.InheritanceType;
 public class StarPoint extends Point {
 
     public StarPoint() {
-        setType(PointFactory.POINT_TYPE.STAR);
+        setType(PointFactory.PointType.STAR);
     }
 
 }
