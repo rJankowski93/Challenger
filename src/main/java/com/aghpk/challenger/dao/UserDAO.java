@@ -22,4 +22,6 @@ public interface UserDAO extends JpaRepository<User, Long> {
     void removeUser(Long id);
 
     List<User> getAll();
+
+    List<User> getFriendsByUser(Long id);
 }

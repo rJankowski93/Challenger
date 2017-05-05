@@ -27,7 +27,7 @@ public class Group extends Audit {
     private String name;
 
     @ManyToMany(mappedBy = "groups")
-    @JsonBackReference
+    @JsonBackReference("user-group")
     private List<User> users;
 
     @PrePersist

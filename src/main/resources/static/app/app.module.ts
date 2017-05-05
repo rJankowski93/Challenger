@@ -10,6 +10,7 @@ import {SharedModule} from "./shared/shared.module";
 import {HttpModule} from "@angular/http";
 import {RegistrationPanelModule} from "./registration-panel/registration-panel.module";
 import {FileUploadPanelModule} from "./file-upload-panel/file-upload-panel.module";
+import {FriendBoxModule} from "./friend-box/friend-box.module";
 
 
 
@@ -24,7 +25,8 @@ import {FileUploadPanelModule} from "./file-upload-panel/file-upload-panel.modul
         GridPanelModule,
         SharedModule,
         ChallengeBoxModule,
-        FileUploadPanelModule
+        FileUploadPanelModule,
+        FriendBoxModule
     ],
 
     declarations: [

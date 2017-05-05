@@ -4,13 +4,13 @@ export class Challenge {
     description: string;
     status: string;
     category: string;
-    points: number;
+    // points: number;
     rewardType: string;
     rewartQuantity: string;
     idCreator: number;
 
 
-    constructor(id: number, name: string, description: string, status: string, category: string, points: number,
+    constructor(id: number, name: string, description: string, status: string, category: string, //points: number,
                 rewardType: string, rewardQuantity: string, idcreator: number) {
 
         this.id = id;
@@ -18,7 +18,7 @@ export class Challenge {
         this.description = description;
         this.status = status;
         this.category = category;
-        this.points = points;
+        // this.points = points;
         this.rewardType = rewardType;
         this.rewartQuantity = rewardQuantity;
         this.idCreator = idcreator;

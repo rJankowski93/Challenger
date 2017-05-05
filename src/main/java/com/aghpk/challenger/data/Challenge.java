@@ -3,6 +3,7 @@ package com.aghpk.challenger.data;
 
 import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.data.point.Point;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -52,18 +53,18 @@ public class Challenge extends Audit implements Scoreable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CREATOR_ID")
-    @JsonManagedReference
+    @JsonBackReference("user-creator-challenge")
     private User user;
 
 
     @ManyToMany(mappedBy = "challengesUsers")
-    @JsonManagedReference
+    @JsonBackReference("user-challenge")
     private List<User> users;
 
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
-    @JsonManagedReference
+    @JsonManagedReference("challenge-point")
     private Set<Point> points;
 
     @PrePersist

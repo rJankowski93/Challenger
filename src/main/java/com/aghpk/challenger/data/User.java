@@ -6,6 +6,7 @@ import com.aghpk.challenger.data.point.Point;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.Views;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
 import lombok.NoArgsConstructor;
@@ -16,7 +17,6 @@ import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
-@NoArgsConstructor
 @Entity
 @Table(name = "USER")
 @AttributeOverrides({
@@ -55,17 +55,17 @@ public class User extends Audit implements Serializable, Scoreable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
-    @JsonManagedReference
+    @JsonManagedReference("user-role")
     private List<UserRole> roles;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
-    @JsonManagedReference
+    @JsonManagedReference("user-point")
     private Set<Point> points;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "CREATOR_ID", referencedColumnName = "USER_ID")
-    @JsonBackReference
+    @JsonManagedReference("user-creator-challenge")
     private List<Challenge> challenges;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -73,7 +73,7 @@ public class User extends Audit implements Serializable, Scoreable {
             name = "FRIENDSHIP",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "FRIEND_ID", referencedColumnName = "USER_ID"))
-    @JsonManagedReference
+    @JsonIgnore
     private List<User> friends;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -81,7 +81,7 @@ public class User extends Audit implements Serializable, Scoreable {
             name = "CHALLENGES_USERS",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID"))
-    @JsonBackReference
+    @JsonManagedReference("user-challenge")
     private List<Challenge> challengesUsers;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -89,7 +89,7 @@ public class User extends Audit implements Serializable, Scoreable {
             name = "USER_GROUPS_MEMBERSHIP",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID"))
-    @JsonManagedReference
+    @JsonManagedReference("user-group")
     private List<Group> groups;
 
 
@@ -99,6 +99,9 @@ public class User extends Audit implements Serializable, Scoreable {
         this.lastname = jsonRegisterForm.getLastname();
         this.password = jsonRegisterForm.getPassword();
         this.email = jsonRegisterForm.getEmail();
+    }
+
+    public User() {
     }
 
     @PrePersist

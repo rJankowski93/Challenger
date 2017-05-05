@@ -33,7 +33,7 @@ public abstract class Point {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
-    @JsonBackReference
+    @JsonBackReference("user-point")
     private User user;
 
     @Column(name = "CHALLENGE_ID", insertable = false, updatable = false)
@@ -41,7 +41,7 @@ public abstract class Point {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CHALLENGE_ID")
-    @JsonBackReference
+    @JsonBackReference("challenge-point")
     private Challenge challenge;
 
     public void changeQuantityPoint(Long quantityPoints) {

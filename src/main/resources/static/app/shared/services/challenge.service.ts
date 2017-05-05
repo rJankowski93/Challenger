@@ -2,10 +2,10 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/map';
-import {Challenge} from "../models/challenges.model";
+import {Challenge} from "../models/challenge.model";
 
 @Injectable()
-export class ChallengesService {
+export class ChallengeService {
 
     private challengeUrl = "api/challenges";
 
@@ -13,7 +13,6 @@ export class ChallengesService {
     }
 
     getUserChallenges(): Observable<Challenge> {
-        console.log("debug -> tuu");
         return this.http.get(`${this.challengeUrl}/challenge`).map(res => res.json(),
             error => console.log(error));
     }
