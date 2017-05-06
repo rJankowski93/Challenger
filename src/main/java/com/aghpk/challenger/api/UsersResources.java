@@ -1,6 +1,6 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.dao.UserDAO;
+import com.aghpk.challenger.dao.UserRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonRegisterForm;
@@ -24,13 +24,13 @@ import java.util.Arrays;
 @RequestMapping("/api/users")
 public class UsersResources {
 
-    private final UserDAO userDAO;
+    private final UserRepository userRepository;
     private final CustomUserDetailsService customUserDetailsService;
     private final UploadFileService uploadFileService;
 
     @Autowired
-    public UsersResources(UserDAO userDAO, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService) {
-        this.userDAO = userDAO;
+    public UsersResources(UserRepository userRepository, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService) {
+        this.userRepository = userRepository;
         this.customUserDetailsService = customUserDetailsService;
         this.uploadFileService = uploadFileService;
     }
@@ -46,9 +46,20 @@ public class UsersResources {
         return userDAO.findUserByLogin(authentication.getName());
     }
 
+    @RequestMapping(value = "/authentication")
+    public boolean getAuthentication() {
+        Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
+        return (authentication!=null && !(authentication instanceof  AnonymousAuthenticationToken));
+    }
+
+    @RequestMapping(value="/logged/details", produces = "application/json")
+    public User getLoggedUserDetails(final Authentication authentication){
+        return userRepository.findUserByLogin(authentication.getName());
+    }
+
     @RequestMapping("/user")
     public String getUser() {
-        User user = userDAO.findUserByLogin("user");
+        User user = userRepository.findUserByLogin("user");
         return user.toString();
     }
 
@@ -57,21 +68,21 @@ public class UsersResources {
         User user = new User();
         user.setLogin("test");
         user.setPassword("test");
-        userDAO.createUser(user);
+        userRepository.createUser(user);
         return "Create user";
     }
 
     @RequestMapping("/remove")
     public String removeUser() {
-        User user = userDAO.findUserById(5L);
-        userDAO.removeUser(user);
-        userDAO.removeUser(6L);
+        User user = userRepository.findUserById(5L);
+        userRepository.removeUser(user);
+        userRepository.removeUser(6L);
         return "all users";
     }
 
     @RequestMapping("/list")
     public String getUsers() {
-        System.out.println(userDAO.getAll().size());
+        System.out.println(userRepository.getAll().size());
         return "all users";
     }
 

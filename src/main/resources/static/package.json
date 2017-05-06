@@ -21,7 +21,8 @@
     "rxjs": "5.0.0-beta.12",
     "systemjs": "0.19.39",
     "zone.js": "^0.6.25",
-    "semantic-ui-css": "2.2.4"
+    "semantic-ui-css": "2.2.4",
+    "ng2-modal": "0.0.25"
   },
   "devDependencies": {
     "@types/core-js": "^0.9.34",

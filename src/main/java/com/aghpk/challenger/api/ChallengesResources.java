@@ -1,10 +1,6 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.dao.ChallengeDAO;
-import com.aghpk.challenger.data.Challenge;
-import com.fasterxml.jackson.core.JsonProcessingException;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
+import com.aghpk.challenger.dao.ChallengeRepository;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,13 +11,12 @@ import java.util.List;
 @RequestMapping("/api/challenges")
 public class ChallengesResources {
 
-    private final ChallengeDAO challengeDAO;
+    private final ChallengeRepository challengeRepository;
 
     @Autowired
-    ChallengesResources(ChallengeDAO challengeDAO) {
-        this.challengeDAO = challengeDAO;
+    public ChallengesResources(ChallengeRepository challengeRepository) {
+        this.challengeRepository = challengeRepository;
     }
-
 
     @RequestMapping("/list")
     public
