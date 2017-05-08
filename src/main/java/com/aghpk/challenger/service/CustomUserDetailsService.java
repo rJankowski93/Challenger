@@ -1,7 +1,7 @@
 package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.dao.UserRepository;
-import com.aghpk.challenger.dao.UserRoleDAO;
+import com.aghpk.challenger.dao.UserRoleRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.data.UserRole;
 import com.aghpk.challenger.exeption.ApplicationException;
@@ -25,13 +25,13 @@ import java.util.List;
 public class CustomUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
-    private final UserRoleDAO userRoleDAO;
+    private final UserRoleRepository userRoleRepository;
     private final SendMailSSL sendMailSSL;
 
     @Autowired
-    public CustomUserDetailsService(UserRepository userRepository, UserRoleDAO userRoleDAO, SendMailSSL sendMailSSL) {
+    public CustomUserDetailsService(UserRepository userRepository, UserRoleRepository userRoleRepository, SendMailSSL sendMailSSL) {
         this.userRepository = userRepository;
-        this.userRoleDAO = userRoleDAO;
+        this.userRoleRepository = userRoleRepository;
         this.sendMailSSL = sendMailSSL;
     }
 
@@ -41,7 +41,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (user == null) {
             throw new UsernameNotFoundException("No user present with login: " + login);
         }
-        List<String> userRoles = userRoleDAO.findRolesByUserId(user.getId());
+        List<String> userRoles = userRoleRepository.findRolesByUserId(user.getId());
         return new CustomUserDetails(user, userRoles);
     }
 
