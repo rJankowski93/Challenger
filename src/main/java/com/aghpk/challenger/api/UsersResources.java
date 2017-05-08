@@ -18,6 +18,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
@@ -73,6 +74,14 @@ public class UsersResources {
     public String getUsers() {
         System.out.println(userRepository.getAll().size());
         return "all users";
+    }
+
+    @RequestMapping("/friends")
+    public
+    @ResponseBody
+    List<User> getFriendsByCurrentUser() {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        return userRepository.getFriendsByUser(((CustomUserDetails)authentication.getPrincipal()).getUser().getId());
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)

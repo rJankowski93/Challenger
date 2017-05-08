@@ -47,4 +47,11 @@ public class UserRepositoryImpl {
         TypedQuery<User>  query = entityManager.createQuery(queryTxt, User.class);
         return query.getResultList();
     }
+
+    List<Object[]> getFriendsByUser(Long id){
+        String queryTxt = "SELECT item.friends FROM User item WHERE item.id =:id AND item.auditRD IS NULL ";
+        TypedQuery<Object[]>  query = entityManager.createQuery(queryTxt,Object[].class);
+        query.setParameter("id",id);
+        return query.getResultList();
+    }
 }

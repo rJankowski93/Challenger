@@ -32,7 +32,7 @@ public class UserRole {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
-    @JsonBackReference
+    @JsonBackReference("user-role")
     private User user;
 
     public UserRole(String role) {

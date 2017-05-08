@@ -22,4 +22,6 @@ public interface UserRepository extends JpaRepository<User, Long>{
     void removeUser(Long id);
 
     List<User> getAll();
+
+    List<User> getFriendsByUser(Long id);
 }
