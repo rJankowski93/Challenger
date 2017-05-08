@@ -1,6 +1,10 @@
 package com.aghpk.challenger.api;
 
 import com.aghpk.challenger.dao.ChallengeRepository;
+import com.aghpk.challenger.data.Challenge;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,14 +26,12 @@ public class ChallengesResources {
     public
     @ResponseBody
     List<Challenge> getChallenges() throws JsonProcessingException {
-        List<Challenge> list = challengeDAO.getAll();
-        return list;
+        return challengeRepository.getAll();
     }
 
     @RequestMapping("/challenge/{id}")
     public Challenge getChallenge(@PathVariable("id") Long id) {
-        Challenge challenge = challengeDAO.findChallengeById(id);
-        return challenge;
+        return challengeRepository.findChallengeById(id);
     }
 
     @RequestMapping("/add")

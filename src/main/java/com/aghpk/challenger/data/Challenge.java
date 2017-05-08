@@ -1,9 +1,11 @@
 package com.aghpk.challenger.data;
 
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
@@ -65,12 +67,11 @@ public class Challenge extends Audit{
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CREATOR_ID")
-    @JsonManagedReference
     private User user;
 
-
     @ManyToMany(mappedBy = "challengesUsers")
-    @JsonManagedReference
+    @JsonBackReference(value = "challenge-users-reference")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> users;
 
     @PrePersist

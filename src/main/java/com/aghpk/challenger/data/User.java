@@ -62,13 +62,13 @@ public class User extends Audit implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
-    @JsonManagedReference
+    @JsonBackReference(value = "user-roles-reference")
     private List<UserRole> roles;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "CREATOR_ID", referencedColumnName = "USER_ID")
-    @JsonBackReference
+    @JsonBackReference(value = "user-challenges-reference")
     private List<Challenge> challenges;
 
     @LazyCollection(LazyCollectionOption.FALSE)
@@ -77,7 +77,7 @@ public class User extends Audit implements Serializable {
             name = "FRIENDSHIP",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "FRIEND_ID", referencedColumnName = "USER_ID"))
-    @JsonManagedReference
+    @JsonBackReference(value = "user-friends-reference")
     private List<User> friends;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -85,7 +85,7 @@ public class User extends Audit implements Serializable {
             name = "CHALLENGES_USERS",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID"))
-    @JsonBackReference
+    @JsonBackReference(value="user-challengesUsers-reference")
     private List<Challenge> challengesUsers;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -93,7 +93,8 @@ public class User extends Audit implements Serializable {
             name = "USER_GROUPS_MEMBERSHIP",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID"))
-    @JsonManagedReference
+    @JsonBackReference(value = "user-groups-reference")
+    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Group> groups;
 
     public User(JsonRegisterForm jsonRegisterForm) {

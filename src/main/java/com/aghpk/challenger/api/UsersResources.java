@@ -15,7 +15,6 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -35,6 +34,7 @@ public class UsersResources {
         this.uploadFileService = uploadFileService;
     }
 
+
     @RequestMapping(value = "/authentication")
     public boolean getAuthentication() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -43,17 +43,6 @@ public class UsersResources {
 
     @RequestMapping(value = "/logged/details", produces = "application/json")
     public User getLoggedUserDetails(final Authentication authentication) {
-        return userDAO.findUserByLogin(authentication.getName());
-    }
-
-    @RequestMapping(value = "/authentication")
-    public boolean getAuthentication() {
-        Authentication authentication=SecurityContextHolder.getContext().getAuthentication();
-        return (authentication!=null && !(authentication instanceof  AnonymousAuthenticationToken));
-    }
-
-    @RequestMapping(value="/logged/details", produces = "application/json")
-    public User getLoggedUserDetails(final Authentication authentication){
         return userRepository.findUserByLogin(authentication.getName());
     }
 
