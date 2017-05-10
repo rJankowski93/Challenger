@@ -5,3 +5,5 @@
 *src/.idea
 *js
 *js.map
+*.css
+*.css.map

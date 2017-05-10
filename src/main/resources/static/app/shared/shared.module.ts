@@ -5,7 +5,6 @@ import {AuthService} from "./services/auth.service";
 import {SearchService} from "./services/search.service";
 
 @NgModule({
-
     providers: [
         UserService,
         AuthService,

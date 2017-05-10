@@ -1,3 +1,17 @@
+<button class="btn btn-primary" (click)="firstModal.open()">Test modal</button>
+
+<modal #firstModal>
+    <modal-header>
+        <h1>Hello modal</h1>
+    </modal-header>
+    <modal-content>
+        Challenger test!
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-primary" (click)="firstModal.close()">Close</button>
+    </modal-footer>
+</modal>
+
 <div *ngIf="!isLoading">
     <div *ngFor="let friendDetails of friendsList" id="friend-box" class="col-md-12">
 

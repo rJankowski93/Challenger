@@ -1,6 +1,6 @@
-import {Component, Input, OnInit, ViewChild} from "@angular/core";
-import {SearchService} from "../../services/search.service";
-import {User} from "../../models/user.model";
+import {Component, OnInit} from "@angular/core";
+import {SearchService} from "../../shared/services/search.service";
+import {User} from "../../shared/models/user.model";
 import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
 

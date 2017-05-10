@@ -1,7 +1,7 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
 import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user.model";
-import {ChallengeSearchInputComponent} from "../shared/filterable-input/challenge-search-input/challenge-search-input.component";
+import {ChallengeSearchInputComponent} from "../filterable-input/challenge-search-input/challenge-search-input.component";
 import {Subscription} from "rxjs";
 
 @Component({

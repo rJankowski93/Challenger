@@ -1,7 +1,6 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
 import {BrowserModule} from "@angular/platform-browser";
 import {AppComponent} from "./app.component";
-import {ModalModule} from "ng2-modal";
 import {LoginPanelModule} from "./login-panel/login-panel.module";
 import {UserPanelModule} from "./user-panel/user-panel.module";
 import {GridPanelModule} from "./grid-panel/grid-panel.module";
@@ -12,21 +11,24 @@ import {HttpModule} from "@angular/http";
 import {RegistrationPanelModule} from "./registration-panel/registration-panel.module";
 import {FileUploadPanelModule} from "./file-upload-panel/file-upload-panel.module";
 import {FriendBoxModule} from "./friend-box/friend-box.module";
+import {ChallengeSearchInputModule} from "./filterable-input/challenge-search-input/challenge-search-input.module";
+import {UserSearchInputModule} from "./filterable-input/user-search-input/user-search-input.module";
 
 @NgModule({
     imports: [
         BrowserModule,
         CommonModule,
         HttpModule,
-        ModalModule,
+        SharedModule,
         LoginPanelModule,
         RegistrationPanelModule,
         UserPanelModule,
         GridPanelModule,
-        SharedModule,
         ChallengeBoxModule,
         FileUploadPanelModule,
-        FriendBoxModule
+        FriendBoxModule,
+        ChallengeSearchInputModule,
+        UserSearchInputModule
     ],
 
     declarations: [

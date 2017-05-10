@@ -1,5 +1,5 @@
-import {Component, Input, OnInit, ViewChild, OnDestroy} from "@angular/core";
-import {SearchService} from "../../services/search.service";
+import {Component, OnInit, OnDestroy} from "@angular/core";
+import {SearchService} from "../../shared/services/search.service";
 import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
 
