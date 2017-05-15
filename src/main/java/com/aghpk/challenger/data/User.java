@@ -1,6 +1,7 @@
 package com.aghpk.challenger.data;
 
 
+import com.aghpk.challenger.data.point.Point;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.Views;
 import com.fasterxml.jackson.annotation.JsonBackReference;
@@ -17,6 +18,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -29,7 +31,7 @@ import java.util.List;
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
 @Document(indexName = "user", type = "user" , shards = 1)
-public class User extends Audit implements Serializable {
+public class User extends Audit implements Serializable, Scoreable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
@@ -57,13 +59,15 @@ public class User extends Audit implements Serializable {
     @Column(name = "ENABLED")
     private boolean enabled;
 
-    @Column(name = "POINTS")
-    private Long points = 0L;
-
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @JsonBackReference(value = "user-roles-reference")
     private List<UserRole> roles;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+    @JsonBackReference(value = "user-point")
+    private Set<Point> points;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL)
@@ -118,5 +122,9 @@ public class User extends Audit implements Serializable {
     @Override
     public String toString() {
         return ("Login: " + login + " Password: " + password);
+    }
+
+    public Set<Point> getPoints(){
+       return  this.points;
     }
 }

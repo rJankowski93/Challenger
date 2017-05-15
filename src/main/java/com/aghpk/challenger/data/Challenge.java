@@ -1,6 +1,7 @@
 package com.aghpk.challenger.data;
 
 
+import com.aghpk.challenger.data.point.Point;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
@@ -11,6 +12,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -22,7 +24,7 @@ import java.util.List;
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
 @Document(indexName = "challenge", type = "challenge" , shards = 1)
-public class Challenge extends Audit{
+public class Challenge extends Audit implements Scoreable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_ID")
@@ -52,9 +54,6 @@ public class Challenge extends Audit{
     @Column(name = "CATEGORY")
     private String catgory;
 
-    @Column(name = "POINTS")
-    private Long points;
-
     @Column(name = "REWARD_TYPE")
     private String rewardType;
 
@@ -74,6 +73,11 @@ public class Challenge extends Audit{
     @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> users;
 
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
+    @JsonBackReference(value = "challenge-point")
+    private Set<Point> points;
+
     @PrePersist
     public void onPrePersist() {
         setAuditCD(new Date());
@@ -82,5 +86,9 @@ public class Challenge extends Audit{
     @PreUpdate
     public void onPreUpdate() {
         setAuditMD(new Date());
+    }
+
+    public Set<Point> getPoints(){
+        return  this.points;
     }
 }
