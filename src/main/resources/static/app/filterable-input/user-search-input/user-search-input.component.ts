@@ -12,7 +12,7 @@ import {Subscription} from "rxjs";
 })
 export class UserSearchInputComponent implements FilterableInput, OnInit {
 
-    private searchPage:User;
+    private searchPage:User[];
     private filter:string;
     private isVisible:boolean;
     private isLoading:boolean;

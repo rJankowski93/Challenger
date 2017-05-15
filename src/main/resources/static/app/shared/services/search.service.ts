@@ -3,6 +3,7 @@ import {Http, URLSearchParams} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/map';
 import {User} from "../models/user.model";
+import {Challenge} from "../models/challenge.model";
 
 @Injectable()
 export class SearchService{
@@ -13,7 +14,7 @@ export class SearchService{
     constructor(private http:Http){
     }
 
-    searchChallenge(filter:string): Observable<User>{
+    searchChallenge(filter:string): Observable<Challenge[]>{
         let searchParams=new URLSearchParams();
         searchParams.set(this.FILTER_PARAM, filter);
 
@@ -22,7 +23,7 @@ export class SearchService{
             error=> console.log(error));
     }
 
-    searchUser(filter:string): Observable<User>{
+    searchUser(filter:string): Observable<User[]>{
         let searchParams=new URLSearchParams();
         searchParams.set(this.FILTER_PARAM, filter);
 

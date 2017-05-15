@@ -2,6 +2,7 @@ import {Component, OnInit, OnDestroy} from "@angular/core";
 import {SearchService} from "../../shared/services/search.service";
 import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
+import {Challenge} from "../../shared/models/challenge.model";
 
 @Component({
     moduleId: module.id,
@@ -11,7 +12,8 @@ import {Subscription} from "rxjs";
 })
 export class ChallengeSearchInputComponent implements FilterableInput, OnInit, OnDestroy {
 
-    private searchPage;
+    private searchPage:Challenge[];
+    private selectedChallenge:Challenge;
     private filter:string;
     private isVisible:boolean;
     private isLoading:boolean;
@@ -25,6 +27,7 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
         this.isVisible=false;
         this.isLoading=true;
 
+        this.initSelectedChallenge();
         this.getSearchResults();
     }
 
@@ -32,11 +35,15 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
         this.searchSubscription.unsubscribe();
     }
 
-    toggleVisibility(){
+    toggleVisibility():void{
         this.isVisible=!this.isVisible;
     }
 
-    getSearchResults(){
+    setVisibility(isVisible:boolean):void{
+        this.isVisible=isVisible;
+    }
+
+    getSearchResults():void{
         this.searchSubscription=this.searchService.searchChallenge(this.filter)
             .subscribe(result => {
                     this.searchPage=result;
@@ -45,5 +52,19 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
                 error=>{
                     console.error("Cannot read Challenge", error);
                 })
+    }
+
+    setSelectedChallenge(selectedChallenge:Challenge):void{
+        this.selectedChallenge=selectedChallenge;
+    }
+
+    private initSelectedChallenge():void{
+        this.selectedChallenge=new Challenge();
+        this.selectedChallenge.name="";
+        this.selectedChallenge.description="";
+    }
+
+    updateFilterValue(filterValue:string){
+        this.filter=filterValue;
     }
 }
