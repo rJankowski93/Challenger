@@ -24,4 +24,5 @@ mail:
   password: challenger123
   confirmationLink: http://localhost:8080//api/users/confirmRegistration?id=
 uploadFile:
-  uploadedFolder: /path/to/uploads
+  uploadedFolder: \avatars\user   #if you change this, you have to change in user.panel.html
+  defaultExtension: jpg           #if you change this, you have to change in user.panel.html
