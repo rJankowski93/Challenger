@@ -1,7 +1,7 @@
 <div *ngIf="!isLoading" id="filterable">
     <form>
-        <div class="input-group">
-            <input type="text" class="form-control" (click)="toggleVisibility()"
+        <div class="input-group" (clickOutside)="setVisibility(false)">
+            <input type="text" class="form-control" (click)="setVisibility(true)"
                    (keyup)="updateFilterValue($event.target.value); getSearchResults();" placeholder="Search challenge">
             <div class="input-group-btn">
                 <button class="btn btn-default"  (click)="toggleVisibility();">
@@ -22,7 +22,7 @@
 
 <modal #challengeModal>
     <modal-header>
-        <h6>{{selectedChallenge.name}}</h6>
+        <h3>{{selectedChallenge.name}}</h3>
     </modal-header>
     <modal-content>
         {{selectedChallenge.description}}

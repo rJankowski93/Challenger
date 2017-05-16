@@ -8,7 +8,7 @@ import {Challenge} from "../../shared/models/challenge.model";
     moduleId: module.id,
     selector: 'challenge-search-input',
     templateUrl: 'challenge-search-input.component.html',
-    styleUrls: ['challenge-search-input.component.css']
+    styleUrls: ['challenge-search-input.component.css'],
 })
 export class ChallengeSearchInputComponent implements FilterableInput, OnInit, OnDestroy {
 
@@ -18,6 +18,7 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
     private isVisible:boolean;
     private isLoading:boolean;
     private searchSubscription:Subscription;
+    private MINIMUM_FILTER_LENGTH:number=3;
 
     constructor(private searchService:SearchService) {
     }
@@ -44,6 +45,10 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
     }
 
     getSearchResults():void{
+        if(this.filter.length<this.MINIMUM_FILTER_LENGTH){//search only if filter has more than 3 signs
+            return;
+        }
+
         this.searchSubscription=this.searchService.searchChallenge(this.filter)
             .subscribe(result => {
                     this.searchPage=result;
