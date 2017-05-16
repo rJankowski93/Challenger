@@ -10,6 +10,7 @@ export class AppComponent implements OnInit{
 
     private isLoading:boolean;
     private isAuthenticated:boolean;
+    private visibleLoginPage:boolean;
 
     constructor(private authService:AuthService) {
 
@@ -17,7 +18,7 @@ export class AppComponent implements OnInit{
 
     ngOnInit(): void {
         this.isLoading=true;
-
+        this.visibleLoginPage=true;
         this.authService.isAuthenticated()
             .subscribe(isAuthenticated => {
                 this.isAuthenticated=isAuthenticated;
@@ -27,5 +28,14 @@ export class AppComponent implements OnInit{
                 this.isAuthenticated=false;
             }
         );
+
+    }
+
+    showLoginPage(): void {
+        this.visibleLoginPage=true;
+    }
+
+    hideLoginPage(): void {
+        this.visibleLoginPage=false;
     }
 }
