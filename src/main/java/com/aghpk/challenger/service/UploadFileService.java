@@ -5,7 +5,7 @@ import com.aghpk.challenger.exeption.ApplicationException;
 import com.aghpk.challenger.exeption.ErrorType;
 import org.apache.commons.io.FilenameUtils;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.BufferedOutputStream;
@@ -17,7 +17,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-@Component
+@Service
 @ConfigurationProperties(prefix = "uploadFile")
 public class UploadFileService {
 
@@ -50,8 +50,8 @@ public class UploadFileService {
 
     private void removeExistingFile(Long userId, File uploadDirectory) {
         List<File> files = new ArrayList<>(Arrays.asList(uploadDirectory.listFiles()));
-        Optional<File> oldFile = files.stream().filter(x-> FilenameUtils.removeExtension(x.getName()).equals(userId.toString())).findFirst();
-        if(oldFile.isPresent()){
+        Optional<File> oldFile = files.stream().filter(x -> FilenameUtils.removeExtension(x.getName()).equals(userId.toString())).findFirst();
+        if (oldFile.isPresent()) {
             oldFile.get().delete();
         }
     }

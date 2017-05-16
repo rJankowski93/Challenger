@@ -1,4 +1,4 @@
-package com.aghpk.challenger.data;
+package com.aghpk.challenger.data.interfaces;
 
 import java.util.Date;
 

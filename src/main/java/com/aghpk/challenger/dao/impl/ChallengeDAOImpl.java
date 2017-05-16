@@ -35,11 +35,4 @@ public class ChallengeDAOImpl {
         TypedQuery<Challenge> query = entityManager.createQuery(queryTxt, Challenge.class);
         return query.getResultList();
     }
-
-    public Challenge getSingleChallenge(Long id){
-        Challenge challenge = entityManager.find(Challenge.class, id);
-        System.out.println("weszlo" + challenge);
-        return challenge;
-    }
-
 }

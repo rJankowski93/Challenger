@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAEA,WAAW;EACT,gBAAgB,ECHL,OAAO;EDIlB,aAAa,EAAE,IAAI;EACnB,cAAc,EAAE,IAAI;EACpB,aAAa,EAAE,IAAI;;AAIrB,YAAY;EACV,WAAW,EAAE,IAAI;EACjB,SAAS,EAAE,KAAK;EAChB,YAAY,EAAE,GAAG;EACjB,aAAa,EAAE,KAAK;EACpB,YAAY,ECXE,OAAO;;ADcvB,aAAa;EACX,WAAW,EAAE,IAAI;EACjB,SAAS,EAAE,KAAK;EAChB,YAAY,EAAE,GAAG;EACjB,aAAa,EAAE,KAAK;EACpB,YAAY,ECnBE,OAAO",
+"sources": ["friend-box.component.scss","../../../sass/variables.scss"],
+"names": [],
+"file": "friend-box.component.css"
+}

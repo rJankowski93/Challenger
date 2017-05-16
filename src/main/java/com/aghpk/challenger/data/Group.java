@@ -1,8 +1,6 @@
 package com.aghpk.challenger.data;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,11 +17,7 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.IntSequenceGenerator.class,
-        scope = Group.class
-)
-public class Group extends Audit{
+public class Group extends Audit {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "GROUP_ID")
@@ -33,6 +27,7 @@ public class Group extends Audit{
     private String name;
 
     @ManyToMany(mappedBy = "groups")
+    @JsonBackReference("user-group")
     private List<User> users;
 
     @PrePersist

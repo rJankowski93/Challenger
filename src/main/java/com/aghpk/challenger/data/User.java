@@ -1,21 +1,22 @@
 package com.aghpk.challenger.data;
 
 
+import com.aghpk.challenger.data.interfaces.Scoreable;
+import com.aghpk.challenger.data.point.Point;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.Views;
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.JsonView;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
-@Getter
-@Setter
 @Entity
 @Table(name = "USER")
 @AttributeOverrides({
@@ -23,11 +24,8 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.IntSequenceGenerator.class,
-        scope = User.class
-)
-public class User extends Audit implements Serializable {
+public class User extends Audit implements Serializable, Scoreable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
@@ -55,15 +53,19 @@ public class User extends Audit implements Serializable {
     @Column(name = "ENABLED")
     private boolean enabled;
 
-    @Column(name = "POINTS")
-    private Long points = 0L;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
+    @JsonManagedReference("user-role")
+    private List<UserRole> roles;
 
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
-    private List<UserRole> roles;
+    @JsonManagedReference("user-point")
+    private Set<Point> points;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "CREATOR_ID", referencedColumnName = "USER_ID")
+    @JsonManagedReference("user-creator-challenge")
     private List<Challenge> challenges;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -71,6 +73,7 @@ public class User extends Audit implements Serializable {
             name = "FRIENDSHIP",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "FRIEND_ID", referencedColumnName = "USER_ID"))
+    @JsonIgnore
     private List<User> friends;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -78,6 +81,7 @@ public class User extends Audit implements Serializable {
             name = "CHALLENGES_USERS",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID"))
+    @JsonManagedReference("user-challenge")
     private List<Challenge> challengesUsers;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -85,10 +89,9 @@ public class User extends Audit implements Serializable {
             name = "USER_GROUPS_MEMBERSHIP",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID"))
+    @JsonManagedReference("user-group")
     private List<Group> groups;
 
-    public User() {
-    }
 
     public User(JsonRegisterForm jsonRegisterForm) {
         this.login = jsonRegisterForm.getLogin();
@@ -96,6 +99,9 @@ public class User extends Audit implements Serializable {
         this.lastname = jsonRegisterForm.getLastname();
         this.password = jsonRegisterForm.getPassword();
         this.email = jsonRegisterForm.getEmail();
+    }
+
+    public User() {
     }
 
     @PrePersist
@@ -108,22 +114,6 @@ public class User extends Audit implements Serializable {
         setAuditMD(new Date());
     }
 
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
     public Long getId() {
         return id;
     }
@@ -132,12 +122,20 @@ public class User extends Audit implements Serializable {
         this.id = id;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getFirstName() {
         return firstName;
     }
 
-    public void setFirstName(String firstname) {
-        this.firstName = firstname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
     public String getLastname() {
@@ -146,6 +144,14 @@ public class User extends Audit implements Serializable {
 
     public void setLastname(String lastname) {
         this.lastname = lastname;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getEmail() {
@@ -164,20 +170,20 @@ public class User extends Audit implements Serializable {
         this.enabled = enabled;
     }
 
-    public Long getPoints() {
-        return points;
-    }
-
-    public void setPoints(Long points) {
-        this.points = points;
-    }
-
     public List<UserRole> getRoles() {
         return roles;
     }
 
     public void setRoles(List<UserRole> roles) {
         this.roles = roles;
+    }
+
+    public Set<Point> getPoints() {
+        return points;
+    }
+
+    public void setPoints(Set<Point> points) {
+        this.points = points;
     }
 
     public List<Challenge> getChallenges() {

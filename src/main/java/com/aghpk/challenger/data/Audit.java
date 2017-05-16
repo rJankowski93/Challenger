@@ -1,5 +1,7 @@
 package com.aghpk.challenger.data;
 
+import com.aghpk.challenger.data.interfaces.Auditable;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -12,7 +14,7 @@ import java.util.Date;
 
 @MappedSuperclass
 @XmlAccessorType(XmlAccessType.FIELD)
-public abstract class Audit implements Serializable, Auditable{
+public abstract class Audit implements Serializable, Auditable {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "AUDIT_CD", updatable = false)

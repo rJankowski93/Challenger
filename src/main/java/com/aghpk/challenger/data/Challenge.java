@@ -1,16 +1,17 @@
 package com.aghpk.challenger.data;
 
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.aghpk.challenger.data.interfaces.Scoreable;
+import com.aghpk.challenger.data.point.Point;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 @Getter
 @Setter
@@ -21,11 +22,7 @@ import java.util.List;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
-@JsonIdentityInfo(
-        generator = ObjectIdGenerators.IntSequenceGenerator.class,
-        scope = Challenge.class
-)
-public class Challenge extends Audit {
+public class Challenge extends Audit implements Scoreable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -44,9 +41,6 @@ public class Challenge extends Audit {
     @Column(name = "CATEGORY")
     private String catgory;
 
-    @Column(name = "POINTS")
-    private Long points;
-
     @Column(name = "REWARD_TYPE")
     private String rewardType;
 
@@ -57,15 +51,21 @@ public class Challenge extends Audit {
     private Long idCreator;
 
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    @JoinColumn(name = "CREATOR_ID")
-//  // @LazyCollection(LazyCollectionOption.FALSE)
-//    private User user;
-//
-//
-//    @ManyToMany(mappedBy = "challengesUsers")
-//    //@LazyCollection(LazyCollectionOption.FALSE)
-//    private List<User> users;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CREATOR_ID")
+    @JsonBackReference("user-creator-challenge")
+    private User user;
+
+
+    @ManyToMany(mappedBy = "challengesUsers")
+    @JsonBackReference("user-challenge")
+    private List<User> users;
+
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
+    @JsonManagedReference("challenge-point")
+    private Set<Point> points;
 
     @PrePersist
     public void onPrePersist() {
@@ -75,5 +75,10 @@ public class Challenge extends Audit {
     @PreUpdate
     public void onPreUpdate() {
         setAuditMD(new Date());
+    }
+
+    @Override
+    public Set<Point> getPoints() {
+        return points;
     }
 }
