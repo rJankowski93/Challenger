@@ -4,27 +4,34 @@ import {Challenge} from "../shared/models/challenges.model";
 
 @Component({
     moduleId: module.id,
-    selector: 'challenge-box',
-    templateUrl: './challenge-box.component.html',
-    styleUrls: ['challenge-box.component.css'], 
+    selector: 'challenge-creator',
+    templateUrl: './challenge-creator.component.html',
+    styleUrls: ['challenge-creator.component.css'],
     providers: [ChallengesService]
 })
-export class ChallengeBoxComponent implements OnInit {
+export class ChallengeCreatorComponent implements OnInit {
     private isLoading: boolean;
-    private challengeList: Array<Challenge>;
+    private challenge: Challenge;
+
 
     constructor(private challengesService: ChallengesService) {
     }
 
     ngOnInit(): void {
         this.isLoading = true;
-        console.log("wchodzi tu");
-        this.challengesService.getAllChallenges()
+
+        this.challenge = new Challenge();
+
+        this.challenge.name = "";
+        this.challenge.category = "category";
+        this.challenge.description = "desc";
+    }
+
+    onSubmit() {
+        this.challengesService.addChallenge(this.challenge)
             .subscribe(challenge => {
                     console.log("challenge content chuuu")
-                    this.challengeList = challenge;
                     console.log(challenge);
-                    console.log(this.challengeList);
                     this.isLoading = false;
                 },
                 error => {
@@ -32,10 +39,7 @@ export class ChallengeBoxComponent implements OnInit {
                     console.log(error);
                 }
             );
-
-        this.challengesService.addChallenge(new Challenge()).subscribe(res=>console.log(res),
-        error=>console.log(error));
     }
 
-
 }
+

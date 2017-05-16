@@ -5,6 +5,7 @@ import {LoginPanelModule} from "./login-panel/login-panel.module";
 import {UserPanelModule} from "./user-panel/user-panel.module";
 import {GridPanelModule} from "./grid-panel/grid-panel.module";
 import {ChallengeBoxModule} from "./challenge-box/challenge-box.module";
+import {ChallengeCreatorModule} from "./challenge-creator/challenge-creator.module";
 import {CommonModule} from "@angular/common";
 import {SharedModule} from "./shared/shared.module";
 import {HttpModule} from "@angular/http";
@@ -24,6 +25,7 @@ import {FileUploadPanelModule} from "./file-upload-panel/file-upload-panel.modul
         GridPanelModule,
         SharedModule,
         ChallengeBoxModule,
+        ChallengeCreatorModule,
         FileUploadPanelModule
     ],
 

@@ -1,0 +1,17 @@
+<div *ngIf="isLoading">
+
+    <form (ngSubmit)="onSubmit()" #createChallengeForm="ngForm">
+    <!--<button (click)="onSubmit()"> elo button</button>-->
+    <div>
+        <input type="text" id="challenge-name" [(ngModel)]="challenge.name" name="name" #name="ngModel">
+        <input type="text" id="challenge-description" [(ngModel)]="challenge.description" name="description" #description="ngModel">
+        <input type="text" id="category" [(ngModel)]="challenge.category" name="category" #category="ngModel">
+        <button type="submit" id="add-challenge-button">Add Challenge</button>
+    </div>
+    </form>
+
+    <form type="POST" action="/api/challenges/add">
+            <button type="submit">Add Challenge2</button>
+    </form>
+
+</div>

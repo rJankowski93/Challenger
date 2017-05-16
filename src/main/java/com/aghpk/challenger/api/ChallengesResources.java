@@ -4,11 +4,8 @@ import com.aghpk.challenger.dao.ChallengeDAO;
 import com.aghpk.challenger.data.Challenge;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -22,27 +19,20 @@ public class ChallengesResources {
         this.challengeDAO = challengeDAO;
     }
 
-
     @RequestMapping("/list")
     public
     @ResponseBody
     List<Challenge> getChallenges() throws JsonProcessingException {
-
-        List<Challenge> list = new ArrayList<>();
-        list.addAll(challengeDAO.getAll());
-        return list;
+        return challengeDAO.getAll();
     }
 
-    @RequestMapping("/challenge")
-    public Challenge getChallenge() {
-        Challenge challenge = challengeDAO.findChallengeById(2l);
-        return challenge;
+    @RequestMapping("/challenge/{id}")
+    public Challenge getChallenge(@PathVariable("id") Long id) {
+        return challengeDAO.findChallengeById(id);
     }
 
-    @RequestMapping("/add")
-    public String addChallenge() {
-        return "Challenge created successfully!";
+    @RequestMapping(value = "/add/",method = RequestMethod.POST)
+    public void addChallenge(@RequestBody Challenge challenge){
+        challengeDAO.save(challenge);
     }
-
-
 }
