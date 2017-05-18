@@ -9,5 +9,6 @@ export class Challenge {
     rewartQuantity: string;
     idCreator: number;
 
-    constructor() {}
+    constructor() {
+    }
 }

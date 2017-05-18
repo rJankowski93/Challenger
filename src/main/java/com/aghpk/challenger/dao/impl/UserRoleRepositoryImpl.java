@@ -9,7 +9,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 
 @Transactional
-public class UserRoleDAOImpl {
+public class UserRoleRepositoryImpl {
 
     @PersistenceContext
     private EntityManager entityManager;

@@ -1,12 +1,20 @@
 package com.aghpk.challenger.data;
 
 
+<<<<<<< HEAD
 import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.data.point.Point;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+=======
+import com.aghpk.challenger.data.point.Point;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
 import lombok.Getter;
 import lombok.Setter;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
+import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -22,16 +30,33 @@ import java.util.Set;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
+<<<<<<< HEAD
 public class Challenge extends Audit implements Scoreable {
 
+=======
+@Document(indexName = "challenge", type = "challenge" , shards = 1)
+public class Challenge extends Audit implements Scoreable{
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_ID")
     private Long id;
 
+//    @Field(
+//            type = FieldType.String,
+//            index = FieldIndex.analyzed,
+//            searchAnalyzer = "standard",
+//            store = true
+//    )
     @Column(name = "NAME")
     private String name;
 
+//    @Field(
+//            type = FieldType.String,
+//            index = FieldIndex.analyzed,
+//            searchAnalyzer = "standard",
+//            store = true
+//    )
     @Column(name = "DESCRIPTION")
     private String description;
 
@@ -53,11 +78,14 @@ public class Challenge extends Audit implements Scoreable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CREATOR_ID")
+<<<<<<< HEAD
     @JsonBackReference("user-creator-challenge")
+=======
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
     private User user;
 
-
     @ManyToMany(mappedBy = "challengesUsers")
+<<<<<<< HEAD
     @JsonBackReference("user-challenge")
     private List<User> users;
 
@@ -65,6 +93,15 @@ public class Challenge extends Audit implements Scoreable {
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
     @JsonManagedReference("challenge-point")
+=======
+    @JsonBackReference(value = "challenge-users-reference")
+    @LazyCollection(LazyCollectionOption.FALSE)
+    private List<User> users;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
+    @JsonBackReference(value = "challenge-point")
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
     private Set<Point> points;
 
     @PrePersist
@@ -77,8 +114,13 @@ public class Challenge extends Audit implements Scoreable {
         setAuditMD(new Date());
     }
 
+<<<<<<< HEAD
     @Override
     public Set<Point> getPoints() {
         return points;
+=======
+    public Set<Point> getPoints(){
+        return  this.points;
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
     }
 }

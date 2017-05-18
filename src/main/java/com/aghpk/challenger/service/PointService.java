@@ -1,7 +1,7 @@
 package com.aghpk.challenger.service;
 
-import com.aghpk.challenger.dao.PointDAO;
-import com.aghpk.challenger.data.interfaces.Scoreable;
+import com.aghpk.challenger.dao.PointRepository;
+import com.aghpk.challenger.data.Scoreable;
 import com.aghpk.challenger.data.point.Point;
 import com.aghpk.challenger.data.point.PointFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,7 +13,7 @@ import java.util.Optional;
 public class PointService {
 
     @Autowired
-    PointDAO pointDAO;
+    PointRepository pointRepository;
 
     public void changeQuantityPoint(Scoreable object, Long quantity, String pointType) {
         Point point;
@@ -26,6 +26,6 @@ public class PointService {
             point.setObject(object);
             point.setQuantity(quantity);
         }
-        pointDAO.save(point);
+        pointRepository.save(point);
     }
 }

@@ -8,9 +8,9 @@ import {Challenge} from "../shared/models/challenge.model";
     templateUrl: './challenge-box.component.html',
     styleUrls: ['challenge-box.component.css'],
     providers: [ChallengeService]
-
 })
 export class ChallengeBoxComponent implements OnInit {
+
     private isLoading: boolean;
     private challengeList: Array<Challenge>;
 
@@ -29,9 +29,6 @@ export class ChallengeBoxComponent implements OnInit {
                     console.log(error);
                 }
             );
-
-        this.challengeService.addChallenge(new Challenge()).subscribe(res=>console.log(res),
-        error=>console.log(error));
     }
 
 

@@ -1,16 +1,32 @@
 package com.aghpk.challenger.data.point;
 
 import com.aghpk.challenger.data.Challenge;
+<<<<<<< HEAD
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.exeption.ApplicationException;
 import com.aghpk.challenger.exeption.ErrorType;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+=======
+import com.aghpk.challenger.data.Scoreable;
+import com.aghpk.challenger.data.User;
+import com.aghpk.challenger.exeption.ApplicationException;
+import com.aghpk.challenger.exeption.ErrorType;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.Getter;
+import lombok.Setter;
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
 
 import javax.persistence.*;
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 
+<<<<<<< HEAD
+=======
+@Getter
+@Setter
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
 @Entity
 @Table(name = "POINT")
 @DiscriminatorColumn(name = "PointType")
@@ -33,7 +49,11 @@ public abstract class Point {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "USER_ID")
+<<<<<<< HEAD
     @JsonBackReference("user-point")
+=======
+    @JsonManagedReference("user-point")
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
     private User user;
 
     @Column(name = "CHALLENGE_ID", insertable = false, updatable = false)
@@ -41,7 +61,11 @@ public abstract class Point {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CHALLENGE_ID")
+<<<<<<< HEAD
     @JsonBackReference("challenge-point")
+=======
+    @JsonManagedReference(value = "challenge-point")
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
     private Challenge challenge;
 
     public void changeQuantityPoint(Long quantityPoints) {
@@ -59,6 +83,7 @@ public abstract class Point {
         }
     }
 
+<<<<<<< HEAD
     public Long getId() {
         return id;
     }
@@ -71,12 +96,15 @@ public abstract class Point {
         return quantity;
     }
 
+=======
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
     public void setQuantity(Long quantity) {
         if (quantity < 0) {
             throw new ApplicationException(ErrorType.QUANTITY_POINTS_LESS_ZERO);
         }
         this.quantity = quantity;
     }
+<<<<<<< HEAD
 
     public String getType() {
         return type;
@@ -117,4 +145,6 @@ public abstract class Point {
     public void setChallenge(Challenge challenge) {
         this.challenge = challenge;
     }
+=======
+>>>>>>> e87ace2c836317a9264b5699676128532304ff5f
 }

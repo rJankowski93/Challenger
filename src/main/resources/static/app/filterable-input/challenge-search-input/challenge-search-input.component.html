@@ -1,0 +1,33 @@
+<div *ngIf="!isLoading" id="filterable">
+    <form>
+        <div class="input-group" (clickOutside)="setVisibility(false)">
+            <input type="text" class="form-control" (click)="setVisibility(true)"
+                   (keyup)="updateFilterValue($event.target.value); getSearchResults();" placeholder="Search challenge">
+            <div class="input-group-btn">
+                <button class="btn btn-default"  (click)="toggleVisibility();">
+                    <i class="glyphicon glyphicon-search"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="col-xs-10 col-md-8 filtered-list" *ngIf="isVisible" >
+            <ul>
+                <li *ngFor="let element of searchPage.content" (click)="setSelectedChallenge(element);challengeModal.open()">
+                    <span> {{element.name}}</span>
+                </li>
+            </ul>
+        </div>
+    </form>
+</div>
+
+<modal #challengeModal>
+    <modal-header>
+        <h3>{{selectedChallenge.name}}</h3>
+    </modal-header>
+    <modal-content>
+        {{selectedChallenge.description}}
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-primary" (click)="challengeModal.close()">Close</button>
+    </modal-footer>
+</modal>

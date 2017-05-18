@@ -2,6 +2,7 @@ package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.data.User;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.stereotype.*;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;

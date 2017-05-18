@@ -1,6 +1,6 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.dao.UserDAO;
+import com.aghpk.challenger.dao.UserRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonRegisterForm;
@@ -24,16 +24,17 @@ import java.util.List;
 @RequestMapping("/api/users")
 public class UsersResources {
 
-    private final UserDAO userDAO;
+    private final UserRepository userRepository;
     private final CustomUserDetailsService customUserDetailsService;
     private final UploadFileService uploadFileService;
 
     @Autowired
-    public UsersResources(UserDAO userDAO, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService) {
-        this.userDAO = userDAO;
+    public UsersResources(UserRepository userRepository, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService) {
+        this.userRepository = userRepository;
         this.customUserDetailsService = customUserDetailsService;
         this.uploadFileService = uploadFileService;
     }
+
 
     @RequestMapping(value = "/authentication")
     public boolean getAuthentication() {
@@ -43,12 +44,12 @@ public class UsersResources {
 
     @RequestMapping(value = "/logged/details", produces = "application/json")
     public User getLoggedUserDetails(final Authentication authentication) {
-        return userDAO.findUserByLogin(authentication.getName());
+        return userRepository.findUserByLogin(authentication.getName());
     }
 
     @RequestMapping("/user")
     public String getUser() {
-        User user = userDAO.findUserByLogin("user");
+        User user = userRepository.findUserByLogin("user");
         return user.toString();
     }
 
@@ -57,21 +58,21 @@ public class UsersResources {
         User user = new User();
         user.setLogin("test");
         user.setPassword("test");
-        userDAO.createUser(user);
+        userRepository.createUser(user);
         return "Create user";
     }
 
     @RequestMapping("/remove")
     public String removeUser() {
-        User user = userDAO.findUserById(5L);
-        userDAO.removeUser(user);
-        userDAO.removeUser(6L);
+        User user = userRepository.findUserById(5L);
+        userRepository.removeUser(user);
+        userRepository.removeUser(6L);
         return "all users";
     }
 
     @RequestMapping("/list")
     public String getUsers() {
-        System.out.println(userDAO.getAll().size());
+        System.out.println(userRepository.getAll().size());
         return "all users";
     }
 
@@ -80,7 +81,7 @@ public class UsersResources {
     @ResponseBody
     List<User> getFriendsByCurrentUser() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return userDAO.getFriendsByUser(((CustomUserDetails)authentication.getPrincipal()).getUser().getId());
+        return userRepository.getFriendsByUser(((CustomUserDetails)authentication.getPrincipal()).getUser().getId());
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -101,8 +102,8 @@ public class UsersResources {
     }
 
     @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
-    public String uploadImage(@RequestParam("file") MultipartFile file, final Authentication authentication) {
-        Long userId = ((CustomUserDetails) authentication.getPrincipal()).getUser().getId();
+    public String uploadImage( @RequestParam("file") MultipartFile file, final Authentication authentication) {
+        Long userId = ((CustomUserDetails)authentication.getPrincipal()).getUser().getId();
         uploadFileService.uploadImage(userId, file);
         return "SUCCESS UPLOAD YOUR AVATAR";
     }

@@ -1,7 +1,7 @@
 package com.aghpk.challenger.service;
 
-import com.aghpk.challenger.dao.UserDAO;
-import com.aghpk.challenger.dao.UserRoleDAO;
+import com.aghpk.challenger.dao.UserRepository;
+import com.aghpk.challenger.dao.UserRoleRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.data.UserRole;
 import com.aghpk.challenger.exeption.ApplicationException;
@@ -24,24 +24,24 @@ import java.util.List;
 @Service
 public class CustomUserDetailsService implements UserDetailsService {
 
-    private final UserDAO userDAO;
-    private final UserRoleDAO userRoleDAO;
-   public  SendMailSSL sendMailSSL;
+    private final UserRepository userRepository;
+    private final UserRoleRepository userRoleRepository;
+    private final SendMailSSL sendMailSSL;
 
     @Autowired
-    public CustomUserDetailsService(UserDAO userDAO, UserRoleDAO userRoleDAO, SendMailSSL sendMailSSL) {
-        this.userDAO = userDAO;
-        this.userRoleDAO = userRoleDAO;
+    public CustomUserDetailsService(UserRepository userRepository, UserRoleRepository userRoleRepository, SendMailSSL sendMailSSL) {
+        this.userRepository = userRepository;
+        this.userRoleRepository = userRoleRepository;
         this.sendMailSSL = sendMailSSL;
     }
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userDAO.findUserByLogin(login);
+        User user = userRepository.findUserByLogin(login);
         if (user == null) {
             throw new UsernameNotFoundException("No user present with login: " + login);
         }
-        List<String> userRoles = userRoleDAO.findRolesByUserId(user.getId());
+        List<String> userRoles = userRoleRepository.findRolesByUserId(user.getId());
         return new CustomUserDetails(user, userRoles);
     }
 
@@ -55,7 +55,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         User user = new User(registerForm);
         user.setRoles(new ArrayList<>(Arrays.asList(new UserRole(UserRole.ROLE.USER))));
         try {
-            user = userDAO.createUser(user);
+            user = userRepository.createUser(user);
         } catch (EntityExistsException e) {
             throw new ApplicationException(ErrorType.USER_EXIST, user.getLogin());
         }
@@ -68,11 +68,11 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     public void activateUser(Long userId, String login) {
-        User user = userDAO.findUserById(userId);
+        User user = userRepository.findUserById(userId);
         if (!user.getLogin().equals(login)) {
             throw new ApplicationException(ErrorType.WRONG_CONFIRMATION_LINK);
         }
         user.setEnabled(Boolean.TRUE);
-        userDAO.flush();
+        userRepository.flush();
     }
 }

@@ -181,6 +181,7 @@ insert into CHALLENGES_USERS (challenge_id, user_id) values (5, 23);
 insert into CHALLENGES_USERS (challenge_id, user_id) values (5, 24);
 
 
+
 insert into POINT (POINT_ID, QUANTITY, POINT_TYPE, USER_ID) values (1, 10, 'MAIN', 1);
 insert into POINT (POINT_ID, QUANTITY, POINT_TYPE, USER_ID) values (2, 20, 'BASIC', 1);
 insert into POINT (POINT_ID, QUANTITY, POINT_TYPE, USER_ID) values (3, 30, 'STAR', 1);

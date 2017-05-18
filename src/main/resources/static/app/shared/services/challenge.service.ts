@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import {Challenge} from "../models/challenge.model";
 
 @Injectable()
-export class ChallengeService {
+export class ChallengesService {
 
     private challengeUrl = "api/challenges";
 
@@ -13,6 +13,7 @@ export class ChallengeService {
     }
 
     getUserChallenges(): Observable<Challenge> {
+        console.log("debug -> tuu");
         return this.http.get(`${this.challengeUrl}/challenge`).map(res => res.json(),
             error => console.log(error));
     }
@@ -30,8 +31,8 @@ export class ChallengeService {
         let options = new RequestOptions({headers: headers});
         console.log("eloeloelo");
         return this.http.post(`${this.challengeUrl}/add/`,challenge,options)
-                        .map(res => res,
-                        error => console.log("ma byc error ale chwiliowo styknie info ze nie przeszlo"));
+            .map(res => res,
+                error => console.log("ma byc error ale chwiliowo styknie info ze nie przeszlo"));
     }
 
 }
