@@ -12,13 +12,9 @@ import {HttpModule} from "@angular/http";
 import {RegistrationPanelModule} from "./registration-panel/registration-panel.module";
 import {FileUploadPanelModule} from "./file-upload-panel/file-upload-panel.module";
 import {FriendBoxModule} from "./friend-box/friend-box.module";
-<<<<<<< HEAD
-
-
-=======
 import {ChallengeSearchInputModule} from "./filterable-input/challenge-search-input/challenge-search-input.module";
 import {UserSearchInputModule} from "./filterable-input/user-search-input/user-search-input.module";
->>>>>>> e87ace2c836317a9264b5699676128532304ff5f
+
 
 @NgModule({
     imports: [
@@ -31,16 +27,11 @@ import {UserSearchInputModule} from "./filterable-input/user-search-input/user-s
         UserPanelModule,
         GridPanelModule,
         ChallengeBoxModule,
-<<<<<<< HEAD
         ChallengeCreatorModule,
-        FileUploadPanelModule,
-        FriendBoxModule
-=======
         FileUploadPanelModule,
         FriendBoxModule,
         ChallengeSearchInputModule,
         UserSearchInputModule
->>>>>>> e87ace2c836317a9264b5699676128532304ff5f
     ],
 
     declarations: [

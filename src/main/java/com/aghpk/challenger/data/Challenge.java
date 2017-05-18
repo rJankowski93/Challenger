@@ -1,6 +1,6 @@
 package com.aghpk.challenger.data;
 
-
+import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.data.point.Point;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
@@ -24,7 +24,7 @@ import java.util.Set;
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
 @Document(indexName = "challenge", type = "challenge" , shards = 1)
-public class Challenge extends Audit implements Scoreable{
+public class Challenge extends Audit implements Scoreable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_ID")

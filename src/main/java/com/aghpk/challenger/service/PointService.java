@@ -1,7 +1,7 @@
 package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.dao.PointRepository;
-import com.aghpk.challenger.data.Scoreable;
+import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.data.point.Point;
 import com.aghpk.challenger.data.point.PointFactory;
 import org.springframework.beans.factory.annotation.Autowired;
