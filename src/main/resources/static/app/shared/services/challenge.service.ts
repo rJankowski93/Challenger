@@ -5,14 +5,14 @@ import 'rxjs/add/operator/map';
 import {Challenge} from "../models/challenge.model";
 
 @Injectable()
-export class ChallengesService {
+export class ChallengeService {
 
     private challengeUrl = "api/challenges";
 
     constructor(private http: Http) {
     }
 
-    getUserChallenges(): Observable<Challenge> {
+    getUserChallenge(): Observable<Challenge> {
         console.log("debug -> tuu");
         return this.http.get(`${this.challengeUrl}/challenge`).map(res => res.json(),
             error => console.log(error));

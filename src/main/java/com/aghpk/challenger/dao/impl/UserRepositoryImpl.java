@@ -1,10 +1,6 @@
 package com.aghpk.challenger.dao.impl;
 
 import com.aghpk.challenger.data.User;
-<<<<<<< HEAD:src/main/java/com/aghpk/challenger/dao/impl/UserDAOImpl.java
-import org.springframework.beans.factory.annotation.Autowired;
-=======
->>>>>>> e87ace2c836317a9264b5699676128532304ff5f:src/main/java/com/aghpk/challenger/dao/impl/UserRepositoryImpl.java
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityExistsException;
