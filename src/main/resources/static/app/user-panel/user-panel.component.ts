@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
-import {UserService} from "../shared/services/user.service";
+import {UserRepository} from "../shared/repository/user.repository";
 import {User} from "../shared/models/user.model";
 import {ChallengeSearchInputComponent} from "../filterable-input/challenge-search-input/challenge-search-input.component";
 import {Subscription} from "rxjs";
@@ -16,7 +16,7 @@ export class UserPanelComponent implements OnInit, OnDestroy{
     private userDetails: User;
     private isLoading:boolean;
     private loggedUserSubscription:Subscription;
-    constructor(private userService: UserService) {
+    constructor(private userService: UserRepository) {
     }
 
     ngOnInit(): void {

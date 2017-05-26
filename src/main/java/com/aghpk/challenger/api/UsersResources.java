@@ -1,6 +1,6 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.dao.UserRepository;
+import com.aghpk.challenger.repository.UserRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonRegisterForm;

@@ -1,6 +1,6 @@
 package com.aghpk.challenger.service;
 
-import com.aghpk.challenger.dao.PointRepository;
+import com.aghpk.challenger.repository.PointRepository;
 import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.data.point.Point;
 import com.aghpk.challenger.data.point.PointFactory;

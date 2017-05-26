@@ -1,4 +1,4 @@
-package com.aghpk.challenger.dao;
+package com.aghpk.challenger.repository;
 
 import com.aghpk.challenger.data.UserRole;
 import org.springframework.data.jpa.repository.JpaRepository;

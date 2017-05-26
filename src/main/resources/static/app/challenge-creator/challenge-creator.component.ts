@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ChallengeService} from "../shared/services/challenge.service"
+import {ChallengeRepository} from "../shared/repository/challenge.repository"
 import {Challenge} from "../shared/models/challenge.model";
 
 @Component({
@@ -7,14 +7,14 @@ import {Challenge} from "../shared/models/challenge.model";
     selector: 'challenge-creator',
     templateUrl: './challenge-creator.component.html',
     styleUrls: ['challenge-creator.component.css'],
-    providers: [ChallengeService]
+    providers: [ChallengeRepository]
 })
 export class ChallengeCreatorComponent implements OnInit {
     private isLoading: boolean;
     private challenge: Challenge;
 
 
-    constructor(private challengesService: ChallengeService) {
+    constructor(private challengesService: ChallengeRepository) {
     }
 
     ngOnInit(): void {

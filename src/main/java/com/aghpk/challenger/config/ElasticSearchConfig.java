@@ -13,8 +13,8 @@ import java.io.File;
 import java.io.IOException;
 
 @Configuration
-@EnableJpaRepositories(basePackages = "com.aghpk.challenger.dao")
-@EnableElasticsearchRepositories(basePackages = "com.aghpk.challenger.daoElastic")
+@EnableJpaRepositories(basePackages = "com.aghpk.challenger.repository")
+@EnableElasticsearchRepositories(basePackages = "com.aghpk.challenger.repositoryElastic")
 public class ElasticSearchConfig {
 
     @Bean

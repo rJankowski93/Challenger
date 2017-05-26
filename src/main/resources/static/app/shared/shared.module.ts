@@ -1,15 +1,15 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-import {UserService} from "./services/user.service";
+import {UserRepository} from "./repository/user.repository";
 import {HttpModule} from "@angular/http";
-import {AuthService} from "./services/auth.service";
-import {SearchService} from "./services/search.service";
+import {AuthRepository} from "./repository/auth.repository";
+import {SearchRepository} from "./repository/search.repository";
 import {ClickOutsideDirective} from "./directives/click-outside.directive";
 
 @NgModule({
     providers: [
-        UserService,
-        AuthService,
-        SearchService
+        UserRepository,
+        AuthRepository,
+        SearchRepository
     ],
     imports: [
         HttpModule

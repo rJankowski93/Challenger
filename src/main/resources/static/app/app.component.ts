@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {AuthService} from "./shared/services/auth.service";
+import {AuthRepository} from "./shared/repository/auth.repository";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +12,7 @@ export class AppComponent implements OnInit{
     private isAuthenticated:boolean;
     private visibleLoginPage:boolean;
 
-    constructor(private authService:AuthService) {
+    constructor(private authService:AuthRepository) {
 
     }
 

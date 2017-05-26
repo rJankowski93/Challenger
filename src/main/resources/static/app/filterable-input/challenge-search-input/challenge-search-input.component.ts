@@ -1,5 +1,5 @@
 import {Component, OnInit, OnDestroy} from "@angular/core";
-import {SearchService} from "../../shared/services/search.service";
+import {SearchRepository} from "../../shared/repository/search.repository";
 import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
 import {Challenge} from "../../shared/models/challenge.model";
@@ -23,7 +23,7 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
     private searchSubscription:Subscription;
     private MINIMUM_FILTER_LENGTH:number=3;
 
-    constructor(private searchService:SearchService) {
+    constructor(private searchService:SearchRepository) {
     }
 
     ngOnInit(): void {

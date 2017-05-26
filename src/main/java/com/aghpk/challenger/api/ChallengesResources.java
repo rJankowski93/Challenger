@@ -1,6 +1,6 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.dao.ChallengeRepository;
+import com.aghpk.challenger.repository.ChallengeRepository;
 import com.aghpk.challenger.data.Challenge;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;

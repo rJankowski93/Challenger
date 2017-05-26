@@ -1,7 +1,7 @@
 package com.aghpk.challenger.elasticLoaders;
 
-import com.aghpk.challenger.dao.ChallengeRepository;
-import com.aghpk.challenger.daoElastic.ChallengeElasticRepository;
+import com.aghpk.challenger.repository.ChallengeRepository;
+import com.aghpk.challenger.repositoryElastic.ChallengeElasticRepository;
 import com.aghpk.challenger.data.Challenge;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.elasticsearch.core.ElasticsearchOperations;

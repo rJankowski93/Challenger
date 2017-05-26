@@ -1,4 +1,4 @@
-package com.aghpk.challenger.daoElastic;
+package com.aghpk.challenger.repositoryElastic;
 
 import com.aghpk.challenger.data.User;
 import org.springframework.data.domain.Page;

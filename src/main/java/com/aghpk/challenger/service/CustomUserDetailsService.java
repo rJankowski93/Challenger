@@ -1,7 +1,7 @@
 package com.aghpk.challenger.service;
 
-import com.aghpk.challenger.dao.UserRepository;
-import com.aghpk.challenger.dao.UserRoleRepository;
+import com.aghpk.challenger.repository.UserRepository;
+import com.aghpk.challenger.repository.UserRoleRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.data.UserRole;
 import com.aghpk.challenger.exeption.ApplicationException;

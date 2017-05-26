@@ -4,7 +4,7 @@ import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/first';
 
 @Injectable()
-export class AuthService {
+export class AuthRepository {
 
     private userUrl = "api/users";
 

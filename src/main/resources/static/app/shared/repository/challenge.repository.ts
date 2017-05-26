@@ -5,7 +5,7 @@ import 'rxjs/add/operator/map';
 import {Challenge} from "../models/challenge.model";
 
 @Injectable()
-export class ChallengeService {
+export class ChallengeRepository {
 
     private challengeUrl = "api/challenges";
 

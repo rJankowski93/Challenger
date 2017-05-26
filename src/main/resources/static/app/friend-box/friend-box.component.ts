@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {UserService} from "../shared/services/user.service";
+import {UserRepository} from "../shared/repository/user.repository";
 import {User} from "../shared/models/user.model";
 
 @Component({
@@ -7,14 +7,14 @@ import {User} from "../shared/models/user.model";
     selector: 'friend-box',
     templateUrl: './friend-box.component.html',
     styleUrls: ['friend-box.component.css'],
-    providers: [UserService]
+    providers: [UserRepository]
 })
 export class FriendBoxComponent implements OnInit {
 
     private isLoading: boolean;
     private friendsList: Array<User>;
 
-    constructor(private userService: UserService) {
+    constructor(private userService: UserRepository) {
     }
 
     ngOnInit(): void {

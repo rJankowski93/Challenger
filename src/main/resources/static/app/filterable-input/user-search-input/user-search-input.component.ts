@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {SearchService} from "../../shared/services/search.service";
+import {SearchRepository} from "../../shared/repository/search.repository";
 import {User} from "../../shared/models/user.model";
 import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
@@ -23,7 +23,7 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
     private searchSubscription:Subscription;
     private MINIMUM_FILTER_LENGTH:number=3;
 
-    constructor(private searchService:SearchService) {
+    constructor(private searchService:SearchRepository) {
     }
 
     ngOnInit(): void {

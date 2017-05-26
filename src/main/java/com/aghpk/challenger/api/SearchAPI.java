@@ -1,7 +1,7 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.daoElastic.ChallengeElasticRepository;
-import com.aghpk.challenger.daoElastic.UserElasticRepository;
+import com.aghpk.challenger.repositoryElastic.ChallengeElasticRepository;
+import com.aghpk.challenger.repositoryElastic.UserElasticRepository;
 import com.aghpk.challenger.data.Challenge;
 import com.aghpk.challenger.data.User;
 import org.springframework.beans.factory.annotation.Autowired;

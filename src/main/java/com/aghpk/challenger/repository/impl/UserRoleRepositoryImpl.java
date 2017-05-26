@@ -1,4 +1,4 @@
-package com.aghpk.challenger.dao.impl;
+package com.aghpk.challenger.repository.impl;
 
 import com.aghpk.challenger.data.UserRole;
 

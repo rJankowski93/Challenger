@@ -1,4 +1,4 @@
-package com.aghpk.challenger.dao;
+package com.aghpk.challenger.repository;
 
 import com.aghpk.challenger.data.Challenge;
 import com.aghpk.challenger.data.User;
