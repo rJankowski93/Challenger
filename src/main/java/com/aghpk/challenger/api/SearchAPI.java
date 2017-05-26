@@ -24,13 +24,13 @@ public class SearchAPI {
         this.userElasticRepository = userElasticRepository;
     }
 
-    @RequestMapping("/shortlist/challenges")
-    public Page<Challenge> findChallenges(@RequestParam("filter") String filter){
-        return challengeElasticRepository.findByNameContainingOrDescriptionContaining(filter, filter, new PageRequest(0,5));
+    @RequestMapping("/challenges")
+    public Page<Challenge> findChallenges(@RequestParam("filter") String filter, @RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize){
+        return challengeElasticRepository.findByNameContainingOrDescriptionContaining(filter, filter, new PageRequest(pageNo,pageSize));
     }
 
-    @RequestMapping("/shortlist/users")
-    public Page<User> findUsers(@RequestParam("filter") String filter){
-        return userElasticRepository.findByFirstNameContainingOrLastnameContaining(filter, filter, new PageRequest(0, 5));
+    @RequestMapping("/users")
+    public Page<User> findUsers(@RequestParam("filter") String filter, @RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize){
+        return userElasticRepository.findByFirstNameContainingOrLastnameContaining(filter, filter, new PageRequest(pageNo, pageSize));
     }
 }

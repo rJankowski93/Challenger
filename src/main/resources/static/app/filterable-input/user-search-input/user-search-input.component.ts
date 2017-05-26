@@ -3,6 +3,7 @@ import {SearchService} from "../../shared/services/search.service";
 import {User} from "../../shared/models/user.model";
 import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
+import {MapUtils} from "../../shared/services/map.utils";
 
 @Component({
     moduleId: module.id,
@@ -14,6 +15,8 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
 
     private searchPage:User[];
     private selectedUser:User;
+    private usersLongPage:User[];
+    private usersListEmpty:boolean=true;
     private filter:string;
     private isVisible:boolean;
     private isLoading:boolean;
@@ -49,7 +52,7 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
             return;
         }
 
-        this.searchService.searchUser(this.filter)
+        this.searchService.searchUser(this.filter,0,5)
             .subscribe(result => {
                     this.searchPage=result;
                     this.isLoading=false;
@@ -71,5 +74,20 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
 
     updateFilterValue(filterValue:string){
         this.filter=filterValue;
+    }
+
+    getMoreUsers(pageNo:number):void{
+        this.searchSubscription=this.searchService.searchUser(this.filter,pageNo,6)
+            .subscribe(result => {
+                    this.usersLongPage=result;
+                    this.usersListEmpty=false;
+                },
+                error=>{
+                    console.error("Cannot read Users", error);
+                })
+    }
+
+    createPageRange(number){
+        return MapUtils.createPageRange(number);
     }
 }

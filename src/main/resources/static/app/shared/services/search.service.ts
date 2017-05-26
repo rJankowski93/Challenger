@@ -8,27 +8,33 @@ import {Challenge} from "../models/challenge.model";
 @Injectable()
 export class SearchService{
 
-    private FILTER_PARAM="filter";
-    private searchUsersUrl = "api/search";
+    private static FILTER_PARAM:string="filter";
+    private static SEARCH_PAGE_PARAM:string="pageNo";
+    private static PAGE_SIZE:string="pageSize";
+    private static searchUsersUrl = "api/search";
 
     constructor(private http:Http){
     }
 
-    searchChallenge(filter:string): Observable<Challenge[]>{
+    searchChallenge(filter:string,pageNo, pageSize): Observable<Challenge[]>{
         let searchParams=new URLSearchParams();
-        searchParams.set(this.FILTER_PARAM, filter);
+        searchParams.set(SearchService.FILTER_PARAM, filter);
+        searchParams.set(SearchService.SEARCH_PAGE_PARAM, pageNo);
+        searchParams.set(SearchService.PAGE_SIZE, pageSize);
 
-        return this.http.get(`${this.searchUsersUrl}/shortlist/challenges`, { search: searchParams })
+        return this.http.get(`${SearchService.searchUsersUrl}/challenges`, { search: searchParams })
             .map(res => res.json(),
-            error=> console.log(error));
+                error=> console.error(error));
     }
 
-    searchUser(filter:string): Observable<User[]>{
+    searchUser(filter:string,pageNo, pageSize): Observable<User[]>{
         let searchParams=new URLSearchParams();
-        searchParams.set(this.FILTER_PARAM, filter);
+        searchParams.set(SearchService.FILTER_PARAM, filter);
+        searchParams.set(SearchService.SEARCH_PAGE_PARAM, pageNo);
+        searchParams.set(SearchService.PAGE_SIZE, pageSize);
 
-        return this.http.get(`${this.searchUsersUrl}/shortlist/users`, { search: searchParams })
+        return this.http.get(`${SearchService.searchUsersUrl}/users`, { search: searchParams })
             .map(res => res.json(),
-                error=> console.log(error));
+                error=> console.error(error));
     }
 }

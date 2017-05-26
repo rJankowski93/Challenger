@@ -24,3 +24,28 @@
     }
   }
 }
+
+.page-no{
+  &:hover{
+    cursor: pointer;
+    color: $borders-color;
+  }
+}
+
+.long-list-content{
+  display: block;
+}
+
+
+.long-list-element{
+  &:hover{
+    cursor: pointer;
+  }
+}
+
+.long-list-element-image{
+  background-image: url("http://canadiancitizenshipchallenge.ca/sites/default/files/buttons/take_the_challenge.png");
+  background-size: 100px 30px;
+  height: 30px;
+  width: 100px;
+}

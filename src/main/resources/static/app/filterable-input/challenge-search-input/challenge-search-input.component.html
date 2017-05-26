@@ -1,10 +1,9 @@
 <div *ngIf="!isLoading" id="filterable">
-    <form>
         <div class="input-group" (clickOutside)="setVisibility(false)">
             <input type="text" class="form-control" (click)="setVisibility(true)"
                    (keyup)="updateFilterValue($event.target.value); getSearchResults();" placeholder="Search challenge">
             <div class="input-group-btn">
-                <button class="btn btn-default"  (click)="toggleVisibility();">
+                <button class="btn btn-default" (click)="setVisibility(false); getMoreChallenges(0); challengesListModal.open();">
                     <i class="glyphicon glyphicon-search"></i>
                 </button>
             </div>
@@ -17,7 +16,6 @@
                 </li>
             </ul>
         </div>
-    </form>
 </div>
 
 <modal #challengeModal>
@@ -29,5 +27,28 @@
     </modal-content>
     <modal-footer>
         <button class="btn btn-primary" (click)="challengeModal.close()">Close</button>
+    </modal-footer>
+</modal>
+
+<!--long list challenges-->
+<modal #challengesListModal style="background-color: red;">
+    <modal-content>
+        <div *ngIf="!challengesListEmpty" class="long-list-content">
+            <div *ngFor="let element of challengesLongPage.content" class="long-list-element">
+
+                <div class="long-list-element-image"></div>
+                <span> {{element.name}} </span>
+            </div>
+        </div>
+    </modal-content>
+
+    <modal-footer>
+        <div *ngIf="!challengesListEmpty">
+        <span *ngFor="let pageNo of createPageRange(challengesLongPage.totalPages)" (click)="getMoreChallenges(pageNo);" class="page-no">
+            {{pageNo+1}}
+        </span>
+        </div>
+
+        <button class="btn btn-primary" (click)="challengesListModal.close()">Close</button>
     </modal-footer>
 </modal>

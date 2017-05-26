@@ -1,10 +1,9 @@
 <div *ngIf="!isLoading" id="filterable">
-    <form>
         <div class="input-group" (clickOutside)="setVisibility(false)">
             <input type="text" class="form-control" (click)="setVisibility(true)"
                    (keyup)="updateFilterValue($event.target.value); getSearchResults();" placeholder="Search user">
             <div class="input-group-btn">
-                <button class="btn btn-default"  (click)="toggleVisibility();">
+                <button class="btn btn-default" (click)="setVisibility(false); getMoreUsers(0); usersListModal.open();">
                     <i class="glyphicon glyphicon-search"></i>
                 </button>
             </div>
@@ -17,7 +16,6 @@
                 </li>
             </ul>
         </div>
-    </form>
 </div>
 
 <modal #userModal>
@@ -29,5 +27,28 @@
     </modal-content>
     <modal-footer>
         <button class="btn btn-primary" (click)="userModal.close()">Close</button>
+    </modal-footer>
+</modal>
+
+<!--long list challenges-->
+<modal #usersListModal style="background-color: red;">
+    <modal-content>
+        <div *ngIf="!usersListEmpty" class="long-list-content">
+            <div *ngFor="let element of usersLongPage.content" class="long-list-element">
+
+                <div class="long-list-element-image"></div>
+                <span> {{element.firstName}} {{element.lastName}}</span>
+            </div>
+        </div>
+    </modal-content>
+
+    <modal-footer>
+        <div *ngIf="!usersListEmpty">
+        <span *ngFor="let pageNo of createPageRange(usersLongPage.totalPages)" (click)="getMoreUsers(pageNo);" class="page-no">
+            {{pageNo+1}}
+        </span>
+        </div>
+
+        <button class="btn btn-primary" (click)="usersListModal.close()">Close</button>
     </modal-footer>
 </modal>

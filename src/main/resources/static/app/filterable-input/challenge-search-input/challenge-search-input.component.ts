@@ -3,6 +3,7 @@ import {SearchService} from "../../shared/services/search.service";
 import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
 import {Challenge} from "../../shared/models/challenge.model";
+import {MapUtils} from "../../shared/services/map.utils";
 
 @Component({
     moduleId: module.id,
@@ -14,6 +15,8 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
 
     private searchPage:Challenge[];
     private selectedChallenge:Challenge;
+    private challengesLongPage:Challenge[];
+    private challengesListEmpty:boolean=true;
     private filter:string;
     private isVisible:boolean;
     private isLoading:boolean;
@@ -49,7 +52,7 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
             return;
         }
 
-        this.searchSubscription=this.searchService.searchChallenge(this.filter)
+        this.searchSubscription=this.searchService.searchChallenge(this.filter, 0,5)
             .subscribe(result => {
                     this.searchPage=result;
                     this.isLoading=false;
@@ -71,5 +74,20 @@ export class ChallengeSearchInputComponent implements FilterableInput, OnInit, O
 
     updateFilterValue(filterValue:string){
         this.filter=filterValue;
+    }
+
+    getMoreChallenges(pageNo:number):void{
+        this.searchSubscription=this.searchService.searchChallenge(this.filter,pageNo,6)
+            .subscribe(result => {
+                    this.challengesLongPage=result;
+                    this.challengesListEmpty=false;
+                },
+                error=>{
+                    console.error("Cannot read Challenge", error);
+                })
+    }
+
+    createPageRange(number){
+        return MapUtils.createPageRange(number);
     }
 }
