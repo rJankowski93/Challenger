@@ -1,9 +1,9 @@
-import {Component, OnInit, Output, EventEmitter} from "@angular/core";
+import {Component, OnInit} from "@angular/core";
 import {AuthService} from "./shared/services/auth.service";
 
 @Component({
     moduleId: module.id,
-    selector: 'my-app',
+    selector: 'challenger-app',
     templateUrl: './app.component.html'
 })
 export class AppComponent implements OnInit{
