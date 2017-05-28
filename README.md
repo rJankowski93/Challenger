@@ -11,14 +11,14 @@ W kolejnych wersjach będzie możliwe tworzenie grupy znajomych, tak aby rywaliz
 
 
 ### Drzewo katalogów ###
-*/main
-   -/java
-   */com.aghpk.challenger
-     -api
-     -config
-     -controllers
-   -/resources
-*/test
+* /main
+   - /java
+   * /com.aghpk.challenger
+     - api
+     - config
+     - controllers
+   - /resources
+* /test
 * Quick summary
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
