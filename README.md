@@ -59,7 +59,7 @@ public class PointFactory {
     }
 }
 ```
-Stworzyliśmy abstrakcyjną klasę Point, na podstawie której stworzyliśmy inne typy punktów.
+Stworzyliśmy abstrakcyjną klasę Point, rozszerzającą inne typy punktów.
 
 
 ```
