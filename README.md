@@ -12,9 +12,9 @@ W kolejnych wersjach będzie możliwe tworzenie grupy znajomych, tak aby rywaliz
 
 ### Drzewo katalogów ###
 * /main
-   * /java
-   * /com.aghpk.challenger
-     - /a- pi
+   + /java
+   + /com.aghpk.challenger
+     - /api
      - /config
      - /controllers
      - /data
@@ -25,7 +25,10 @@ W kolejnych wersjach będzie możliwe tworzenie grupy znajomych, tak aby rywaliz
      - /respositoryElastic
      - /service
      - /tools
-   * /resources
+   + /resources
+     - /sass
+     - /static
+       * /app
 * /test
 * Quick summary
 * Version
