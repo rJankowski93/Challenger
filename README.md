@@ -10,8 +10,10 @@ Każdy użytkownik walczy o jak największą ilość punktów, aby być w czoł�
 W kolejnych wersjach będzie możliwe tworzenie grupy znajomych, tak aby rywalizować tylko między sobą, a nie z wszystkimi użytkownikami.
 
 
-### What is this repository for? ###
-
+### Drzewo katalogów ###
+-src
+   */main
+   */test
 * Quick summary
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
