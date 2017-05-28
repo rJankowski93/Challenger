@@ -12,12 +12,20 @@ W kolejnych wersjach będzie możliwe tworzenie grupy znajomych, tak aby rywaliz
 
 ### Drzewo katalogów ###
 * /main
-   - /java
+   * /java
    * /com.aghpk.challenger
-     - api
-     - config
-     - controllers
-   - /resources
+     - /a- pi
+     - /config
+     - /controllers
+     - /data
+     - /elasticLoaders
+     - /exception
+     - /model
+     - /respository
+     - /respositoryElastic
+     - /service
+     - /tools
+   * /resources
 * /test
 * Quick summary
 * Version
