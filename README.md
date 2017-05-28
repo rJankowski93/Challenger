@@ -12,8 +12,8 @@ W kolejnych wersjach będzie możliwe tworzenie grupy znajomych, tak aby rywaliz
 
 ### Drzewo katalogów ###
 -src
-   */main
-   */test
+   -*/main
+   -*/test
 * Quick summary
 * Version
 * [Learn Markdown](https://bitbucket.org/tutorials/markdowndemo)
