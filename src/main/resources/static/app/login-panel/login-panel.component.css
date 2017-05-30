@@ -1,4 +1,4 @@
-#registration-container {
+#login-container {
   background: #dddfd4;
   height: 610px;
   margin-top: 40px;
@@ -8,10 +8,10 @@
 #user-icon {
   max-width: 150px; }
 
-#registration {
+#login {
   background-color: #DDDDDD; }
 
-.registration-form {
+.login-form {
   background-color: #DDDDDD; }
 
 input::-moz-placeholder {

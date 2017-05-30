@@ -1,6 +1,6 @@
 @import "../../../sass/variables";
 
-#registration-container {
+#login-container {
   background: $main-color;
   height: 610px;
   margin-top: 40px;
@@ -12,11 +12,11 @@
   max-width: 150px;
 }
 
-#registration {
+#login {
   background-color: $login-page-color;
 }
 
-.registration-form {
+.login-form {
   background-color: $login-page-color;
 }
 

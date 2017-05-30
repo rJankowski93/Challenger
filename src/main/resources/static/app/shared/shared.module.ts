@@ -4,12 +4,14 @@ import {HttpModule} from "@angular/http";
 import {AuthRepository} from "./repository/auth.repository";
 import {SearchRepository} from "./repository/search.repository";
 import {ClickOutsideDirective} from "./directives/click-outside.directive";
+import {FileUploadService} from "./services/fileUpload.service";
 
 @NgModule({
     providers: [
         UserRepository,
         AuthRepository,
-        SearchRepository
+        SearchRepository,
+        FileUploadService
     ],
     imports: [
         HttpModule

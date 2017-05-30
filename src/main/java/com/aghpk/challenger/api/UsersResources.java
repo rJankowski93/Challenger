@@ -2,6 +2,8 @@ package com.aghpk.challenger.api;
 
 import com.aghpk.challenger.repository.UserRepository;
 import com.aghpk.challenger.data.User;
+import com.aghpk.challenger.exeption.ApplicationException;
+import com.aghpk.challenger.exeption.ErrorType;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.JsonResponseBody;
@@ -102,9 +104,8 @@ public class UsersResources {
     }
 
     @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
-    public String uploadImage( @RequestParam("file") MultipartFile file, final Authentication authentication) {
+    public void uploadImage( @RequestParam("file") MultipartFile file, final Authentication authentication) {
         Long userId = ((CustomUserDetails)authentication.getPrincipal()).getUser().getId();
         uploadFileService.uploadImage(userId, file);
-        return "SUCCESS UPLOAD YOUR AVATAR";
     }
 }

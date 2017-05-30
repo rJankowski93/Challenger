@@ -31,6 +31,7 @@
   height: 90px;
   //background-image: url("http://stardesign.com.pl/images/member1.jpg");
   background-size: 100% 100%;
+  cursor: pointer;
 }
 
 #user-panel-content {
@@ -57,4 +58,8 @@
 
 #search-friends {
   @extend #search-challenge;
+}
+
+#upload-file-modal-title{
+  text-align: center;
 }

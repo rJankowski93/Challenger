@@ -1,11 +1,16 @@
-<form enctype="multipart/form-data" action="/api/users/uploadImage" method="post">
-    <div class="row">
-        <input id="chooseFile" type="file" (change)="onFileChange($event)" name="file" placeholder="Upload image..."/>
-        <div id="img-container" class="col s12">
-        <img [src]="avatar" id="avatar-id" >
-        </div>
-        <div class="col s12">
-            <button id="btnSubmit" class="btn waves-effect waves-light col s2 offset-s5">Confirm</button>
+<iframe id="iframe" name="resultRequest" hidden></iframe>
+<form class="row" enctype="multipart/form-data" target="resultRequest" action="api/users/uploadImage" method="post">
+    <div class="form-group">
+        <div class="row">
+            <input id="chooseFile" type="file" (change)="onFileChange($event)" name="file"
+                   placeholder="Upload image..."/>
+            <div id="img-container" class="col s12">
+                <img [src]="avatar" id="avatar-id">
+            </div>
+            <div class="col-md-offset-3">
+                <button id="btnUpload" type="submit" class="btn waves-effect waves-light col-md-3 modal-btn">Upload</button>
+                <button id="btnFinish" class="btn waves-effect waves-light col-md-offset-2 col-md-3 modal-btn" (click)="finish()">Finish</button>
+            </div>
         </div>
     </div>
 </form>

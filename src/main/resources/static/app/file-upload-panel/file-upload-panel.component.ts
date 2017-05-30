@@ -1,4 +1,5 @@
 import {Component, OnInit} from "@angular/core";
+import {FileUploadService} from "../shared/services/fileUpload.service";
 
 @Component({
     moduleId: module.id,
@@ -8,6 +9,10 @@ import {Component, OnInit} from "@angular/core";
 })
 export class FileUploadPanelComponent extends OnInit{
     avatar:any;
+
+    constructor(private fileUploadService: FileUploadService ) {
+        super();
+    }
 
     ngOnInit(): void {
        this.avatar="http://stardesign.com.pl/images/member1.jpg";
@@ -20,5 +25,9 @@ export class FileUploadPanelComponent extends OnInit{
             this.avatar = e.target.result;
         }
         reader.readAsDataURL(fileInput.target.files[0]);
+    }
+
+    finish(){
+        this.fileUploadService.changeAvatar({option: 'onSubmit'});
     }
 }

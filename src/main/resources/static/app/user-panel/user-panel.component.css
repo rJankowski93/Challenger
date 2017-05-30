@@ -24,7 +24,8 @@
   top: 100px;
   width: 90px;
   height: 90px;
-  background-size: 100% 100%; }
+  background-size: 100% 100%;
+  cursor: pointer; }
 
 #user-panel-content {
   height: 600px; }
@@ -43,5 +44,8 @@
 
 #search-challenge, #search-friends {
   clear: both; }
+
+#upload-file-modal-title {
+  text-align: center; }
 
 /*# sourceMappingURL=user-panel.component.css.map */

@@ -1,8 +1,7 @@
 <div *ngIf="!isLoading" id="user-panel" class="col-md-3">
-
     <div id="user-images">
         <div id="user-background" class="col-md-3">
-            <img id="user-profile-image" class="col-offset-4 col-md-4 responsive-img valign profile-image-login" src="avatars\user\{{userDetails.id}}.jpg" alt="">
+            <img id="user-profile-image" class="col-offset-4 col-md-4 valign profile-image-login" src="avatars\user\{{userDetails.id}}.jpg" (click)="avatarModal.open()" alt="">
         </div>
     </div>
     <div id="user-panel-content">
@@ -24,3 +23,15 @@
         </div>
     </div>
 </div>
+
+<modal #avatarModal>
+    <modal-header>
+        <h6 id="upload-file-modal-title">Avatar upload...</h6>
+    </modal-header>
+    <modal-content>
+        <file-upload-panel></file-upload-panel>
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-primary" (click)="avatarModal.close()">Close</button>
+    </modal-footer>
+</modal>

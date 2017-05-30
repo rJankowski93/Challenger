@@ -3,12 +3,16 @@ import {UserPanelComponent} from "./user-panel.component";
 import {CommonModule} from "@angular/common";
 import {ChallengeSearchInputModule} from "../filterable-input/challenge-search-input/challenge-search-input.module";
 import {UserSearchInputModule} from "../filterable-input/user-search-input/user-search-input.module";
+import {ModalModule} from "ng2-modal";
+import {FileUploadPanelModule} from "../file-upload-panel/file-upload-panel.module";
 
 @NgModule({
     imports: [
         CommonModule,
         ChallengeSearchInputModule,
-        UserSearchInputModule
+        UserSearchInputModule,
+        ModalModule,
+        FileUploadPanelModule
     ],
     exports: [
         UserPanelComponent
