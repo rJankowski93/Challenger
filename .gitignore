@@ -3,7 +3,7 @@
 *build
 *classes
 *src/.idea
-#*js
+*js
 *js.map
-#*.css
+*.css
 *.css.map
