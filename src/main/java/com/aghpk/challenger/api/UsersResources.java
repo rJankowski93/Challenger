@@ -1,6 +1,5 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.repository.UserRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.exeption.ApplicationException;
 import com.aghpk.challenger.exeption.ErrorType;
@@ -8,8 +7,10 @@ import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.JsonResponseBody;
 import com.aghpk.challenger.model.Views;
+import com.aghpk.challenger.repository.UserRepository;
 import com.aghpk.challenger.service.CustomUserDetailsService;
 import com.aghpk.challenger.service.UploadFileService;
+import com.aghpk.challenger.service.UsersResourcesService;
 import com.fasterxml.jackson.annotation.JsonView;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
@@ -27,12 +28,14 @@ import java.util.List;
 public class UsersResources {
 
     private final UserRepository userRepository;
+    private final UsersResourcesService usersResourcesService;
     private final CustomUserDetailsService customUserDetailsService;
     private final UploadFileService uploadFileService;
 
     @Autowired
-    public UsersResources(UserRepository userRepository, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService) {
+    public UsersResources(UserRepository userRepository, UsersResourcesService usersResourcesService, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService) {
         this.userRepository = userRepository;
+        this.usersResourcesService = usersResourcesService;
         this.customUserDetailsService = customUserDetailsService;
         this.uploadFileService = uploadFileService;
     }
@@ -107,5 +110,10 @@ public class UsersResources {
     public void uploadImage( @RequestParam("file") MultipartFile file, final Authentication authentication) {
         Long userId = ((CustomUserDetails)authentication.getPrincipal()).getUser().getId();
         uploadFileService.uploadImage(userId, file);
+    }
+
+    @RequestMapping(value = "/top", method = RequestMethod.GET)
+    public List<User> getTopUsers(@RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize, @RequestParam("pointsType") String pointsType){
+        return usersResourcesService.getTopUsersByPointsQuantity(pageNo, pageSize, pointsType);
     }
 }

@@ -16,7 +16,7 @@ export class RegistrationPanelComponent {
         var data = {}
         data["login"] = $("#login").val();
         data["firstname"] = $("#firstname").val();
-        data["lastname"] = $("#lastname").val();
+        data["lastname"] = $("#lastName").val();
         data["password"] = $("#password").val();
         data["matchingPassword"] = $("#matchingPassword").val();
         data["email"] = $("#email").val();

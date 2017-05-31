@@ -8,6 +8,7 @@ create table USER (
   LASTNAME varchar(256),
   PASSWORD varchar(256),
   EMAIL varchar(256),
+  GENERALPOINTSQUANTITY BIGINT(19),
   ENABLED boolean
 );
 

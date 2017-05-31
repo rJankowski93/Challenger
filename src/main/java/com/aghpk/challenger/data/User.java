@@ -47,7 +47,7 @@ public class User extends Audit implements Serializable, Scoreable {
 
     @Column(name = "LASTNAME")
     @JsonView(Views.Public.class)
-    private String lastname;
+    private String lastName;
 
     @Column(name = "PASSWORD")
     private String password;
@@ -68,6 +68,9 @@ public class User extends Audit implements Serializable, Scoreable {
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @JsonBackReference(value = "user-point")
     private Set<Point> points;
+
+    @Column(name = "GENERALPOINTSQUANTITY")
+    private Long generalPointsQuantity;
 
     @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL)
@@ -104,7 +107,7 @@ public class User extends Audit implements Serializable, Scoreable {
     public User(JsonRegisterForm jsonRegisterForm) {
         this.login = jsonRegisterForm.getLogin();
         this.firstName = jsonRegisterForm.getFirstname();
-        this.lastname = jsonRegisterForm.getLastname();
+        this.lastName = jsonRegisterForm.getLastname();
         this.password = jsonRegisterForm.getPassword();
         this.email = jsonRegisterForm.getEmail();
     }

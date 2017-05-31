@@ -15,6 +15,7 @@ import {FriendBoxModule} from "./friend-box/friend-box.module";
 import {ChallengeSearchInputModule} from "./filterable-input/challenge-search-input/challenge-search-input.module";
 import {UserSearchInputModule} from "./filterable-input/user-search-input/user-search-input.module";
 import { FormsModule }  from '@angular/forms';
+import {TopUsersPanelModule} from "./top-users-panel/top-users-panel.module";
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { FormsModule }  from '@angular/forms';
         FriendBoxModule,
         ChallengeSearchInputModule,
         UserSearchInputModule,
-        FormsModule
+        FormsModule,
+        TopUsersPanelModule
     ],
 
     declarations: [

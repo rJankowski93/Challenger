@@ -12,7 +12,7 @@
         <div class="col-xs-10 col-md-8 filtered-list" *ngIf="isVisible" >
             <ul>
                 <li *ngFor="let element of searchPage.content" (click)="setSelectedUser(element); userModal.open()">
-                    <span>{{element.firstName}} {{element.lastname}}</span>
+                    <span>{{element.firstName}} {{element.lastName}}</span>
                 </li>
             </ul>
         </div>

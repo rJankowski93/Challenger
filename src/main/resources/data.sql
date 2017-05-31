@@ -1,9 +1,9 @@
 -- I generated all the data by using this site - http://www.mockaroo.com/
 -- USERs important to application develop admins and users with normal passwords
-insert into USER (user_id,firstname,lastname,login,password,email,enabled) values (1,'Admin', 'Admin', 'admin', '$2a$10$4vCT6g143m0X7n3LG5ifWeFHVCh.KB1JYJOJmvFLZNS26Alob8vRu','admin@admin.com',true);
-insert into USER (user_id,firstname,lastname,login,password,email,enabled) values (2,'USER', 'USER', 'user', '$2a$10$Q21eCZAOyvpu0xzV48OqUucac6dnJZICQTxtprgBn.EQygCN3exZa','user@user.com',true);
-insert into USER (user_id,firstname,lastname,login,password,email,enabled) values (3,'Admin2', 'Admin2', 'admin2', 'admin','admin2@admin.com',false);
-insert into USER (user_id,firstname,lastname,login,password,email,enabled) values (4,'USER2', 'USER2', 'user2', 'user','user@user.com',false);
+insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (1,'Admin', 'Admin', 'admin', '$2a$10$4vCT6g143m0X7n3LG5ifWeFHVCh.KB1JYJOJmvFLZNS26Alob8vRu','admin@admin.com', 2,true);
+insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (2,'Andrzej', 'USER', 'user', '$2a$10$Q21eCZAOyvpu0xzV48OqUucac6dnJZICQTxtprgBn.EQygCN3exZa','user@user.com', 3, true);
+insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (3,'Admin2', 'Admin2', 'admin2', 'admin','admin2@admin.com', 2, false);
+insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (4,'USER2', 'USER2', 'user2', 'user','user@user.com', 1, false);
 -- Other users
 insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (5, 'Mildred', 'Woods', 'John', 'B7Rx3Fd', 'janiu25@gmail.com', false);
 insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (6, 'Margaret', 'Chavez', 'Rebecca', 'xBkxbL8', 'rchavez1@cnbc.com', true);

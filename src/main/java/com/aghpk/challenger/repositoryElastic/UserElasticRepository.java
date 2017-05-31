@@ -8,5 +8,8 @@ import org.springframework.data.elasticsearch.repository.ElasticsearchRepository
 public interface UserElasticRepository extends ElasticsearchRepository<User, Long> {
 
     User findByFirstNameContaining(String name);
-    Page<User> findByFirstNameContainingOrLastnameContaining(String firstName, String lastname, Pageable pageable);
+
+    Page<User> findByFirstNameContainingOrLastNameContaining(String firstName, String lastName, Pageable pageable);
+
+    Page<User> findAll(Pageable pageable);
 }

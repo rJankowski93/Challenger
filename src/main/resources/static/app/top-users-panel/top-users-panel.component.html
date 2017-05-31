@@ -1,0 +1,7 @@
+<div class="top-users-container">
+    <ul>
+        <li *ngFor="let user of topUsers; let position=index;">
+            {{position+1}}. {{user.firstName}} {{user.lastName}}
+        </li>
+    </ul>
+</div>

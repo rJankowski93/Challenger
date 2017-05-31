@@ -11,7 +11,7 @@ export class SearchRepository{
     private static FILTER_PARAM:string="filter";
     private static SEARCH_PAGE_PARAM:string="pageNo";
     private static PAGE_SIZE:string="pageSize";
-    private static searchUsersUrl = "api/search";
+    private static SEARCH_URL = "api/search";
 
     constructor(private http:Http){
     }
@@ -22,7 +22,7 @@ export class SearchRepository{
         searchParams.set(SearchRepository.SEARCH_PAGE_PARAM, pageNo);
         searchParams.set(SearchRepository.PAGE_SIZE, pageSize);
 
-        return this.http.get(`${SearchRepository.searchUsersUrl}/challenges`, { search: searchParams })
+        return this.http.get(`${SearchRepository.SEARCH_URL}/challenges`, { search: searchParams })
             .map(res => res.json(),
                 error=> console.error(error));
     }
@@ -33,7 +33,7 @@ export class SearchRepository{
         searchParams.set(SearchRepository.SEARCH_PAGE_PARAM, pageNo);
         searchParams.set(SearchRepository.PAGE_SIZE, pageSize);
 
-        return this.http.get(`${SearchRepository.searchUsersUrl}/users`, { search: searchParams })
+        return this.http.get(`${SearchRepository.SEARCH_URL}/users`, { search: searchParams })
             .map(res => res.json(),
                 error=> console.error(error));
     }

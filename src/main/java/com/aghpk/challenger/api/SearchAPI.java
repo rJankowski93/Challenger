@@ -31,6 +31,6 @@ public class SearchAPI {
 
     @RequestMapping("/users")
     public Page<User> findUsers(@RequestParam("filter") String filter, @RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize){
-        return userElasticRepository.findByFirstNameContainingOrLastnameContaining(filter, filter, new PageRequest(pageNo, pageSize));
+        return userElasticRepository.findByFirstNameContainingOrLastNameContaining(filter, filter, new PageRequest(pageNo, pageSize));
     }
 }
