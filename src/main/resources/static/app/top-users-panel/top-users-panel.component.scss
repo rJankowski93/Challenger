@@ -1,7 +1,13 @@
 @import "../../../sass/variables";
 
 .top-users-container{
-  height: 100%;
+  max-height: 100vh;
+  overflow: auto;
   color: #55ACEE;
+}
 
+//hide scrollbar
+::-webkit-scrollbar {
+  width: 0;  /* remove scrollbar space */
+  background: transparent;  /* optional: just make scrollbar invisible */
 }

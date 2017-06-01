@@ -4,7 +4,8 @@ import {AuthRepository} from "./shared/repository/auth.repository";
 @Component({
     moduleId: module.id,
     selector: 'challenger-app',
-    templateUrl: './app.component.html'
+    templateUrl: './app.component.html',
+    styleUrls: ['app.component.css']
 })
 export class AppComponent implements OnInit{
 

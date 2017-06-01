@@ -7,14 +7,11 @@
 
 <div id="user-panel-wrapper" *ngIf="isAuthenticated">
     <user-panel ></user-panel>
-    <div class="challenges-secion" class="col-md-6">
+
+    <div class="col-md-6 challenges-box">
         <challenge-box></challenge-box>
         <!--<friend-box></friend-box>-->
     </div>
 
     <top-users-panel class="col-md-2"></top-users-panel>
-
-    <div id="challenge-creator" class="col-md-6">
-        <challenge-creator></challenge-creator>
-    </div>
 </div>

@@ -5,6 +5,7 @@ import {ChallengeSearchInputModule} from "../filterable-input/challenge-search-i
 import {UserSearchInputModule} from "../filterable-input/user-search-input/user-search-input.module";
 import {ModalModule} from "ng2-modal";
 import {FileUploadPanelModule} from "../file-upload-panel/file-upload-panel.module";
+import {ChallengeCreatorModule} from "../challenge-creator/challenge-creator.module";
 
 @NgModule({
     imports: [
@@ -12,7 +13,8 @@ import {FileUploadPanelModule} from "../file-upload-panel/file-upload-panel.modu
         ChallengeSearchInputModule,
         UserSearchInputModule,
         ModalModule,
-        FileUploadPanelModule
+        FileUploadPanelModule,
+        ChallengeCreatorModule
     ],
     exports: [
         UserPanelComponent
