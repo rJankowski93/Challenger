@@ -6,12 +6,16 @@
 </div>
 
 <div id="user-panel-wrapper" *ngIf="isAuthenticated">
-    <user-panel ></user-panel>
+    <div class="col-md-3 user-panel">
+        <user-panel></user-panel>
+    </div>
 
-    <div class="col-md-6 challenges-box">
+    <div class="col-md-7 challenges-box">
         <challenge-box></challenge-box>
         <!--<friend-box></friend-box>-->
     </div>
 
-    <top-users-panel class="col-md-2"></top-users-panel>
+    <div class="col-md-2 top-users">
+        <top-users-panel></top-users-panel>
+    </div>
 </div>

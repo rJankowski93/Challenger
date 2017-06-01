@@ -1,3 +1,5 @@
+@import "../../sass/variables";
+
 .challenges-box{
   max-height: 100vh;
   overflow: auto;
@@ -12,4 +14,14 @@
 #user-panel-wrapper{
   width: 100%;
   max-height: 100vh;
+}
+
+.top-users{
+  background-color: $notifications-dark-color;
+  color: $font-color;
+  height: 100vh;
+}
+
+.user-panel{
+  padding: 0;
 }
