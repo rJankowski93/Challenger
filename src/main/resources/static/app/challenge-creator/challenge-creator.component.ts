@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {ChallengeRepository} from "../shared/repository/challenge.repository"
+import {ChallengeRepository} from "../shared/repository/challenge.repository";
 import {Challenge} from "../shared/models/challenge.model";
 
 @Component({
@@ -30,13 +30,11 @@ export class ChallengeCreatorComponent implements OnInit {
     onSubmit() {
         this.challengesService.addChallenge(this.challenge)
             .subscribe(challenge => {
-                    console.log("challenge content chuuu")
                     console.log(challenge);
                     this.isLoading = false;
                 },
                 error => {
-                    console.log("Cannot read challenge");
-                    console.log(error);
+                    console.log("Cannot read challenge", error);
                 }
             );
     }

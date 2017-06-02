@@ -4,18 +4,23 @@
     <login-panel *ngIf="visibleLoginPage"></login-panel>
     <registration-panel *ngIf="!visibleLoginPage"></registration-panel>
 </div>
-
 <div id="user-panel-wrapper" *ngIf="isAuthenticated">
     <div class="col-md-3 user-panel">
         <user-panel></user-panel>
     </div>
 
-    <div class="col-md-7 challenges-box">
-        <challenge-box></challenge-box>
-        <!--<friend-box></friend-box>-->
+    <div class="col-md-7 main-section">
+        <button id="button-challenges-list" class="btn btn-primary col-md-offset-2 col-md-3 col-md-offset-2" (click)="showList(contentTypeEnum.CHALLENGES)">Challenges</button>
+        <button id="button-friends-list" class="btn btn-primary col-md-3 col-md-offset-2" (click)="showList(contentTypeEnum.FRIENDS)">Friends</button>
+        <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
+        <friend-box (showProfileEvent)="showProfile($event)" *ngIf="mainContentSection==contentTypeEnum.FRIENDS"></friend-box>
+        <user-profile [userId]="userId" *ngIf="mainContentSection==contentTypeEnum.PROFILE"></user-profile>
     </div>
 
     <div class="col-md-2 top-users">
         <top-users-panel></top-users-panel>
     </div>
+    <!--<div id="challenge-creator" class="col-md-6">-->
+        <!--<challenge-creator></challenge-creator>-->
+    <!--</div>-->
 </div>

@@ -14,19 +14,18 @@ import java.util.List;
 @Transactional
 public class UserRepositoryImpl {
 
+    private final PasswordEncoder passwordEncoder;
     @PersistenceContext
     private EntityManager entityManager;
-
-    private final PasswordEncoder passwordEncoder;
 
     public UserRepositoryImpl(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
-    public User createUser(User user) throws EntityExistsException{
-            user.setPassword(passwordEncoder.encode(user.getPassword()));
-            entityManager.persist(user);
-            return user;
+    public User createUser(User user) throws EntityExistsException {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        entityManager.persist(user);
+        return user;
     }
 
     public void removeUser(User user) {
@@ -44,14 +43,21 @@ public class UserRepositoryImpl {
 
     public List<User> getAll() {
         String queryTxt = "SELECT item FROM User item WHERE item.auditRD IS NULL";
-        TypedQuery<User>  query = entityManager.createQuery(queryTxt, User.class);
+        TypedQuery<User> query = entityManager.createQuery(queryTxt, User.class);
         return query.getResultList();
     }
 
-    List<Object[]> getFriendsByUser(Long id){
+    List<Object[]> getFriendsByUser(Long id) {
         String queryTxt = "SELECT item.friends FROM User item WHERE item.id =:id AND item.auditRD IS NULL ";
-        TypedQuery<Object[]>  query = entityManager.createQuery(queryTxt,Object[].class);
-        query.setParameter("id",id);
+        TypedQuery<Object[]> query = entityManager.createQuery(queryTxt, Object[].class);
+        query.setParameter("id", id);
         return query.getResultList();
+    }
+
+    void addToFriends(Long friendId, Long userId) {
+        User user = entityManager.find(User.class, userId);
+        User friendUser = entityManager.find(User.class, friendId);
+        user.getFriends().add(friendUser);
+        friendUser.getFriends().add(user);
     }
 }

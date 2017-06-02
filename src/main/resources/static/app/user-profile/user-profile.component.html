@@ -1,0 +1,30 @@
+<div *ngIf="userIsReady()" class="col-md-12">
+    <div id="user-images">
+        <div id="user-background" class="col-md-3">
+            <img id="user-profile-image" class="col-offset-4 col-md-4 valign profile-image-login" src="avatars\user\{{userDetails.id}}.jpg" (click)="avatarModal.open()" alt="">
+        </div>
+    </div>
+    <div id="user-name" >
+        <p>{{userDetails.firstName}}</p>
+        <p>{{userDetails.login}}</p>
+    </div>
+    <button (click)="addToFriend()">Add to friend</button>
+    <h2>FRIENDS</h2>
+    <div *ngFor="let friendDetails of friendsList" id="friend-box" class="col-md-12">
+        <div id="friend-name">
+            <p>
+                {{friendDetails.firstName}}
+                {{friendDetails.lastname}}
+            </p>
+        </div>
+
+        <div id="friend-email">
+            <p>
+                {{friendDetails.email}}
+            </p>
+        </div>
+        <div id="btn-profile">
+            <button id="button-show-profile" class="btn btn-primary col-md-3" (click)="showProfileUser(friendDetails.id)">Show profile</button>
+        </div>
+    </div>
+</div>

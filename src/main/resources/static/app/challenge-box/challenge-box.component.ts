@@ -25,8 +25,7 @@ export class ChallengeBoxComponent implements OnInit {
                     this.isLoading = false;
                 },
                 error => {
-                    console.log("Cannot read challenge");
-                    console.log(error);
+                    console.log("Cannot read challenge", error);
                 }
             );
     }

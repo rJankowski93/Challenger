@@ -7,36 +7,58 @@ import {AuthRepository} from "./shared/repository/auth.repository";
     templateUrl: './app.component.html',
     styleUrls: ['app.component.css']
 })
-export class AppComponent implements OnInit{
+export class AppComponent implements OnInit {
 
-    private isLoading:boolean;
-    private isAuthenticated:boolean;
-    private visibleLoginPage:boolean;
+    contentTypeEnum: any = ContentType;
 
-    constructor(private authService:AuthRepository) {
+    private isLoading: boolean;
+    private isAuthenticated: boolean;
+    private visibleLoginPage: boolean;
+    private mainContentSection: ContentType;
+    userId: number;
+
+
+    constructor(private authService: AuthRepository) {
 
     }
 
     ngOnInit(): void {
-        this.isLoading=true;
-        this.visibleLoginPage=true;
+        this.isLoading = true;
+        this.visibleLoginPage = true;
         this.authService.isAuthenticated()
             .subscribe(isAuthenticated => {
-                this.isAuthenticated=isAuthenticated;
-                this.isLoading=false;
-            },
-                error=>{
-                this.isAuthenticated=false;
-            }
-        );
+                    this.isAuthenticated = isAuthenticated;
+                    this.isLoading = false;
+                },
+                error => {
+                    this.isAuthenticated = false;
+                }
+            );
 
     }
 
+    //Login page <-> Registration page
     showLoginPage(): void {
-        this.visibleLoginPage=true;
+        this.visibleLoginPage = true;
     }
 
     hideLoginPage(): void {
-        this.visibleLoginPage=false;
+        this.visibleLoginPage = false;
     }
+
+    //Challenges list <-> Friends list <-> Profile user
+    showList(contentType: ContentType): void {
+        this.mainContentSection = contentType;
+    }
+
+    showProfile(userId: number) {
+        this.mainContentSection = ContentType.PROFILE;
+        this.userId = userId;
+    }
+}
+
+export enum ContentType {
+    CHALLENGES,
+    FRIENDS,
+    PROFILE
 }

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface UserRepository extends JpaRepository<User, Long>{
+public interface UserRepository extends JpaRepository<User, Long> {
 
     User findUserByLogin(String login);
 
@@ -24,4 +24,6 @@ public interface UserRepository extends JpaRepository<User, Long>{
     List<User> getAll();
 
     List<User> getFriendsByUser(Long id);
+
+    void addToFriends(Long friendId, Long userId);
 }

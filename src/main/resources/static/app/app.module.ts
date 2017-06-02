@@ -14,7 +14,8 @@ import {FileUploadPanelModule} from "./file-upload-panel/file-upload-panel.modul
 import {FriendBoxModule} from "./friend-box/friend-box.module";
 import {ChallengeSearchInputModule} from "./filterable-input/challenge-search-input/challenge-search-input.module";
 import {UserSearchInputModule} from "./filterable-input/user-search-input/user-search-input.module";
-import { FormsModule }  from '@angular/forms';
+import {FormsModule} from "@angular/forms";
+import {UserProfileModule} from "./user-profile/user-profile.module";
 import {TopUsersPanelModule} from "./top-users-panel/top-users-panel.module";
 
 
@@ -35,6 +36,7 @@ import {TopUsersPanelModule} from "./top-users-panel/top-users-panel.module";
         ChallengeSearchInputModule,
         UserSearchInputModule,
         FormsModule,
+        UserProfileModule,
         TopUsersPanelModule
     ],
 
