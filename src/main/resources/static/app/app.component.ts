@@ -25,6 +25,7 @@ export class AppComponent implements OnInit {
     ngOnInit(): void {
         this.isLoading = true;
         this.visibleLoginPage = true;
+        this.mainContentSection=ContentType.CHALLENGES;
         this.authService.isAuthenticated()
             .subscribe(isAuthenticated => {
                     this.isAuthenticated = isAuthenticated;

@@ -1,36 +1,36 @@
 -- I generated all the data by using this site - http://www.mockaroo.com/
 -- USERs important to application develop admins and users with normal passwords
-insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (1,'Admin', 'Admin', 'admin', '$2a$10$4vCT6g143m0X7n3LG5ifWeFHVCh.KB1JYJOJmvFLZNS26Alob8vRu','admin@admin.com', 2,true);
-insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (2,'Andrzej', 'USER', 'user', '$2a$10$Q21eCZAOyvpu0xzV48OqUucac6dnJZICQTxtprgBn.EQygCN3exZa','user@user.com', 3, true);
-insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (3,'Admin2', 'Admin2', 'admin2', 'admin','admin2@admin.com', 2, false);
+insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (1,'Admin', 'Admin', 'admin', '$2a$10$4vCT6g143m0X7n3LG5ifWeFHVCh.KB1JYJOJmvFLZNS26Alob8vRu','admin@admin.com', 213,true);
+insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (2,'Andrzej', 'USER', 'user', '$2a$10$Q21eCZAOyvpu0xzV48OqUucac6dnJZICQTxtprgBn.EQygCN3exZa','user@user.com', 372, true);
+insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (3,'Admin2', 'Admin2', 'admin2', 'admin','admin2@admin.com', 124, false);
 insert into USER (user_id,firstname,lastname,login,password,email, generalpointsquantity, enabled) values (4,'USER2', 'USER2', 'user2', 'user','user@user.com', 1, false);
 -- Other users
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (5, 'Mildred', 'Woods', 'John', 'B7Rx3Fd', 'janiu25@gmail.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (6, 'Margaret', 'Chavez', 'Rebecca', 'xBkxbL8', 'rchavez1@cnbc.com', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (7, 'Maria', 'Owens', 'Janet', 'eoIfKuWk', 'jowens2@macromedia.com', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (8, 'Timothy', 'Armstrong', 'Martin', '1093ZyY', 'marmstrong3@disqus.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (9, 'Ruth', 'Jenkins', 'Laura', 'hYRpSEz5y2', 'ljenkins4@cnbc.com', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (10, 'Ann', 'Murphy', 'Brian', '0GmSmOQQV', 'bmurphy5@surveymonkey.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (11, 'Carl', 'Hawkins', 'Carl', 'Y8PBn9FPe', 'chawkins6@microsoft.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (12, 'Charles', 'Ray', 'Kevin', 'uHM2JVoQUn', 'kray7@skyrock.com', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (13, 'Sandra', 'Taylor', 'Joyce', 's51fjHYhLtjz', 'jtaylor8@t-online.de', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (14, 'Lisa', 'Greene', 'Earl', 'rgj5lF3XMUv', 'egreene9@cyberchimps.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (15, 'Virginia', 'Bryant', 'Pamela', 'Re4JrN7M56', 'pbryanta@illinois.edu', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (16, 'Anthony', 'Porter', 'Gloria', '4sRgz7GK23uz', 'gporterb@blogtalkradio.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (17, 'Janet', 'Phillips', 'Annie', 'GkakJh0p67', 'aphillipsc@netlog.com', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (18, 'Lori', 'Fields', 'Steve', '7E13bt2i', 'sfieldsd@desdev.cn', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (19, 'Christine', 'Welch', 'Frances', 'kTEPwT', 'fwelche@wikia.com', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (20, 'Shirley', 'Wheeler', 'Virginia', 'kSfOY8PX', 'vwheelerf@google.com.br', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (21, 'Chris', 'Arnold', 'Janice', '14Bpgxh', 'jarnoldg@imageshack.us', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (22, 'Bonnie', 'Bishop', 'Betty', 'SZ19pY', 'bbishoph@trellian.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (23, 'Martha', 'Mcdonald', 'Ashley', '1sHreJ', 'amcdonaldi@google.co.uk', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (24, 'Henry', 'Harris', 'Rachel', '05xrN8a2t', 'rharrisj@kickstarter.com', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (25, 'Juan', 'Harris', 'Rose', 'Sbi34f8am', 'rharrisk@reference.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (26, 'Karen', 'Butler', 'Kathy', '8xRCi0rghiAm', 'kbutlerl@mtv.com', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (27, 'Robert', 'Jordan', 'Patricia', 'fgh8wZ', 'pjordanm@cam.ac.uk', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (28, 'Donald', 'Wright', 'Harry', 'xOhaL2iG7ttr', 'hwrightn@networksolutions.com', true);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (29, 'Marilyn', 'Gray', 'Sara', '1zGyHfiSf', 'sgrayo@simplemachines.org', false);
-insert into USER (user_id, firstname, lastname, login, password, email, enabled) values (30, 'Gregory', 'Porter', 'Henry', 'J3Nttmbndhvh', 'hportero@zdnet.com', false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (5, 'Mildred', 'Woods', 'John', 'B7Rx3Fd', 'janiu25@gmail.com', 32, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (6, 'Margaret', 'Chavez', 'Rebecca', 'xBkxbL8', 'rchavez1@cnbc.com', 42, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (7, 'Maria', 'Owens', 'Janet', 'eoIfKuWk', 'jowens2@macromedia.com', 5, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (8, 'Timothy', 'Armstrong', 'Martin', '1093ZyY', 'marmstrong3@disqus.com', 5, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (9, 'Ruth', 'Jenkins', 'Laura', 'hYRpSEz5y2', 'ljenkins4@cnbc.com', 123, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (10, 'Ann', 'Murphy', 'Brian', '0GmSmOQQV', 'bmurphy5@surveymonkey.com', 54, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (11, 'Carl', 'Hawkins', 'Carl', 'Y8PBn9FPe', 'chawkins6@microsoft.com', 54, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (12, 'Charles', 'Ray', 'Kevin', 'uHM2JVoQUn', 'kray7@skyrock.com', 65, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (13, 'Sandra', 'Taylor', 'Joyce', 's51fjHYhLtjz', 'jtaylor8@t-online.de', 11, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (14, 'Lisa', 'Greene', 'Earl', 'rgj5lF3XMUv', 'egreene9@cyberchimps.com', 34, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (15, 'Virginia', 'Bryant', 'Pamela', 'Re4JrN7M56', 'pbryanta@illinois.edu', 65, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (16, 'Anthony', 'Porter', 'Gloria', '4sRgz7GK23uz', 'gporterb@blogtalkradio.com', 65, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (17, 'Janet', 'Phillips', 'Annie', 'GkakJh0p67', 'aphillipsc@netlog.com', 76, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (18, 'Lori', 'Fields', 'Steve', '7E13bt2i', 'sfieldsd@desdev.cn', 39, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (19, 'Christine', 'Welch', 'Frances', 'kTEPwT', 'fwelche@wikia.com', 54,true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (20, 'Shirley', 'Wheeler', 'Virginia', 'kSfOY8PX', 'vwheelerf@google.com.br', 12, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (21, 'Chris', 'Arnold', 'Janice', '14Bpgxh', 'jarnoldg@imageshack.us', 43, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (22, 'Bonnie', 'Bishop', 'Betty', 'SZ19pY', 'bbishoph@trellian.com', 54, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (23, 'Martha', 'Mcdonald', 'Ashley', '1sHreJ', 'amcdonaldi@google.co.uk', 12, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (24, 'Henry', 'Harris', 'Rachel', '05xrN8a2t', 'rharrisj@kickstarter.com', 54, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (25, 'Juan', 'Harris', 'Rose', 'Sbi34f8am', 'rharrisk@reference.com', 66, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (26, 'Karen', 'Butler', 'Kathy', '8xRCi0rghiAm', 'kbutlerl@mtv.com', 90, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (27, 'Robert', 'Jordan', 'Patricia', 'fgh8wZ', 'pjordanm@cam.ac.uk', 43, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (28, 'Donald', 'Wright', 'Harry', 'xOhaL2iG7ttr', 'hwrightn@networksolutions.com', 54, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (29, 'Marilyn', 'Gray', 'Sara', '1zGyHfiSf', 'sgrayo@simplemachines.org', 65, false);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (30, 'Gregory', 'Porter', 'Henry', 'J3Nttmbndhvh', 'hportero@zdnet.com', 23, false);
 
 -- FRIENDSHIP RELATIONS USER WITH USER
 
