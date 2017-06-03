@@ -1,7 +1,9 @@
 <div *ngIf="!isLoading" id="user-panel">
     <div id="user-images">
         <div id="user-background">
-            <img id="user-profile-image" class="col-offset-4 col-md-4 valign profile-image-login" src="avatars\user\{{userDetails.id}}.jpg" (click)="avatarModal.open()" alt="">
+            <img id="user-profile-image" class="col-offset-4 col-md-4 valign profile-image-login"
+                 src="avatars\user\{{userDetails.id}}.jpg" (click)="avatarModal.open()"
+                 onerror="this.src='avatars\\default\\not-found-avatar.jpg'">
         </div>
     </div>
     <div id="user-panel-content">
@@ -22,7 +24,8 @@
             </div>
 
             <div id="menu-buttons" class="col-md-2  col-md-offset-1">
-                <button id="button-create-challenge" class="btn btn-primary menu-button" (click)="createChallengeModal.open()">
+                <button id="button-create-challenge" class="btn btn-primary menu-button"
+                        (click)="createChallengeModal.open()">
                     Create challenge
                 </button>
             </div>
