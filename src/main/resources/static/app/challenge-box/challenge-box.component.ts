@@ -6,8 +6,7 @@ import {Challenge} from "../shared/models/challenge.model";
     moduleId: module.id,
     selector: 'challenge-box',
     templateUrl: './challenge-box.component.html',
-    styleUrls: ['challenge-box.component.css'],
-    providers: [ChallengeRepository]
+    styleUrls: ['challenge-box.component.css']
 })
 export class ChallengeBoxComponent implements OnInit {
 

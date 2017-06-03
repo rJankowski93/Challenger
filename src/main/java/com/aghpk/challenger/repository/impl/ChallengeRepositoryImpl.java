@@ -36,4 +36,11 @@ public class ChallengeRepositoryImpl {
         TypedQuery<Challenge> query = entityManager.createQuery(queryTxt, Challenge.class);
         return query.getResultList();
     }
+
+    List<Object[]> getChallengesByUser(Long userId) {
+        String queryTxt = "SELECT item.challenges FROM User item WHERE item.id =:id AND item.auditRD IS NULL ";
+        TypedQuery<Object[]> query = entityManager.createQuery(queryTxt, Object[].class);
+        query.setParameter("id", userId);
+        return query.getResultList();
+    }
 }

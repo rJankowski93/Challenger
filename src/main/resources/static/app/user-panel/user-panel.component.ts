@@ -22,13 +22,14 @@ export class UserPanelComponent implements OnInit, OnDestroy{
     private isLoading:boolean;
     private loggedUserSubscription:Subscription;
     private avatarUserSubscription: Subscription;
-    constructor(private userService: UserRepository, private fileUploadService: FileUploadService)  {
+
+    constructor(private userRepository: UserRepository, private fileUploadService: FileUploadService) {
     }
 
     ngOnInit(): void {
         this.isLoading=true;
 
-        this.loggedUserSubscription=this.userService.getLoggedInUserData()
+        this.loggedUserSubscription = this.userRepository.getLoggedInUserData()
             .subscribe(user => {
                     this.userDetails=user;
                     this.isLoading=false;

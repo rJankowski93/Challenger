@@ -1,6 +1,8 @@
 <div *ngIf="!isAuthenticated">
-    <button id="button-login-page" class="btn btn-primary col-md-2 col-md-offset-4" (click)="showLoginPage()">Login</button>
-    <button id="button-registration-page" class="btn btn-primary col-md-2" (click)="hideLoginPage()">Registration</button>
+    <button id="button-login-page" class="btn btn-primary col-md-2 col-md-offset-4" (click)="showLoginPage()">Login
+    </button>
+    <button id="button-registration-page" class="btn btn-primary col-md-2" (click)="hideLoginPage()">Registration
+    </button>
     <login-panel *ngIf="visibleLoginPage"></login-panel>
     <registration-panel *ngIf="!visibleLoginPage"></registration-panel>
 </div>
@@ -10,17 +12,26 @@
     </div>
 
     <div class="col-md-7 main-section">
-        <button id="button-challenges-list" class="btn btn-primary col-md-offset-2 col-md-3 col-md-offset-2" (click)="showList(contentTypeEnum.CHALLENGES)">Challenges</button>
-        <button id="button-friends-list" class="btn btn-primary col-md-3 col-md-offset-2" (click)="showList(contentTypeEnum.FRIENDS)">Friends</button>
-        <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
-        <friend-box (showProfileEvent)="showProfile($event)" *ngIf="mainContentSection==contentTypeEnum.FRIENDS"></friend-box>
-        <user-profile [userId]="userId" *ngIf="mainContentSection==contentTypeEnum.PROFILE"></user-profile>
+        <div class="row">
+            <button id="button-challenges-list" class="btn btn-primary col-md-offset-2 col-md-3 col-md-offset-2"
+                    (click)="showList(contentTypeEnum.CHALLENGES)">Challenges
+            </button>
+            <button id="button-friends-list" class="btn btn-primary col-md-3 col-md-offset-2"
+                    (click)="showList(contentTypeEnum.FRIENDS)">Friends
+            </button>
+        </div>
+        <div class="row">
+            <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
+            <friend-box (showProfileEvent)="showProfile($event)"
+                        *ngIf="mainContentSection==contentTypeEnum.FRIENDS"></friend-box>
+            <user-profile [userId]="userId" *ngIf="mainContentSection==contentTypeEnum.PROFILE"></user-profile>
+        </div>
     </div>
 
     <div class="col-md-2 top-users">
         <top-users-panel></top-users-panel>
     </div>
     <!--<div id="challenge-creator" class="col-md-6">-->
-        <!--<challenge-creator></challenge-creator>-->
+    <!--<challenge-creator></challenge-creator>-->
     <!--</div>-->
 </div>

@@ -2,6 +2,8 @@ import {Component, OnInit, Input} from "@angular/core";
 import {UserRepository} from "../shared/repository/user.repository";
 import {User} from "../shared/models/user.model";
 import {Subscription} from "rxjs";
+import {Challenge} from "../shared/models/challenge.model";
+import {ChallengeRepository} from "../shared/repository/challenge.repository";
 
 @Component({
     moduleId: module.id,
@@ -20,11 +22,13 @@ export class UserProfileComponent implements OnInit {
 
     private friendsList: Array<User>;
 
-    constructor(private userService: UserRepository) {
+    private challengesList: Array<Challenge>;
+
+    constructor(private userRepository: UserRepository, private challengeRepository: ChallengeRepository) {
     }
 
     ngOnInit(): void {
-        this.getUser(this.userId);
+        this.getUserProfile(this.userId);
     }
 
     userIsReady(): boolean {
@@ -32,11 +36,11 @@ export class UserProfileComponent implements OnInit {
     }
 
     showProfileUser(userId: number) {
-        this.getUser(userId);
+        this.getUserProfile(userId);
     }
 
-    private getUser(userId: number) {
-        this.userSubscription = this.userService.getUser(userId)
+    private getUserProfile(userId: number) {
+        this.userSubscription = this.userRepository.getUser(userId)
             .subscribe(user => {
                     this.userDetails = user;
                 },
@@ -45,9 +49,18 @@ export class UserProfileComponent implements OnInit {
                 }
             );
 
-        this.userService.getUserFriends(userId)
+        this.userRepository.getUserFriends(userId)
             .subscribe(friend => {
                     this.friendsList = friend;
+                },
+                error => {
+                    console.log("Cannot read challenge", error);
+                }
+            );
+
+        this.challengeRepository.getUserChallenges(userId)
+            .subscribe(challenge => {
+                    this.challengesList = challenge;
                 },
                 error => {
                     console.log("Cannot read challenge", error);
@@ -56,7 +69,7 @@ export class UserProfileComponent implements OnInit {
     }
 
     addToFriend() {
-        this.userSubscription = this.userService.addToFriend(this.userDetails.id)
+        this.userSubscription = this.userRepository.addToFriend(this.userDetails.id)
             .subscribe(
                 error => {
                     console.log("Cannot add friend", error);
