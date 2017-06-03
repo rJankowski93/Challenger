@@ -7,6 +7,7 @@ export class User {
     email: string;
     // roles: Array<Role>;
     // points:number;
+    generalPointsQuantity:number;
     enabled: boolean;
     generalPointsQuantity: number;
     // friends: Array<User>;
