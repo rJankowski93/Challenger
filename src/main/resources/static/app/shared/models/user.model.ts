@@ -8,6 +8,7 @@ export class User {
     // roles: Array<Role>;
     // points:number;
     enabled: boolean;
+    generalPointsQuantity: number;
     // friends: Array<User>;
 
     constructor() {
