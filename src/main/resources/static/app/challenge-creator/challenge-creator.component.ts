@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
 import {ChallengeRepository} from "../shared/repository/challenge.repository"
 import {Challenge} from "../shared/models/challenge.model";
+import {ChallengeCategory} from "../shared/models/challengeCategory.model";
 
 @Component({
     moduleId: module.id,
@@ -12,27 +13,24 @@ import {Challenge} from "../shared/models/challenge.model";
 export class ChallengeCreatorComponent implements OnInit {
     private isLoading: boolean;
     private challenge: Challenge;
-
+    private challengeCategoryList: Array<ChallengeCategory>;
 
     constructor(private challengesService: ChallengeRepository) {
     }
 
     ngOnInit(): void {
         this.isLoading = true;
-
         this.challenge = new Challenge();
 
-        this.challenge.name = "";
-        this.challenge.category = "category";
-        this.challenge.description = "desc";
-    }
+        this.challenge.name = "insert name";
+        this.challenge.category = "select category of challenge";
+        this.challenge.description = "insert description";
 
-    onSubmit() {
-        this.challengesService.addChallenge(this.challenge)
-            .subscribe(challenge => {
-                    console.log("challenge content chuuu")
-                    console.log(challenge);
+        this.challengesService.getAllChallengeCategories()
+            .subscribe(challengeCategory => {
+                    this.challengeCategoryList = challengeCategory;
                     this.isLoading = false;
+                    console.log(challengeCategory);
                 },
                 error => {
                     console.log("Cannot read challenge");
@@ -41,5 +39,16 @@ export class ChallengeCreatorComponent implements OnInit {
             );
     }
 
+    onSubmit() {
+        this.challengesService.addChallenge(this.challenge)
+            .subscribe(challenge => {
+                    this.isLoading = false;
+                },
+                error => {
+                    console.log("Cannot read challenge");
+                    console.log(error);
+                }
+            );
+    }
 }
 

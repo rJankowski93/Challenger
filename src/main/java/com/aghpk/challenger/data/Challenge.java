@@ -23,14 +23,14 @@ import java.util.Set;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
-@Document(indexName = "challenge", type = "challenge" , shards = 1)
+@Document(indexName = "challenge", type = "challenge", shards = 1)
 public class Challenge extends Audit implements Scoreable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_ID")
     private Long id;
 
-//    @Field(
+    //    @Field(
 //            type = FieldType.String,
 //            index = FieldIndex.analyzed,
 //            searchAnalyzer = "standard",
@@ -39,7 +39,7 @@ public class Challenge extends Audit implements Scoreable {
     @Column(name = "NAME")
     private String name;
 
-//    @Field(
+    //    @Field(
 //            type = FieldType.String,
 //            index = FieldIndex.analyzed,
 //            searchAnalyzer = "standard",
@@ -52,7 +52,7 @@ public class Challenge extends Audit implements Scoreable {
     private String status;
 
     @Column(name = "CATEGORY")
-    private String catgory;
+    private String category;
 
     @Column(name = "REWARD_TYPE")
     private String rewardType;
@@ -88,7 +88,7 @@ public class Challenge extends Audit implements Scoreable {
         setAuditMD(new Date());
     }
 
-    public Set<Point> getPoints(){
-        return  this.points;
+    public Set<Point> getPoints() {
+        return this.points;
     }
 }

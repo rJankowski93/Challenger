@@ -3,6 +3,7 @@ import {Http, Headers, RequestOptions, Response} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/map';
 import {Challenge} from "../models/challenge.model";
+import {ChallengeCategory} from "../models/challengeCategory.model";
 
 @Injectable()
 export class ChallengeRepository {
@@ -13,7 +14,6 @@ export class ChallengeRepository {
     }
 
     getUserChallenge(): Observable<Challenge> {
-        console.log("debug -> tuu");
         return this.http.get(`${this.challengeUrl}/challenge`).map(res => res.json(),
             error => console.log(error));
     }
@@ -24,15 +24,20 @@ export class ChallengeRepository {
 
     }
 
-    addChallenge(challenge : Challenge):Observable<Response> {
-        console.log("wlazlo do serwisu dodawania")
+    addChallenge(challenge: Challenge): Observable<Response> {
         let bodyString = JSON.stringify(challenge);
         let headers = new Headers({'Content-Type': 'application/json'});
         let options = new RequestOptions({headers: headers});
-        console.log("eloeloelo");
-        return this.http.post(`${this.challengeUrl}/add/`,challenge,options)
+        return this.http.post(`${this.challengeUrl}/add/`, challenge, options)
             .map(res => res,
-                error => console.log("ma byc error ale chwiliowo styknie info ze nie przeszlo"));
+                error => console.log("an error occured during adding challenge"));
+    }
+
+    //Challenge categories
+    getAllChallengeCategories(): Observable <Array<ChallengeCategory>> {
+        return this.http.get(`${this.challengeUrl}/categories`).map(res => res.json(),
+            error => console.log(error));
+
     }
 
 }
