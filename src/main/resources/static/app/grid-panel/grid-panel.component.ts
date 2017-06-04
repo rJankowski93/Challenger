@@ -9,7 +9,5 @@ import {Component} from "@angular/core";
 export class GridPanelComponent {
 
     constructor() {
-
-        console.log("grid panel  constructor");
     }
 }

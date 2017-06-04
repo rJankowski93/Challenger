@@ -1,15 +1,16 @@
-import {Role} from "./role.model";
-
 export class User {
 
     id: number;
     login: string;
-    firstName:String;
-    lastName:String;
+    firstName: String;
+    lastName: String;
     email: string;
-    roles: Array<Role>;
+    // roles: Array<Role>;
     // points:number;
+    generalPointsQuantity:number;
     enabled: boolean;
+    // friends: Array<User>;
 
-    constructor(){}
+    constructor() {
+    }
 }

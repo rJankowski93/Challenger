@@ -1,11 +1,13 @@
 package com.aghpk.challenger.api;
 
+import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.data.ChallengeCategory;
 import com.aghpk.challenger.repository.ChallengeCategoryRepository;
 import com.aghpk.challenger.repository.ChallengeRepository;
 import com.aghpk.challenger.data.Challenge;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -38,6 +40,16 @@ public class ChallengesResources {
     @RequestMapping(value = "/add/", method = RequestMethod.POST)
     public void addChallenge(@RequestBody Challenge challenge) {
         challengeRepository.save(challenge);
+    }
+
+    @RequestMapping("/user/challenges")
+    public
+    @ResponseBody
+    List<Challenge> getChallengesByUser(@RequestParam(value = "id", required = false) Long userId) {
+        if (userId == null) {
+            userId = ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser().getId();
+        }
+        return challengeRepository.getChallengesByUser(userId);
     }
 
     @RequestMapping(value = "/categories")

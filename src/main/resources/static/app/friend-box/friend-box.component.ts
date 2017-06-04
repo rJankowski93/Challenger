@@ -1,4 +1,4 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, Output, EventEmitter} from "@angular/core";
 import {UserRepository} from "../shared/repository/user.repository";
 import {User} from "../shared/models/user.model";
 
@@ -10,6 +10,8 @@ import {User} from "../shared/models/user.model";
     providers: [UserRepository]
 })
 export class FriendBoxComponent implements OnInit {
+    @Output()
+    showProfileEvent = new EventEmitter();
 
     private isLoading: boolean;
     private friendsList: Array<User>;
@@ -19,15 +21,18 @@ export class FriendBoxComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.userService.getUserFriends()
+        this.userService.getFriendsForCurrentUser()
             .subscribe(friend => {
                     this.friendsList = friend;
                     this.isLoading = false;
                 },
                 error => {
-                    console.log("Cannot read challenge");
-                    console.log(error);
+                    console.log("Cannot read friends", error);
                 }
             );
+    }
+
+    showProfileUser(userId: number) {
+        this.showProfileEvent.next(userId);
     }
 }

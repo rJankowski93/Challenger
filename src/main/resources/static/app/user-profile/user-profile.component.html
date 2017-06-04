@@ -1,0 +1,68 @@
+<div *ngIf="userIsReady()" class="row">
+    <div id="user-data" class="row">
+        <div class="col-md-4">
+            <img id="user-profile-image" class="" src="avatars\user\{{userDetails.id}}.jpg"
+                 onerror="this.src='avatars\\default\\not-found-avatar.jpg'">
+        </div>
+        <div class="col-md-8">
+            <div class="">
+                <p class="user-label label label-primary">{{userDetails.firstName}} {{userDetails.lastName}}</p>
+            </div>
+
+            <div class="">
+                <p class="user-label label label-info">Points: {{userDetails.generalPointsQuantity}}</p>
+            </div>
+
+            <div class="">
+                <p class="user-label label label-success">Number of challenges: 13</p>
+            </div>
+            <div id="user-data-btn">
+                <button class="btn btn-warning" (click)="addToFriend()">
+                    <i class="material-icons left">cloud</i>Add to friend
+                </button>
+            </div>
+        </div>
+    </div>
+    <div id="friends-list" class="row content-list">
+        <h2><span class="label label-warning">FRIENDS</span></h2>
+        <div *ngFor="let friendDetails of friendsList" id="friend-box" class="col-md-12 item-list-box">
+            <div class="col-md-4">
+                <img id="friend-profile-image" class="item-image" src="avatars\user\{{friendDetails.id}}.jpg"
+                     onerror="this.src='avatars\\default\\not-found-avatar.jpg'">
+            </div>
+            <div id="friend-name" class="col-md-8 item-name">
+                <p>
+                    {{friendDetails.firstName}}
+                    {{friendDetails.lastName}}
+                </p>
+            </div>
+            <div id="btn-profile">
+                <button id="button-show-item" class="btn btn-primary col-md-3"
+                        (click)="showProfileUser(friendDetails.id)">
+                    Show profile
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="challenges-list" class="row content-list">
+        <h2><span class="label label-warning">CHALLENGES</span></h2>
+        <div *ngFor="let challengeDetails of challengesList" id="challenge-box" class="col-md-12 item-list-box">
+            <div class="col-md-4">
+                <img id="challenge-profile-image" class="item-image" src="avatars\challenge\{{challengeDetails.id}}.jpg"
+                     onerror="this.src='avatars\\default\\not-found-challenge.jpg'">
+            </div>
+            <div id="challenge-name" class="col-md-8 item-name">
+                <p>
+                    {{challengeDetails.name}}
+                </p>
+            </div>
+            <div id="btn-challenge">
+                <button id="button-show-challenge" class="btn btn-primary col-md-3"
+                        (click)="showChallenge(challengeDetails.id)">
+                    Show details
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

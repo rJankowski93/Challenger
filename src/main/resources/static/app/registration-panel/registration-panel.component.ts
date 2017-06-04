@@ -28,12 +28,10 @@ export class RegistrationPanelComponent {
                 data: JSON.stringify(data),
                 dataType: 'json',
                 success: function (data) {
-                    console.log("SUCCESS");
                     display(data);
                 },
                 error: function (e) {
-                    console.log("FAIL");
-                    console.log(e);
+                    console.log("FAIL", e);
                 }
             })
 

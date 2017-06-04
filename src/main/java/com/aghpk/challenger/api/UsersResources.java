@@ -1,8 +1,6 @@
 package com.aghpk.challenger.api;
 
 import com.aghpk.challenger.data.User;
-import com.aghpk.challenger.exeption.ApplicationException;
-import com.aghpk.challenger.exeption.ErrorType;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.JsonResponseBody;
@@ -52,10 +50,9 @@ public class UsersResources {
         return userRepository.findUserByLogin(authentication.getName());
     }
 
-    @RequestMapping("/user")
-    public String getUser() {
-        User user = userRepository.findUserByLogin("user");
-        return user.toString();
+    @RequestMapping(value = "/user", produces = "application/json")
+    public User getUser(@RequestParam("id") Long id) {
+        return userRepository.findUserById(id);
     }
 
     @RequestMapping("/add")
@@ -75,18 +72,21 @@ public class UsersResources {
         return "all users";
     }
 
-    @RequestMapping("/list")
-    public String getUsers() {
-        System.out.println(userRepository.getAll().size());
-        return "all users";
+    @RequestMapping("/all")
+    public
+    @ResponseBody
+    List<User> getUsers() {
+        return userRepository.getAll();
     }
 
     @RequestMapping("/friends")
     public
     @ResponseBody
-    List<User> getFriendsByCurrentUser() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        return userRepository.getFriendsByUser(((CustomUserDetails)authentication.getPrincipal()).getUser().getId());
+    List<User> getFriendsByUser(@RequestParam(value = "id", required = false) Long userId) {
+        if (userId == null) {
+            userId = ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser().getId();
+        }
+        return userRepository.getFriendsByUser(userId);
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.POST)
@@ -107,13 +107,20 @@ public class UsersResources {
     }
 
     @RequestMapping(value = "/uploadImage", method = RequestMethod.POST)
-    public void uploadImage( @RequestParam("file") MultipartFile file, final Authentication authentication) {
-        Long userId = ((CustomUserDetails)authentication.getPrincipal()).getUser().getId();
+    public void uploadImage(@RequestParam("file") MultipartFile file, final Authentication authentication) {
+        Long userId = ((CustomUserDetails) authentication.getPrincipal()).getUser().getId();
         uploadFileService.uploadImage(userId, file);
     }
 
     @RequestMapping(value = "/top", method = RequestMethod.GET)
     public List<User> getTopUsers(@RequestParam("pageNo") int pageNo, @RequestParam("pageSize") int pageSize, @RequestParam("pointsType") String pointsType){
         return usersResourcesService.getTopUsersByPointsQuantity(pageNo, pageSize, pointsType);
+    }
+
+    @RequestMapping(value = "/addFriend", produces = "application/json")
+    public User addToFriend(@RequestParam("friendId") Long friendId, final Authentication authentication) {
+        Long userId = ((CustomUserDetails) authentication.getPrincipal()).getUser().getId();
+        userRepository.addToFriends(friendId, userId);
+        return new User();
     }
 }

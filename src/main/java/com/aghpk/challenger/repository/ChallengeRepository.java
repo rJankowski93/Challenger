@@ -20,9 +20,10 @@ public interface ChallengeRepository extends JpaRepository<Challenge, Long> {
 
     List<Challenge> getAll();
 
-   // List<Challenge> getUserChallenges();
+    List<Challenge> getChallengesByUser(Long userId);
 
     List<Challenge> findChallengesByName(String name);
 
     long count();
+
 }

@@ -6,8 +6,7 @@ import {Challenge} from "../shared/models/challenge.model";
     moduleId: module.id,
     selector: 'challenge-box',
     templateUrl: './challenge-box.component.html',
-    styleUrls: ['challenge-box.component.css'],
-    providers: [ChallengeRepository]
+    styleUrls: ['challenge-box.component.css']
 })
 export class ChallengeBoxComponent implements OnInit {
 
@@ -25,8 +24,7 @@ export class ChallengeBoxComponent implements OnInit {
                     this.isLoading = false;
                 },
                 error => {
-                    console.log("Cannot read challenge");
-                    console.log(error);
+                    console.log("Cannot read challenge", error);
                 }
             );
     }
