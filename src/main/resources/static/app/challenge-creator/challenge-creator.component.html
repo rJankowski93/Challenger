@@ -1,8 +1,8 @@
 <div *ngIf="!isLoading">
     <form (ngSubmit)="onSubmit()" #createChallengeForm="ngForm">
         <div>
-            <input type="text" id="challenge-name" [(ngModel)]="challenge.name" name="name" #name="ngModel">
-            <input type="text" id="challenge-description" [(ngModel)]="challenge.description" name="description"
+            <input type="text" id="challenge-name" [(ngModel)]="challenge.name" name="name" #name="ngModel" placeholder="Challenge name">
+            <input type="text" id="challenge-description" [(ngModel)]="challenge.description" name="description" placeholder="Challenge description"
                    #description="ngModel">
             <select id="challenge-category" [(ngModel)]="challenge.category" name="category" #category="ngModel">
                 <option *ngFor="let challengeCategory of challengeCategoryList"

@@ -22,19 +22,13 @@ export class ChallengeCreatorComponent implements OnInit {
         this.isLoading = true;
         this.challenge = new Challenge();
 
-        this.challenge.name = "insert name";
-        this.challenge.category = "select category of challenge";
-        this.challenge.description = "insert description";
-
         this.challengesService.getAllChallengeCategories()
             .subscribe(challengeCategory => {
                     this.challengeCategoryList = challengeCategory;
                     this.isLoading = false;
-                    console.log(challengeCategory);
                 },
                 error => {
-                    console.log("Cannot read challenge");
-                    console.log(error);
+                    console.error("Cannot read challenge", error);
                 }
             );
     }
@@ -42,11 +36,10 @@ export class ChallengeCreatorComponent implements OnInit {
     onSubmit() {
         this.challengesService.addChallenge(this.challenge)
             .subscribe(challenge => {
-                    console.log(challenge);
                     this.isLoading = false;
                 },
                 error => {
-                    console.log("Cannot read challenge", error);
+                    console.error("Cannot read challenge", error);
                 }
             );
     }

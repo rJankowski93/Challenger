@@ -20,7 +20,7 @@
                     (click)="showList(contentTypeEnum.FRIENDS)">Friends
             </button>
         </div>
-        <div class="row">
+        <div class="tiles-list row">
             <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
             <friend-box (showProfileEvent)="showProfile($event)"
                         *ngIf="mainContentSection==contentTypeEnum.FRIENDS"></friend-box>
