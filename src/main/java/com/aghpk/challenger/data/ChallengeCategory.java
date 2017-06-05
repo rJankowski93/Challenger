@@ -2,11 +2,14 @@ package com.aghpk.challenger.data;
 
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+
 @Getter
 @Setter
+@NoArgsConstructor
 @Entity
 @Table(name = "CHALLENGE_CATEGORY")
 @AttributeOverrides({
@@ -22,8 +25,4 @@ public class ChallengeCategory extends Audit {
 
     @Column(name = "CHALLENGE_CATEGORY_NAME")
     private String challengeCategoryName;
-
-
-    public ChallengeCategory() {
-    }
 }
