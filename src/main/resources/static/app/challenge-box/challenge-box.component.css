@@ -44,4 +44,10 @@
   #challenge-info #challenge-quantity {
     float: left; }
 
+.video-player-container {
+  padding-top: 30px;
+  display: table;
+  margin: 0 auto;
+  width: 50%; }
+
 /*# sourceMappingURL=challenge-box.component.css.map */

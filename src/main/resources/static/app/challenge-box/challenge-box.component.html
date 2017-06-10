@@ -1,6 +1,10 @@
 <div *ngIf="!isLoading">
 <div *ngFor="let challengeDetails of challengeList" id="challenge-box" class="col-md-12">
 
+    <div class="video-player-container">
+        <video-player [videoHeight]="300" [videoWidth]="500"></video-player>
+    </div>
+
     <div id="chalenge-name">
         <p>
             {{challengeDetails.name}}

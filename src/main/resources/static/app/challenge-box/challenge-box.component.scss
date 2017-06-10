@@ -1,5 +1,6 @@
 @import "../../../sass/variables";
-#challenge-box{
+
+#challenge-box {
   background-color: $main-color;
   border-radius: 10px;
   padding-bottom: 30px;
@@ -7,7 +8,7 @@
 
 }
 
-#chalenge-name{
+#chalenge-name {
   font-weight: bold;
   font-size: large;
   border-width: 1px;
@@ -15,54 +16,60 @@
   border-color: $borders-color;
 }
 
-#challenge-options{
-  clear:both;
-  padding:0;
-  margin:0;
+#challenge-options {
+  clear: both;
+  padding: 0;
+  margin: 0;
   border-width: 1px;
   border-top: solid;
   border-color: $borders-color;
 
-  #challenge-options-wrapper{
+  #challenge-options-wrapper {
     margin: auto;
     width: 36%;
     padding: 10px;
 
-    #challenge-accept-button{
+    #challenge-accept-button {
       position: absolute;
       margin-left: 150px;
     }
-    #challenge-decline-button{
+    #challenge-decline-button {
       position: absolute;
     }
   }
 
 }
 
-
-#challenge-info{
+#challenge-info {
   text-align: center;
-  p{
+  p {
     font-weight: bold;
   }
-  #challenge-status{
+  #challenge-status {
     float: left;
     padding-left: 5%;
   }
 
-  #challenge-points{
-    float:left;
+  #challenge-points {
+    float: left;
     padding-left: 5%;
   }
 
-  #challenge-reward{
-    float:left;
+  #challenge-reward {
+    float: left;
     padding-left: 5%;
   }
 
-  #challenge-quantity{
-    float:left;
+  #challenge-quantity {
+    float: left;
   }
+}
+
+.video-player-container {
+  padding-top: 30px;
+  display: table;
+  margin: 0 auto;
+  width: 50%;
 }
 
 
