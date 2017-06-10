@@ -50,6 +50,21 @@ public class Notification extends Audit implements Serializable {
     @JoinColumn(name = "CREATOR_ID")
     private User creator;
 
+    @Column(name = "SUBJECT_ID", insertable = false, updatable = false)
+    private Long idSubject;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "SUBJECT_ID")
+    private User subject;
+
+    public Notification(String type, String message, String detailsLink, User creator, User subject) {
+        this.type = type;
+        this.message = message;
+        this.detailsLink = detailsLink;
+        this.creator = creator;
+        this.subject = subject;
+    }
+
     @PrePersist
     public void onPrePersist() {
         setAuditCD(new Date());

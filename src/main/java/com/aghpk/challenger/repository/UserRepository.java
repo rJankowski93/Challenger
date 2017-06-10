@@ -9,11 +9,9 @@ import java.util.List;
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
 
-    User findUserByLogin(String login);
+    User getUserByLogin(String login);
 
-    User findUserById(Long id);
-
-    List<User> findAll();
+    User getUserById(Long id);
 
     User createUser(User user);
 
@@ -25,8 +23,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     List<User> getFriendsByUser(Long id);
 
-    void addToFriends(Long friendId, Long userId);
+    void addFriend(Long userId, Long friendId);
 
-    void removeFriend(Long friendId, Long userId);
+    void removeFriend(Long userId, Long friendId);
 
 }

@@ -4,6 +4,7 @@ import {User} from "../shared/models/user.model";
 import {Subscription} from "rxjs";
 import {Challenge} from "../shared/models/challenge.model";
 import {ChallengeRepository} from "../shared/repository/challenge.repository";
+import {NotificationRepository} from "../shared/repository/notification.repository";
 
 @Component({
     moduleId: module.id,
@@ -26,7 +27,9 @@ export class UserProfileComponent implements OnInit {
 
     private friendsListForLoggedUser: Array<User>;
 
-    constructor(private userRepository: UserRepository, private challengeRepository: ChallengeRepository) {
+    constructor(private userRepository: UserRepository,
+                private challengeRepository: ChallengeRepository,
+                private notificationRepository: NotificationRepository) {
     }
 
     ngOnInit(): void {
@@ -79,11 +82,20 @@ export class UserProfileComponent implements OnInit {
             );
     }
 
-    private addToFriend() {
-        this.userSubscription = this.userRepository.addToFriend(this.userDetails.id)
+    private addFriend() {
+        this.userSubscription = this.notificationRepository.createNotification(NotificationTypeEnum.FRIEND_INVITATION, this.userDetails.id)
             .subscribe(
                 error => {
                     console.log("Cannot add friend", error);
+                }
+            );
+    }
+
+    private removeFriend() {
+        this.userSubscription = this.userRepository.removeFriend(this.userDetails.id)
+            .subscribe(
+                error => {
+                    console.log("Cannot remove friend", error);
                 }
             );
     }

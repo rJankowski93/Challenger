@@ -47,12 +47,12 @@ public class UsersResources {
 
     @RequestMapping(value = "/logged/details", produces = "application/json")
     public User getLoggedUserDetails(final Authentication authentication) {
-        return userRepository.findUserByLogin(authentication.getName());
+        return userRepository.getUserByLogin(authentication.getName());
     }
 
     @RequestMapping(value = "/user", produces = "application/json")
     public User getUser(@RequestParam("id") Long id) {
-        return userRepository.findUserById(id);
+        return userRepository.getUserById(id);
     }
 
     @RequestMapping("/add")
@@ -66,7 +66,7 @@ public class UsersResources {
 
     @RequestMapping("/remove")
     public String removeUser() {
-        User user = userRepository.findUserById(5L);
+        User user = userRepository.getUserById(5L);
         userRepository.removeUser(user);
         userRepository.removeUser(6L);
         return "all users";
@@ -118,9 +118,14 @@ public class UsersResources {
     }
 
     @RequestMapping(value = "/addFriend", produces = "application/json")
-    public User addToFriend(@RequestParam("friendId") Long friendId, final Authentication authentication) {
+    public void addFriend(@RequestParam("friendId") Long friendId, final Authentication authentication) {
         Long userId = ((CustomUserDetails) authentication.getPrincipal()).getUser().getId();
-        userRepository.addToFriends(friendId, userId);
-        return new User();
+        userRepository.addFriend(userId, friendId);
+    }
+
+    @RequestMapping(value = "/removeFriend", produces = "application/json")
+    public void removeFriend(@RequestParam("friendId") Long friendId, final Authentication authentication) {
+        Long userId = ((CustomUserDetails) authentication.getPrincipal()).getUser().getId();
+        userRepository.removeFriend(userId, friendId);
     }
 }

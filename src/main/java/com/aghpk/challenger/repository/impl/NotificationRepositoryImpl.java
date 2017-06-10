@@ -14,9 +14,10 @@ public class NotificationRepositoryImpl {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Notification> getAll() {
-        String queryTxt = "SELECT item FROM Notification item WHERE item.auditRD IS NULL";
-        TypedQuery<Notification> query = entityManager.createQuery(queryTxt, Notification.class);
+    List<Object[]> getNotificationsByUser(Long userId) {
+        String queryTxt = "SELECT item FROM Notification item WHERE item.subjectId =:userId AND item.auditRD IS NULL ";
+        TypedQuery<Object[]> query = entityManager.createQuery(queryTxt, Object[].class);
+        query.setParameter("userId", userId);
         return query.getResultList();
     }
 }

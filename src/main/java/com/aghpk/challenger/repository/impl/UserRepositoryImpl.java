@@ -55,14 +55,14 @@ public class UserRepositoryImpl {
         return query.getResultList();
     }
 
-    void addToFriends(Long friendId, Long userId) {
+    void addFriend(Long friendId, Long userId) {
         User user = entityManager.find(User.class, userId);
         User friendUser = entityManager.find(User.class, friendId);
         user.getFriends().add(friendUser);
         friendUser.getFriends().add(user);
     }
 
-    void removeFriend(Long friendId, Long userId) {
+    void removeFriend(Long userId, Long friendId) {
         User user = entityManager.find(User.class, userId);
         User friendUser = entityManager.find(User.class, friendId);
         user.getFriends().remove(friendUser);

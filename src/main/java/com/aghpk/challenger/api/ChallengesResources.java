@@ -34,7 +34,7 @@ public class ChallengesResources {
 
     @RequestMapping("/challenge/{id}")
     public Challenge getChallenge(@PathVariable("id") Long id) {
-        return challengeRepository.findChallengeById(id);
+        return challengeRepository.getChallengeById(id);
     }
 
     @RequestMapping(value = "/add/", method = RequestMethod.POST)

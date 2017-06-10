@@ -13,14 +13,20 @@ export class NotificationRepository {
     constructor(private http: Http) {
     }
 
-    getNotifications(userId: number): Observable <Array<Notification>> {
+    getNotificationsForLoggedUser(): Observable <Array<Notification>> {
+        return this.http.get(`${NotificationRepository.NOTIFICATION_API_URL}`).map(res => res.json(),
+            error => console.log(error));
+    }
+
+    createNotification(type: string, subjectId: number): Observable<User> {
         let params: URLSearchParams = new URLSearchParams();
-        params.set('id', userId.toString());
+        params.set('type', type);
+        params.set('subjectId', subjectId.toString());
 
         let requestOptions = new RequestOptions();
         requestOptions.search = params;
 
-        return this.http.get(`${NotificationRepository.NOTIFICATION_API_URL}`, requestOptions).map(res => res.json(),
+        return this.http.get(`${NotificationRepository.NOTIFICATION_API_URL}/create`, requestOptions).map(res => res.json(),
             error => console.log(error));
     }
 }

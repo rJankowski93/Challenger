@@ -64,14 +64,14 @@ export class UserRepository{
     }
 
     //TODO zmienic na funkcje bez zwracanego obiektu ale wtedy musi byc w user-profile.component bez subscribe i nie dziala
-    addToFriend(friendId: number): Observable<User> {
+    removeFriend(friendId: number): Observable<User> {
         let params: URLSearchParams = new URLSearchParams();
         params.set('friendId', friendId.toString());
 
         let requestOptions = new RequestOptions();
         requestOptions.search = params;
 
-        return this.http.get(`${UserRepository.USER_API_URL}/addFriend`, requestOptions).map(res => res.json(),
+        return this.http.get(`${UserRepository.USER_API_URL}/removeFriend`, requestOptions).map(res => res.json(),
             error => console.log(error));
     }
 }

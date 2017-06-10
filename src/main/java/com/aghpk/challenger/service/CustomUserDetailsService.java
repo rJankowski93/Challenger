@@ -37,11 +37,11 @@ public class CustomUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
-        User user = userRepository.findUserByLogin(login);
+        User user = userRepository.getUserByLogin(login);
         if (user == null) {
             throw new UsernameNotFoundException("No user present with login: " + login);
         }
-        List<String> userRoles = userRoleRepository.findRolesByUserId(user.getId());
+        List<String> userRoles = userRoleRepository.getRolesByUserId(user.getId());
         return new CustomUserDetails(user, userRoles);
     }
 
@@ -68,7 +68,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     }
 
     public void activateUser(Long userId, String login) {
-        User user = userRepository.findUserById(userId);
+        User user = userRepository.getUserById(userId);
         if (!user.getLogin().equals(login)) {
             throw new ApplicationException(ErrorType.WRONG_CONFIRMATION_LINK);
         }

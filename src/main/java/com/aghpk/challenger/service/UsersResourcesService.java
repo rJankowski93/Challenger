@@ -2,6 +2,7 @@ package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.repositoryElastic.UserElasticRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ public class UsersResourcesService {
 
     private final UserElasticRepository userElasticRepository;
 
+    @Autowired
     public UsersResourcesService(UserElasticRepository userElasticRepository) {
         this.userElasticRepository = userElasticRepository;
     }

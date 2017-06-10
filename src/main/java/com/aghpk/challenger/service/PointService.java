@@ -12,8 +12,12 @@ import java.util.Optional;
 @Service
 public class PointService {
 
+    private final PointRepository pointRepository;
+
     @Autowired
-    PointRepository pointRepository;
+    public PointService(PointRepository pointRepository) {
+        this.pointRepository = pointRepository;
+    }
 
     public void changeQuantityPoint(Scoreable object, Long quantity, String pointType) {
         Point point;

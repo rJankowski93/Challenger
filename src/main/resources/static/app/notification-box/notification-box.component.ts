@@ -19,7 +19,7 @@ export class NotificationBoxComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.notificationService.getNotifications(this.userId)
+        this.notificationService.getNotificationsForLoggedUser()
             .subscribe(notification => {
                     this.notificationList = notification;
                     this.isLoading = false;
