@@ -21,7 +21,7 @@ export class FriendBoxComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.userService.getFriendsForCurrentUser()
+        this.userService.getFriendsForLoggedUser()
             .subscribe(friend => {
                     this.friendsList = friend;
                     this.isLoading = false;

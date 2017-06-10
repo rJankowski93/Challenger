@@ -26,4 +26,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
     List<User> getFriendsByUser(Long id);
 
     void addToFriends(Long friendId, Long userId);
+
+    void removeFriend(Long friendId, Long userId);
+
 }

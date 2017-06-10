@@ -20,7 +20,7 @@ export class UserRepository{
                 error=> console.log(error));
     }
 
-    getFriendsForCurrentUser(): Observable <Array<User>> {
+    getFriendsForLoggedUser(): Observable <Array<User>> {
         return this.http.get(`${UserRepository.USER_API_URL}/friends`).map(res => res.json(),
             error => console.log(error));
     }

@@ -16,7 +16,7 @@
             <div class="">
                 <p class="user-label label label-success">Number of challenges: 13</p>
             </div>
-            <div id="user-data-btn">
+            <div id="user-data-btn" *ngIf="!isFriend()">
                 <button class="btn btn-warning" (click)="addToFriend()">
                     <i class="material-icons left">cloud</i>Add to friend
                 </button>

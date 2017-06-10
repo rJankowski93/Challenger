@@ -17,6 +17,7 @@ import {UserSearchInputModule} from "./filterable-input/user-search-input/user-s
 import {FormsModule} from "@angular/forms";
 import {UserProfileModule} from "./user-profile/user-profile.module";
 import {TopUsersPanelModule} from "./top-users-panel/top-users-panel.module";
+import {NotificationBoxModule} from "./notification-box/notification-box.module";
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import {TopUsersPanelModule} from "./top-users-panel/top-users-panel.module";
         UserSearchInputModule,
         FormsModule,
         UserProfileModule,
-        TopUsersPanelModule
+        TopUsersPanelModule,
+        NotificationBoxModule
     ],
 
     declarations: [

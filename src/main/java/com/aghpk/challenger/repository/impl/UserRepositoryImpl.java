@@ -15,6 +15,7 @@ import java.util.List;
 public class UserRepositoryImpl {
 
     private final PasswordEncoder passwordEncoder;
+
     @PersistenceContext
     private EntityManager entityManager;
 
@@ -59,5 +60,12 @@ public class UserRepositoryImpl {
         User friendUser = entityManager.find(User.class, friendId);
         user.getFriends().add(friendUser);
         friendUser.getFriends().add(user);
+    }
+
+    void removeFriend(Long friendId, Long userId) {
+        User user = entityManager.find(User.class, userId);
+        User friendUser = entityManager.find(User.class, friendId);
+        user.getFriends().remove(friendUser);
+        friendUser.getFriends().remove(user);
     }
 }

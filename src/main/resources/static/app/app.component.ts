@@ -61,5 +61,6 @@ export class AppComponent implements OnInit {
 export enum ContentType {
     CHALLENGES,
     FRIENDS,
-    PROFILE
+    PROFILE,
+    NOTIFICATIONS
 }
