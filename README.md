@@ -31,8 +31,8 @@ W kolejnych wersjach będzie możliwe tworzenie grupy znajomych, tak aby rywaliz
         + /node_modules
 
 ### Wzorzec projektowy ###
-Zastosowaliśmy wzorzec projektowy XXXXX świetnie nadał on się do obsługi punktów. 
-W naszej aplikacji mamy kilka rodzajów. Stworzyliśmy klasę PointFactory, która do metody createPoint jako string otrzymuje typ punktów i zwraca nowy obiekt konkretnego typu.
+Zastosowaliśmy wzorzec projektowy Metoda Wytwórcza, który świetnie nadał się do obsługi punktów.
+W naszej aplikacji mamy kilka rodzajów punktów. Stworzyliśmy klasę PointFactory, która do metody createPoint jako string otrzymuje typ punktów i zwraca nowy obiekt konkretnego typu.
 
 
 ```
