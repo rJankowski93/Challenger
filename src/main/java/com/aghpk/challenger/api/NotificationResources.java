@@ -1,11 +1,9 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.data.Challenge;
 import com.aghpk.challenger.data.Notification;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.repository.NotificationRepository;
 import com.aghpk.challenger.service.NotificationService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -30,7 +28,7 @@ public class NotificationResources {
         this.notificationService = notificationService;
     }
 
-    @RequestMapping("/user/notifications")
+    @RequestMapping("/user")
     public
     @ResponseBody
     List<Notification> getNotifications(@RequestParam(value = "id", required = false) Long userId) {

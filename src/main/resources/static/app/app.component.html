@@ -29,7 +29,8 @@
             <friend-box (showProfileEvent)="showProfile($event)"
                         *ngIf="mainContentSection==contentTypeEnum.FRIENDS"></friend-box>
             <user-profile [userId]="userId" *ngIf="mainContentSection==contentTypeEnum.PROFILE"></user-profile>
-            <notification-box *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>
+            <notification-box [userId]="userId"
+                              *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>
         </div>
     </div>
 

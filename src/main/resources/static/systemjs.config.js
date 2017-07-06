@@ -19,7 +19,8 @@
             // other libraries
             'rxjs':                      'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-            "ng2-modal": "node_modules/ng2-modal"
+            "ng2-modal": "node_modules/ng2-modal",
+            "angular2-websocket": "node_modules/angular2-websocket"
         },
         // packages tells the System loader how to load when no filename and/or no extension
         packages: {
@@ -30,7 +31,8 @@
             rxjs: {
                 defaultExtension: 'js'
             },
-            "ng2-modal": { "main": "index.js", "defaultExtension": "js" }
+            "ng2-modal": {"main": "index.js", "defaultExtension": "js"},
+            "angular2-websocket": {"main": "angular2-websocket.js", "defaultExtension": "js"}
         }
     });
 })(this);

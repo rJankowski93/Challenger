@@ -44,14 +44,14 @@ public class Notification extends Audit implements Serializable {
     String detailsLink;
 
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
-    private Long idCreator;
+    private Long creatorId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CREATOR_ID")
     private User creator;
 
     @Column(name = "SUBJECT_ID", insertable = false, updatable = false)
-    private Long idSubject;
+    private Long subjectId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "SUBJECT_ID")

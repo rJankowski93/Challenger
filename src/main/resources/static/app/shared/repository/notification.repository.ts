@@ -14,7 +14,7 @@ export class NotificationRepository {
     }
 
     getNotificationsForLoggedUser(): Observable <Array<Notification>> {
-        return this.http.get(`${NotificationRepository.NOTIFICATION_API_URL}`).map(res => res.json(),
+        return this.http.get(`${NotificationRepository.NOTIFICATION_API_URL}/user`).map(res => res.json(),
             error => console.log(error));
     }
 
