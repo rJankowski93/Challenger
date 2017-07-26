@@ -15,7 +15,7 @@ insert into USER (user_id, firstname, lastname, login, password, email, generalp
 insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (12, 'Charles', 'Ray', 'Kevin', 'uHM2JVoQUn', 'kray7@skyrock.com', 65, true);
 insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (13, 'Sandra', 'Taylor', 'Joyce', 's51fjHYhLtjz', 'jtaylor8@t-online.de', 11, false);
 insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (14, 'Lisa', 'Greene', 'Earl', 'rgj5lF3XMUv', 'egreene9@cyberchimps.com', 34, false);
-insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (15, 'Virginia', 'Bryant', 'Pamela', 'Re4JrN7M56', 'pbryanta@illinois.edu', 65, true);
+insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (15, 'raf', 'raf', 'raf', '$2a$10$e47pp2ZIuXEvfu/xnJyg7.nNeaPuroxSuQIFrI92QORUvGkE47qKa', 'pbryanta@illinois.edu', 65, true);
 insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (16, 'Anthony', 'Porter', 'Gloria', '4sRgz7GK23uz', 'gporterb@blogtalkradio.com', 65, false);
 insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (17, 'Janet', 'Phillips', 'Annie', 'GkakJh0p67', 'aphillipsc@netlog.com', 76, true);
 insert into USER (user_id, firstname, lastname, login, password, email, generalpointsquantity, enabled) values (18, 'Lori', 'Fields', 'Steve', '7E13bt2i', 'sfieldsd@desdev.cn', 39, true);

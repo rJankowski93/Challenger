@@ -1,5 +1,5 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-import {UserRepository} from "./repository/user.repository";
+import {UserService} from "./services/user.service";
 import {HttpModule} from "@angular/http";
 import {AuthRepository} from "./repository/auth.repository";
 import {SearchRepository} from "./repository/search.repository";
@@ -10,7 +10,7 @@ import {NotificationRepository} from "./repository/notification.repository";
 
 @NgModule({
     providers: [
-        UserRepository,
+        UserService,
         AuthRepository,
         SearchRepository,
         FileUploadService,

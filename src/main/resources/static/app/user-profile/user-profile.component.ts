@@ -1,10 +1,10 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {UserRepository} from "../shared/repository/user.repository";
 import {User} from "../shared/models/user.model";
 import {Subscription} from "rxjs";
 import {Challenge} from "../shared/models/challenge.model";
 import {ChallengeRepository} from "../shared/repository/challenge.repository";
 import {NotificationRepository} from "../shared/repository/notification.repository";
+import {UserService} from "../shared/services/user.service";
 
 @Component({
     moduleId: module.id,
@@ -27,12 +27,13 @@ export class UserProfileComponent implements OnInit {
 
     private friendsListForLoggedUser: Array<User>;
 
-    constructor(private userRepository: UserRepository,
+    constructor(private userService: UserService,
                 private challengeRepository: ChallengeRepository,
                 private notificationRepository: NotificationRepository) {
     }
 
     ngOnInit(): void {
+        console.log(this.userId);
         this.getUserProfile(this.userId);
     }
 
@@ -45,7 +46,7 @@ export class UserProfileComponent implements OnInit {
     }
 
     private getUserProfile(userId: number) {
-        this.userSubscription = this.userRepository.getUser(userId)
+        this.userSubscription = this.userService.getUser(userId)
             .subscribe(user => {
                     this.userDetails = user;
                 },
@@ -54,7 +55,7 @@ export class UserProfileComponent implements OnInit {
                 }
             );
 
-        this.userRepository.getUserFriends(userId)
+        this.userService.getUserFriends(userId)
             .subscribe(friend => {
                     this.friendsList = friend;
                 },
@@ -72,7 +73,7 @@ export class UserProfileComponent implements OnInit {
                 }
             );
 
-        this.userRepository.getFriendsForLoggedUser()
+        this.userService.getFriendsForLoggedUser()
             .subscribe(friend => {
                     this.friendsListForLoggedUser = friend;
                 },
@@ -82,8 +83,8 @@ export class UserProfileComponent implements OnInit {
             );
     }
 
-    private addFriend() {
-        this.userSubscription = this.notificationRepository.createNotification(NotificationTypeEnum.FRIEND_INVITATION, this.userDetails.id)
+    private inviteFriend() {
+        this.userSubscription = this.userService.inviteFriend(this.userDetails.id)
             .subscribe(
                 error => {
                     console.log("Cannot add friend", error);
@@ -92,7 +93,7 @@ export class UserProfileComponent implements OnInit {
     }
 
     private removeFriend() {
-        this.userSubscription = this.userRepository.removeFriend(this.userDetails.id)
+        this.userSubscription = this.userService.removeFriend(this.userDetails.id)
             .subscribe(
                 error => {
                     console.log("Cannot remove friend", error);

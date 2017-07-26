@@ -1,6 +1,6 @@
 package com.aghpk.challenger.config;
 
-import com.aghpk.challenger.service.CounterHandler;
+import com.aghpk.challenger.service.SenderNotification;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableScheduling;
@@ -14,11 +14,11 @@ import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry
 public class WebSocketConfig implements WebSocketConfigurer {
 
     @Autowired
-    CounterHandler counterHandler;
+    SenderNotification senderNotification;
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(counterHandler, "/counter/{userId}");
+        registry.addHandler(senderNotification, "/notificationSession/{userId}");
     }
 
 }

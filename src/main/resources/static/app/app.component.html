@@ -29,9 +29,14 @@
             <friend-box (showProfileEvent)="showProfile($event)"
                         *ngIf="mainContentSection==contentTypeEnum.FRIENDS"></friend-box>
             <user-profile [userId]="userId" *ngIf="mainContentSection==contentTypeEnum.PROFILE"></user-profile>
-            <notification-box [userId]="userId"
+            <notification-box (newNotification)="showNewNotification($event)"
                               *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>
         </div>
+    </div>
+
+    <div>
+        <button class="btn btn-primary" *ngIf="newNotification==true" (click)="readNotification()">NEW</button>
+        <button class="btn btn-primary" *ngIf="newNotification==false">NOT NEW</button>
     </div>
 
     <div class="col-md-2 top-users">

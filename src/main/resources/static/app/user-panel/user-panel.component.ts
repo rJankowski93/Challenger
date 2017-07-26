@@ -1,10 +1,10 @@
 import {Component, OnInit, OnDestroy, ViewChild} from "@angular/core";
-import {UserRepository} from "../shared/repository/user.repository";
 import {User} from "../shared/models/user.model";
 import {ChallengeSearchInputComponent} from "../filterable-input/challenge-search-input/challenge-search-input.component";
 import {Subscription} from "rxjs/Subscription";
 import {Modal} from "../shared/models/modal";
 import {FileUploadService} from "../shared/services/fileUpload.service";
+import {UserService} from "../shared/services/user.service";
 
 @Component({
     moduleId: module.id,
@@ -23,13 +23,13 @@ export class UserPanelComponent implements OnInit, OnDestroy{
     private loggedUserSubscription:Subscription;
     private avatarUserSubscription: Subscription;
 
-    constructor(private userRepository: UserRepository, private fileUploadService: FileUploadService) {
+    constructor(private userService: UserService, private fileUploadService: FileUploadService) {
     }
 
     ngOnInit(): void {
         this.isLoading=true;
 
-        this.loggedUserSubscription = this.userRepository.getLoggedInUserData()
+        this.loggedUserSubscription = this.userService.getLoggedInUserData()
             .subscribe(user => {
                     this.userDetails=user;
                     this.isLoading=false;

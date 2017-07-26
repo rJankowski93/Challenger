@@ -1,13 +1,13 @@
 import {Component, OnInit, Output, EventEmitter} from "@angular/core";
-import {UserRepository} from "../shared/repository/user.repository";
 import {User} from "../shared/models/user.model";
+import {UserService} from "../shared/services/user.service";
 
 @Component({
     moduleId: module.id,
     selector: 'friend-box',
     templateUrl: './friend-box.component.html',
     styleUrls: ['friend-box.component.css'],
-    providers: [UserRepository]
+    providers: [UserService]
 })
 export class FriendBoxComponent implements OnInit {
     @Output()
@@ -16,7 +16,7 @@ export class FriendBoxComponent implements OnInit {
     private isLoading: boolean;
     private friendsList: Array<User>;
 
-    constructor(private userService: UserRepository) {
+    constructor(private userService: UserService) {
     }
 
     ngOnInit(): void {

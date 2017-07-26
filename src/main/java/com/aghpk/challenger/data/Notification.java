@@ -20,13 +20,13 @@ import java.util.Date;
 })
 public class Notification extends Audit implements Serializable {
 
-    public interface TYPE {
-        String FRIEND_INVITATION = "FRIEND INVITATION";
-        String FRIEND_ACCEPTANCE = "FRIEND ACCEPTANCE";
-        String CHALLENGE_INVITATION = "CHALLENGE INVITATION";
-        String CHALLENGE_ACCEPTANCE = "CHALLENGE ACCEPTANCE";
-        String CHALLENGE_REFUSE = "CHALLENGE REFUSAL";
-        String CHALLENGE_SUCCESS = "CHALLENGE SUCCESS";
+    public enum Type {
+        FRIEND_INVITATION,
+        FRIEND_ACCEPTANCE,
+        CHALLENGE_INVITATION,
+        CHALLENGE_ACCEPTANCE,
+        CHALLENGE_REFUSE,
+        CHALLENGE_SUCCESS
     }
 
     @Id
@@ -34,8 +34,9 @@ public class Notification extends Audit implements Serializable {
     @Column(name = "NOTIFICATION_ID")
     Long id;
 
-    @Column(name = "TYPE")
-    String type;
+    @Column(name = "Type")
+    @Enumerated(EnumType.STRING)
+    Type type;
 
     @Column(name = "MESSAGE")
     String message;
@@ -57,7 +58,7 @@ public class Notification extends Audit implements Serializable {
     @JoinColumn(name = "SUBJECT_ID")
     private User subject;
 
-    public Notification(String type, String message, String detailsLink, User creator, User subject) {
+    public Notification(Type type, String message, String detailsLink, User creator, User subject) {
         this.type = type;
         this.message = message;
         this.detailsLink = detailsLink;

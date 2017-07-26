@@ -9,6 +9,13 @@ public class JsonResponseBody {
     @JsonView(Views.Public.class)
     List<User> result;
 
+    public JsonResponseBody() {
+    }
+
+    public JsonResponseBody(List<User> result) {
+        this.result = result;
+    }
+
     public List<User> getResult() {
         return result;
     }

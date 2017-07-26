@@ -1,6 +1,10 @@
 package com.aghpk.challenger.repository.impl;
 
+import com.aghpk.challenger.data.Notification;
 import com.aghpk.challenger.data.User;
+import com.aghpk.challenger.service.NotificationService;
+import com.aghpk.challenger.service.SenderNotification;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.persistence.EntityExistsException;
@@ -14,25 +18,19 @@ import java.util.List;
 @Transactional
 public class UserRepositoryImpl {
 
-    private final PasswordEncoder passwordEncoder;
-
     @PersistenceContext
     private EntityManager entityManager;
 
+    private final PasswordEncoder passwordEncoder;
+
+    @Autowired
     public UserRepositoryImpl(PasswordEncoder passwordEncoder) {
         this.passwordEncoder = passwordEncoder;
     }
 
     public User createUser(User user) throws EntityExistsException {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        entityManager.persist(user);
-        return user;
-    }
-
-    public void removeUser(User user) {
-        user.setAuditRD(new Date());
-        user.setEnabled(false);
-        entityManager.merge(user);
+        return entityManager.merge(user);
     }
 
     public void removeUser(Long id) {
@@ -42,30 +40,10 @@ public class UserRepositoryImpl {
         entityManager.merge(user);
     }
 
-    public List<User> getAll() {
-        String queryTxt = "SELECT item FROM User item WHERE item.auditRD IS NULL";
-        TypedQuery<User> query = entityManager.createQuery(queryTxt, User.class);
-        return query.getResultList();
-    }
-
     List<Object[]> getFriendsByUser(Long id) {
         String queryTxt = "SELECT item.friends FROM User item WHERE item.id =:id AND item.auditRD IS NULL ";
         TypedQuery<Object[]> query = entityManager.createQuery(queryTxt, Object[].class);
         query.setParameter("id", id);
         return query.getResultList();
-    }
-
-    void addFriend(Long friendId, Long userId) {
-        User user = entityManager.find(User.class, userId);
-        User friendUser = entityManager.find(User.class, friendId);
-        user.getFriends().add(friendUser);
-        friendUser.getFriends().add(user);
-    }
-
-    void removeFriend(Long userId, Long friendId) {
-        User user = entityManager.find(User.class, userId);
-        User friendUser = entityManager.find(User.class, friendId);
-        user.getFriends().remove(friendUser);
-        friendUser.getFriends().remove(user);
     }
 }

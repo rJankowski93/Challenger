@@ -3,7 +3,6 @@ package com.aghpk.challenger.service;
 import com.aghpk.challenger.data.Notification;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.repository.NotificationRepository;
-import com.aghpk.challenger.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,47 +11,50 @@ public class NotificationService {
 
     private final NotificationRepository notificationRepository;
 
-    private final UserRepository userRepository;
+    private final SenderNotification senderNotification;
 
     @Autowired
-    public NotificationService(NotificationRepository notificationRepository, UserRepository userRepository) {
+    public NotificationService(NotificationRepository notificationRepository, SenderNotification senderNotification) {
         this.notificationRepository = notificationRepository;
-        this.userRepository = userRepository;
+        this.senderNotification = senderNotification;
     }
 
-    public void createNotification(String type, Long creatorId, Long subjectId) {
-        User creator = userRepository.getUserById(creatorId);
-        User subject = userRepository.getUserById(subjectId);
-        notificationRepository.save(new Notification(type, generateMessage(type, creator), generateLink(type, creator, subject), creator, subject));
-
+    public void sendNotification(Notification.Type type, User creator, User subject) {
+        senderNotification.sendMessage(createNotification(type, creator, subject));
     }
 
-    private String generateMessage(String type, User creator) {
+    private Notification createNotification(Notification.Type type, User creator, User subject) {
+        String detailsLink = generateLink(type, creator, subject);
+        String message = generateMessage(type, creator);
+        return notificationRepository.save(new Notification(type, message, detailsLink, creator, subject));
+    }
+
+    private String generateMessage(Notification.Type type, User creator) {
         String message = "";
         switch (type) {
-            case Notification.TYPE.CHALLENGE_ACCEPTANCE:
+            case CHALLENGE_ACCEPTANCE:
                 //TODO
                 break;
-            case Notification.TYPE.CHALLENGE_INVITATION:
+            case CHALLENGE_INVITATION:
                 //TODO
                 break;
-            case Notification.TYPE.CHALLENGE_REFUSE:
+            case CHALLENGE_REFUSE:
                 //TODO
                 break;
-            case Notification.TYPE.CHALLENGE_SUCCESS:
+            case CHALLENGE_SUCCESS:
                 //TODO
                 break;
-            case Notification.TYPE.FRIEND_ACCEPTANCE:
+            case FRIEND_ACCEPTANCE:
                 //TODO
                 break;
-            case Notification.TYPE.FRIEND_INVITATION:
+            case FRIEND_INVITATION:
                 message = creator.getFirstName() + "invite you to friends";
                 break;
         }
         return message;
     }
 
-    private String generateLink(String type, User creator, User subject) {
+    private String generateLink(Notification.Type type, User creator, User subject) {
         String link = "";
         return link;
     }

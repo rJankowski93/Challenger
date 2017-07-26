@@ -23,3 +23,14 @@
 
 Counter Value is: {{counter}}
 <button type="button" (click)="subscribe($event)">Subscribe to WebSocket</button>
+
+<button type="button" (click)="showNewNotifications()">Test btn</button>
+
+<div *ngIf="newNotifications==true">
+    Rafal
+</div>
+
+
+<div *ngIf="testAs==false">
+    Pawel
+</div>
