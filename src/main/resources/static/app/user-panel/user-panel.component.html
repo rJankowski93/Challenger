@@ -8,10 +8,14 @@
     </div>
     <div id="user-panel-content">
         <div id="user-data">
-            <div id="user-name">
+            <div id="user-name" class="col-md-7">
                 {{userDetails.firstName}}
                 {{userDetails.lastName}}
             </div>
+            <img class="col-md-offset-2 col-md-1 notification-icon" src="images\black-message.png"
+                 *ngIf="newNotification==false" (click)="showNotification()">
+            <img class="col-md-offset-2 col-md-1 notification-icon" src="images\red-message.png"
+                 *ngIf="newNotification==true" (click)="showNotification()">
 
             <div id="user-searches">
                 <div id="search-challenge">
@@ -29,8 +33,6 @@
                     Create challenge
                 </button>
             </div>
-
-
         </div>
     </div>
 </div>

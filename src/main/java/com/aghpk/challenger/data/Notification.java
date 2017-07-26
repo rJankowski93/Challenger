@@ -41,9 +41,6 @@ public class Notification extends Audit implements Serializable {
     @Column(name = "MESSAGE")
     String message;
 
-    @Column(name = "DETAILS_LINK")
-    String detailsLink;
-
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
     private Long creatorId;
 
@@ -58,21 +55,20 @@ public class Notification extends Audit implements Serializable {
     @JoinColumn(name = "SUBJECT_ID")
     private User subject;
 
-    public Notification(Type type, String message, String detailsLink, User creator, User subject) {
+    public Notification(Type type, String message, User creator, User subject) {
         this.type = type;
         this.message = message;
-        this.detailsLink = detailsLink;
         this.creator = creator;
         this.subject = subject;
     }
 
     @PrePersist
-    public void onPrePersist() {
+    public void prePersist() {
         setAuditCD(new Date());
     }
 
     @PreUpdate
-    public void onPreUpdate() {
+    public void preUpdate() {
         setAuditMD(new Date());
     }
 }

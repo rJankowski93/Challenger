@@ -8,7 +8,7 @@
 </div>
 <div id="user-panel-wrapper" *ngIf="isAuthenticated">
     <div class="col-md-3 user-panel">
-        <user-panel></user-panel>
+        <user-panel (showNotificationsListEvent)="showList(contentTypeEnum.NOTIFICATIONS)"></user-panel>
     </div>
 
     <div class="col-md-7 main-section">
@@ -19,30 +19,16 @@
             <button id="button-friends-list" class="btn btn-primary btn-change-main-content col-md-offset-1 col-md-2"
                     (click)="showList(contentTypeEnum.FRIENDS)">Friends
             </button>
-            <button id="button-notifications-list"
-                    class="btn btn-primary btn-change-main-content col-md-offset-1 col-md-2 col-md-offset-2"
-                    (click)="showList(contentTypeEnum.NOTIFICATIONS)">Notifications
-            </button>
         </div>
         <div class="tiles-list row">
             <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
             <friend-box (showProfileEvent)="showProfile($event)"
                         *ngIf="mainContentSection==contentTypeEnum.FRIENDS"></friend-box>
             <user-profile [userId]="userId" *ngIf="mainContentSection==contentTypeEnum.PROFILE"></user-profile>
-            <notification-box (newNotification)="showNewNotification($event)"
-                              *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>
+            <notification-box *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>
         </div>
     </div>
-
-    <div>
-        <button class="btn btn-primary" *ngIf="newNotification==true" (click)="readNotification()">NEW</button>
-        <button class="btn btn-primary" *ngIf="newNotification==false">NOT NEW</button>
-    </div>
-
     <div class="col-md-2 top-users">
         <top-users-panel></top-users-panel>
     </div>
-    <!--<div id="challenge-creator" class="col-md-6">-->
-    <!--<challenge-creator></challenge-creator>-->
-    <!--</div>-->
 </div>

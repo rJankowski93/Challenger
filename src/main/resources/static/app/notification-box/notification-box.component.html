@@ -1,36 +1,14 @@
-<!--<div *ngIf="!isLoading">-->
-<!--<table class="table table-hover">-->
-<!--<tr>-->
-<!--<th>Type</th>-->
-<!--<th>Message</th>-->
-<!--<th>Details</th>-->
-<!--<th>Action</th>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<th>Friend</th>-->
-<!--<th>John invite you</th>-->
-<!--<th>link to John</th>-->
-<!--<th>Accept</th>-->
-<!--</tr>-->
-<!--<tr>-->
-<!--<th>Challenge</th>-->
-<!--<th>Karol to pala</th>-->
-<!--<th>Golomp tez</th>-->
-<!--<th>Accept</th>-->
-<!--</tr>-->
-<!--</table>-->
-<!--</div>-->
-
-Counter Value is: {{counter}}
-<button type="button" (click)="subscribe($event)">Subscribe to WebSocket</button>
-
-<button type="button" (click)="showNewNotifications()">Test btn</button>
-
-<div *ngIf="newNotifications==true">
-    Rafal
-</div>
-
-
-<div *ngIf="testAs==false">
-    Pawel
-</div>
+<table class="table table-hover">
+    <thead>
+    <tr>
+        <td>Type</td>
+        <td>Message</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let notification of notificationsList">
+        <td>{{notification.type}}</td>
+        <td>{{notification.message}}</td>
+    </tr>
+    </tbody>
+</table>

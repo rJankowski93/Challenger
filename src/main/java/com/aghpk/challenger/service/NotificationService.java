@@ -2,9 +2,13 @@ package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.data.Notification;
 import com.aghpk.challenger.data.User;
+import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.repository.NotificationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class NotificationService {
@@ -19,44 +23,35 @@ public class NotificationService {
         this.senderNotification = senderNotification;
     }
 
+    public List<Notification> getNotificationsForLoggedUser(final Authentication authentication) {
+        return notificationRepository.getNotificationsByUser(((CustomUserDetails) authentication.getPrincipal()).getUser().getId());
+    }
+
     public void sendNotification(Notification.Type type, User creator, User subject) {
         senderNotification.sendMessage(createNotification(type, creator, subject));
     }
 
     private Notification createNotification(Notification.Type type, User creator, User subject) {
-        String detailsLink = generateLink(type, creator, subject);
         String message = generateMessage(type, creator);
-        return notificationRepository.save(new Notification(type, message, detailsLink, creator, subject));
+        return notificationRepository.save(new Notification(type, message, creator, subject));
     }
 
     private String generateMessage(Notification.Type type, User creator) {
-        String message = "";
         switch (type) {
             case CHALLENGE_ACCEPTANCE:
-                //TODO
-                break;
+                return creator.getFirstName() + " accepted your challenge";
             case CHALLENGE_INVITATION:
-                //TODO
-                break;
+                return creator.getFirstName() + " challenge you";
             case CHALLENGE_REFUSE:
-                //TODO
-                break;
+                return creator.getFirstName() + " didn't your challenge";
             case CHALLENGE_SUCCESS:
-                //TODO
-                break;
+                return creator.getFirstName() + " did your challenge";
             case FRIEND_ACCEPTANCE:
-                //TODO
-                break;
+                return creator.getFirstName() + " accepted your invitation to friend";
             case FRIEND_INVITATION:
-                message = creator.getFirstName() + "invite you to friends";
-                break;
+                return creator.getFirstName() + " invited you to friends";
+            default:
+                return "Wrong type of challenge";
         }
-        return message;
     }
-
-    private String generateLink(Notification.Type type, User creator, User subject) {
-        String link = "";
-        return link;
-    }
-
 }

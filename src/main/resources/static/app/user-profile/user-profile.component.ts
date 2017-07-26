@@ -3,7 +3,6 @@ import {User} from "../shared/models/user.model";
 import {Subscription} from "rxjs";
 import {Challenge} from "../shared/models/challenge.model";
 import {ChallengeRepository} from "../shared/repository/challenge.repository";
-import {NotificationRepository} from "../shared/repository/notification.repository";
 import {UserService} from "../shared/services/user.service";
 
 @Component({
@@ -28,8 +27,7 @@ export class UserProfileComponent implements OnInit {
     private friendsListForLoggedUser: Array<User>;
 
     constructor(private userService: UserService,
-                private challengeRepository: ChallengeRepository,
-                private notificationRepository: NotificationRepository) {
+                private challengeRepository: ChallengeRepository) {
     }
 
     ngOnInit(): void {
@@ -60,7 +58,7 @@ export class UserProfileComponent implements OnInit {
                     this.friendsList = friend;
                 },
                 error => {
-                    console.log("Cannot read challenge", error);
+                    console.log("Cannot read friends", error);
                 }
             );
 

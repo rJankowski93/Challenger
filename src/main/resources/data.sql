@@ -214,10 +214,10 @@ insert into CHALLENGE_CATEGORY (CHALLENGE_CATEGORY_ID, CHALLENGE_CATEGORY_NAME) 
 
 
 insert into NOTIFICATION(NOTIFICATION_ID, TYPE,MESSAGE,DETAILS_LINK,CREATOR_ID,SUBJECT_ID)
-values (1,'FRIEND_INVITATION','message message message','link link link5',2,1);
+values (1,'FRIEND_INVITATION','message message message',2,1);
 insert into NOTIFICATION(NOTIFICATION_ID, TYPE,MESSAGE,DETAILS_LINK,CREATOR_ID,SUBJECT_ID)
-values (2,'FRIEND_INVITATION','message message message','link link link4',3,1);
+values (2,'FRIEND_INVITATION','message message message',3,1);
 insert into NOTIFICATION(NOTIFICATION_ID, TYPE,MESSAGE,DETAILS_LINK,CREATOR_ID,SUBJECT_ID)
-values (3,'FRIEND_INVITATION','message message message','link link link3',4,1);
+values (3,'FRIEND_INVITATION','message message message',4,1);
 insert into NOTIFICATION(NOTIFICATION_ID, TYPE,MESSAGE,DETAILS_LINK,CREATOR_ID,SUBJECT_ID)
-values (4,'FRIEND_INVITATION','message message message','link link link2',5,1);
+values (4,'FRIEND_INVITATION','message message message',5,1);
