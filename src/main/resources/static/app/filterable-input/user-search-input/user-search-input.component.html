@@ -19,11 +19,25 @@
 </div>
 
 <modal #userModal>
-    <modal-header>
-        <h3>{{selectedUser.firstName}} {{selectedUser.lastName}}</h3>
-    </modal-header>
     <modal-content>
+        <div>
+            <img class="col-md-4 valign profile-image-login"
+                 src="avatars\user\{{selectedUser.id}}.jpg"
+                 onerror="this.src='avatars\\default\\not-found-avatar.jpg'">
 
+            <h3>{{selectedUser.firstName}} {{selectedUser.lastName}}</h3>
+
+            <h4>User points: {{selectedUser.generalPointsQuantity}}</h4>
+
+            <button *ngIf="!isFriend(selectedUser.id)" class="btn btn-warning" (click)="addToFriend(selectedUser.id)">
+                <i class="material-icons left">cloud</i>Add to friend
+            </button>
+
+            <button *ngIf="isFriend(selectedUser.id)" class="btn btn-warning">
+                <i class="material-icons left">cloud</i>Remove friend
+            </button>
+
+        </div>
     </modal-content>
     <modal-footer>
         <button class="btn btn-primary" (click)="userModal.close()">Close</button>

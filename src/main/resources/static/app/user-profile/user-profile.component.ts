@@ -4,6 +4,7 @@ import {User} from "../shared/models/user.model";
 import {Subscription} from "rxjs";
 import {Challenge} from "../shared/models/challenge.model";
 import {ChallengeRepository} from "../shared/repository/challenge.repository";
+import {UserService} from "../shared/services/user.service";
 
 @Component({
     moduleId: module.id,
@@ -26,7 +27,7 @@ export class UserProfileComponent implements OnInit {
 
     private friendsListForLoggedUser: Array<User>;
 
-    constructor(private userRepository: UserRepository, private challengeRepository: ChallengeRepository) {
+    constructor(private userRepository: UserRepository, private challengeRepository: ChallengeRepository, private userService: UserService) {
     }
 
     ngOnInit(): void {
@@ -70,8 +71,8 @@ export class UserProfileComponent implements OnInit {
             );
 
         this.userRepository.getFriendsForLoggedUser()
-            .subscribe(friend => {
-                    this.friendsListForLoggedUser = friend;
+            .subscribe(friends => {
+                    this.friendsListForLoggedUser = friends;
                 },
                 error => {
                     console.log("Cannot read friends", error);
@@ -79,20 +80,11 @@ export class UserProfileComponent implements OnInit {
             );
     }
 
-    private addToFriend() {
-        this.userSubscription = this.userRepository.addToFriend(this.userDetails.id)
-            .subscribe(
-                error => {
-                    console.log("Cannot add friend", error);
-                }
-            );
+    private addToFriend(): void {
+        this.userService.addToFriend(this.userDetails.id);
     }
 
-    private isFriend() {
-        if (this.friendsListForLoggedUser == null || this.userDetails == null) {
-            return false
-        }
-        return this.friendsListForLoggedUser.some(x => x.id === this.userDetails.id);
+    private isFriend(): boolean {
+        return this.userService.isFriend(this.friendsListForLoggedUser, this.userDetails.id);
     }
-
 }

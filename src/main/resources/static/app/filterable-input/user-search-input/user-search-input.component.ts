@@ -4,6 +4,8 @@ import {User} from "../../shared/models/user.model";
 import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
 import {MapUtils} from "../../shared/services/map.utils";
+import {UserService} from "../../shared/services/user.service";
+import {UserRepository} from "../../shared/repository/user.repository";
 
 @Component({
     moduleId: module.id,
@@ -22,8 +24,9 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
     private isLoading:boolean;
     private searchSubscription:Subscription;
     private MINIMUM_FILTER_LENGTH:number=3;
+    private loggedUserFriends: Array<User>;
 
-    constructor(private searchService:SearchRepository) {
+    constructor(private searchService:SearchRepository, private userService: UserService, private userRepository: UserRepository) {
     }
 
     ngOnInit(): void {
@@ -33,6 +36,7 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
 
         this.initSelectedUser();
         this.getSearchResults();
+        this.getFriendsList();
     }
 
     ngOnDestroy(): void {
@@ -87,7 +91,28 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
                 })
     }
 
-    createPageRange(number){
+    getFriendsList() {
+        this.userRepository.getFriendsForLoggedUser()
+            .subscribe(friends => {
+                    this.loggedUserFriends = friends;
+                },
+                error => {
+                    console.log("Cannot read friends", error);
+                }
+            );
+    }
+
+    createPageRange(number: number){
         return MapUtils.createPageRange(number);
+    }
+
+    addToFriend(selectedUserId: number) {
+        this.userService.addToFriend(selectedUserId);
+        this.loggedUserFriends = null;
+        this.getFriendsList();
+    }
+
+    isFriend(selectedUserId) {
+        return this.userService.isFriend(this.loggedUserFriends, selectedUserId);
     }
 }
