@@ -1,7 +1,5 @@
 package com.aghpk.challenger.repository.impl;
 
-import com.aghpk.challenger.data.Notification;
-
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -14,9 +12,10 @@ public class NotificationRepositoryImpl {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public List<Notification> getAll() {
-        String queryTxt = "SELECT item FROM Notification item WHERE item.auditRD IS NULL";
-        TypedQuery<Notification> query = entityManager.createQuery(queryTxt, Notification.class);
+    List<Object[]> getNotificationsByUser(Long subjectId) {
+        String queryTxt = "SELECT item FROM Notification item WHERE item.subjectId =:subjectId AND item.auditRD IS NULL ";
+        TypedQuery<Object[]> query = entityManager.createQuery(queryTxt, Object[].class);
+        query.setParameter("subjectId", subjectId);
         return query.getResultList();
     }
 }

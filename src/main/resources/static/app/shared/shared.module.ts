@@ -1,23 +1,21 @@
 import {NgModule, CUSTOM_ELEMENTS_SCHEMA} from "@angular/core";
-import {UserRepository} from "./repository/user.repository";
+import {UserService} from "./services/user.service";
 import {HttpModule} from "@angular/http";
 import {AuthRepository} from "./repository/auth.repository";
 import {SearchRepository} from "./repository/search.repository";
 import {ClickOutsideDirective} from "./directives/click-outside.directive";
 import {FileUploadService} from "./services/fileUpload.service";
 import {ChallengeRepository} from "./repository/challenge.repository";
-import {NotificationRepository} from "./repository/notification.repository";
-import {UserService} from "./services/user.service";
+import {NotificationService} from "./services/notification.service";
 
 @NgModule({
     providers: [
-        UserRepository,
+        UserService,
         AuthRepository,
         SearchRepository,
         FileUploadService,
         ChallengeRepository,
-        NotificationRepository,
-        UserService
+        NotificationService
     ],
     imports: [
         HttpModule

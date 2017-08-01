@@ -1,5 +1,4 @@
 import {Component, OnInit, Input} from "@angular/core";
-import {UserRepository} from "../shared/repository/user.repository";
 import {User} from "../shared/models/user.model";
 import {Subscription} from "rxjs";
 import {Challenge} from "../shared/models/challenge.model";
@@ -27,7 +26,8 @@ export class UserProfileComponent implements OnInit {
 
     private friendsListForLoggedUser: Array<User>;
 
-    constructor(private userRepository: UserRepository, private challengeRepository: ChallengeRepository, private userService: UserService) {
+    constructor(private userService: UserService,
+                private challengeRepository: ChallengeRepository) {
     }
 
     ngOnInit(): void {
@@ -43,7 +43,7 @@ export class UserProfileComponent implements OnInit {
     }
 
     private getUserProfile(userId: number) {
-        this.userSubscription = this.userRepository.getUser(userId)
+        this.userSubscription = this.userService.getUser(userId)
             .subscribe(user => {
                     this.userDetails = user;
                 },
@@ -52,12 +52,12 @@ export class UserProfileComponent implements OnInit {
                 }
             );
 
-        this.userRepository.getUserFriends(userId)
+        this.userService.getUserFriends(userId)
             .subscribe(friend => {
                     this.friendsList = friend;
                 },
                 error => {
-                    console.log("Cannot read challenge", error);
+                    console.log("Cannot read friends", error);
                 }
             );
 
@@ -70,9 +70,9 @@ export class UserProfileComponent implements OnInit {
                 }
             );
 
-        this.userRepository.getFriendsForLoggedUser()
-            .subscribe(friends => {
-                    this.friendsListForLoggedUser = friends;
+        this.userService.getFriendsForLoggedUser()
+            .subscribe(friend => {
+                    this.friendsListForLoggedUser = friend;
                 },
                 error => {
                     console.log("Cannot read friends", error);
@@ -80,11 +80,26 @@ export class UserProfileComponent implements OnInit {
             );
     }
 
-    private addToFriend(): void {
-        this.userService.addToFriend(this.userDetails.id);
+    private inviteFriend() {
+        this.userSubscription = this.userService.inviteFriend(this.userDetails.id)
+            .subscribe(
+                error => {
+                    console.log("Cannot add friend", error);
+                }
+            );
+    }
+
+    private removeFriend() {
+        this.userSubscription = this.userService.removeFriend(this.userDetails.id)
+            .subscribe(
+                error => {
+                    console.log("Cannot remove friend", error);
+                }
+            );
     }
 
     private isFriend(): boolean {
         return this.userService.isFriend(this.friendsListForLoggedUser, this.userDetails.id);
     }
+
 }

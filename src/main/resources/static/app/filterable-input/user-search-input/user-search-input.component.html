@@ -29,7 +29,7 @@
 
             <h4>User points: {{selectedUser.generalPointsQuantity}}</h4>
 
-            <button *ngIf="!isFriend(selectedUser.id)" class="btn btn-warning" (click)="addToFriend(selectedUser.id)">
+            <button *ngIf="!isFriend(selectedUser.id)" class="btn btn-warning" (click)="inviteFriend(selectedUser.id)">
                 <i class="material-icons left">cloud</i>Add to friend
             </button>
 

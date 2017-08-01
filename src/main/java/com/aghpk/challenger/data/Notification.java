@@ -20,13 +20,13 @@ import java.util.Date;
 })
 public class Notification extends Audit implements Serializable {
 
-    public interface TYPE {
-        String FRIEND_INVITATION = "FRIEND INVITATION";
-        String FRIEND_ACCEPTANCE = "FRIEND ACCEPTANCE";
-        String CHALLENGE_INVITATION = "CHALLENGE INVITATION";
-        String CHALLENGE_ACCEPTANCE = "CHALLENGE ACCEPTANCE";
-        String CHALLENGE_REFUSE = "CHALLENGE REFUSAL";
-        String CHALLENGE_SUCCESS = "CHALLENGE SUCCESS";
+    public enum Type {
+        FRIEND_INVITATION,
+        FRIEND_ACCEPTANCE,
+        CHALLENGE_INVITATION,
+        CHALLENGE_ACCEPTANCE,
+        CHALLENGE_REFUSE,
+        CHALLENGE_SUCCESS
     }
 
     @Id
@@ -34,29 +34,41 @@ public class Notification extends Audit implements Serializable {
     @Column(name = "NOTIFICATION_ID")
     Long id;
 
-    @Column(name = "TYPE")
-    String type;
+    @Column(name = "Type")
+    @Enumerated(EnumType.STRING)
+    Type type;
 
     @Column(name = "MESSAGE")
     String message;
 
-    @Column(name = "DETAILS_LINK")
-    String detailsLink;
-
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
-    private Long idCreator;
+    private Long creatorId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CREATOR_ID")
     private User creator;
 
+    @Column(name = "SUBJECT_ID", insertable = false, updatable = false)
+    private Long subjectId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "SUBJECT_ID")
+    private User subject;
+
+    public Notification(Type type, String message, User creator, User subject) {
+        this.type = type;
+        this.message = message;
+        this.creator = creator;
+        this.subject = subject;
+    }
+
     @PrePersist
-    public void onPrePersist() {
+    public void prePersist() {
         setAuditCD(new Date());
     }
 
     @PreUpdate
-    public void onPreUpdate() {
+    public void preUpdate() {
         setAuditMD(new Date());
     }
 }

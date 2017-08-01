@@ -17,15 +17,13 @@ export class AppComponent implements OnInit {
     private mainContentSection: ContentType;
     userId: number;
 
-
     constructor(private authService: AuthRepository) {
-
     }
 
     ngOnInit(): void {
         this.isLoading = true;
         this.visibleLoginPage = true;
-        this.mainContentSection=ContentType.CHALLENGES;
+        this.mainContentSection = ContentType.CHALLENGES;
         this.authService.isAuthenticated()
             .subscribe(isAuthenticated => {
                     this.isAuthenticated = isAuthenticated;

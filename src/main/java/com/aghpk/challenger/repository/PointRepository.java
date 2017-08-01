@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface PointRepository extends JpaRepository<Point, Long> {
-    Point findPointByUserId(Long userId);
+    Point getPointByUserId(Long userId);
 
-    Point findPointByChallengeId(Long challengeId);
+    Point getPointByChallengeId(Long challengeId);
 }

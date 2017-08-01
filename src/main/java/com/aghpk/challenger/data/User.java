@@ -30,8 +30,9 @@ import java.util.Set;
         @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
         @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
 })
-@Document(indexName = "user", type = "user" , shards = 1)
+@Document(indexName = "user", type = "user", shards = 1)
 public class User extends Audit implements Serializable, Scoreable {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "USER_ID")
@@ -92,7 +93,7 @@ public class User extends Audit implements Serializable, Scoreable {
             name = "CHALLENGES_USERS",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID"))
-    @JsonBackReference(value="user-challengesUsers-reference")
+    @JsonBackReference(value = "user-challengesUsers-reference")
     private List<Challenge> challengesUsers;
 
     @ManyToMany(cascade = CascadeType.ALL)
@@ -106,8 +107,8 @@ public class User extends Audit implements Serializable, Scoreable {
 
     public User(JsonRegisterForm jsonRegisterForm) {
         this.login = jsonRegisterForm.getLogin();
-        this.firstName = jsonRegisterForm.getFirstname();
-        this.lastName = jsonRegisterForm.getLastname();
+        this.firstName = jsonRegisterForm.getFirstName();
+        this.lastName = jsonRegisterForm.getLastName();
         this.password = jsonRegisterForm.getPassword();
         this.email = jsonRegisterForm.getEmail();
     }
@@ -127,7 +128,11 @@ public class User extends Audit implements Serializable, Scoreable {
         return ("Login: " + login + " Password: " + password);
     }
 
-    public Set<Point> getPoints(){
-       return  this.points;
+    public Set<Point> getPoints() {
+        return this.points;
+    }
+
+    public String getFullName() {
+        return getFirstName() + " " + getLastName();
     }
 }

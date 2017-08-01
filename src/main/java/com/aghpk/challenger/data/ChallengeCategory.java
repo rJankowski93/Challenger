@@ -12,12 +12,8 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Entity
 @Table(name = "CHALLENGE_CATEGORY")
-@AttributeOverrides({
-        @AttributeOverride(name = "auditCD", column = @Column(name = "AUDIT_CD", updatable = false)),
-        @AttributeOverride(name = "auditMD", column = @Column(name = "AUDIT_MD")),
-        @AttributeOverride(name = "auditRD", column = @Column(name = "AUDIT_RD")),
-})
-public class ChallengeCategory extends Audit {
+public class ChallengeCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_CATEGORY_ID")

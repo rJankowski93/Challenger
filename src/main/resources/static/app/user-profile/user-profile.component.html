@@ -17,9 +17,13 @@
                 <p class="user-label label label-success">Number of challenges: 13</p>
             </div>
             <div id="user-data-btn" *ngIf="!isFriend()">
-                <button class="btn btn-warning" (click)="addToFriend()">
+                <button class="btn btn-success" *ngIf="!isFriend()" (click)="inviteFriend()">
                     <i class="material-icons left">cloud</i>Add to friend
                 </button>
+                <button class="btn btn-danger" *ngIf="isFriend()" (click)="removeFriend()">
+                    <i class="material-icons left">cloud</i>Remove from friend
+                </button>
+
             </div>
         </div>
     </div>

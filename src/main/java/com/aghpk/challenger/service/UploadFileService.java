@@ -22,6 +22,8 @@ import java.util.Optional;
 
 @Service
 @ConfigurationProperties(prefix = "uploadFile")
+@Getter
+@Setter
 public class UploadFileService {
 
     private static String resourceServerFolder =System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "webapp";
@@ -62,19 +64,4 @@ public class UploadFileService {
         }
     }
 
-    public static String getUploadedFolder() {
-        return uploadedFolder;
-    }
-
-    public static void setUploadedFolder(String uploadedFolder) {
-        UploadFileService.uploadedFolder = uploadedFolder;
-    }
-
-    public static String getDefaultExtension() {
-        return defaultExtension;
-    }
-
-    public static void setDefaultExtension(String defaultExtension) {
-        UploadFileService.defaultExtension = defaultExtension;
-    }
 }

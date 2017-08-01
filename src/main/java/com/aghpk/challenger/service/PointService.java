@@ -1,28 +1,30 @@
 package com.aghpk.challenger.service;
 
-import com.aghpk.challenger.repository.PointRepository;
 import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.data.point.Point;
 import com.aghpk.challenger.data.point.PointFactory;
+import com.aghpk.challenger.repository.PointRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class PointService {
 
+    private final PointRepository pointRepository;
+
     @Autowired
-    PointRepository pointRepository;
+    public PointService(PointRepository pointRepository) {
+        this.pointRepository = pointRepository;
+    }
 
     public void changeQuantityPoint(Scoreable object, Long quantity, String pointType) {
-        Point point;
-        Optional<Point> pointOptional = object.getPoints().stream().filter(p -> p.getType().equals(pointType)).findFirst();
-        if (pointOptional.isPresent()) {
-            point = pointOptional.get();
+        Point point = object.getPoints().stream()
+                .filter(p -> p.getType().equals(pointType))
+                .findFirst()
+                .orElse(PointFactory.createPoint(pointType));
+        if (point.getQuantity() != null) {
             point.changeQuantityPoint(quantity);
         } else {
-            point = PointFactory.createPoint(pointType);
             point.setObject(object);
             point.setQuantity(quantity);
         }

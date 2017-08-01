@@ -30,21 +30,9 @@ public class Challenge extends Audit implements Scoreable {
     @Column(name = "CHALLENGE_ID")
     private Long id;
 
-    //    @Field(
-//            type = FieldType.String,
-//            index = FieldIndex.analyzed,
-//            searchAnalyzer = "standard",
-//            store = true
-//    )
     @Column(name = "NAME")
     private String name;
 
-    //    @Field(
-//            type = FieldType.String,
-//            index = FieldIndex.analyzed,
-//            searchAnalyzer = "standard",
-//            store = true
-//    )
     @Column(name = "DESCRIPTION")
     private String description;
 
@@ -61,8 +49,7 @@ public class Challenge extends Audit implements Scoreable {
     private String rewardQuantity;
 
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
-    private Long idCreator;
-
+    private Long creatorId;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CREATOR_ID")

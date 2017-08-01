@@ -15,7 +15,7 @@ public class ChallengeCategoryRepositoryImpl {
     private EntityManager entityManager;
 
     public List<ChallengeCategory> getAll() {
-        String queryTxt = "SELECT item FROM ChallengeCategory item WHERE item.auditRD IS NULL";
+        String queryTxt = "SELECT item FROM ChallengeCategory item";
         TypedQuery<ChallengeCategory> query = entityManager.createQuery(queryTxt, ChallengeCategory.class);
         return query.getResultList();
     }

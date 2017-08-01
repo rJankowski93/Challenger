@@ -20,6 +20,7 @@
             'rxjs':                      'npm:rxjs',
             'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
             "ng2-modal": "node_modules/ng2-modal",
+            "angular2-websocket": "node_modules/angular2-websocket",
             'videogular2': './node_modules/videogular2'
         },
         // packages tells the System loader how to load when no filename and/or no extension
@@ -36,6 +37,9 @@
             },
             videogular2: {
                 defaultExtension: 'js'
+            },
+            "angular2-websocket": {
+                "main": "angular2-websocket.js", "defaultExtension": "js"
             }
         }
     });

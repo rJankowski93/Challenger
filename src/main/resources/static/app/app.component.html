@@ -8,20 +8,16 @@
 </div>
 <div id="user-panel-wrapper" *ngIf="isAuthenticated">
     <div class="col-md-3 user-panel">
-        <user-panel></user-panel>
+        <user-panel (showNotificationsListEvent)="showList(contentTypeEnum.NOTIFICATIONS)"></user-panel>
     </div>
 
     <div class="col-md-7 main-section">
         <div class="row">
-            <button id="button-challenges-list" class="btn btn-primary btn-change-main-content col-md-offset-2 col-md-2"
+            <button id="button-challenges-list" class="btn btn-primary btn-change-main-content col-md-offset-2 col-md-3"
                     (click)="showList(contentTypeEnum.CHALLENGES)">Challenges
             </button>
-            <button id="button-friends-list" class="btn btn-primary btn-change-main-content col-md-offset-1 col-md-2"
+            <button id="button-friends-list" class="btn btn-primary btn-change-main-content col-md-offset-2 col-md-3"
                     (click)="showList(contentTypeEnum.FRIENDS)">Friends
-            </button>
-            <button id="button-notifications-list"
-                    class="btn btn-primary btn-change-main-content col-md-offset-1 col-md-2 col-md-offset-2"
-                    (click)="showList(contentTypeEnum.NOTIFICATIONS)">Notifications
             </button>
         </div>
         <div class="tiles-list row">
@@ -32,11 +28,7 @@
             <notification-box *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>
         </div>
     </div>
-
     <div class="col-md-2 top-users">
         <top-users-panel></top-users-panel>
     </div>
-    <!--<div id="challenge-creator" class="col-md-6">-->
-    <!--<challenge-creator></challenge-creator>-->
-    <!--</div>-->
 </div>

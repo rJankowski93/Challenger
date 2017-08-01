@@ -16,7 +16,7 @@ public class CustomUserDetails implements UserDetails {
     private User user;
 
     public CustomUserDetails(User user, List<String> userRoles) {
-        this.user=user;
+        this.user = user;
         this.userRoles = userRoles;
     }
 

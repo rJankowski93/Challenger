@@ -14,7 +14,7 @@ public class UserRoleRepositoryImpl {
     @PersistenceContext
     private EntityManager entityManager;
 
-    List<String> findRolesByUserId(Long userId) {
+    List<String> getRolesByUserId(Long userId) {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<String> cq = cb.createQuery(String.class);
         Root<UserRole> item = cq.from(UserRole.class);

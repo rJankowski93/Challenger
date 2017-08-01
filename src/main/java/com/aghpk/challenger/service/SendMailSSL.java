@@ -1,8 +1,9 @@
 package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.data.User;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.*;
 import org.springframework.stereotype.Service;
 
 import javax.mail.*;
@@ -12,6 +13,8 @@ import java.util.Properties;
 
 @Service
 @ConfigurationProperties(prefix = "mail")
+@Getter
+@Setter
 public class SendMailSSL {
 
     private String username;
@@ -41,27 +44,4 @@ public class SendMailSSL {
         Transport.send(message);
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getConfirmationLink() {
-        return confirmationLink;
-    }
-
-    public void setConfirmationLink(String confirmationLink) {
-        this.confirmationLink = confirmationLink;
-    }
 }

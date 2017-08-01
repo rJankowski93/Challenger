@@ -1,22 +1,14 @@
-<!--<div *ngIf="!isLoading">-->
 <table class="table table-hover">
+    <thead>
     <tr>
-        <th>Type</th>
-        <th>Message</th>
-        <th>Details</th>
-        <th>Action</th>
+        <td>Type</td>
+        <td>Message</td>
     </tr>
-    <tr>
-        <th>Friend</th>
-        <th>John invite you</th>
-        <th>link to John</th>
-        <th>Accept</th>
+    </thead>
+    <tbody>
+    <tr *ngFor="let notification of notificationsList">
+        <td>{{notification.type}}</td>
+        <td>{{notification.message}}</td>
     </tr>
-    <tr>
-        <th>Challenge</th>
-        <th>Karol to pala</th>
-        <th>Golomp tez</th>
-        <th>Accept</th>
-    </tr>
+    </tbody>
 </table>
-<!--</div>-->

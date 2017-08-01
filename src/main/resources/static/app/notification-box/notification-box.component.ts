@@ -1,6 +1,7 @@
 import {Component, OnInit} from "@angular/core";
-import {NotificationRepository} from "../shared/repository/notification.repository";
 import {Notification} from "../shared/models/notification";
+import {$WebSocket} from "angular2-websocket";
+import {NotificationService} from "../shared/services/notification.service";
 
 @Component({
     moduleId: module.id,
@@ -10,25 +11,19 @@ import {Notification} from "../shared/models/notification";
 })
 export class NotificationBoxComponent implements OnInit {
 
-    private isLoading: boolean;
-    private notificationList: Array<Notification>;
-    private userId: number;
+    private notificationsList: Array<Notification>;
 
-    constructor(private notificationService: NotificationRepository) {
+    constructor(private notificationService: NotificationService) {
     }
 
     ngOnInit(): void {
-        this.isLoading = true;
-        this.notificationService.getNotifications(this.userId)
+        this.notificationService.getNotificationsForLoggedUser()
             .subscribe(notification => {
-                    this.notificationList = notification;
-                    this.isLoading = false;
+                    this.notificationsList = notification;
                 },
                 error => {
-                    console.log("Cannot read notification", error);
+                    console.log("Cannot read notifications", error);
                 }
             );
     }
-
-
 }

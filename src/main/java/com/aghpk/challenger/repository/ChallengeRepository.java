@@ -10,7 +10,7 @@ import java.util.List;
 @Repository
 public interface ChallengeRepository extends JpaRepository<Challenge, Long> {
 
-    Challenge findChallengeById(Long id);
+    Challenge getChallengeById(Long id);
 
     User createChallenge(Challenge challenge);
 
@@ -22,7 +22,7 @@ public interface ChallengeRepository extends JpaRepository<Challenge, Long> {
 
     List<Challenge> getChallengesByUser(Long userId);
 
-    List<Challenge> findChallengesByName(String name);
+    List<Challenge> getChallengesByName(String name);
 
     long count();
 

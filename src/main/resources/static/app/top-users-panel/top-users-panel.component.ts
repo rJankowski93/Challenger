@@ -1,5 +1,5 @@
 import {Component, OnInit} from "@angular/core";
-import {UserRepository} from "../shared/repository/user.repository";
+import {UserService} from "../shared/services/user.service";
 import {User} from "../shared/models/user.model";
 
 @Component({
@@ -12,7 +12,7 @@ export class TopUsersPanelComponent implements OnInit{
 
     private topUsers:Array<User>;
 
-    constructor(private userRepository:UserRepository) {
+    constructor(private userService: UserService) {
     }
 
     ngOnInit(): void {
@@ -20,7 +20,7 @@ export class TopUsersPanelComponent implements OnInit{
     }
 
     private getTopUsers(pageNo:number, pageSize:number, pointsType:string){
-        this.userRepository.getTopUsers(pageNo, pageSize, pointsType)
+        this.userService.getTopUsers(pageNo, pageSize, pointsType)
             .subscribe(
                 users=>{
                     this.topUsers=users;

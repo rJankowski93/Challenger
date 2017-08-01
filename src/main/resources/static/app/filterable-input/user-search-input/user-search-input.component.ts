@@ -5,7 +5,6 @@ import {FilterableInput} from "../filterable-input";
 import {Subscription} from "rxjs";
 import {MapUtils} from "../../shared/services/map.utils";
 import {UserService} from "../../shared/services/user.service";
-import {UserRepository} from "../../shared/repository/user.repository";
 
 @Component({
     moduleId: module.id,
@@ -26,7 +25,7 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
     private MINIMUM_FILTER_LENGTH:number=3;
     private loggedUserFriends: Array<User>;
 
-    constructor(private searchService:SearchRepository, private userService: UserService, private userRepository: UserRepository) {
+    constructor(private searchService: SearchRepository, private userService: UserService) {
     }
 
     ngOnInit(): void {
@@ -92,7 +91,7 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
     }
 
     getFriendsList() {
-        this.userRepository.getFriendsForLoggedUser()
+        this.userService.getFriendsForLoggedUser()
             .subscribe(friends => {
                     this.loggedUserFriends = friends;
                 },
@@ -106,8 +105,8 @@ export class UserSearchInputComponent implements FilterableInput, OnInit {
         return MapUtils.createPageRange(number);
     }
 
-    addToFriend(selectedUserId: number) {
-        this.userService.addToFriend(selectedUserId);
+    inviteFriend(selectedUserId: number) {
+        this.userService.inviteFriend(selectedUserId);
         this.loggedUserFriends = null;
         this.getFriendsList();
     }
