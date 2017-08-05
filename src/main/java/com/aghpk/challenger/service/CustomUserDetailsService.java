@@ -8,7 +8,7 @@ import com.aghpk.challenger.exeption.ApplicationException;
 import com.aghpk.challenger.exeption.ErrorType;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonRegisterForm;
-import com.aghpk.challenger.tools.StringUtil;
+import com.aghpk.challenger.tools.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
@@ -49,7 +49,7 @@ public class CustomUserDetailsService implements UserDetailsService {
         if (!registerForm.getPassword().equals(registerForm.getMatchingPassword())) {
             throw new ApplicationException(ErrorType.DIFFERENT_PASSWORD);
         }
-        if (!StringUtil.validateEmail(registerForm.getEmail())) {
+        if (!StringUtils.validateEmail(registerForm.getEmail())) {
             throw new ApplicationException(ErrorType.WRONG_EMAIL_FORMAT, registerForm.getEmail());
         }
         User user = new User(registerForm);

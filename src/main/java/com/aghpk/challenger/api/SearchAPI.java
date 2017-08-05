@@ -1,9 +1,9 @@
 package com.aghpk.challenger.api;
 
-import com.aghpk.challenger.repositoryElastic.ChallengeElasticRepository;
-import com.aghpk.challenger.repositoryElastic.UserElasticRepository;
 import com.aghpk.challenger.data.Challenge;
 import com.aghpk.challenger.data.User;
+import com.aghpk.challenger.repositoryElastic.ChallengeElasticRepository;
+import com.aghpk.challenger.repositoryElastic.UserElasticRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;

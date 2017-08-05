@@ -56,4 +56,8 @@
   padding-right: 3px;
   font-size: 12px; }
 
+.notification-icon {
+  width: 80px;
+  cursor: pointer; }
+
 /*# sourceMappingURL=user-panel.component.css.map */

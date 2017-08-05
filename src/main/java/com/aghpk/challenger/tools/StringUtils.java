@@ -4,9 +4,9 @@ import javax.mail.internet.AddressException;
 import javax.mail.internet.InternetAddress;
 import java.util.regex.Matcher;
 
-public class StringUtil {
+public class StringUtils {
 
-    public final static String replace(String message, Object[] params) {
+    public static String replace(String message, Object[] params) {
         if (params != null && message != null) {
             for (int i = 0; i < params.length; i++) {
                 message = message.replaceAll("\\{" + i + "\\}", ((params.length > i && params[i] != null)
@@ -16,7 +16,7 @@ public class StringUtil {
         return message;
     }
 
-    public final static boolean validateEmail(String email) {
+    public static boolean validateEmail(String email) {
         try {
             InternetAddress internetAddress = new InternetAddress(email);
             internetAddress.validate();

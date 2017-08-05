@@ -1,6 +1,6 @@
 package com.aghpk.challenger.exeption;
 
-import com.aghpk.challenger.tools.StringUtil;
+import com.aghpk.challenger.tools.StringUtils;
 
 public class ApplicationException extends RuntimeException {
 
@@ -11,7 +11,7 @@ public class ApplicationException extends RuntimeException {
     public ApplicationException(ErrorType errorCode, Object... msgParams) {
         super();
         this.errorCode = errorCode;
-        this.message = StringUtil.replace(errorCode.getMessage(), msgParams);
+        this.message = StringUtils.replace(errorCode.getMessage(), msgParams);
     }
 
     public ErrorType getErrorCode() {
