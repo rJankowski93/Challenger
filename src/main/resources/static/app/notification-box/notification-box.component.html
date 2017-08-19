@@ -3,12 +3,44 @@
     <tr>
         <td>Type</td>
         <td>Message</td>
+        <td>Reaction</td>
     </tr>
     </thead>
     <tbody>
     <tr *ngFor="let notification of notificationsList">
         <td>{{notification.type}}</td>
         <td>{{notification.message}}</td>
+        <td>
+            <div *ngIf="notification.type == notificationTypeEnum.FRIEND_INVITE">
+                <button *ngIf="notification.status == notificationStatusEnum.ACTIVE"
+                        (click)="acceptInvitation(notification.id, notification.creatorId)">Accept
+                </button>
+                <button *ngIf="notification.status == notificationStatusEnum.ACTIVE"
+                        (click)="rejectInvitation(notification.id, notification.creatorId)">Reject
+                </button>
+                <button (click)="showProfileUser(notification.creatorId)">Show user</button>
+            </div>
+
+            <div *ngIf="notification.type == notificationTypeEnum.CHALLENGE_INVITATION">
+                <button *ngIf="notification.challenge.status == challengeStatusEnum.WAITING_FOR_APPROVAL"
+                        (click)="acceptChallenge(notification.id, notification.challengeId)">Accept
+                </button>
+                <button *ngIf="notification.challenge.status == challengeStatusEnum.WAITING_FOR_APPROVAL"
+                        (click)="rejectChallenge(notification.id, notification.challengeId)">Reject
+                </button>
+                <button (click)="showChallenge(notification.challengeId)">Show challenge</button>
+            </div>
+            <div *ngIf="notification.type == notificationTypeEnum.ACCEPT_INVITATION ||
+                        notification.type == notificationTypeEnum.REJECT_INVITATION">
+                <button (click)="showProfileUser(notification.creatorId)">Show user</button>
+            </div>
+            <!-- TODO czy przy np akceptacji challengu lub odrzuceniu trzeba przechodzic na jego detale czy mozna to zrobic z tej strony -->
+            <div *ngIf="notification.type == notificationTypeEnum.CHALLENGE_ACCEPTANCE ||
+                        notification.type == notificationTypeEnum.CHALLENGE_REFUSE ||
+                        notification.type == notificationTypeEnum.CHALLENGE_SUCCESS">
+                <button (click)="showChallenge(notification.challengeId)">Show challenge</button>
+            </div>
+        </td>
     </tr>
     </tbody>
 </table>

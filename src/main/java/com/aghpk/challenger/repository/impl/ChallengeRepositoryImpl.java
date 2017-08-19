@@ -20,6 +20,7 @@ public class ChallengeRepositoryImpl {
         return challenge;
     }
 
+    //TODO entityManager.merge jest chyba nie potrzebny bo Hibernate na koncu trn zapisze wszystko (do sprawdzenia)
     public void removeChallenge(Challenge challenge) {
         challenge.setAuditRD(new Date());
         entityManager.merge(challenge);

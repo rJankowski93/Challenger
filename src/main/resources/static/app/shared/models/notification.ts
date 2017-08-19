@@ -4,7 +4,8 @@ export class Notification {
     type: string;
     message: String;
     detailsLink: String;
-    idCreator: number;
+    creatorId: number;
+    challengeId: number;
 
     constructor() {
     }

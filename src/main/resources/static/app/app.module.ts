@@ -18,6 +18,7 @@ import {FormsModule} from "@angular/forms";
 import {UserProfileModule} from "./user-profile/user-profile.module";
 import {TopUsersPanelModule} from "./top-users-panel/top-users-panel.module";
 import {NotificationBoxModule} from "./notification-box/notification-box.module";
+import {ChallengeDetailsModule} from "./challenge-details/challenge-details.module";
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import {NotificationBoxModule} from "./notification-box/notification-box.module"
         FormsModule,
         UserProfileModule,
         TopUsersPanelModule,
-        NotificationBoxModule
+        NotificationBoxModule,
+        ChallengeDetailsModule
     ],
 
     declarations: [

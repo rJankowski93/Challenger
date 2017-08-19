@@ -16,6 +16,7 @@ export class AppComponent implements OnInit {
     private visibleLoginPage: boolean;
     private mainContentSection: ContentType;
     userId: number;
+    challengeId: number;
 
     constructor(private authService: AuthRepository) {
     }
@@ -45,7 +46,7 @@ export class AppComponent implements OnInit {
         this.visibleLoginPage = false;
     }
 
-    //Challenges list <-> Friends list <-> Profile user
+    //Challenges list <-> Friends list
     showList(contentType: ContentType): void {
         this.mainContentSection = contentType;
     }
@@ -54,10 +55,15 @@ export class AppComponent implements OnInit {
         this.mainContentSection = ContentType.PROFILE;
         this.userId = userId;
     }
-}
 
+    showChallenge(challengeId: number) {
+        this.mainContentSection = ContentType.CHALLENGE;
+        this.challengeId = challengeId;
+    }
+}
 export enum ContentType {
     CHALLENGES,
+    CHALLENGE,
     FRIENDS,
     PROFILE,
     NOTIFICATIONS

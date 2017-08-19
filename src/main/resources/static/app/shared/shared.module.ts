@@ -5,8 +5,8 @@ import {AuthRepository} from "./repository/auth.repository";
 import {SearchRepository} from "./repository/search.repository";
 import {ClickOutsideDirective} from "./directives/click-outside.directive";
 import {FileUploadService} from "./services/fileUpload.service";
-import {ChallengeRepository} from "./repository/challenge.repository";
 import {NotificationService} from "./services/notification.service";
+import {ChallengeService} from "./services/challenge.service";
 
 @NgModule({
     providers: [
@@ -14,8 +14,8 @@ import {NotificationService} from "./services/notification.service";
         AuthRepository,
         SearchRepository,
         FileUploadService,
-        ChallengeRepository,
-        NotificationService
+        NotificationService,
+        ChallengeService
     ],
     imports: [
         HttpModule

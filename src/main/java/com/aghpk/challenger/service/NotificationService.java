@@ -1,5 +1,6 @@
 package com.aghpk.challenger.service;
 
+import com.aghpk.challenger.data.Challenge;
 import com.aghpk.challenger.data.Notification;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.model.CustomUserDetails;
@@ -27,13 +28,13 @@ public class NotificationService {
         return notificationRepository.getNotificationsByUser(((CustomUserDetails) authentication.getPrincipal()).getUser().getId());
     }
 
-    public void sendNotification(Notification.Type type, User creator, User subject) {
-        senderNotification.sendMessage(createNotification(type, creator, subject));
+    public void sendNotification(Notification.Type type, User creator, User subject, Challenge challenge) {
+        senderNotification.sendMessage(createNotification(type, creator, subject, challenge));
     }
 
-    private Notification createNotification(Notification.Type type, User creator, User subject) {
+    private Notification createNotification(Notification.Type type, User creator, User subject, Challenge challenge) {
         String message = generateMessage(type, creator);
-        return notificationRepository.save(new Notification(type, message, creator, subject));
+        return notificationRepository.save(new Notification(type, message, creator, subject, challenge));
     }
 
     private String generateMessage(Notification.Type type, User creator) {
@@ -46,12 +47,18 @@ public class NotificationService {
                 return creator.getFirstName() + " didn't your challenge";
             case CHALLENGE_SUCCESS:
                 return creator.getFirstName() + " did your challenge";
-            case FRIEND_ACCEPTANCE:
+            case ACCEPT_INVITATION:
                 return creator.getFirstName() + " accepted your invitation to friend";
-            case FRIEND_INVITATION:
+            case FRIEND_INVITE:
                 return creator.getFirstName() + " invited you to friends";
+            case REJECT_INVITATION:
+                return creator.getFirstName() + " reject your invite";
             default:
                 return "Wrong type of challenge";
         }
+    }
+
+    public void changeStatus(Long notificationId, Notification.Status status) {
+        notificationRepository.changeStatus(notificationId, status);
     }
 }

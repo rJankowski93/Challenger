@@ -25,6 +25,14 @@ import java.util.Set;
 })
 @Document(indexName = "challenge", type = "challenge", shards = 1)
 public class Challenge extends Audit implements Scoreable {
+
+    public enum Status {//the same in notification-box.component.ts -> ChallengeStatus
+        WAITING_FOR_APPROVAL,
+        IN_PROGRESS,
+        DONE,
+        FAILED
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "CHALLENGE_ID")
@@ -37,7 +45,8 @@ public class Challenge extends Audit implements Scoreable {
     private String description;
 
     @Column(name = "STATUS")
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
 
     @Column(name = "CATEGORY")
     private String category;
@@ -51,6 +60,7 @@ public class Challenge extends Audit implements Scoreable {
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
     private Long creatorId;
 
+    //TODO zmienic nazwe na creator
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CREATOR_ID")
     private User user;

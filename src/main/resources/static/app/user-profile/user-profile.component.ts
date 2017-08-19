@@ -2,8 +2,8 @@ import {Component, OnInit, Input} from "@angular/core";
 import {User} from "../shared/models/user.model";
 import {Subscription} from "rxjs";
 import {Challenge} from "../shared/models/challenge.model";
-import {ChallengeRepository} from "../shared/repository/challenge.repository";
 import {UserService} from "../shared/services/user.service";
+import {ChallengeService} from "../shared/services/challenge.service";
 
 @Component({
     moduleId: module.id,
@@ -27,7 +27,7 @@ export class UserProfileComponent implements OnInit {
     private friendsListForLoggedUser: Array<User>;
 
     constructor(private userService: UserService,
-                private challengeRepository: ChallengeRepository) {
+                private challengeService: ChallengeService) {
     }
 
     ngOnInit(): void {
@@ -61,7 +61,7 @@ export class UserProfileComponent implements OnInit {
                 }
             );
 
-        this.challengeRepository.getUserChallenges(userId)
+        this.challengeService.getUserChallenges(userId)
             .subscribe(challenge => {
                     this.challengesList = challenge;
                 },

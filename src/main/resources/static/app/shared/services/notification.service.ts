@@ -1,8 +1,7 @@
 import {Injectable} from "@angular/core";
-import {Http, URLSearchParams, RequestOptions} from "@angular/http";
+import {Http} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/map';
-import {User} from "../models/user.model";
 import {Notification} from "../models/notification";
 
 @Injectable()

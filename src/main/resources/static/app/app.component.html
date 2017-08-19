@@ -23,9 +23,14 @@
         <div class="tiles-list row">
             <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
             <friend-box (showProfileEvent)="showProfile($event)"
-                        *ngIf="mainContentSection==contentTypeEnum.FRIENDS"></friend-box>
+                        *ngIf="mainContentSection==contentTypeEnum.FRIENDS">
+            </friend-box>
             <user-profile [userId]="userId" *ngIf="mainContentSection==contentTypeEnum.PROFILE"></user-profile>
-            <notification-box *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>
+            <challenge-details [challengeId]="challengeId"
+                               *ngIf="mainContentSection==contentTypeEnum.CHALLENGE"></challenge-details>
+            <notification-box (showChallengeEvent)="showChallenge($event)"
+                              (showProfileEvent)="showProfile($event)"
+                              *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>
         </div>
     </div>
     <div class="col-md-2 top-users">

@@ -20,13 +20,20 @@ import java.util.Date;
 })
 public class Notification extends Audit implements Serializable {
 
-    public enum Type {
-        FRIEND_INVITATION,
-        FRIEND_ACCEPTANCE,
+    //TODO zunifikowac nazwy np rzeczownik_czasownik
+    public enum Type {//the same in notification-box.component.ts -> NotificationType
+        FRIEND_INVITE,
+        ACCEPT_INVITATION,
+        REJECT_INVITATION,
         CHALLENGE_INVITATION,
         CHALLENGE_ACCEPTANCE,
         CHALLENGE_REFUSE,
         CHALLENGE_SUCCESS
+    }
+
+    public enum Status {//the same in notification-box.component.ts -> NotificationStatus
+        ACTIVE,
+        INACTIVE
     }
 
     @Id
@@ -37,6 +44,10 @@ public class Notification extends Audit implements Serializable {
     @Column(name = "Type")
     @Enumerated(EnumType.STRING)
     Type type;
+
+    @Column(name = "Status")
+    @Enumerated(EnumType.STRING)
+    Status status;
 
     @Column(name = "MESSAGE")
     String message;
@@ -55,11 +66,20 @@ public class Notification extends Audit implements Serializable {
     @JoinColumn(name = "SUBJECT_ID")
     private User subject;
 
-    public Notification(Type type, String message, User creator, User subject) {
+    @Column(name = "CHALLENGE_ID", insertable = false, updatable = false)
+    private Long challengeId;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "CHALLENGE_ID")
+    private Challenge challenge;
+
+    public Notification(Type type, String message, User creator, User subject, Challenge challenge) {
         this.type = type;
         this.message = message;
         this.creator = creator;
         this.subject = subject;
+        this.challenge = challenge;
+        this.status = Status.ACTIVE;
     }
 
     @PrePersist

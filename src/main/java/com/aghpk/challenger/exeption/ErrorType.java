@@ -14,7 +14,8 @@ public enum ErrorType {
     WRONG_POINT_TYPE("The point type: \"{0}\" is not recognized."),
     NOT_ENOUGH_POINTS("The quantity of points is not enough"),
     QUANTITY_POINTS_LESS_ZERO("The quantity of points cann't be less than zero"),
-    WRONG_CONNECTION("Any problem with connection");
+    WRONG_CONNECTION("Any problem with connection"),
+    WRONG_STATUS_CHALLENGE("The challenge has wrong status: \"{0}\"");
 
     String message;
 

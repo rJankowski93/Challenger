@@ -26,6 +26,8 @@ public class UserRepositoryImpl {
         this.passwordEncoder = passwordEncoder;
     }
 
+
+    //TODO entityManager.merge jest chyba nie potrzebny bo Spring na koncu trn zapisze wszystko (do sprawdzenia)
     public User createUser(User user) throws EntityExistsException {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         return entityManager.merge(user);

@@ -90,7 +90,12 @@ public class UsersResources {
     }
 
     @RequestMapping(value = "/acceptInvitation", produces = "application/json")
-    public void acceptInvitation(@RequestParam("friendId") Long friendId) {
-        userService.acceptInvitation(friendId);
+    public void acceptInvitation(@RequestParam("notificationId") Long notificationId, @RequestParam("friendId") Long friendId) {
+        userService.acceptInvitation(notificationId, friendId);
+    }
+
+    @RequestMapping(value = "/rejectInvitation", produces = "application/json")
+    public void rejectInvitation(@RequestParam("notificationId") Long notificationId, @RequestParam("userId") Long userId) {
+        userService.rejectInvitation(notificationId, userId);
     }
 }

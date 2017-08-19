@@ -1,5 +1,7 @@
 package com.aghpk.challenger.repository.impl;
 
+import com.aghpk.challenger.data.Notification;
+
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -17,5 +19,9 @@ public class NotificationRepositoryImpl {
         TypedQuery<Object[]> query = entityManager.createQuery(queryTxt, Object[].class);
         query.setParameter("subjectId", subjectId);
         return query.getResultList();
+    }
+
+    private void changeStatus(Long notificationId, Notification.Status status) {
+        entityManager.find(Notification.class, notificationId).setStatus(status);
     }
 }

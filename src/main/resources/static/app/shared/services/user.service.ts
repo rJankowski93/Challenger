@@ -81,12 +81,23 @@ export class UserService {
             error => console.log(error));
     }
 
-    acceptInvitation(friendId: number): Observable<User> {
+    acceptInvitation(notificationId: number, friendId: number): Observable<User> {
         let params: URLSearchParams = new URLSearchParams();
+        params.set('notificationId', notificationId.toString());
         params.set('friendId', friendId.toString());
         let requestOptions = new RequestOptions();
         requestOptions.search = params;
-        return this.http.get(`${UserService.USER_API_URL}/acceptInvitation`).map(res => res.json(),
+        return this.http.get(`${UserService.USER_API_URL}/acceptInvitation`, requestOptions).map(res => res.json(),
+            error => console.log(error));
+    }
+
+    rejectInvitation(notificationId: number, userId: number): Observable<User> {
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('notificationId', notificationId.toString());
+        params.set('userId', userId.toString());
+        let requestOptions = new RequestOptions();
+        requestOptions.search = params;
+        return this.http.get(`${UserService.USER_API_URL}/rejectInvitation`, requestOptions).map(res => res.json(),
             error => console.log(error));
     }
 
