@@ -61,7 +61,7 @@ public class ChallengeService {
         //TODO zmienic z listy na cos innego jak juz podejmiemy decyzje jak maja dzialac challenge
         // moglby np byc tutaj if ze jezeli subject jest pusty tzn ze challenge jest dla wsyztskich i wtedy ten co pierwszy ten wygrywa
         //a jezlei subject nie zgadza sie z aktualnym userem tzn ze blad bo to nie jego wyzwanie
-        notificationService.sendNotification(Notification.Type.CHALLENGE_ACCEPTANCE, userService.getCurrentUser(), challenge.getUser(), challenge);
+        notificationService.sendNotification(Notification.Type.CHALLENGE_ACCEPTANCE, userService.getCurrentUser(), challenge.getCreator(), challenge);
     }
 
     public void rejectChallenge(Long notificationId, Long challengeId) {
@@ -70,7 +70,7 @@ public class ChallengeService {
             throw new ApplicationException(ErrorType.WRONG_STATUS_CHALLENGE, challenge.getStatus());
         }
         notificationService.changeStatus(notificationId, Notification.Status.INACTIVE);
-        notificationService.sendNotification(Notification.Type.CHALLENGE_REFUSE, userService.getCurrentUser(), challenge.getUser(), challenge);
+        notificationService.sendNotification(Notification.Type.CHALLENGE_REFUSE, userService.getCurrentUser(), challenge.getCreator(), challenge);
     }
 
 

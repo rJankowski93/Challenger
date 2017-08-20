@@ -1,5 +1,5 @@
 import {Component, OnInit, EventEmitter, Output} from "@angular/core";
-import {Notification} from "../shared/models/notification";
+import {Notification} from "../shared/models/notification.model";
 import {$WebSocket} from "angular2-websocket";
 import {NotificationService} from "../shared/services/notification.service";
 import {Subscription} from "rxjs";

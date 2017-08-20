@@ -60,10 +60,9 @@ public class Challenge extends Audit implements Scoreable {
     @Column(name = "CREATOR_ID", insertable = false, updatable = false)
     private Long creatorId;
 
-    //TODO zmienic nazwe na creator
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CREATOR_ID")
-    private User user;
+    private User creator;
 
     @ManyToMany(mappedBy = "challengesUsers")
     @JsonBackReference(value = "challenge-users-reference")
