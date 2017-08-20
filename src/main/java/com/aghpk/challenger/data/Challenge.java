@@ -64,12 +64,11 @@ public class Challenge extends Audit implements Scoreable {
     @JoinColumn(name = "CREATOR_ID")
     private User creator;
 
-    @ManyToMany(mappedBy = "challengesUsers")
+    @ManyToMany(mappedBy = "challengesUsers", fetch = FetchType.LAZY)
     @JsonBackReference(value = "challenge-users-reference")
-    @LazyCollection(LazyCollectionOption.FALSE)
     private List<User> users;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
     @JsonBackReference(value = "challenge-point")
     private Set<Point> points;

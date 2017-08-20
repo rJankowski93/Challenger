@@ -2,9 +2,10 @@ export class Notification {
 
     id: number;
     type: string;
+    status: String;
     message: String;
-    detailsLink: String;
     creatorId: number;
+    subjectId: number;
     challengeId: number;
 
     constructor() {

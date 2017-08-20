@@ -53,7 +53,7 @@ public class CustomUserDetailsService implements UserDetailsService {
             throw new ApplicationException(ErrorType.WRONG_EMAIL_FORMAT, registerForm.getEmail());
         }
         User user = new User(registerForm);
-        user.setRoles(new ArrayList<>(Arrays.asList(new UserRole(UserRole.ROLE.USER))));
+        user.addRole(new UserRole(UserRole.Role.USER));
         try {
             user = userRepository.createUser(user);
         } catch (EntityExistsException e) {

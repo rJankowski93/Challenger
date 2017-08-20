@@ -26,7 +26,7 @@ public class Group extends Audit {
     @Column(name = "NAME")
     private String name;
 
-    @ManyToMany(mappedBy = "groups")
+    @ManyToMany(mappedBy = "groups", fetch = FetchType.LAZY)
     @JsonBackReference("user-group")
     private List<User> users;
 

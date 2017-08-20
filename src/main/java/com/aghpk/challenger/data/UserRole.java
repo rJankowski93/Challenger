@@ -14,7 +14,7 @@ import javax.persistence.*;
 @Table(name = "USER_ROLE")
 public class UserRole {
 
-    public interface ROLE {
+    public interface Role {
         String USER = "ROLE_USER";
         String ADMIN = "ROLE_ADMIN";
     }

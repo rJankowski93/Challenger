@@ -10,12 +10,11 @@ import com.fasterxml.jackson.annotation.JsonView;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Set;
@@ -60,12 +59,12 @@ public class User extends Audit implements Serializable, Scoreable {
     @Column(name = "ENABLED")
     private boolean enabled;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @JsonBackReference(value = "user-roles-reference")
     private List<UserRole> roles;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID")
     @JsonBackReference(value = "user-point")
     private Set<Point> points;
@@ -73,14 +72,12 @@ public class User extends Audit implements Serializable, Scoreable {
     @Column(name = "GENERALPOINTSQUANTITY")
     private Long generalPointsQuantity;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "CREATOR_ID", referencedColumnName = "USER_ID")
     @JsonBackReference(value = "user-challenges-reference")
     private List<Challenge> challenges;
 
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "FRIENDSHIP",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
@@ -88,7 +85,7 @@ public class User extends Audit implements Serializable, Scoreable {
     @JsonBackReference(value = "user-friends-reference")
     private List<User> friends;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "CHALLENGES_USERS",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
@@ -96,13 +93,12 @@ public class User extends Audit implements Serializable, Scoreable {
     @JsonBackReference(value = "user-challengesUsers-reference")
     private List<Challenge> challengesUsers;
 
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "USER_GROUPS_MEMBERSHIP",
             joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
             inverseJoinColumns = @JoinColumn(name = "GROUP_ID", referencedColumnName = "GROUP_ID"))
     @JsonBackReference(value = "user-groups-reference")
-    @LazyCollection(LazyCollectionOption.FALSE)
     private List<Group> groups;
 
     public User(JsonRegisterForm jsonRegisterForm) {
@@ -134,5 +130,12 @@ public class User extends Audit implements Serializable, Scoreable {
 
     public String getFullName() {
         return getFirstName() + " " + getLastName();
+    }
+
+    public void addRole(UserRole role) {
+        if (roles == null) {
+            roles = new ArrayList();
+        }
+        roles.add(role);
     }
 }

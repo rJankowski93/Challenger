@@ -4,10 +4,9 @@ export class Challenge {
     description: string;
     status: string;
     category: string;
-    // points: number;
     rewardType: string;
     rewartQuantity: string;
-    idCreator: number;
+    creatorId: number;
 
     constructor() {
     }

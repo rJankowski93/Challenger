@@ -16,6 +16,7 @@ import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
@@ -93,6 +94,7 @@ public class UserService {
                 .getContent();
     }
 
+    @Transactional
     public void removeFriend(Long friendId) {
         User user = userRepository.getUserById(getCurrentUser().getId());
         User friendUser = userRepository.getUserById(friendId);
@@ -109,20 +111,17 @@ public class UserService {
         notificationService.sendNotification(Notification.Type.FRIEND_INVITE, getCurrentUser(), getUser(friendId), null);
     }
 
+    @Transactional
     public void acceptInvitation(Long notificationId, Long friendId) {
+        User user = userRepository.getUserById(getCurrentUser().getId());
         User friendUser = userRepository.getUserById(friendId);
-        if (getCurrentUser().getFriends().stream().anyMatch(friend -> friend.getId().equals(friendId))) {
+        if (user.getFriends().stream().anyMatch(friend -> friend.getId().equals(friendId))) {
             throw new ApplicationException(ErrorType.FRIEND_EXIST, friendUser.getFullName());
         }
-        //TODO przesunac notificationService.chanegStatus i notificationService.sendNotification na koniec metody
-        //narazie jest to nie mozliwe bo przy zapisie notyfikacji zpaisuje sie tez user chyba dlatego
-        // że mamy fetch = EAGER i przez to działa cascade
-        //prawdopodbnie tzreba zmeinic na LAZY oraz dopisac graph zeby pobeirął razem z creator, subject i challenge
-        //bo sa potzrebne podczas wyseitlania listy notyfikacji
+        user.getFriends().add(friendUser);
+        friendUser.getFriends().add(user);
         notificationService.changeStatus(notificationId, Notification.Status.INACTIVE);
-        notificationService.sendNotification(Notification.Type.ACCEPT_INVITATION, getCurrentUser(), getUser(friendId), null);
-        getCurrentUser().getFriends().add(friendUser);
-        friendUser.getFriends().add(getCurrentUser());
+        notificationService.sendNotification(Notification.Type.ACCEPT_INVITATION, user, getUser(friendId), null);
     }
 
     public void rejectInvitation(Long notificationId, Long userId) {
