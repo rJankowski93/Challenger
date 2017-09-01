@@ -74,6 +74,11 @@ public class User extends Audit implements Serializable, Scoreable {
 
     @OneToMany(fetch = FetchType.LAZY)
     @JoinColumn(name = "CREATOR_ID", referencedColumnName = "USER_ID")
+    @JsonBackReference(value = "user-createdChallenges-reference")
+    private List<Challenge> createdChallenges;
+
+    @OneToMany(fetch = FetchType.LAZY)
+    @JoinColumn(name = "SUBJECT_ID", referencedColumnName = "USER_ID")
     @JsonBackReference(value = "user-challenges-reference")
     private List<Challenge> challenges;
 
@@ -84,14 +89,6 @@ public class User extends Audit implements Serializable, Scoreable {
             inverseJoinColumns = @JoinColumn(name = "FRIEND_ID", referencedColumnName = "USER_ID"))
     @JsonBackReference(value = "user-friends-reference")
     private List<User> friends;
-
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "CHALLENGES_USERS",
-            joinColumns = @JoinColumn(name = "USER_ID", referencedColumnName = "USER_ID"),
-            inverseJoinColumns = @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID"))
-    @JsonBackReference(value = "user-challengesUsers-reference")
-    private List<Challenge> challengesUsers;
 
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(

@@ -30,17 +30,18 @@ create table USER_GROUPS_MEMBERSHIP (
 );
 
 create table CHALLENGE (
-  CHALLENGE_ID BIGINT(19) auto_increment,
-    AUDIT_CD TIMESTAMP,
-  AUDIT_RD TIMESTAMP,
-  AUDIT_MD TIMESTAMP,
-  NAME varchar(255),
-  DESCRIPTION varchar(255),
-  STATUS varchar(255),
-  CATEGORY varchar(255),
-  REWARD_TYPE varchar(255),
+  CHALLENGE_ID    BIGINT(19) auto_increment,
+  AUDIT_CD        TIMESTAMP,
+  AUDIT_RD        TIMESTAMP,
+  AUDIT_MD        TIMESTAMP,
+  NAME            varchar(255),
+  DESCRIPTION     varchar(255),
+  STATUS          varchar(255),
+  CATEGORY        varchar(255),
+  REWARD_TYPE     varchar(255),
   REWARD_QUANTITY varchar(255),
-  CREATOR_ID BIGINT(19)
+  CREATOR_ID      BIGINT(19),
+  SUBJECT_ID      BIGINT(19)
 );
 
 create table FRIENDS_GROUP (
@@ -49,11 +50,6 @@ create table FRIENDS_GROUP (
   AUDIT_RD TIMESTAMP,
   AUDIT_MD TIMESTAMP,
   NAME varchar(45)
-);
-
-create table CHALLENGES_USERS (
-  CHALLENGE_ID BIGINT(19),
-  USER_ID BIGINT(19)
 );
 
 create table POINT (

@@ -2,9 +2,11 @@ import {Injectable} from "@angular/core";
 import {Http} from "@angular/http";
 import {Observable} from "rxjs/Rx";
 import 'rxjs/add/operator/map';
-import {Notification} from "../models/notification";
+import {Notification} from "../models/notification.model";
 
 @Injectable()
+
+
 export class NotificationService {
 
     private static NOTIFICATION_API_URL = "api/notifications";

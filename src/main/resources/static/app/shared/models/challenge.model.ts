@@ -7,6 +7,7 @@ export class Challenge {
     rewardType: string;
     rewartQuantity: string;
     creatorId: number;
+    subjectId: number;
 
     constructor() {
     }
