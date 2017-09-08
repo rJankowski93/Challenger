@@ -81,4 +81,28 @@ export class UserPanelComponent implements OnInit, OnDestroy {
         );
     }
 
+    changePassword() {
+        var data = {};
+        data["oldPassword"] = $("#old-password").val();
+        data["newPassword"] = $("#new-password").val();
+        data["matchingPassword"] = $("#matching-password").val();
+        $(document).ready(function () {
+            $.ajax({
+                method: "POST",
+                contentType: "application/json",
+                url: "/api/users/changePassword",
+                data: JSON.stringify(data),
+                dataType: 'json',
+                success: function (data) {
+                    //display(data);
+                    console.log(data);
+                },
+                error: function (e) {
+                    console.log("FAIL", e);
+                }
+            })
+
+        });
+    }
+
 }

@@ -18,4 +18,6 @@ public interface UserRepository extends JpaRepository<User, Long> {
     void removeUser(Long id);
 
     List<User> getFriendsByUser(Long id);
+
+    void changePassword(User user, String password);
 }

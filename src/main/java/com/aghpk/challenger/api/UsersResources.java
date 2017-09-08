@@ -1,6 +1,7 @@
 package com.aghpk.challenger.api;
 
 import com.aghpk.challenger.data.User;
+import com.aghpk.challenger.model.JsonChangePasswordForm;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.JsonResponseBody;
 import com.aghpk.challenger.model.Views;
@@ -97,5 +98,10 @@ public class UsersResources {
     @RequestMapping(value = "/rejectInvitation", produces = "application/json")
     public void rejectInvitation(@RequestParam("notificationId") Long notificationId, @RequestParam("userId") Long userId) {
         userService.rejectInvitation(notificationId, userId);
+    }
+
+    @RequestMapping(value = "/changePassword", method = RequestMethod.POST)
+    public void changePassword(@RequestBody JsonChangePasswordForm changePasswordForm) {
+        userService.changePassword(changePasswordForm);
     }
 }

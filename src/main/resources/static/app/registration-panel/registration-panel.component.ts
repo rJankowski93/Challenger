@@ -13,7 +13,7 @@ export class RegistrationPanelComponent {
     }
 
     submitForm() {
-        var data = {}
+        var data = {};
         data["login"] = $("#login").val();
         data["firstname"] = $("#firstname").val();
         data["lastname"] = $("#lastName").val();

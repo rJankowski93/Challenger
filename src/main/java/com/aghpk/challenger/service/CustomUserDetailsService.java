@@ -1,5 +1,6 @@
 package com.aghpk.challenger.service;
 
+import com.aghpk.challenger.model.JsonChangePasswordForm;
 import com.aghpk.challenger.repository.UserRepository;
 import com.aghpk.challenger.repository.UserRoleRepository;
 import com.aghpk.challenger.data.User;
@@ -74,5 +75,16 @@ public class CustomUserDetailsService implements UserDetailsService {
         }
         user.setEnabled(Boolean.TRUE);
         userRepository.flush();
+    }
+
+    public void changePassword(Long userId, JsonChangePasswordForm changePasswordForm) {
+        User user = userRepository.getUserById(userId);
+        if (!user.getPassword().equals(changePasswordForm.getOldPassword())) {
+            //TODO exception
+        }
+        if (!changePasswordForm.getOldPassword().equals(changePasswordForm.getMatchingPassword())) {
+            //TODO exception
+        }
+        userRepository.changePassword(user, changePasswordForm.getNewPassword());
     }
 }

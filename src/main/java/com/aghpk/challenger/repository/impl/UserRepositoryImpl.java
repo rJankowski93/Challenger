@@ -60,4 +60,8 @@ public class UserRepositoryImpl {
         user.getFriends().remove(friendUser);
         friendUser.getFriends().remove(user);
     }
+
+    void changePassword(User user, String password) {
+        user.setPassword(passwordEncoder.encode(password));
+    }
 }

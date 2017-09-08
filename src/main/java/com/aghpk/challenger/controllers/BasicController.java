@@ -20,4 +20,5 @@ public class BasicController {
     public String showRegistrationForm() {
         return "index.html";
     }
+
 }

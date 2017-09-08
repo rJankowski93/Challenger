@@ -32,6 +32,11 @@
                         (click)="createChallengeModal.open()">
                     Create challenge
                 </button>
+                <button id="button-change-password" class="btn btn-primary menu-button"
+                        (click)="createChangePasswordModal.open()">
+                    Change password
+                </button>
+
             </div>
         </div>
     </div>
@@ -58,5 +63,25 @@
     </modal-content>
     <modal-footer>
         <button class="btn btn-primary" (click)="createChallengeModal.close()">Close</button>
+    </modal-footer>
+</modal>
+
+<modal #createChangePasswordModal>
+    <modal-header>
+        <h6 class="modal-title">Change password</h6>
+    </modal-header>
+    <modal-content>
+        <!--<form method="POST" action="/changePassword">-->
+        <input class="validate" id="old-password" name="username" type="text" placeholder="Old password" required>
+        <input class="validate" id="new-password" name="username" type="text" placeholder="New password" required>
+        <input class="validate" id="matching-password" name="username" type="text" placeholder="Matching password"
+               required>
+        <button id="btnSubmit" (click)="changePassword()" type="submit" class="btn waves-effect waves-light col s12">
+            Sign Up
+        </button>
+        <!--</form>-->
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-primary" (click)="createChangePasswordModal.close()">Close</button>
     </modal-footer>
 </modal>

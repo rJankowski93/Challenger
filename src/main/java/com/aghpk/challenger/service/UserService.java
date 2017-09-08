@@ -5,6 +5,7 @@ import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.exeption.ApplicationException;
 import com.aghpk.challenger.exeption.ErrorType;
 import com.aghpk.challenger.model.CustomUserDetails;
+import com.aghpk.challenger.model.JsonChangePasswordForm;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.model.JsonResponseBody;
 import com.aghpk.challenger.repository.UserRepository;
@@ -127,5 +128,9 @@ public class UserService {
     public void rejectInvitation(Long notificationId, Long userId) {
         notificationService.changeStatus(notificationId, Notification.Status.INACTIVE);
         notificationService.sendNotification(Notification.Type.REJECT_INVITATION, getCurrentUser(), getUser(userId), null);
+    }
+
+    public void changePassword(JsonChangePasswordForm changePasswordForm) {
+        customUserDetailsService.changePassword(getCurrentUser().getId(), changePasswordForm);
     }
 }
