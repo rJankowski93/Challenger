@@ -1,4 +1,4 @@
-package com.aghpk.challenger.exeption;
+package com.aghpk.challenger.exceptions;
 
 public enum ErrorType {
 

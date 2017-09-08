@@ -27,7 +27,7 @@ public class UsersResources {
 
     @RequestMapping(value = "/authentication")
     public boolean isAuthentication() {
-        return userService.isAuthentication();
+        return userService.isAuthenticated();
     }
 
     @RequestMapping(value = "/logged/details", produces = "application/json")

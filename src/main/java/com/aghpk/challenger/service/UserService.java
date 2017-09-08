@@ -2,8 +2,8 @@ package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.data.Notification;
 import com.aghpk.challenger.data.User;
-import com.aghpk.challenger.exeption.ApplicationException;
-import com.aghpk.challenger.exeption.ErrorType;
+import com.aghpk.challenger.exceptions.ApplicationException;
+import com.aghpk.challenger.exceptions.ErrorType;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonChangePasswordForm;
 import com.aghpk.challenger.model.JsonRegisterForm;
@@ -46,7 +46,7 @@ public class UserService {
         this.notificationService = notificationService;
     }
 
-    public boolean isAuthentication() {
+    public boolean isAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         return (authentication != null && !(authentication instanceof AnonymousAuthenticationToken));
     }
