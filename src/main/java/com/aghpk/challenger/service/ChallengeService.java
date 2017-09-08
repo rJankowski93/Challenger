@@ -7,6 +7,7 @@ import com.aghpk.challenger.exceptions.ApplicationException;
 import com.aghpk.challenger.exceptions.ErrorType;
 import com.aghpk.challenger.repository.ChallengeCategoryRepository;
 import com.aghpk.challenger.repository.ChallengeRepository;
+import com.aghpk.challenger.tools.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -57,6 +58,7 @@ public class ChallengeService {
             throw new ApplicationException(ErrorType.WRONG_STATUS_CHALLENGE, challenge.getStatus());
         }
         challenge.setStatus(Challenge.Status.IN_PROGRESS);
+        challenge.setEndDate(DateUtils.newEndDate(challenge.getPeriodUnit(), challenge.getPeriod()));
         notificationService.changeStatus(notificationId, Notification.Status.INACTIVE);
         //TODO zmienic z listy na cos innego jak juz podejmiemy decyzje jak maja dzialac challenge
         // moglby np byc tutaj if ze jezeli subject jest pusty tzn ze challenge jest dla wsyztskich i wtedy ten co pierwszy ten wygrywa

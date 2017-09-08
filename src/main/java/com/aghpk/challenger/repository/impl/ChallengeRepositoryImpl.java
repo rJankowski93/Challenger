@@ -15,11 +15,6 @@ public class ChallengeRepositoryImpl {
     @PersistenceContext
     private EntityManager entityManager;
 
-    public Challenge createChallenge(Challenge challenge) {
-        entityManager.persist(challenge);
-        return challenge;
-    }
-
     //TODO entityManager.merge jest chyba nie potrzebny bo Hibernate na koncu trn zapisze wszystko (do sprawdzenia)
     public void removeChallenge(Challenge challenge) {
         challenge.setAuditRD(new Date());

@@ -1,3 +1,5 @@
+/*TODO zauktialzowac zgodnie z data->Challenge.java */
+
 export class Challenge {
     id: number;
     name: string;
@@ -8,6 +10,9 @@ export class Challenge {
     rewartQuantity: string;
     creatorId: number;
     subjectId: number;
+    endDate: string;
+    period: string;
+    periodUnit: string;
 
     constructor() {
     }

@@ -2,16 +2,16 @@ package com.aghpk.challenger.data;
 
 import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.data.point.Point;
+import com.aghpk.challenger.tools.LocalDateTimeConverter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.data.elasticsearch.annotations.Document;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -75,6 +75,17 @@ public class Challenge extends Audit implements Scoreable {
     @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
     @JsonBackReference(value = "challenge-point")
     private Set<Point> points;
+
+    @Column(name = "END_DATE")
+    @Convert(converter = LocalDateTimeConverter.class)
+    private LocalDateTime endDate;
+
+    @Column(name = "PERIOD")
+    @Enumerated(EnumType.STRING)
+    private ChronoUnit period;
+
+    @Column(name = "PERIOD_UNIT")
+    private Long periodUnit;
 
     @PrePersist
     public void onPrePersist() {

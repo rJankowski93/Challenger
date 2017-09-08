@@ -41,7 +41,10 @@ create table CHALLENGE (
   REWARD_TYPE     varchar(255),
   REWARD_QUANTITY varchar(255),
   CREATOR_ID      BIGINT(19),
-  SUBJECT_ID      BIGINT(19)
+  SUBJECT_ID      BIGINT(19),
+  END_DATE        TIMESTAMP    NULL,
+  PERIOD          VARCHAR(255) NULL,
+  PERIOD_UNIT     BIGINT(19)   NULL
 );
 
 create table FRIENDS_GROUP (
