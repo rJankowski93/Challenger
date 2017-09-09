@@ -14,13 +14,13 @@
     <div class="col-md-7 col-md-offset-2 main-section">
 
         <div class="tiles-list row">
-            <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
+            <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"
+            (click)="showChallengeDetailsModal()">
+            </challenge-box>
             <friend-box (showProfileEvent)="showProfile($event)"
                         *ngIf="mainContentSection==contentTypeEnum.FRIENDS">
             </friend-box>
             <user-profile [userId]="userId" *ngIf="mainContentSection==contentTypeEnum.PROFILE"></user-profile>
-            <challenge-details [challengeId]="challengeId"
-                               *ngIf="mainContentSection==contentTypeEnum.CHALLENGE"></challenge-details>
             <notification-box (showChallengeEvent)="showChallenge($event)"
                               (showProfileEvent)="showProfile($event)"
                               *ngIf="mainContentSection==contentTypeEnum.NOTIFICATIONS"></notification-box>

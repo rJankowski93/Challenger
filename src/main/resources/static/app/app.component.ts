@@ -16,6 +16,9 @@ export class AppComponent implements OnInit {
     @ViewChild('createChallengeModal')
     createChallengeModal: Modal;
 
+    @ViewChild('challengeDetailsModal')
+    challengeDetailsModal: Modal;
+
     contentTypeEnum: any = ContentType;
 
     private isLoading: boolean;
@@ -63,6 +66,10 @@ export class AppComponent implements OnInit {
 
     showCreateChallengeModal(){
         this.createChallengeModal.open();
+    }
+
+    showChallengeDetailsModal(){
+        this.challengeDetailsModal.open();
     }
 }
 

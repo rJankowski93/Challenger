@@ -10,7 +10,7 @@
         <video-player [videoHeight]="300" [videoWidth]="500"></video-player>
     </div>
 
-    <div id="chalenge-name">
+    <div id="chalenge-name" (click) = setCurrentChallengeId(challengeDetails.id)>
         <p>
             {{challengeDetails.name}}
         </p>
@@ -22,42 +22,42 @@
         </p>
     </div>
 
-    <div id="challenge-info">
-        <div id="challenge-status">
-            <p>Challenge status:</p>
-            <div id="challenge-status-data">{{challengeDetails.status}}</div>
-        </div>
+    <!--<div id="challenge-info">-->
+        <!--<div id="challenge-status">-->
+            <!--<p>Challenge status:</p>-->
+            <!--<div id="challenge-status-data">{{challengeDetails.status}}</div>-->
+        <!--</div>-->
 
-        <div id="challenge-points">
-            <p>Points value:</p>
-            <!--<div id="challenge-points-data">{{challengeDetails.points})</div>-->
-        </div>
+        <!--<div id="challenge-points">-->
+            <!--<p>Points value:</p>-->
+            <!--&lt;!&ndash;<div id="challenge-points-data">{{challengeDetails.points})</div>&ndash;&gt;-->
+        <!--</div>-->
 
-        <div id="challenge-reward">
-            <p>Reward type:</p>
-            <div id="challenge-reward-data">{{challengeDetails.rewardType}}</div>
-        </div>
+        <!--<div id="challenge-reward">-->
+            <!--<p>Reward type:</p>-->
+            <!--<div id="challenge-reward-data">{{challengeDetails.rewardType}}</div>-->
+        <!--</div>-->
 
-        <div id="rewart-quantity">
-            <p>Reward quantity:</p>
-            <div id="reward-quantity-data">{{challengeDetails.rewardQuantity}}</div>
-        </div>
-        <!--New fields-->
-        <div id="end-date">
-            <p>End date:</p>
-            <div id="end-date-data">{{challengeDetails.endDate}}</div>
-        </div>
+        <!--<div id="rewart-quantity">-->
+            <!--<p>Reward quantity:</p>-->
+            <!--<div id="reward-quantity-data">{{challengeDetails.rewardQuantity}}</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash;New fields&ndash;&gt;-->
+        <!--<div id="end-date">-->
+            <!--<p>End date:</p>-->
+            <!--<div id="end-date-data">{{challengeDetails.endDate}}</div>-->
+        <!--</div>-->
 
-        <div id="period-quantity">
-            <p>Period quantity:</p>
-            <div id="period-quantity-data">{{challengeDetails.periodQuantity}}</div>
-        </div>
+        <!--<div id="period-quantity">-->
+            <!--<p>Period quantity:</p>-->
+            <!--<div id="period-quantity-data">{{challengeDetails.periodQuantity}}</div>-->
+        <!--</div>-->
 
-        <div id="period-util">
-            <p>Period util:</p>
-            <div id="period-util-data">{{challengeDetails.periodUnit}}</div>
-        </div>
-    </div>
+        <!--<div id="period-util">-->
+            <!--<p>Period util:</p>-->
+            <!--<div id="period-util-data">{{challengeDetails.periodUnit}}</div>-->
+        <!--</div>-->
+    <!--</div>-->
 
     <div id="challenge-options">
         <div id="challenge-options-wrapper">
@@ -68,3 +68,15 @@
     </div>
 </div>
 </div>
+
+<modal #challengeDetailsModal>
+    <modal-header>
+        <h4 class="modal-title">Challenge details</h4>
+    </modal-header>
+    <modal-content>
+        <challenge-details [challengeId]="'1'"></challenge-details>
+    </modal-content>
+    <modal-footer>
+        FOOTER
+    </modal-footer>
+</modal>

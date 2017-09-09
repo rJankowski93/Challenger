@@ -85,6 +85,7 @@ export class UserPanelComponent implements OnInit, OnDestroy {
         this.showCreateChallengeModalEvent.next();
     }
 
+
     connectWebSocket(user: User) {
         this.webSocket = new $WebSocket("ws://localhost:8080/notificationSession/" + user.id);
         this.webSocket.send("START");

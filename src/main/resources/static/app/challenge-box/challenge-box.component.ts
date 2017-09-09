@@ -1,7 +1,8 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, EventEmitter, OnInit, Output, ViewChild} from "@angular/core";
 import {Challenge} from "../shared/models/challenge.model";
 import {ChallengeService} from "../shared/services/challenge.service";
 import {Subscription} from "rxjs";
+import {Modal} from "../shared/models/modal";
 
 @Component({
     moduleId: module.id,
@@ -12,7 +13,13 @@ import {Subscription} from "rxjs";
 })
 export class ChallengeBoxComponent implements OnInit {
 
+    // @Output()
+    // showChallengeDetailsEvent = new EventEmitter();
+    @ViewChild('challengeDetailsModal')
+    challengeDetailsModal: Modal;
+
     private isLoading: boolean;
+    public currentChalengeId: number;
     private challengeList: Array<Challenge>;
     private challengeSubscription: Subscription;
 
@@ -56,6 +63,14 @@ export class ChallengeBoxComponent implements OnInit {
         this.isFacebookConnection
     }
 
+    showChallengeDetails() {
+        this.challengeDetailsModal.open();
+    }
+
+    setCurrentChallengeId(currentChallengeId:number) {
+        console.log("works");
+        this.currentChalengeId = currentChallengeId;
+    }
 
 
 }

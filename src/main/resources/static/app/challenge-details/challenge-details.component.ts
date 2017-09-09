@@ -3,6 +3,8 @@ import {Subscription} from "rxjs";
 import {Challenge} from "../shared/models/challenge.model";
 import {ChallengeService} from "../shared/services/challenge.service";
 
+
+
 @Component({
     moduleId: module.id,
     selector: 'challenge-details',
