@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
     private isLoading: boolean;
     private isAuthenticated: boolean;
-    private visibleLoginPage: boolean;
+
     private mainContentSection: ContentType;
     userId: number;
     challengeId: number;
@@ -27,7 +27,6 @@ export class AppComponent implements OnInit {
 
     ngOnInit(): void {
         this.isLoading = true;
-        this.visibleLoginPage = true;
         this.mainContentSection = ContentType.CHALLENGES;
         this.authService.isAuthenticated()
             .subscribe(isAuthenticated => {
@@ -38,16 +37,6 @@ export class AppComponent implements OnInit {
                     this.isAuthenticated = false;
                 }
             );
-
-    }
-
-    //Login page <-> Registration page
-    showLoginPage(): void {
-        this.visibleLoginPage = true;
-    }
-
-    hideLoginPage(): void {
-        this.visibleLoginPage = false;
     }
 
     //Challenges list <-> Friends list

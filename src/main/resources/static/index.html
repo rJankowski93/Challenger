@@ -27,7 +27,7 @@
     </script>
 </head>
 <!-- somehow I cant override body styles, so I put background color here. TODO it should be on body -->
-<body style="background: #2257b3">
+<body style="background: #2e274b;">
 <div>
     <challenger-app>
         <style>
@@ -76,9 +76,112 @@
             .d-3 {
                 animation-delay: 1s;
             }
+
+            @keyframes lds-wedges {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+            @-webkit-keyframes lds-wedges {
+                0% {
+                    -webkit-transform: rotate(0deg);
+                    transform: rotate(0deg);
+                }
+                100% {
+                    -webkit-transform: rotate(360deg);
+                    transform: rotate(360deg);
+                }
+            }
+            .lds-wedges {
+                position: relative;
+            }
+            .lds-wedges > div > div {
+                -webkit-transform-origin: 100px 100px;
+                transform-origin: 100px 100px;
+                -webkit-animation: lds-wedges 3.2s linear infinite;
+                animation: lds-wedges 3.2s linear infinite;
+                opacity: 1;
+            }
+            .lds-wedges > div > div > div {
+                position: absolute;
+                left: 30px;
+                top: 30px;
+                width: 70px;
+                height: 70px;
+                border-radius: 70px 0 0 0;
+                -webkit-transform-origin: 100px 100px;
+                transform-origin: 100px 100px;
+            }
+            .lds-wedges > div div:nth-child(1) > div {
+                background: #93dbe9;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            .lds-wedges > div div:nth-child(1) {
+                -webkit-animation-duration: 0.8s;
+                animation-duration: 0.8s;
+            }
+            .lds-wedges > div div:nth-child(2) > div {
+                background: #cd7864;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            .lds-wedges > div div:nth-child(2) {
+                -webkit-animation-duration: 1.066666666666667s;
+                animation-duration: 1.066666666666667s;
+            }
+            .lds-wedges > div div:nth-child(3) > div {
+                background: #5e6fa3;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            .lds-wedges > div div:nth-child(3) {
+                -webkit-animation-duration: 1.6s;
+                animation-duration: 1.6s;
+            }
+            .lds-wedges > div div:nth-child(4) > div {
+                background: #d58f41;
+                -webkit-transform: rotate(0deg);
+                transform: rotate(0deg);
+            }
+            .lds-wedges > div div:nth-child(4) {
+                -webkit-animation-duration: 3.2s;
+                animation-duration: 3.2s;
+            }
+            .lds-wedges {
+                width: 200px !important;
+                height: 200px !important;
+                -webkit-transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+                transform: translate(-100px, -100px) scale(1) translate(100px, 100px);
+            }
+
+
         </style>
 
-        Loading<span class="d">.</span><span class="d d-2">.</span><span class="d d-3">.</span>
+        <!--Loading<span class="d">.</span><span class="d d-2">.</span><span class="d d-3">.</span>-->
+        <div class="lds-css">
+            <div style="width:100%;height:100%" class="lds-wedges">
+                <div>
+                    <div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
+                    <div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </challenger-app>
 </div>
 
