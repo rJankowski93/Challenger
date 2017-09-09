@@ -80,12 +80,12 @@ public class Challenge extends Audit implements Scoreable {
     @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime endDate;
 
-    @Column(name = "PERIOD")
-    @Enumerated(EnumType.STRING)
-    private ChronoUnit period;
+    @Column(name = "PERIOD_QUANTITY")
+    private Long periodQuantity;
 
     @Column(name = "PERIOD_UNIT")
-    private Long periodUnit;
+    @Enumerated(EnumType.STRING)
+    private ChronoUnit periodUnit;
 
     @PrePersist
     public void onPrePersist() {

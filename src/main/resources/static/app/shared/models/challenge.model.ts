@@ -11,7 +11,7 @@ export class Challenge {
     creatorId: number;
     subjectId: number;
     endDate: string;
-    period: string;
+    periodQuantity: number;
     periodUnit: string;
 
     constructor() {
