@@ -71,6 +71,12 @@ public class Challenge extends Audit implements Scoreable {
     @JoinColumn(name = "SUBJECT_ID")
     private User subject;
 
+    @Column(name = "VOTERS")
+    private String voters;
+
+    @Column(name = "POINTS_QUANTITY")
+    private Long pointsQuantity;
+
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "CHALLENGE_ID", referencedColumnName = "CHALLENGE_ID")
     @JsonBackReference(value = "challenge-point")

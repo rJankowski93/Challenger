@@ -40,6 +40,8 @@ create table CHALLENGE (
   CATEGORY        varchar(255),
   REWARD_TYPE     varchar(255),
   REWARD_QUANTITY varchar(255),
+  VOTERS          VARCHAR (9999999),
+  POINTS_QUANTITY BIGINT(7),
   CREATOR_ID      BIGINT(19),
   SUBJECT_ID      BIGINT(19),
   END_DATE        TIMESTAMP    NULL,

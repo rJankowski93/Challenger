@@ -79,5 +79,8 @@ public class ChallengeService {
         notificationService.sendNotification(Notification.Type.CHALLENGE_REFUSE, userService.getCurrentUser(), challenge.getCreator(), challenge);
     }
 
+    public void saveChallenge(Challenge challenge) {
+        this.challengeRepository.save(challenge);
+    }
 
 }
