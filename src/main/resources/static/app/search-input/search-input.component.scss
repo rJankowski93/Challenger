@@ -1,0 +1,71 @@
+@import "../../../sass/variables";
+
+#filterable {
+  padding-top: 40px;
+  padding-left: 0;
+  padding-right: 0;
+
+  .input-group {
+    box-shadow: 6px 7px 15px 1px rgba(0, 0, 0, 0.4);
+  }
+}
+
+.filtered-list {
+  z-index: 999;
+  position: absolute;
+  background-color: $login-page-color;
+  padding: 0;
+
+  ul li {
+    border-bottom: 3px solid $borders-color;
+    padding-top: 10px;
+    padding-bottom: 5px;
+    border-left: 8px solid $login-page-color; //placeholder for hover border
+    min-width: 25px;
+
+    &:hover {
+      border-left: 8px solid $borders-color;
+      background-color: $accessories-color;
+      cursor: pointer;
+    }
+
+    span {
+      padding-left: 15px;
+    }
+  }
+}
+
+.page-no {
+  &:hover {
+    cursor: pointer;
+    color: $borders-color;
+  }
+}
+
+.long-list-content {
+  display: block;
+}
+
+.long-list-element {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.long-list-element-image {
+  background-image: url("http://canadiancitizenshipchallenge.ca/sites/default/files/buttons/take_the_challenge.png");
+  background-size: 100px 30px;
+  height: 30px;
+  width: 100px;
+}
+
+.user-modal {
+
+  .user-name {
+    font-weight: bold;
+  }
+}
+
+.modal-footer {
+  border: 0;
+}

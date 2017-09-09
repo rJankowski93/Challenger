@@ -14,6 +14,10 @@
     <div class="col-md-7 col-md-offset-2 main-section">
 
         <div class="tiles-list row">
+            <div id="search" *ngIf="mainContentSection==contentTypeEnum.CHALLENGES">
+                <search-input></search-input>
+            </div>
+
             <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
             <friend-box (showProfileEvent)="showProfile($event)"
                         *ngIf="mainContentSection==contentTypeEnum.FRIENDS">

@@ -4,6 +4,7 @@ import com.aghpk.challenger.data.interfaces.Scoreable;
 import com.aghpk.challenger.data.point.Point;
 import com.aghpk.challenger.tools.LocalDateTimeConverter;
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.elasticsearch.annotations.Document;
@@ -84,6 +85,8 @@ public class Challenge extends Audit implements Scoreable {
 
     @Column(name = "END_DATE")
     @Convert(converter = LocalDateTimeConverter.class)
+    //TODO remove the adnotation
+    @JsonIgnore
     private LocalDateTime endDate;
 
     @Column(name = "PERIOD_QUANTITY")

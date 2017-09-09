@@ -1,0 +1,119 @@
+<div *ngIf="!isLoading" id="filterable" class="col-md-10 col-md-offset-1">
+    <div class="input-group" (clickOutside)="setVisibility(false)">
+        <input type="text" class="form-control" (click)="setVisibility(true)"
+               (keyup)="updateFilterValue($event.target.value); getSearchResults();"
+               placeholder="Search user or challenge">
+        <div class="input-group-btn">
+            <button class="btn btn-default" (click)="setVisibility(false); getMoreUsers(0); usersListModal.open();">
+                <i class="glyphicon glyphicon-search"></i>
+            </button>
+        </div>
+    </div>
+
+    <!--TODO usunac position absolute -->
+    <div class="col-xs-10 col-md-8 filtered-list" *ngIf="isVisible">
+        <!--<p>USERS:</p>-->
+        <ul>
+            <li *ngFor="let element of searchPageUsers" (click)="setSelectedUser(element); userModal.open()">
+                <span>{{element.firstName}} {{element.lastName}}</span>
+            </li>
+        </ul>
+    </div>
+
+    <div class="col-xs-10 col-md-8 filtered-list" *ngIf="isVisible">
+        <!--<p>CHALLENGES:</p>-->
+        <ul>
+            <li *ngFor="let element of searchPageChallenges"
+                (click)="setSelectedChallenge(element); challengeModal.open()">
+                <span>{{element.name}}</span>
+            </li>
+        </ul>
+    </div>
+</div>
+
+
+<modal #userModal>
+    <modal-content>
+        <div>
+            <img class="col-md-4 valign profile-image-login"
+                 src="avatars\user\{{selectedUser.id}}.jpg"
+                 onerror="this.src='avatars\\default\\not-found-avatar.jpg'">
+
+            <h3>{{selectedUser.firstName}} {{selectedUser.lastName}}</h3>
+
+            <h4>User points: {{selectedUser.generalPointsQuantity}}</h4>
+
+            <button *ngIf="!isFriend(selectedUser.id)" class="btn btn-warning" (click)="inviteFriend(selectedUser.id)">
+                <i class="material-icons left">cloud</i>Add to friend
+            </button>
+
+            <button *ngIf="isFriend(selectedUser.id)" class="btn btn-warning">
+                <i class="material-icons left">cloud</i>Remove friend
+            </button>
+
+        </div>
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-primary" (click)="userModal.close()">Close</button>
+    </modal-footer>
+</modal>
+
+long list users
+<modal #usersListModal style="background-color: red;">
+    <modal-content>
+        <div *ngIf="!usersListEmpty" class="long-list-content">
+            <div *ngFor="let element of usersLongPage" class="long-list-element">
+
+                <div class="long-list-element-image"></div>
+                <span> {{element.firstName}} {{element.lastName}}</span>
+            </div>
+        </div>
+    </modal-content>
+
+    <modal-footer>
+        <div *ngIf="!usersListEmpty">
+        <span *ngFor="let pageNo of createPageRange(usersLongPage.totalPages)" (click)="getMoreUsers(pageNo);"
+              class="page-no">
+            {{pageNo+1}}
+        </span>
+        </div>
+
+        <button class="btn btn-primary" (click)="usersListModal.close()">Close</button>
+    </modal-footer>
+</modal>
+
+<modal #challengeModal>
+    <modal-header>
+        <h3>{{selectedChallenge.name}}</h3>
+    </modal-header>
+    <modal-content>
+        {{selectedChallenge.description}}
+    </modal-content>
+    <modal-footer>
+        <button class="btn btn-primary" (click)="challengeModal.close()">Close</button>
+    </modal-footer>
+</modal>
+
+<!--long list challenges-->
+<modal #challengesListModal style="background-color: red;">
+    <modal-content>
+        <div *ngIf="!challengesListEmpty" class="long-list-content">
+            <div *ngFor="let element of challengesLongPage" class="long-list-element">
+
+                <div class="long-list-element-image"></div>
+                <span> {{element.name}} </span>
+            </div>
+        </div>
+    </modal-content>
+
+    <modal-footer>
+        <div *ngIf="!challengesListEmpty">
+        <span *ngFor="let pageNo of createPageRange(challengesLongPage.totalPages)" (click)="getMoreChallenges(pageNo);"
+              class="page-no">
+            {{pageNo+1}}
+        </span>
+        </div>
+
+        <button class="btn btn-primary" (click)="challengesListModal.close()">Close</button>
+    </modal-footer>
+</modal>

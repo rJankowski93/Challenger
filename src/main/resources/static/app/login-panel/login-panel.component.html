@@ -25,24 +25,24 @@
                     </button>
                 </div>
 
-
-                <form action="/connect/facebook" method="POST" style="display: inline">
-                    <input type="hidden"/> <!-- csrf.token is Needed only if using spring security -->
-                    <input type="hidden" name="scope"
-                           value="public_profile,email"/>
-                    <button type="submit" class="btn btn-primary">
-                        Facebook <span class="fa fa-facebook"></span>
-                    </button>
-                </form>
-
+                <div class="text-center" id="fbButton">
+                    <form action="/connect/facebook" method="POST" style="display: inline">
+                        <input type="hidden"/> <!-- csrf.token is Needed only if using spring security -->
+                        <input type="hidden" name="scope"
+                               value="public_profile,email"/>
+                        <button type="submit" class="btn btn-primary">
+                            Facebook <span class="fa fa-facebook"></span>
+                        </button>
+                    </form>
+                </div>
                 <!--<div class="">-->
-                    <!--<div class="input-field col s12 m12 l12  login-text">-->
-                        <!--<input type="checkbox" id="remember-me" />-->
-                        <!--<label for="remember-me">Remember me</label>-->
-                    <!--</div>-->
+                <!--<div class="input-field col s12 m12 l12  login-text">-->
+                <!--<input type="checkbox" id="remember-me" />-->
+                <!--<label for="remember-me">Remember me</label>-->
+                <!--</div>-->
                 <!--</div>-->
                 <!--<div class="input-field col s6 m6 l6">-->
-                    <!--<p class="margin right-align medium-small"><a href="forgot-password.html">Forgot password?</a></p>-->
+                <!--<p class="margin right-align medium-small"><a href="forgot-password.html">Forgot password?</a></p>-->
                 <!--</div>-->
             </form>
         </div>

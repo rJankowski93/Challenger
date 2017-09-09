@@ -21,6 +21,8 @@ import {NotificationBoxModule} from "./notification-box/notification-box.module"
 import {ChallengeDetailsModule} from "./challenge-details/challenge-details.module";
 import {ModalModule} from "ng2-modal";
 import {AuthFormModule} from "./auth-form/auth-form.module";
+import {SearchInputModule} from "./search-input/search-input.module";
+
 
 
 @NgModule({
@@ -46,7 +48,8 @@ import {AuthFormModule} from "./auth-form/auth-form.module";
         NotificationBoxModule,
         ChallengeDetailsModule,
         ModalModule,
-        AuthFormModule
+        AuthFormModule,
+        SearchInputModule
     ],
 
     declarations: [

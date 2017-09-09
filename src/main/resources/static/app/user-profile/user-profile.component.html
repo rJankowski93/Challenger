@@ -1,10 +1,10 @@
 <div *ngIf="userIsReady()" class="row">
     <div id="user-data" class="row">
-        <div class="col-md-4">
+        <div class="col-md-offset-1 col-md-4">
             <img id="user-profile-image" class="" src="avatars\user\{{userDetails.id}}.jpg"
                  onerror="this.src='avatars\\default\\not-found-avatar.jpg'">
         </div>
-        <div class="col-md-8">
+        <div class="col-md-7">
             <div class="">
                 <p class="user-label label label-primary">{{userDetails.firstName}} {{userDetails.lastName}}</p>
             </div>
@@ -29,7 +29,7 @@
     </div>
     <div id="friends-list" class="row content-list">
         <h2><span class="label label-warning">FRIENDS</span></h2>
-        <div *ngFor="let friendDetails of friendsList" id="friend-box" class="col-md-12 item-list-box">
+        <div *ngFor="let friendDetails of friendsList" id="friend-box" class="col-md-offset-1 col-md-10 item-list-box">
             <div class="col-md-4">
                 <img id="friend-profile-image" class="item-image" src="avatars\user\{{friendDetails.id}}.jpg"
                      onerror="this.src='avatars\\default\\not-found-avatar.jpg'">
@@ -51,7 +51,8 @@
 
     <div id="challenges-list" class="row content-list">
         <h2><span class="label label-warning">CHALLENGES</span></h2>
-        <div *ngFor="let challengeDetails of challengesList" id="challenge-box" class="col-md-12 item-list-box">
+        <div *ngFor="let challengeDetails of challengesList" id="challenge-box"
+             class="col-md-offset-1 col-md-10 item-list-box">
             <div class="col-md-4">
                 <img id="challenge-profile-image" class="item-image" src="avatars\challenge\{{challengeDetails.id}}.jpg"
                      onerror="this.src='avatars\\default\\not-found-challenge.jpg'">
