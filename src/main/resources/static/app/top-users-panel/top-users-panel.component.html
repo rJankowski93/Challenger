@@ -4,7 +4,8 @@
     </div>
     <ul>
         <li *ngFor="let user of topUsers; let position=index;">
-            <span>{{position+1}}. {{user.firstName}} {{user.lastName}} </span>
+            <span>{{position+1}}</span>
+            <span>{{user.firstName}} {{user.lastName}} </span>
             <span class="points-quantity">{{user.generalPointsQuantity}} pts</span>
         </li>
     </ul>

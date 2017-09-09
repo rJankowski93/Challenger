@@ -16,7 +16,7 @@ export class TopUsersPanelComponent implements OnInit{
     }
 
     ngOnInit(): void {
-       this.getTopUsers(0,30,"generalPointsQuantity");
+       this.getTopUsers(0,20,"generalPointsQuantity");
     }
 
     private getTopUsers(pageNo:number, pageSize:number, pointsType:string){
