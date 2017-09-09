@@ -37,12 +37,12 @@ public class BasicController {
     @GetMapping
     @RequestMapping(value = "/login")
     public String login() throws MessagingException {
-        return "index.html";
+        return "redirect:/";
     }
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showRegistrationForm() {
-        return "index.html";
+        return "redirect:/";
     }
 
 
@@ -53,7 +53,7 @@ public class BasicController {
         if (authentication != null) {
             new SecurityContextLogoutHandler().logout(request, response, authentication);
         }
-        return "index.html";
+        return "redirect:/";
     }
 
 
@@ -61,7 +61,7 @@ public class BasicController {
     @RequestMapping(value = "/facebook")
     public String helloFacebook(Model model) {
         if (connectionRepository.findPrimaryConnection(Facebook.class) == null) {
-            return "forward:/connect/facebook";
+            return "redirect:/connect/facebook";
         }
         model.addAttribute("facebookProfile", facebook.userOperations().getUserProfile());
         PagedList<Post> feed = facebook.feedOperations().getFeed();
