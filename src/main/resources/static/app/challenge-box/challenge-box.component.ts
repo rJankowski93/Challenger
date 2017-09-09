@@ -52,6 +52,10 @@ export class ChallengeBoxComponent implements OnInit {
             );
     }
 
+    isFacebookConnection() {
+        this.isFacebookConnection
+    }
+
 
 
 }

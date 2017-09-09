@@ -82,6 +82,7 @@ dependencies {
     compile("org.springframework.social:spring-social-facebook")
     compile("org.springframework:spring-jdbc")
     compile group: 'org.springframework.boot', name: 'spring-boot-starter-websocket', version: springWebsockets
+    runtime("org.springframework.boot:spring-boot-starter-thymeleaf")
 
 //  TOOLS
     compile('org.projectlombok:lombok')

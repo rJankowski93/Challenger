@@ -28,4 +28,7 @@ uploadFile:
   defaultExtension: jpg           #if you change this, you have to change in user.panel.html
 spring.social.facebook.appId: 119027672093733
 spring.social.facebook.appSecret: 281380d7a10839a8a78923ec02687b8f
-spring.social.auto_connection_views: true
+#spring.social.auto_connection_views: true
+spring.view.prefix: /
+
+spring.view.suffix: .html
