@@ -77,7 +77,7 @@
       transform: translateY(-50%) rotate(45deg);
       position: absolute;
       top: 50%;
-      right: -50px;
+      right: -40px;
       transition: all .3s; }
     #user-menu .user-menu-item:last-of-type {
       border-bottom: 1px solid #232323; }

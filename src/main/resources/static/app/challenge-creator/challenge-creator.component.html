@@ -2,22 +2,31 @@
 <div *ngIf="!isLoading">
     <form (ngSubmit)="onSubmit()" #createChallengeForm="ngForm">
         <div>
-            <input type="text" id="challenge-name" [(ngModel)]="challenge.name" name="name" #name="ngModel" placeholder="Challenge name">
-            <input type="text" id="challenge-description" [(ngModel)]="challenge.description" name="description" placeholder="Challenge description"
+            <p>Challenge name:</p>
+            <input type="text" id="challenge-name" [(ngModel)]="challenge.name" name="name" #name="ngModel">
+            <p>Challenge description:</p>
+            <input type="text" id="challenge-description" [(ngModel)]="challenge.description" name="description"
                    #description="ngModel">
+            <p>Challenge category</p>
             <select id="challenge-category" [(ngModel)]="challenge.category" name="category" #category="ngModel">
                 <option *ngFor="let challengeCategory of challengeCategoryList"
                         [value]="challengeCategory.challengeCategoryName">
                     {{challengeCategory.challengeCategoryName}}
                 </option>
             </select>
+            <p>Chalenge end date:</p>
             <input type="datetime" id="challenge-end-date" [(ngModel)]="challenge.endDate" name="endDate"
-                   #name="ngModel" placeholder="Challenge end date">
+                   #name="ngModel" placeholder="egz. 10-12-2017">
+            <p>Challenge period</p>
             <input type="text" id="challenge-period" [(ngModel)]="challenge.period" name="period" #name="ngModel"
                    placeholder="Challenge period">
+            <p>Challenge period unit:</p>
             <input type="text" id="challenge-period-unit" [(ngModel)]="challenge.periodUnit" name="periodUnit"
                    #name="ngModel" placeholder="Challenge periodUnit">
+        </div>
+        <div class="text-center">
             <button type="submit" id="add-challenge-button">Add Challenge</button>
         </div>
+
     </form>
 </div>

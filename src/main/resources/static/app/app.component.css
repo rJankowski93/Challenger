@@ -23,4 +23,17 @@ body {
 .btn-change-main-content {
   padding: 0; }
 
+.create-challenge-button {
+  background: #2b78fc;
+  font-weight: bold;
+  cursor: pointer;
+  transition: transform .3s;
+  letter-spacing: 1px;
+  margin-right: 40%;
+  color: #fff;
+  border-radius: 10px; }
+
+.modal-title {
+  text-align: center; }
+
 /*# sourceMappingURL=app.component.css.map */
