@@ -1,8 +1,8 @@
 <div *ngIf="!isLoading">
 <div *ngFor="let challengeDetails of challengeList" id="challenge-box" class="col-md-10 col-md-offset-1">
 
-    <div>
-        <input value="Share on Facebook" type="button" (click)="shareChallenge(challengeDetails.id)">
+    <div class="text-center">
+        <input id="shareFb" value="Share on Facebook" type="button" (click)="shareChallenge(challengeDetails.id)">
     </div>
 
 

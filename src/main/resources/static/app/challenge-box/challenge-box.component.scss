@@ -77,4 +77,17 @@
   width: 50%;
 }
 
-
+#shareFb {
+  background: #2b78fc;
+  margin: 15px auto;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: transform .3s;
+}
