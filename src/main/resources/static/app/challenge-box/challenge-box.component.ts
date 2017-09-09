@@ -25,8 +25,6 @@ export class ChallengeBoxComponent implements OnInit {
             .subscribe(challenge => {
                     this.challengeList = challenge;
                     this.isLoading = false;
-                    console.log("Challenges from database");
-                    console.log(challenge);
                 },
                 error => {
                     console.log("Cannot read challenge", error);

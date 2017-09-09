@@ -17,9 +17,6 @@ import {userInfo} from "os";
 })
 export class UserPanelComponent implements OnInit, OnDestroy {
 
-    @ViewChild('avatarModal')
-    modal: Modal;
-
     @Output()
     showNotificationsListEvent = new EventEmitter();
     @Output()
