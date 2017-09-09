@@ -8,6 +8,7 @@ export class User {
     enabled: boolean;
     generalPointsQuantity: number;
 
+
     constructor() {
     }
 }

@@ -1,25 +1,46 @@
 @import "../../../sass/variables";
 
 #friend-box{
-  background-color: $main-color;
+  background-color: #fff;
   border-radius: 10px;
-  padding-bottom: 30px;
-  margin-bottom: 15px;
+  padding: 45px 35px;
+  margin-bottom: 40px;
+  text-align: center;
+  box-shadow: 6px 7px 15px 1px rgba(0, 0, 0, 0.4);
+
+  &:first-of-type, &:nth-of-type(2) {
+    margin-top: 40px;
+  }
 
 }
 
 #friend-name{
-  font-weight: bold;
-  font-size: large;
-  border-width: 1px;
-  border-bottom: solid;
-  border-color: $borders-color;
+  font-size: 22px;
 }
 
 #friend-email{
+  font-size: 16px;
+}
+
+#button-show-profile {
   font-weight: bold;
-  font-size: large;
-  border-width: 1px;
-  border-bottom: solid;
-  border-color: $borders-color;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  display: inline-block;
+  color: #fff;
+  background: #d58f41;
+  border: none;
+  padding: 10px 20px;
+  width: 180px;
+  box-shadow: 0px 4px 2px 1px #0000004d;
+  text-shadow: 0px 0px 8px #6e5050b3;
+  transition: all 0.3s;
+  border-radius: 10px;
+  margin-top: 25px;
+
+  &:hover, &.active {
+    background: #cd7864;
+    text-shadow: 0px 0px 8px rgba(37, 50, 110, 0.77);
+    transform: scale(1.1);
+  }
 }

@@ -78,6 +78,15 @@
 #user-menu {
   margin-top: 35px;
   margin-bottom: 30px;
+
+  a {
+    color: #7b7c81;
+    text-decoration: none;
+    display: block;
+    padding: 0;
+    margin: 0;
+  }
+
   .user-menu-item {
     color: #7b7c81;
     padding: 20px 0;
@@ -91,7 +100,17 @@
     i, span {
       display: inline-block;
       padding-left: 20px;
+    }
 
+    span.new-notification {
+      background: #bc2742;
+      border-radius: 5px;
+      padding: 3px 7px;
+      margin-left: 10px;
+      vertical-align: middle;
+      font-size: 11px;
+      color: #fff;
+      text-transform: uppercase;
     }
 
     &:after {
@@ -184,9 +203,4 @@
   padding-left: 3px;
   padding-right: 3px;
   font-size: 12px;
-}
-
-.notification-icon {
-  width: 80px;
-  cursor: pointer;
 }
