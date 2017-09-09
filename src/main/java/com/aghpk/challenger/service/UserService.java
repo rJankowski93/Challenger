@@ -16,6 +16,8 @@ import org.springframework.data.domain.Sort;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.social.connect.ConnectionRepository;
+import org.springframework.social.facebook.api.Facebook;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -38,6 +40,13 @@ public class UserService {
     private final NotificationService notificationService;
 
     @Autowired
+    private Facebook facebook;
+
+    @Autowired
+    private ConnectionRepository connectionRepository;
+
+
+    @Autowired
     public UserService(UserRepository userRepository, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService, UserElasticRepository userElasticRepository, NotificationService notificationService) {
         this.userRepository = userRepository;
         this.customUserDetailsService = customUserDetailsService;
@@ -48,15 +57,24 @@ public class UserService {
 
     public boolean isAuthenticated() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (connectionRepository.findPrimaryConnection(Facebook.class) != null && facebook.isAuthorized()) {
+            if (userRepository.getUserByLogin(facebook.userOperations().getUserProfile().getEmail()) == null) {
+                userRepository.createUserFromFacebook(facebook.userOperations().getUserProfile());
+            }
+            return true;
+        }
         return (authentication != null && !(authentication instanceof AnonymousAuthenticationToken));
     }
 
     public User getCurrentUser() {
+        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
+            return userRepository.getUserByLogin(facebook.userOperations().getUserProfile().getEmail());
+        }
         return ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();
     }
 
     public User getLoggedUserDetails(final Authentication authentication) {
-        return userRepository.getUserByLogin(authentication.getName());
+        return authentication != null ? userRepository.getUserByLogin(authentication.getName()) : userRepository.getUserByLogin(facebook.userOperations().getUserProfile().getEmail());
     }
 
     public User getUser(Long id) {

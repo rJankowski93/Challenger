@@ -71,4 +71,14 @@ export class ChallengeService {
             error => console.log(error));
 
     }
+
+    //Facebook
+    shareChallenge(challengeId: number): Observable<Response> {
+        let params: URLSearchParams = new URLSearchParams();
+        params.set('challengeId', challengeId.toString());
+        let requestOptions = new RequestOptions();
+        requestOptions.search = params;
+        return this.http.get(`${ChallengeService.CHALLENGE_API_URL}/shareChallenge`, requestOptions).map(res => res.json(),
+            error => console.log(error));
+    }
 }

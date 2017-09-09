@@ -64,4 +64,8 @@ public class UserRepositoryImpl {
     void changePassword(User user, String password) {
         user.setPassword(passwordEncoder.encode(password));
     }
+
+    User createUserFromFacebook(org.springframework.social.facebook.api.User user) {
+        return entityManager.merge(new User(user));
+    }
 }

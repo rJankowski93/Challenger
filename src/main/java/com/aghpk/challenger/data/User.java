@@ -106,6 +106,13 @@ public class User extends Audit implements Serializable, Scoreable {
         this.email = jsonRegisterForm.getEmail();
     }
 
+    public User(org.springframework.social.facebook.api.User user) {
+        this.login = user.getEmail();
+        this.firstName = user.getFirstName();
+        this.lastName = user.getLastName();
+        this.email = user.getEmail();
+    }
+
     @PrePersist
     public void onPrePersist() {
         setAuditCD(new Date());

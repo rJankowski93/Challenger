@@ -15,6 +15,8 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     User createUser(User user);
 
+    User createUserFromFacebook(org.springframework.social.facebook.api.User user);
+
     void removeUser(Long id);
 
     List<User> getFriendsByUser(Long id);

@@ -3,6 +3,7 @@ package com.aghpk.challenger.api;
 import com.aghpk.challenger.data.Challenge;
 import com.aghpk.challenger.data.ChallengeCategory;
 import com.aghpk.challenger.service.ChallengeService;
+import com.aghpk.challenger.service.FacebookService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +14,9 @@ import java.util.List;
 public class ChallengesResources {
 
     private final ChallengeService challengeService;
+
+    @Autowired
+    private FacebookService facebookService;
 
     @Autowired
     public ChallengesResources(ChallengeService challengeService) {
@@ -57,6 +61,11 @@ public class ChallengesResources {
     @RequestMapping(value = "/rejectChallenge", method = RequestMethod.GET, produces = "application/json")
     public void rejectChallenge(@RequestParam("notificationId") Long notificationId, @RequestParam("challengeId") Long challengeId) {
         challengeService.rejectChallenge(notificationId, challengeId);
+    }
+
+    @RequestMapping(value = "/shareChallenge", method = RequestMethod.GET, produces = "application/json")
+    public void shareChallenge(@RequestParam("challengeId") Long challengeId) {
+        facebookService.shareChallenge(challengeId);
     }
 
 }

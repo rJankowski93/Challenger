@@ -43,4 +43,15 @@ export class ChallengeBoxComponent implements OnInit {
     }
 
 
+    shareChallenge(challengeId: number) {
+        this.challengeSubscription = this.challengeService.shareChallenge(challengeId)
+            .subscribe(
+                error => {
+                    console.log("Cannot share challenge", error);
+                }
+            );
+    }
+
+
+
 }
