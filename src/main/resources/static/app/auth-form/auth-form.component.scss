@@ -1,0 +1,47 @@
+#auth-form-cnt {
+  background: white;
+  border-radius: 10px;
+  box-shadow: 0px 0px 20px 5px rgba(0, 0, 0, 0.4);
+  padding: 20px 20px 1px;
+}
+
+.challenger-heading {
+  margin: 50px auto 65px;
+  font-size: 56px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: -4px 3px 0 #0c2f84;
+  text-align: center;
+}
+
+.bottom-buttons {
+  position: relative;
+  top: 15px;
+  text-align: center;
+
+  button {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    color: #fff;
+    background: #d58f41;
+    border: none;
+    padding: 10px 20px;
+    width: 180px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 2px 1px #0000004d;
+    text-shadow: 0px 0px 8px #6e5050b3;
+    transition: all 0.3s;
+
+    &:hover, &.active {
+      background: #cd7864;
+      text-shadow: 0px 0px 8px rgba(37, 50, 110, 0.77);
+      transform: scale(1.1);
+    }
+  }
+
+  button:first-of-type {
+    margin-right: 10px;
+  }
+}

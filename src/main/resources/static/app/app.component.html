@@ -1,10 +1,5 @@
 <div *ngIf="!isAuthenticated">
-    <button id="button-login-page" class="btn btn-primary col-md-2 col-md-offset-4" (click)="showLoginPage()">Login
-    </button>
-    <button id="button-registration-page" class="btn btn-primary col-md-2" (click)="hideLoginPage()">Registration
-    </button>
-    <login-panel *ngIf="visibleLoginPage"></login-panel>
-    <registration-panel *ngIf="!visibleLoginPage"></registration-panel>
+    <auth-form></auth-form>
 </div>
 <div id="user-panel-wrapper" *ngIf="isAuthenticated">
     <div class="col-md-2 user-panel" style="position: fixed; top: 0; left: 0;">

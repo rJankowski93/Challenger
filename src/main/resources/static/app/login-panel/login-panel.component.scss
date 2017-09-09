@@ -1,11 +1,58 @@
 @import "../../../sass/variables";
 
+$label-width: 100px;
+
+h2 {
+  text-align: center;
+  font-size: 26px;
+}
+
 #login-container {
-  background: $main-color;
-  height: 100vh;
   margin-top: 40px;
   margin-bottom: 40px;
   padding: 10px 15px 10px 15px;
+
+  input {
+    border: 1px solid #dedede;
+    border-radius: 10px;
+    padding: 10px 5px;
+    margin-bottom: 15px;
+    width: calc(100% - 100px);
+    float: left;
+    box-shadow: 1px 2px 3px 1px #ccc;
+  }
+
+  label {
+    float: left;
+    width: $label-width;
+    margin-bottom: 0;
+    line-height: 40px;
+  }
+
+
+  .confirm-button {
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    display: inline-block;
+    color: #fff;
+    background: #439c4e;
+    border: none;
+    padding: 22px 20px;
+    width: 240px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 2px 1px #0000004d;
+    text-shadow: 0px 0px 8px rgba(63, 110, 36, 0.7);
+    transition: all 0.3s;
+    font-size: 24px;
+    margin: 20px auto auto;
+
+    &:hover, &.active {
+      background: #49bf45;
+      text-shadow: 0px 0px 8px rgba(20, 101, 68, 0.77);
+      transform: scale(1.1);
+    }
+  }
 }
 
 #user-icon {
@@ -13,11 +60,9 @@
 }
 
 #login {
-  background-color: $login-page-color;
 }
 
 .login-form {
-  background-color: $login-page-color;
 }
 
 input::-moz-placeholder {

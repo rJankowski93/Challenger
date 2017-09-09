@@ -1,0 +1,15 @@
+
+<h1 class="challenger-heading">Challenger.</h1>
+
+<div id="auth-form-cnt" class="col-md-4 col-md-offset-4">
+    <login-panel *ngIf="visibleLoginPage"></login-panel>
+    <registration-panel *ngIf="!visibleLoginPage"></registration-panel>
+    <div class="bottom-buttons">
+        <button id="button-login-page" [ngClass]="{ 'active' : visibleLoginPage }" (click)="showLoginPage()">
+            Login
+        </button>
+        <button id="button-registration-page" [ngClass]="{ 'active' : !visibleLoginPage }" (click)="hideLoginPage()">
+            Registration
+        </button>
+    </div>
+</div>

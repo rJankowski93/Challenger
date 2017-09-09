@@ -22,6 +22,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,20 +40,20 @@ public class UserService {
 
     private final NotificationService notificationService;
 
+    private final ConnectionRepository connectionRepository;
+
     @Autowired
     private Facebook facebook;
 
-    @Autowired
-    private ConnectionRepository connectionRepository;
-
 
     @Autowired
-    public UserService(UserRepository userRepository, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService, UserElasticRepository userElasticRepository, NotificationService notificationService) {
+    public UserService(UserRepository userRepository, CustomUserDetailsService customUserDetailsService, UploadFileService uploadFileService, UserElasticRepository userElasticRepository, NotificationService notificationService, ConnectionRepository connectionRepository) {
         this.userRepository = userRepository;
         this.customUserDetailsService = customUserDetailsService;
         this.uploadFileService = uploadFileService;
         this.userElasticRepository = userElasticRepository;
         this.notificationService = notificationService;
+        this.connectionRepository = connectionRepository;
     }
 
     public boolean isAuthenticated() {

@@ -6,6 +6,7 @@ import {Modal} from "../shared/models/modal";
 import {FileUploadService} from "../shared/services/fileUpload.service";
 import {UserService} from "../shared/services/user.service";
 import {$WebSocket} from "angular2-websocket";
+import {userInfo} from "os";
 
 @Component({
     moduleId: module.id,
@@ -128,5 +129,4 @@ export class UserPanelComponent implements OnInit, OnDestroy {
 
         });
     }
-
 }

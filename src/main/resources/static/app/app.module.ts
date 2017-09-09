@@ -20,6 +20,7 @@ import {TopUsersPanelModule} from "./top-users-panel/top-users-panel.module";
 import {NotificationBoxModule} from "./notification-box/notification-box.module";
 import {ChallengeDetailsModule} from "./challenge-details/challenge-details.module";
 import {ModalModule} from "ng2-modal";
+import {AuthFormModule} from "./auth-form/auth-form.module";
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import {ModalModule} from "ng2-modal";
         TopUsersPanelModule,
         NotificationBoxModule,
         ChallengeDetailsModule,
-        ModalModule
+        ModalModule,
+        AuthFormModule
     ],
 
     declarations: [
