@@ -67,6 +67,9 @@ public class UserService {
     }
 
     public User getCurrentUser() {
+        if (SecurityContextHolder.getContext().getAuthentication().getName().equals("anonymousUser")) {
+            return userRepository.getUserByLogin(facebook.userOperations().getUserProfile().getEmail());
+        }
         return ((CustomUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal()).getUser();
     }
 

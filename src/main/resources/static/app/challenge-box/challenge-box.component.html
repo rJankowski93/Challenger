@@ -1,6 +1,11 @@
 <div *ngIf="!isLoading">
 <div *ngFor="let challengeDetails of challengeList" id="challenge-box" class="col-md-10 col-md-offset-1">
 
+    <div>
+        <input value="Share on Facebook" type="button" (click)="shareChallenge(challengeDetails.id)">
+    </div>
+
+
     <div class="video-player-container">
         <video-player [videoHeight]="300" [videoWidth]="500"></video-player>
     </div>
