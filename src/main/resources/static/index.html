@@ -6,18 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
 
-    <link rel="stylesheet" href="node_modules/semantic-ui-css/semantic.min.css">
-<!--
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/ng2-bootstrap/x.x.x/ng2-bootstrap.min.js"></script>
--->
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-
-    <!--Materiallize -->
-    <link rel="stylesheet" href="materialize/css/materialize.css">
-    <!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.0/css/materialize.min.css">-->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="materialize/js/materialize.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.1/js/materialize.min.js"></script>-->
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 
     <!-- 1. Load libraries -->
     <!-- Polyfill(s) for older browsers -->
@@ -36,9 +26,9 @@
         });
     </script>
 </head>
-<body>
-
-<div style="height: 100%; overflow-y:scroll;">
+<!-- somehow I cant override body styles, so I put background color here. TODO it should be on body -->
+<body style="background: #2257b3">
+<div>
     <challenger-app>
         <style>
             challenger-app {
@@ -93,6 +83,5 @@
 </div>
 
 <script src="node_modules/jquery/dist/jquery.min.js"></script>
-<script src="node_modules/semantic-ui-css/semantic.min.js"></script>
 </body>
 </html>

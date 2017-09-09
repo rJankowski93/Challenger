@@ -7,19 +7,12 @@
     <registration-panel *ngIf="!visibleLoginPage"></registration-panel>
 </div>
 <div id="user-panel-wrapper" *ngIf="isAuthenticated">
-    <div class="col-md-3 user-panel">
+    <div class="col-md-2 user-panel" style="position: fixed; top: 0; left: 0;">
         <user-panel (showNotificationsListEvent)="showList(contentTypeEnum.NOTIFICATIONS)"></user-panel>
     </div>
 
-    <div class="col-md-7 main-section">
-        <div class="row">
-            <button id="button-challenges-list" class="btn btn-primary btn-change-main-content col-md-offset-2 col-md-3"
-                    (click)="showList(contentTypeEnum.CHALLENGES)">Challenges
-            </button>
-            <button id="button-friends-list" class="btn btn-primary btn-change-main-content col-md-offset-2 col-md-3"
-                    (click)="showList(contentTypeEnum.FRIENDS)">Friends
-            </button>
-        </div>
+    <div class="col-md-7 col-md-offset-2 main-section">
+
         <div class="tiles-list row">
             <challenge-box *ngIf="mainContentSection==contentTypeEnum.CHALLENGES"></challenge-box>
             <friend-box (showProfileEvent)="showProfile($event)"

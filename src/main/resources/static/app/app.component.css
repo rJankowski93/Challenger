@@ -1,12 +1,5 @@
-.tiles-list {
-  max-height: 100vh;
-  overflow: auto; }
-
-::-webkit-scrollbar {
-  width: 0;
-  /* remove scrollbar space */
-  background: transparent;
-  /* optional: just make scrollbar invisible */ }
+body {
+  background: #2257b3; }
 
 #user-panel-wrapper {
   width: 100%;

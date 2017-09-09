@@ -1,8 +1,11 @@
 #challenge-box {
-  background-color: #dddfd4;
+  background-color: #fff;
   border-radius: 10px;
   padding-bottom: 30px;
-  margin-bottom: 15px; }
+  margin-bottom: 40px;
+  box-shadow: 6px 7px 15px 1px rgba(0, 0, 0, 0.4); }
+  #challenge-box:first-of-type {
+    margin-top: 40px; }
 
 #chalenge-name {
   font-weight: bold;
