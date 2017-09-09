@@ -1,6 +1,9 @@
 package com.aghpk.challenger.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler;
 import org.springframework.social.connect.ConnectionRepository;
 import org.springframework.social.facebook.api.Facebook;
 import org.springframework.social.facebook.api.PagedList;
@@ -13,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.annotation.PostConstruct;
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.lang.reflect.Field;
 import java.lang.reflect.Modifier;
 
@@ -20,12 +26,12 @@ import java.lang.reflect.Modifier;
 public class BasicController {
 
     private Facebook facebook;
+    @Autowired
     private ConnectionRepository connectionRepository;
 
     @Autowired
-    public BasicController(Facebook facebook, ConnectionRepository connectionRepository) {
+    public BasicController(Facebook facebook) {
         this.facebook = facebook;
-        this.connectionRepository = connectionRepository;
     }
 
     @GetMapping
@@ -36,6 +42,17 @@ public class BasicController {
 
     @RequestMapping(value = "/registration", method = RequestMethod.GET)
     public String showRegistrationForm() {
+        return "index.html";
+    }
+
+
+    @RequestMapping(value = "/logoutUser", method = RequestMethod.GET)
+    public String logoutUser(HttpServletRequest request, HttpServletResponse response) {
+        connectionRepository.removeConnections("facebook");
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication != null) {
+            new SecurityContextLogoutHandler().logout(request, response, authentication);
+        }
         return "index.html";
     }
 
