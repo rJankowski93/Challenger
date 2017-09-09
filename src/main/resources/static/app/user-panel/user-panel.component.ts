@@ -6,6 +6,7 @@ import {Modal} from "../shared/models/modal";
 import {FileUploadService} from "../shared/services/fileUpload.service";
 import {UserService} from "../shared/services/user.service";
 import {$WebSocket} from "angular2-websocket";
+import {userInfo} from "os";
 
 @Component({
     moduleId: module.id,
@@ -16,9 +17,6 @@ import {$WebSocket} from "angular2-websocket";
 })
 export class UserPanelComponent implements OnInit, OnDestroy {
 
-    @ViewChild('avatarModal')
-    modal: Modal;
-
     @Output()
     showNotificationsListEvent = new EventEmitter();
     @Output()
@@ -27,6 +25,8 @@ export class UserPanelComponent implements OnInit, OnDestroy {
     showFriendsListEvent = new EventEmitter();
     @Output()
     showAvatarModalEvent = new EventEmitter();
+    @Output()
+    showCreateChallengeModalEvent = new EventEmitter();
 
     private userDetails: User;
     private isLoading: boolean;
@@ -81,6 +81,10 @@ export class UserPanelComponent implements OnInit, OnDestroy {
         this.showAvatarModalEvent.next();
     }
 
+    showCreateChallengeModal(){
+        this.showCreateChallengeModalEvent.next();
+    }
+
     connectWebSocket(user: User) {
         this.webSocket = new $WebSocket("ws://localhost:8080/notificationSession/" + user.id);
         this.webSocket.send("START");
@@ -122,5 +126,4 @@ export class UserPanelComponent implements OnInit, OnDestroy {
 
         });
     }
-
 }

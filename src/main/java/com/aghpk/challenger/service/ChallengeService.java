@@ -62,7 +62,7 @@ public class ChallengeService {
             throw new ApplicationException(ErrorType.WRONG_STATUS_CHALLENGE, challenge.getStatus());
         }
         challenge.setStatus(Challenge.Status.IN_PROGRESS);
-        challenge.setEndDate(DateUtils.newEndDate(challenge.getPeriodUnit(), challenge.getPeriod()));
+        challenge.setEndDate(DateUtils.newEndDate(challenge.getPeriodQuantity(),challenge.getPeriodUnit()));
         notificationService.changeStatus(notificationId, Notification.Status.INACTIVE);
         //TODO zmienic z listy na cos innego jak juz podejmiemy decyzje jak maja dzialac challenge
         // moglby np byc tutaj if ze jezeli subject jest pusty tzn ze challenge jest dla wsyztskich i wtedy ten co pierwszy ten wygrywa

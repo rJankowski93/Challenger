@@ -38,11 +38,15 @@
                     <span>Top Rank</span>
                 </div>
             </div>
-            <div class="text-center">
+            <div class="text-center" (click)="showCreateChallengeModal()">
                 <div id="new-challenge-btn">
                     New challenge
                 </div>
             </div>
+            <div>
+                <a href="/logoutUser">Logout</a>
+            </div>
+
 
             <!--<img class=" notification-icon" src="images\black-message.png"-->
                  <!--*ngIf="newNotification==false" (click)="showNotification()">-->
