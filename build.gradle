@@ -90,6 +90,10 @@ dependencies {
     compile('org.springframework.data:spring-data-elasticsearch')
     compile('net.java.dev.jna:jna')  //jna for elasticsearch
 
+    //swagger
+    compile group: 'io.springfox', name: 'springfox-swagger2', version: swagger
+    compile group: 'io.springfox', name: 'springfox-swagger-ui', version: swagger
+
 //  OTHER
     compile group: 'javax.mail', name: 'mail', version: javaxMail
     compile group: 'org.apache.commons', name: 'commons-io', version: apacheCommons

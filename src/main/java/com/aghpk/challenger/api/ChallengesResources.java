@@ -19,14 +19,13 @@ public class ChallengesResources {
         this.challengeService = challengeService;
     }
 
-    @RequestMapping("/list")
-    public
+    @RequestMapping(value = "/list", method = RequestMethod.GET)
     @ResponseBody
-    List<Challenge> getChallenges() {
+    public List<Challenge> getChallenges() {
         return challengeService.getChallenges();
     }
 
-    @RequestMapping(value = "/challenge", produces = "application/json")
+    @RequestMapping(value = "/challenge", method = RequestMethod.GET, produces = "application/json")
     public Challenge getChallenge(@RequestParam("id") Long id) {
         return challengeService.getChallenge(id);
     }
@@ -36,26 +35,26 @@ public class ChallengesResources {
         challengeService.addChallenge(challenge);
     }
 
-    @RequestMapping("/user/challenges")
+    @RequestMapping(value = "/user/challenges", method = RequestMethod.GET)
     public
     @ResponseBody
     List<Challenge> getChallengesByUser(@RequestParam(value = "id", required = false) Long userId) {
         return challengeService.getChallengesByUser(userId);
     }
 
-    @RequestMapping(value = "/categories")
+    @RequestMapping(value = "/categories", method = RequestMethod.GET)
     public
     @ResponseBody
     List<ChallengeCategory> getCategories() {
         return challengeService.getCategories();
     }
 
-    @RequestMapping(value = "/acceptChallenge", produces = "application/json")
+    @RequestMapping(value = "/acceptChallenge", method = RequestMethod.GET, produces = "application/json")
     public void acceptChallenge(@RequestParam("notificationId") Long notificationId, @RequestParam("challengeId") Long challengeId) {
         challengeService.acceptChallenge(notificationId, challengeId);
     }
 
-    @RequestMapping(value = "/rejectChallenge", produces = "application/json")
+    @RequestMapping(value = "/rejectChallenge", method = RequestMethod.GET, produces = "application/json")
     public void rejectChallenge(@RequestParam("notificationId") Long notificationId, @RequestParam("challengeId") Long challengeId) {
         challengeService.rejectChallenge(notificationId, challengeId);
     }
