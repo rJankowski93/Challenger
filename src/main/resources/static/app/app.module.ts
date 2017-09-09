@@ -19,6 +19,7 @@ import {UserProfileModule} from "./user-profile/user-profile.module";
 import {TopUsersPanelModule} from "./top-users-panel/top-users-panel.module";
 import {NotificationBoxModule} from "./notification-box/notification-box.module";
 import {ChallengeDetailsModule} from "./challenge-details/challenge-details.module";
+import {ModalModule} from "ng2-modal";
 
 
 @NgModule({
@@ -37,11 +38,13 @@ import {ChallengeDetailsModule} from "./challenge-details/challenge-details.modu
         FriendBoxModule,
         ChallengeSearchInputModule,
         UserSearchInputModule,
+        UserPanelModule,
         FormsModule,
         UserProfileModule,
         TopUsersPanelModule,
         NotificationBoxModule,
-        ChallengeDetailsModule
+        ChallengeDetailsModule,
+        ModalModule
     ],
 
     declarations: [

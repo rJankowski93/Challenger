@@ -8,7 +8,12 @@
 </div>
 <div id="user-panel-wrapper" *ngIf="isAuthenticated">
     <div class="col-md-2 user-panel" style="position: fixed; top: 0; left: 0;">
-        <user-panel (showNotificationsListEvent)="showList(contentTypeEnum.NOTIFICATIONS)"></user-panel>
+        <user-panel (showNotificationsListEvent)="showList(contentTypeEnum.NOTIFICATIONS)"
+                    (showChallengesListEvent)="showList(contentTypeEnum.CHALLENGES)"
+                    (showFriendsListEvent)="showList(contentTypeEnum.FRIENDS)"
+                    (showAvatarModalEvent)="showAvatarModal()">
+
+        </user-panel>
     </div>
 
     <div class="col-md-7 col-md-offset-2 main-section">
@@ -29,4 +34,50 @@
     <div class="col-md-2 top-users">
         <top-users-panel></top-users-panel>
     </div>
+
+    <modal #avatarModal>
+        <modal-header>
+            <h6 class="modal-title">Avatar upload...</h6>
+        </modal-header>
+        <modal-content>
+            <file-upload-panel></file-upload-panel>
+        </modal-content>
+        <modal-footer>
+            <button class="btn btn-primary" (click)="avatarModal.close()">Close</button>
+        </modal-footer>
+    </modal>
+
+    <modal #createChallengeModal>
+        <modal-header>
+            <h6 class="modal-title">Create challenge</h6>
+        </modal-header>
+        <modal-content>
+            <challenge-creator></challenge-creator>
+        </modal-content>
+        <modal-footer>
+            <button class="btn btn-primary" (click)="createChallengeModal.close()">Close</button>
+        </modal-footer>
+    </modal>
+
+    <modal #createChangePasswordModal>
+        <modal-header>
+            <h6 class="modal-title">Change password</h6>
+        </modal-header>
+        <modal-content>
+            <!--<form method="POST" action="/changePassword">-->
+            <input class="validate" id="old-password" name="username" type="text" placeholder="Old password" required>
+            <input class="validate" id="new-password" name="username" type="text" placeholder="New password" required>
+            <input class="validate" id="matching-password" name="username" type="text" placeholder="Matching password"
+                   required>
+            <button id="btnSubmit" (click)="changePassword()" type="submit"
+                    class="btn waves-effect waves-light col s12">
+                Sign Up
+            </button>
+            <!--</form>-->
+        </modal-content>
+        <modal-footer>
+            <button class="btn btn-primary" (click)="createChangePasswordModal.close()">Close</button>
+        </modal-footer>
+    </modal>
+
 </div>

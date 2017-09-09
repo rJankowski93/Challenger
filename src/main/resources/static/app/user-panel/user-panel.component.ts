@@ -21,6 +21,12 @@ export class UserPanelComponent implements OnInit, OnDestroy {
 
     @Output()
     showNotificationsListEvent = new EventEmitter();
+    @Output()
+    showChallengesListEvent = new EventEmitter();
+    @Output()
+    showFriendsListEvent = new EventEmitter();
+    @Output()
+    showAvatarModalEvent = new EventEmitter();
 
     private userDetails: User;
     private isLoading: boolean;
@@ -47,7 +53,7 @@ export class UserPanelComponent implements OnInit, OnDestroy {
             );
 
         this.avatarUserSubscription = this.fileUploadService.changedAvatarObservable.subscribe(() => {
-            this.modal.close();
+            //this.modal.close();
             $("#user-profile-image").attr('src', 'avatars\\user\\' + this.userDetails.id + '.jpg?' + new Date().getTime());
         });
 
@@ -61,6 +67,18 @@ export class UserPanelComponent implements OnInit, OnDestroy {
     showNotification() {
         this.newNotification = false;
         this.showNotificationsListEvent.next();
+    }
+
+    showChallengesList(){
+        this.showChallengesListEvent.next();
+    }
+
+    showEventsList(){
+        this.showFriendsListEvent.next();
+    }
+
+    showAvatarModal(){
+        this.showAvatarModalEvent.next();
     }
 
     connectWebSocket(user: User) {

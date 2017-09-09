@@ -9,7 +9,7 @@
                 <img id="user-profile-image" class=""
                      src="avatars\user\{{userDetails.id}}.jpg"
                      onerror="this.src='avatars\\default\\not-found-avatar.jpg'">
-                <div class="change-avatar-link" (click)="avatarModal.open()">
+                <div class="change-avatar-link" (click)="showAvatarModal()">
                     <i class="fa fa-camera" aria-hidden="true"></i>
                 </div>
 
@@ -21,11 +21,11 @@
             </div>
 
             <div id="user-menu">
-                <div class="user-menu-item">
+                <div class="user-menu-item" (click)="showChallengesList()">
                     <i class="fa fa-trophy" aria-hidden="true"></i>
                     <span>Challenges</span>
                 </div>
-                <div class="user-menu-item">
+                <div class="user-menu-item" (click)="showEventsList()">
                     <i class="fa fa-users" aria-hidden="true"></i>
                     <span>Friends</span>
                 </div>
@@ -69,57 +69,7 @@
                     <!--Change password-->
                 <!--</button>-->
 
-                <!--<button id="button-challenges-list" class="btn btn-primary btn-change-main-content col-md-offset-2 col-md-3"-->
-                        <!--(click)="showList(contentTypeEnum.CHALLENGES)">Challenges-->
-                <!--</button>-->
-                <!--<button id="button-friends-list" class="btn btn-primary btn-change-main-content col-md-offset-2 col-md-3"-->
-                        <!--(click)="showList(contentTypeEnum.FRIENDS)">Friends-->
-                <!--</button>-->
             <!--</div>-->
         </div>
     </div>
 </div>
-
-<modal #avatarModal>
-    <modal-header>
-        <h6 class="modal-title">Avatar upload...</h6>
-    </modal-header>
-    <modal-content>
-        <file-upload-panel></file-upload-panel>
-    </modal-content>
-    <modal-footer>
-        <button class="btn btn-primary" (click)="avatarModal.close()">Close</button>
-    </modal-footer>
-</modal>
-
-<modal #createChallengeModal>
-    <modal-header>
-        <h6 class="modal-title">Create challenge</h6>
-    </modal-header>
-    <modal-content>
-        <challenge-creator></challenge-creator>
-    </modal-content>
-    <modal-footer>
-        <button class="btn btn-primary" (click)="createChallengeModal.close()">Close</button>
-    </modal-footer>
-</modal>
-
-<modal #createChangePasswordModal>
-    <modal-header>
-        <h6 class="modal-title">Change password</h6>
-    </modal-header>
-    <modal-content>
-        <!--<form method="POST" action="/changePassword">-->
-        <input class="validate" id="old-password" name="username" type="text" placeholder="Old password" required>
-        <input class="validate" id="new-password" name="username" type="text" placeholder="New password" required>
-        <input class="validate" id="matching-password" name="username" type="text" placeholder="Matching password"
-               required>
-        <button id="btnSubmit" (click)="changePassword()" type="submit" class="btn waves-effect waves-light col s12">
-            Sign Up
-        </button>
-        <!--</form>-->
-    </modal-content>
-    <modal-footer>
-        <button class="btn btn-primary" (click)="createChangePasswordModal.close()">Close</button>
-    </modal-footer>
-</modal>
