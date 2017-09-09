@@ -1,8 +1,8 @@
 package com.aghpk.challenger.service;
 
 import com.aghpk.challenger.data.Notification;
-import com.aghpk.challenger.exeption.ApplicationException;
-import com.aghpk.challenger.exeption.ErrorType;
+import com.aghpk.challenger.exceptions.ApplicationException;
+import com.aghpk.challenger.exceptions.ErrorType;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;

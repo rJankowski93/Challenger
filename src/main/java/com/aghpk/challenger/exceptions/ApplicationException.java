@@ -1,4 +1,4 @@
-package com.aghpk.challenger.exeption;
+package com.aghpk.challenger.exceptions;
 
 import com.aghpk.challenger.tools.StringUtils;
 

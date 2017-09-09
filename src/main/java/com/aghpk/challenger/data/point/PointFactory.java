@@ -1,7 +1,7 @@
 package com.aghpk.challenger.data.point;
 
-import com.aghpk.challenger.exeption.ApplicationException;
-import com.aghpk.challenger.exeption.ErrorType;
+import com.aghpk.challenger.exceptions.ApplicationException;
+import com.aghpk.challenger.exceptions.ErrorType;
 
 public class PointFactory {
 

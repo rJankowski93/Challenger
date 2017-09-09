@@ -25,17 +25,17 @@ public class UsersResources {
         this.userService = userService;
     }
 
-    @RequestMapping(value = "/authentication")
+    @RequestMapping(value = "/authentication", method = RequestMethod.GET)
     public boolean isAuthentication() {
-        return userService.isAuthentication();
+        return userService.isAuthenticated();
     }
 
-    @RequestMapping(value = "/logged/details", produces = "application/json")
+    @RequestMapping(value = "/logged/details", method = RequestMethod.GET, produces = "application/json")
     public User getLoggedUserDetails(final Authentication authentication) {
         return userService.getLoggedUserDetails(authentication);
     }
 
-    @RequestMapping(value = "/user", produces = "application/json")
+    @RequestMapping(value = "/user", method = RequestMethod.GET, produces = "application/json")
     public User getUser(@RequestParam("id") Long id) {
         return userService.getUser(id);
     }
@@ -45,12 +45,12 @@ public class UsersResources {
         return userService.createUser(user);
     }
 
-    @RequestMapping("/remove")
+    @RequestMapping(value = "/remove", method = RequestMethod.GET)
     public void removeUser(@RequestParam("id") Long id) {
         userService.removeUser(id);
     }
 
-    @RequestMapping("/friends")
+    @RequestMapping(value = "/friends", method = RequestMethod.GET)
     public
     @ResponseBody
     List<User> getFriendsByUser(@RequestParam(value = "id", required = false) Long userId) {
@@ -80,12 +80,12 @@ public class UsersResources {
         return userService.getTopUsers(pageNo, pageSize, pointsType);
     }
 
-    @RequestMapping(value = "/removeFriend", produces = "application/json")
+    @RequestMapping(value = "/removeFriend", method = RequestMethod.GET, produces = "application/json")
     public void removeFriend(@RequestParam("friendId") Long friendId) {
         userService.removeFriend(friendId);
     }
 
-    @RequestMapping(value = "/inviteFriend", produces = "application/json")
+    @RequestMapping(value = "/inviteFriend", method = RequestMethod.GET, produces = "application/json")
     public void inviteFriend(@RequestParam("friendId") Long friendId) {
         userService.inviteFriend(friendId);
     }
@@ -95,7 +95,7 @@ public class UsersResources {
         userService.acceptInvitation(notificationId, friendId);
     }
 
-    @RequestMapping(value = "/rejectInvitation", produces = "application/json")
+    @RequestMapping(value = "/rejectInvitation", method = RequestMethod.GET, produces = "application/json")
     public void rejectInvitation(@RequestParam("notificationId") Long notificationId, @RequestParam("userId") Long userId) {
         userService.rejectInvitation(notificationId, userId);
     }

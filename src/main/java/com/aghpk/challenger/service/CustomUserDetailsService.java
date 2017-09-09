@@ -5,8 +5,8 @@ import com.aghpk.challenger.repository.UserRepository;
 import com.aghpk.challenger.repository.UserRoleRepository;
 import com.aghpk.challenger.data.User;
 import com.aghpk.challenger.data.UserRole;
-import com.aghpk.challenger.exeption.ApplicationException;
-import com.aghpk.challenger.exeption.ErrorType;
+import com.aghpk.challenger.exceptions.ApplicationException;
+import com.aghpk.challenger.exceptions.ErrorType;
 import com.aghpk.challenger.model.CustomUserDetails;
 import com.aghpk.challenger.model.JsonRegisterForm;
 import com.aghpk.challenger.tools.StringUtils;
@@ -18,8 +18,6 @@ import org.springframework.stereotype.Service;
 
 import javax.mail.MessagingException;
 import javax.persistence.EntityExistsException;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 @Service

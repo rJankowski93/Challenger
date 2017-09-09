@@ -41,7 +41,8 @@
 
     <div id="challenge-options">
         <div id="challenge-options-wrapper">
-            <input class="btn btn-primary" id="challenge-accept-button" type="button" value="Accept">
+            <input class="btn btn-primary" id="challenge-accept-button" (click)="acceptChallenge(challengeDetails.id)"
+                   type="button" value="Accept">
             <input class="btn btn-primary" id="challenge-decline-button" type="button" value="Decline">
         </div>
     </div>

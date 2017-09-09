@@ -1,3 +1,4 @@
+<!--TODO formatka do przerobienia: dodac inputy, zmienic typy danych zgodnie z modelem  -->
 <div *ngIf="!isLoading">
     <form (ngSubmit)="onSubmit()" #createChallengeForm="ngForm">
         <div>
@@ -10,6 +11,12 @@
                     {{challengeCategory.challengeCategoryName}}
                 </option>
             </select>
+            <input type="datetime" id="challenge-end-date" [(ngModel)]="challenge.endDate" name="endDate"
+                   #name="ngModel" placeholder="Challenge end date">
+            <input type="text" id="challenge-period" [(ngModel)]="challenge.period" name="period" #name="ngModel"
+                   placeholder="Challenge period">
+            <input type="text" id="challenge-period-unit" [(ngModel)]="challenge.periodUnit" name="periodUnit"
+                   #name="ngModel" placeholder="Challenge periodUnit">
             <button type="submit" id="add-challenge-button">Add Challenge</button>
         </div>
     </form>

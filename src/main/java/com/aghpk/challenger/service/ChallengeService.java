@@ -3,13 +3,15 @@ package com.aghpk.challenger.service;
 import com.aghpk.challenger.data.Challenge;
 import com.aghpk.challenger.data.ChallengeCategory;
 import com.aghpk.challenger.data.Notification;
-import com.aghpk.challenger.exeption.ApplicationException;
-import com.aghpk.challenger.exeption.ErrorType;
+import com.aghpk.challenger.exceptions.ApplicationException;
+import com.aghpk.challenger.exceptions.ErrorType;
 import com.aghpk.challenger.repository.ChallengeCategoryRepository;
 import com.aghpk.challenger.repository.ChallengeRepository;
+import com.aghpk.challenger.tools.DateUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -40,6 +42,9 @@ public class ChallengeService {
     }
 
     public void addChallenge(Challenge challenge) {
+        if (challenge.getEndDate().isBefore(LocalDateTime.now())) {
+            //TODO exception
+        }
         challengeRepository.save(challenge);
     }
 
@@ -57,6 +62,7 @@ public class ChallengeService {
             throw new ApplicationException(ErrorType.WRONG_STATUS_CHALLENGE, challenge.getStatus());
         }
         challenge.setStatus(Challenge.Status.IN_PROGRESS);
+        challenge.setEndDate(DateUtils.newEndDate(challenge.getPeriodUnit(), challenge.getPeriod()));
         notificationService.changeStatus(notificationId, Notification.Status.INACTIVE);
         //TODO zmienic z listy na cos innego jak juz podejmiemy decyzje jak maja dzialac challenge
         // moglby np byc tutaj if ze jezeli subject jest pusty tzn ze challenge jest dla wsyztskich i wtedy ten co pierwszy ten wygrywa
