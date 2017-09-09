@@ -1,5 +1,6 @@
-import {Component, OnInit} from "@angular/core";
+import {Component, OnInit, ViewChild} from "@angular/core";
 import {AuthRepository} from "./shared/repository/auth.repository";
+import {Modal} from "./shared/models/modal";
 
 @Component({
     moduleId: module.id,
@@ -8,6 +9,9 @@ import {AuthRepository} from "./shared/repository/auth.repository";
     styleUrls: ['app.component.css']
 })
 export class AppComponent implements OnInit {
+
+    @ViewChild('avatarModal')
+    modal: Modal;
 
     contentTypeEnum: any = ContentType;
 
@@ -60,7 +64,12 @@ export class AppComponent implements OnInit {
         this.mainContentSection = ContentType.CHALLENGE;
         this.challengeId = challengeId;
     }
+
+    showAvatarModal() {
+        this.modal.open();
+    }
 }
+
 export enum ContentType {
     CHALLENGES,
     CHALLENGE,

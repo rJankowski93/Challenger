@@ -5,6 +5,7 @@ import com.aghpk.challenger.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,7 +22,7 @@ public class NotificationResources {
         this.notificationService = notificationService;
     }
 
-    @RequestMapping("/user")
+    @RequestMapping(value = "/user", method = RequestMethod.GET)
     public
     @ResponseBody
     List<Notification> getNotificationsForLoggedUser(final Authentication authentication) {

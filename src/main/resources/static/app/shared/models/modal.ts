@@ -1,3 +1,4 @@
-export interface  Modal {
-      close:any;
+export interface Modal {
+    open: any;
+    close: any;
 }

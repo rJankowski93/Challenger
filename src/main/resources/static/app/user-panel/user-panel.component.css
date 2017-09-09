@@ -1,41 +1,102 @@
 #user-panel {
   height: 100vh;
-  margin-left: 10px;
   padding: 0;
-  border-radius: 25px;
-  background-color: #173e43; }
+  background-color: #000; }
 
 #user-images {
   height: 150px;
   width: 100%; }
 
+#user-panel-heading {
+  color: #fff;
+  padding: 25px 0 20px 20px;
+  border-bottom: 1px solid #232323; }
+  #user-panel-heading h2 {
+    margin: 0; }
+  #user-panel-heading .heading-desc {
+    color: #6b6c6e; }
+
 #user-background {
   height: 100%;
-  width: 100%;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  background-image: url("http://devfloat.net/wp-content/uploads/2016/01/Unique-Facebook-Background.jpg");
-  background-size: 100% 100%; }
+  width: 100%; }
 
-#user-profile-image {
-  border: 5px solid #3fb0ac;
-  border-radius: 10px;
+#avatar-wrapper {
+  margin-top: 40px;
   position: relative;
-  top: 100px;
-  width: 90px;
-  height: 90px;
-  background-size: 100% 100%;
-  cursor: pointer; }
+  height: 60px; }
+  #avatar-wrapper #user-profile-image {
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-size: cover; }
+  #avatar-wrapper .change-avatar-link {
+    cursor: pointer;
+    background: #267aea;
+    border-radius: 50%;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    position: absolute;
+    z-index: 0;
+    left: 55%;
+    top: -10px;
+    transition: transform .3s; }
+    #avatar-wrapper .change-avatar-link i {
+      color: #fff; }
+    #avatar-wrapper .change-avatar-link:hover {
+      transform: scale(1.2); }
+
+#user-menu {
+  margin-top: 35px;
+  margin-bottom: 30px; }
+  #user-menu .user-menu-item {
+    color: #7b7c81;
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 14px;
+    border-top: 1px solid #232323;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden; }
+    #user-menu .user-menu-item i, #user-menu .user-menu-item span {
+      display: inline-block;
+      padding-left: 20px; }
+    #user-menu .user-menu-item:after {
+      content: '';
+      display: block;
+      background: #2257b3;
+      border-radius: 20%;
+      width: 18px;
+      height: 18px;
+      transform: translateY(-50%) rotate(45deg);
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      transition: all .3s; }
+    #user-menu .user-menu-item:last-of-type {
+      border-bottom: 1px solid #232323; }
+    #user-menu .user-menu-item:hover {
+      color: #fff;
+      font-weight: bold; }
+      #user-menu .user-menu-item:hover:after {
+        right: -9px; }
 
 #user-panel-content {
   height: 600px; }
 
 #user-name {
-  position: relative;
-  left: 115px;
-  color: white;
-  font-weight: bold;
-  font-size: 30px; }
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
+  font-weight: bold; }
+  #user-name span {
+    color: #91bee7; }
 
 #user-searches {
   padding-top: 10px;
@@ -44,6 +105,22 @@
 
 #search-challenge, #search-friends {
   clear: both; }
+
+#new-challenge-btn {
+  background: #2b78fc;
+  margin: 15px auto;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: transform .3s; }
+  #new-challenge-btn:hover {
+    transform: scale(1.2); }
 
 .modal-title {
   text-align: center; }

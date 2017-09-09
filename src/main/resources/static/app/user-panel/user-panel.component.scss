@@ -2,36 +2,127 @@
 
 #user-panel {
   height: 100vh;
-  margin-left: 10px;
   padding: 0;
-  border-radius: 25px;
-  background-color: $notifications-dark-color;
+  background-color: #000;
 }
+
 
 #user-images {
   height: 150px;
   width: 100%;
 }
 
+#user-panel-heading {
+  color: #fff;
+  padding: 25px 0 20px 20px;
+  border-bottom: 1px solid #232323;
+
+  h2 {
+    margin: 0;
+  }
+
+  .heading-desc {
+    color: #6b6c6e;
+  }
+}
+
 #user-background {
   height: 100%;
   width: 100%;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  background-image: url("http://devfloat.net/wp-content/uploads/2016/01/Unique-Facebook-Background.jpg");
-  background-size: 100% 100%;
+  //border-top-left-radius: 25px;
+  //border-top-right-radius: 25px;
+  //background-image: url("http://devfloat.net/wp-content/uploads/2016/01/Unique-Facebook-Background.jpg");
+  //background-size: 100% 100%;
 }
 
-#user-profile-image {
-  border: 5px solid $notifications-color;
-  border-radius: 10px;
+#avatar-wrapper {
+  margin-top: 40px;
   position: relative;
-  top: 100px;
-  width: 90px;
-  height: 90px;
-  //background-image: url("http://stardesign.com.pl/images/member1.jpg");
-  background-size: 100% 100%;
-  cursor: pointer;
+  height: 60px;
+
+  #user-profile-image {
+    border-radius: 50%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 60px;
+    background-size: cover;
+  }
+
+  .change-avatar-link {
+    cursor: pointer;
+    background: #267aea;
+    border-radius: 50%;
+    padding: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    position: absolute;
+    z-index: 0;
+    left: 55%;
+    top: -10px;
+    transition: transform .3s;
+    i {
+      color: #fff;
+    }
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+}
+
+#user-menu {
+  margin-top: 35px;
+  margin-bottom: 30px;
+  .user-menu-item {
+    color: #7b7c81;
+    padding: 20px 0;
+    cursor: pointer;
+    font-size: 14px;
+    border-top: 1px solid #232323;
+    transition: all .3s;
+    position: relative;
+    overflow: hidden;
+
+    i, span {
+      display: inline-block;
+      padding-left: 20px;
+
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      background: #2257b3;
+      border-radius: 20%;
+      width: 18px;
+      height: 18px;
+      transform: translateY(-50%) rotate(45deg);
+      position: absolute;
+      top: 50%;
+      right: -20px;
+      //opacity: 0;
+      transition: all .3s;
+    }
+
+    &:last-of-type {
+      border-bottom: 1px solid #232323;
+    }
+
+    &:hover {
+      color: #fff;
+      font-weight: bold;
+
+      &:after {
+        //opacity: 1;
+        right: -9px;
+      }
+    }
+  }
 }
 
 #user-panel-content {
@@ -39,11 +130,13 @@
 }
 
 #user-name {
-  position: relative;
-  left: 115px;
-  color: $font-color;
+  margin-top: 20px;
+  text-align: center;
+  color: #fff;
   font-weight: bold;
-  font-size: 30px;
+  span {
+    color: #91bee7;
+  }
 }
 
 #user-searches {
@@ -58,6 +151,25 @@
 
 #search-friends {
   @extend #search-challenge;
+}
+
+#new-challenge-btn {
+  background: #2b78fc;
+  margin: 15px auto;
+  display: inline-block;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #fff;
+  border-radius: 10px;
+  letter-spacing: 1px;
+  padding: 10px 12px;
+  box-shadow: 1px 1px 5px 1px rgba(255, 255, 255, 0.15);
+  cursor: pointer;
+  transition: transform .3s;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 }
 
 .modal-title{
