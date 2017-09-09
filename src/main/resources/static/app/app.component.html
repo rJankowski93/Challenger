@@ -11,7 +11,8 @@
         <user-panel (showNotificationsListEvent)="showList(contentTypeEnum.NOTIFICATIONS)"
                     (showChallengesListEvent)="showList(contentTypeEnum.CHALLENGES)"
                     (showFriendsListEvent)="showList(contentTypeEnum.FRIENDS)"
-                    (showAvatarModalEvent)="showAvatarModal()">
+                    (showAvatarModalEvent)="showAvatarModal()"
+                    (showCreateChallengeModalEvent)="showCreateChallengeModal()">
 
         </user-panel>
     </div>
@@ -53,6 +54,7 @@
         </modal-header>
         <modal-content>
             <challenge-creator></challenge-creator>
+            CONTENT OF CREATE CHALLENGE MODAL
         </modal-content>
         <modal-footer>
             <button class="btn btn-primary" (click)="createChallengeModal.close()">Close</button>

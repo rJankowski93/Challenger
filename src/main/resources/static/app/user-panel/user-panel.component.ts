@@ -27,6 +27,8 @@ export class UserPanelComponent implements OnInit, OnDestroy {
     showFriendsListEvent = new EventEmitter();
     @Output()
     showAvatarModalEvent = new EventEmitter();
+    @Output()
+    showCreateChallengeModalEvent = new EventEmitter();
 
     private userDetails: User;
     private isLoading: boolean;
@@ -79,6 +81,10 @@ export class UserPanelComponent implements OnInit, OnDestroy {
 
     showAvatarModal(){
         this.showAvatarModalEvent.next();
+    }
+
+    showCreateChallengeModal(){
+        this.showCreateChallengeModalEvent.next();
     }
 
     connectWebSocket(user: User) {

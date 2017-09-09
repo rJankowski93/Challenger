@@ -13,6 +13,9 @@ export class AppComponent implements OnInit {
     @ViewChild('avatarModal')
     modal: Modal;
 
+    @ViewChild('createChallengeModal')
+    createChallengeModal: Modal;
+
     contentTypeEnum: any = ContentType;
 
     private isLoading: boolean;
@@ -67,6 +70,10 @@ export class AppComponent implements OnInit {
 
     showAvatarModal() {
         this.modal.open();
+    }
+
+    showCreateChallengeModal(){
+        this.createChallengeModal.open();
     }
 }
 
